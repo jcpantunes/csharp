@@ -1,0 +1,11 @@
+C:\Users\Julio\Documents\Visual Studio 2012\Projects\GEP_DE611\UnitTest\bin\Debug\UnitTest.dll
+C:\Users\Julio\Documents\Visual Studio 2012\Projects\GEP_DE611\UnitTest\bin\Debug\UnitTest.pdb
+C:\Users\Julio\Documents\Visual Studio 2012\Projects\GEP_DE611\UnitTest\bin\Debug\GEP_DE611.exe
+C:\Users\Julio\Documents\Visual Studio 2012\Projects\GEP_DE611\UnitTest\bin\Debug\System.Windows.Controls.DataVisualization.Toolkit.dll
+C:\Users\Julio\Documents\Visual Studio 2012\Projects\GEP_DE611\UnitTest\bin\Debug\WPFToolkit.dll
+C:\Users\Julio\Documents\Visual Studio 2012\Projects\GEP_DE611\UnitTest\bin\Debug\GEP_DE611.pdb
+C:\Users\Julio\Documents\Visual Studio 2012\Projects\GEP_DE611\UnitTest\bin\Debug\System.Windows.Controls.DataVisualization.Toolkit.pdb
+C:\Users\Julio\Documents\Visual Studio 2012\Projects\GEP_DE611\UnitTest\bin\Debug\WPFToolkit.pdb
+C:\Users\Julio\Documents\Visual Studio 2012\Projects\GEP_DE611\UnitTest\obj\Debug\UnitTest.csprojResolveAssemblyReference.cache
+C:\Users\Julio\Documents\Visual Studio 2012\Projects\GEP_DE611\UnitTest\obj\Debug\UnitTest.dll
+C:\Users\Julio\Documents\Visual Studio 2012\Projects\GEP_DE611\UnitTest\obj\Debug\UnitTest.pdb

@@ -1,0 +1,103 @@
+﻿<Window x:Class="GEP_DE611.visao.CadastrarProjeto"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Projeto" Height="700" Width="841">
+    
+    <Grid>
+
+        <GroupBox x:Name="groupCadastro" Header="Cadastro de Projeto" Margin="30,10,0,0" HorizontalAlignment="Left" VerticalAlignment="Top"
+    		Width="750" Height="170" BorderBrush="Black" BorderThickness="1" >
+
+            <Grid>
+
+                <Label x:Name="lblNome" Content="Nome" Margin="10,10,0,0" HorizontalAlignment="Left" />
+
+                <TextBox x:Name="txtNome" Margin="10,40,0,0" HorizontalAlignment="Left" VerticalAlignment="Top"
+                         Height="25" Width="300" TextWrapping="Wrap" Text="" />
+
+                <Label x:Name="lblId" Content="Id" Margin="10,75,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" />
+
+                <TextBox x:Name="txtId" Margin="10,105,0,0" HorizontalAlignment="Left" VerticalAlignment="Top"
+                         Height="25" Width="300" TextWrapping="Wrap" />
+
+                <Label x:Name="lblDtInicio" Content="Data Inicio" Margin="400,10,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" />
+
+                <DatePicker x:Name="txtDtInicio" Margin="400,40,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" />
+
+                <Label x:Name="lblDtFinal" Content="Data Inicio" Margin="400,75,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" />
+
+                <DatePicker x:Name="txtDtFinal" Margin="400,105,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" />
+
+                <Button x:Name="btnLimpar" Content="Limpar" Margin="560,40,0,0" HorizontalAlignment="Left"  VerticalAlignment="Top" Width="60" Click="btnLimpar_Click" />
+
+                <TextBox x:Name="txtCodigo" Text="TextBox" Margin="640,40,0,0" HorizontalAlignment="Left" VerticalAlignment="Top"
+                         Height="25" Width="60" TextWrapping="Wrap" IsEnabled="False" />
+
+                <Button x:Name="btnSalvar" Content="Salvar" Margin="560,105,0,0" HorizontalAlignment="Left"  VerticalAlignment="Top" Width="60" Click="btnSalvar_Click" />
+
+                <Button x:Name="btnExcluir" Content="Excluir" Margin="640,105,0,0" HorizontalAlignment="Left"  VerticalAlignment="Top" Width="60" Click="btnExcluir_Click" />
+
+            </Grid>
+
+        </GroupBox>
+
+        <GroupBox x:Name="groupFiltro" Header="Filtro" Margin="30,200,0,0" HorizontalAlignment="Left" VerticalAlignment="Top"
+    		Width="750" Height="170" BorderBrush="Black" BorderThickness="1" >
+
+            <Grid>
+
+                <Label x:Name="lblFiltroNome" Content="Nome" Margin="10,10,0,0" HorizontalAlignment="Left" />
+
+                <TextBox x:Name="txtFiltroNome" Margin="10,40,0,0" HorizontalAlignment="Left" VerticalAlignment="Top"
+                             Height="20" Width="300" TextWrapping="Wrap" Text="" />
+
+                <Label x:Name="lblFiltroId" Content="Id" Margin="10,75,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" />
+
+                <TextBox x:Name="txtFiltroId" Margin="10,105,0,0" HorizontalAlignment="Left" VerticalAlignment="Top"
+                             Height="20" Width="300" TextWrapping="Wrap" />
+
+                <Label x:Name="lblDtFiltroInicio" Content="Data Inicio" Margin="400,10,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" />
+
+                <DatePicker x:Name="txtFiltroDtInicio" Margin="400,40,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" />
+
+                <Label x:Name="lblFiltroDtFinal" Content="Data Inicio" Margin="400,75,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" />
+
+                <DatePicker x:Name="txtFiltroDtFinal" Margin="400,105,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" />
+
+                <Button x:Name="btnFiltroLimpar" Content="Limpar" Margin="560,40,0,0" HorizontalAlignment="Left"  VerticalAlignment="Top" Width="60" Click="btnFiltroLimpar_Click" />
+
+                <Button x:Name="btnPesquisar" Content="Pesquisar" Margin="560,105,0,0" HorizontalAlignment="Left"  VerticalAlignment="Top" Width="60" Click="btnPesquisar_Click" />
+
+
+            </Grid>
+
+        </GroupBox>
+
+        <GroupBox x:Name="groupResultado" Header="Projetos" Margin="30,400,0,0" HorizontalAlignment="Left" VerticalAlignment="Top"
+    		Width="750" Height="250" BorderBrush="Black" BorderThickness="1" >
+
+            <Grid>
+
+                <DataGrid x:Name="tblProjeto" HorizontalAlignment="Left" Margin="10,10,-12,-71" 
+    				VerticalAlignment="Top" Width="720" Height="209" AutoGenerateColumns="False" Grid.ColumnSpan="2" SelectionChanged="tblProjeto_SelectionChanged" >
+
+                    <DataGrid.Columns>
+
+                        <DataGridTextColumn Header="Codigo" Width="60" Binding="{Binding Codigo}" />
+                        <DataGridTextColumn Header="Nome" Width="400" Binding="{Binding Nome}" />
+                        <DataGridTextColumn Header="ID" Width="80" Binding="{Binding Id}" />
+                        <DataGridTextColumn Header="Data Inicio" Width="80" Binding="{Binding DtInicio}" />
+                        <DataGridTextColumn Header="Data Final" Width="80" Binding="{Binding DtFinal}" />
+
+                    </DataGrid.Columns>
+
+                </DataGrid>
+
+            </Grid>
+
+        </GroupBox>
+
+
+
+    </Grid>
+</Window>
