@@ -35,9 +35,68 @@ namespace GEP_DE611.persistencia
             return null;
         }
 
+        public decimal recuperarEstimativaTotalPorSprint(string planejadoPara)
+        {
+            string query = "SELECT * FROM " + TABELA
+                + " WHERE planejadoPara = '" + planejadoPara + "'"
+                + " and dataColeta in (SELECT distinct MAX (dataColeta) "
+                + " FROM " + TABELA
+                + " WHERE planejadoPara = '" + planejadoPara + "')";
+
+            List<Tarefa> lista = executarSelect(query);
+            decimal estimativaTotal = 0;
+            foreach (Tarefa t in lista)
+            {
+                estimativaTotal += t.Estimativa.Length > 0 ? Convert.ToDecimal(t.Estimativa) : 0;
+            }
+            return estimativaTotal;
+        }
+
+        public List<KeyValuePair<string, decimal>> recuperarTempoGastoTotalPorData(string planejadoPara)
+        {
+            List<KeyValuePair<string, decimal>> tempoGastoPorData = new List<KeyValuePair<string, decimal>>();
+
+            string query = "SELECT distinct (dataColeta) FROM " + TABELA
+                + " WHERE planejadoPara = '" + planejadoPara + "'"
+                + " and tempoGasto <> '' "
+                + " ORDER BY dataColeta ASC ";
+
+            List<string> datas = new List<string>();
+            SqlConnection conn = null;
+            SqlDataReader reader = select(conn, query);
+            if (reader != null)
+            {
+                while (reader.Read())
+                {
+                    datas.Add(reader.GetDateTime(0).ToString());
+                }
+            }
+            desconectar(conn);
+
+            foreach (string data in datas)
+            {
+                query = "SELECT * FROM " + TABELA
+                    + " WHERE planejadoPara = '" + planejadoPara + "' "
+                    + " and tempoGasto <> '' "
+                    + " and dataColeta = '" + data + "' "
+                    + " ORDER BY dataColeta ASC ";
+
+                List<Tarefa> lista = executarSelect(query);
+                decimal tempoGasto = 0;
+                foreach (Tarefa t in lista)
+                {
+                    tempoGasto += t.TempoGasto.Length > 0 ? Convert.ToDecimal(t.TempoGasto) : 0;
+                }
+                tempoGastoPorData.Add(new KeyValuePair<string, decimal>(data, tempoGasto));
+            }
+            
+            return tempoGastoPorData;
+        }
+
         private List<Tarefa> executarSelect(string query)
         {
             List<Tarefa> lista = new List<Tarefa>();
+            
             SqlConnection conn = null;
 
             List<Funcionario> listaFuncionario = new List<Funcionario>();

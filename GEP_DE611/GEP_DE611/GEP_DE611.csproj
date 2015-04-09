@@ -72,10 +72,13 @@
     <Compile Include="visao\CadastrarProjeto.xaml.cs">
       <DependentUpon>CadastrarProjeto.xaml</DependentUpon>
     </Compile>
+    <Compile Include="visao\CadastrarSprint.xaml.cs">
+      <DependentUpon>CadastrarSprint.xaml</DependentUpon>
+    </Compile>
     <Compile Include="visao\UploadArquivoTarefa.xaml.cs">
       <DependentUpon>UploadArquivoTarefa.xaml</DependentUpon>
     </Compile>
-    <Page Include="chart\Burndown.xaml">
+    <Page Include="visao\VisualizarBurndown.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -95,8 +98,8 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="chart\Burndown.xaml.cs">
-      <DependentUpon>Burndown.xaml</DependentUpon>
+    <Compile Include="visao\VisualizarBurndown.xaml.cs">
+      <DependentUpon>VisualizarBurndown.xaml</DependentUpon>
     </Compile>
     <Compile Include="chart\chart.xaml.cs">
       <DependentUpon>chart.xaml</DependentUpon>
@@ -112,6 +115,10 @@
       <SubType>Code</SubType>
     </Compile>
     <Page Include="visao\CadastrarProjeto.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="visao\CadastrarSprint.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

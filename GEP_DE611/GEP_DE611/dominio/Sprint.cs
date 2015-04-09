@@ -12,7 +12,7 @@ namespace GEP_DE611.dominio
         public const string NOME = "nome";
         public const string DTINICIO = "dtInicio";
         public const string DTFINAL = "dtFinal";
-        public const string PROJETO = "projeto";
+        public const string PROJETO = "codigoProjeto";
 
         public Sprint()
         {
@@ -64,6 +64,20 @@ namespace GEP_DE611.dominio
             List<Sprint> lista = new List<Sprint>();
             lista.Add(this);
             return lista;
+        }
+
+        public static Dictionary<string, string> criarListaParametros(int codigo)
+        {
+            Dictionary<string, string> param = new Dictionary<string, string>();
+            param.Add(Sprint.CODIGO, Convert.ToString(codigo));
+            return param;
+        }
+
+        public static Dictionary<string, string> criarListaParametrosPesquisaPorProjeto(int codigoProjeto)
+        {
+            Dictionary<string, string> param = new Dictionary<string, string>();
+            param.Add(Sprint.PROJETO, Convert.ToString(codigoProjeto));
+            return param;
         }
     }
 }

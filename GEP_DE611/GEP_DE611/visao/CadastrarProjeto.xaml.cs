@@ -108,7 +108,7 @@ namespace GEP_DE611.visao
         private void tblProjeto_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             int linha = tblProjeto.SelectedIndex;
-            if (linha >= 0)
+            if (linha >= 0 && tblProjeto.SelectedItem is Projeto)
             {
                 Projeto p = (Projeto) tblProjeto.SelectedItem;
                 preencherCampos(p);
@@ -129,9 +129,10 @@ namespace GEP_DE611.visao
             {
                 ProjetoDAO pDAO = new ProjetoDAO();
                 pDAO.excluir(p.encapsularLista());
+
+                Alerta alerta = new Alerta("Excluido com sucesso.");
+                alerta.Show();
             }
-            Alerta alerta = new Alerta("Excluido com sucesso.");
-            alerta.Show();
 
             iniciarCampos();
             preencherLista();
@@ -149,6 +150,8 @@ namespace GEP_DE611.visao
         private void btnFiltroLimpar_Click(object sender, RoutedEventArgs e)
         {
             iniciarCamposFiltro();
+
+            preencherLista();
         }
 
         private void btnPesquisar_Click(object sender, RoutedEventArgs e)
@@ -159,15 +162,15 @@ namespace GEP_DE611.visao
             {
                 param.Add(Projeto.NOME, txtFiltroNome.Text);
             }
-            else if (txtFiltroId.Text.Length > 0)
+            if (txtFiltroId.Text.Length > 0)
             {
                 param.Add(Projeto.ID, txtFiltroId.Text);
             }
-            else if (txtFiltroDtInicio.Text.Length > 0)
+            if (txtFiltroDtInicio.Text.Length > 0)
             {
                 param.Add(Projeto.DTINICIO, txtFiltroDtInicio.Text);
             }
-            else if (txtFiltroDtFinal.Text.Length > 0)
+            if (txtFiltroDtFinal.Text.Length > 0)
             {
                 param.Add(Projeto.DTFINAL, txtFiltroDtFinal.Text);
             }

@@ -40,7 +40,7 @@ namespace GEP_DE611
 
         private void btnBurndown_Click(object sender, RoutedEventArgs e)
         {
-            Burndown burndown = new Burndown();
+            VisualizarBurndown burndown = new VisualizarBurndown();
             burndown.Show();
         }
 
@@ -58,8 +58,8 @@ namespace GEP_DE611
 
         private void btnSprint_Click(object sender, RoutedEventArgs e)
         {
-            //CadastrarSprint tela = new CadastrarSprint();
-            //tela.Show();
+            CadastrarSprint tela = new CadastrarSprint();
+            tela.Show();
         }
 
 

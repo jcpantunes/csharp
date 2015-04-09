@@ -1,6 +1,6 @@
 ﻿CREATE TABLE [dbo].[Sprint] (
     [codigo]   INT        IDENTITY (1, 1) NOT NULL,
-    [nome]     NCHAR (40) NULL,
+    [nome]     VARCHAR(40) NULL,
     [dtInicio] DATETIME   NULL,
     [dtFinal]  DATETIME   NULL,
     [codigoProjeto] INT NOT NULL, 

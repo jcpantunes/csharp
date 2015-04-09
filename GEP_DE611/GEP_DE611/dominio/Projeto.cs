@@ -65,5 +65,13 @@ namespace GEP_DE611.dominio
             lista.Add(this);
             return lista;
         }
+
+        public static Dictionary<string, string> criarListaParametros(int codigo)
+        {
+            Dictionary<string, string> param = new Dictionary<string, string>();
+            param.Add(Sprint.CODIGO, Convert.ToString(codigo));
+            return param;
+        }
+
     }
 }

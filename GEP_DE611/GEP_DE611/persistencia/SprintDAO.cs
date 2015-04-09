@@ -106,7 +106,7 @@ namespace GEP_DE611.persistencia
             string queryUpdate = "UPDATE " + TABELA + " SET " 
                 + " nome = @nome, "
                 + " dtInicio = @dtInicio, "
-                + " dtFinal = @dtFinal " 
+                + " dtFinal = @dtFinal, " 
                 + " codigoProjeto = @codigoProjeto "
                 + "WHERE codigo = @codigo";
             executarQuery(lista, queryUpdate);

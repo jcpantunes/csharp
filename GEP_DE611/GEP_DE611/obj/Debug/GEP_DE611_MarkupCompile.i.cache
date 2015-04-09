@@ -10,11 +10,11 @@ none
 false
 DEBUG;TRACE
 C:\Users\05163217658\Documents\Visual Studio 2012\Projects\csharp\GEP_DE611\GEP_DE611\App.xaml
-6-240165846
+7-1213595169
 
-29-1946070049
+30-1512272591
 191740837786
-chart\Burndown.xaml;chart\chart.xaml;componente\Alerta.xaml;MainWindow.xaml;visao\CadastrarProjeto.xaml;visao\UploadArquivoTarefa.xaml;
+visao\VisualizarBurndown.xaml;chart\chart.xaml;componente\Alerta.xaml;MainWindow.xaml;visao\CadastrarProjeto.xaml;visao\CadastrarSprint.xaml;visao\UploadArquivoTarefa.xaml;
 
 False
 
