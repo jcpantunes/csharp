@@ -72,7 +72,6 @@ namespace GEP_DE611.visao
                 }
                 cmbSprint.SelectedIndex = 0;
             }
-            
         }
 
         private void cmbProjeto_SelectionChanged(object sender, SelectionChangedEventArgs e)

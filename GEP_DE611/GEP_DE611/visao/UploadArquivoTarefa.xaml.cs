@@ -46,6 +46,8 @@ namespace GEP_DE611.visao
 
                 this.Close();
             }
+
+            preencherCombos();
         }
 
         private void btnUpload_Click(object sender, RoutedEventArgs e)
@@ -74,69 +76,90 @@ namespace GEP_DE611.visao
 
         private void btnConfirmar_Click(object sender, RoutedEventArgs e)
         {
-            if (txtUpload.Text.Length == 0)
+            if (cmbProjeto.SelectedIndex < 0 || cmbSprint.SelectedIndex < 0 || txtUpload.Text.Length == 0)
             {
                 Alerta alerta = new Alerta();
-                alerta.preencherMensagem("Favor selecionar o Arquivo");
+                alerta.preencherMensagem("Favor preencher todos os campos");
                 alerta.Show();
             }
             else
             {
-                string[] lines = System.IO.File.ReadAllLines(txtUpload.Text);
+                TarefaDAO tDAO = new TarefaDAO();
+                List<DateTime> listaData = tDAO.recuperarListaDatasPorString(recuperarSprint());
 
-                if (validarArquivo(lines[0]) == true)
+                bool upload = false;
+                if (txtData.Text.Length != 0)
                 {
-                    List<Tarefa> lista = new List<Tarefa>();
-
-                    for (int i=1;i<lines.Length;i++)
+                    foreach (DateTime data in listaData)
                     {
-                        string[] linha = lines[i].Replace("\"", "").Split('\t');
-
-                        Tarefa t = new Tarefa();
-                        // t.Codigo = reader.GetInt32(0);
-                        t.Tipo = linha[0];
-                        t.Id = Convert.ToInt32(linha[1]);
-                        t.Titulo = linha[2];
-                        t.Status = linha[4];
-                        t.PlanejadoPara = linha[5];
-                        t.Estimativa = DataHoraUtil.formatarHora(linha[6]);
-                        t.EstimaticaCorrigida = DataHoraUtil.formatarHora(linha[7]);
-                        t.TempoGasto = DataHoraUtil.formatarHora(linha[8]);
-                        t.Pai = linha[9];
-
-                        t.DataColeta = Convert.ToDateTime(txtData.Text);
-
-                        FuncionarioDAO fDAO = new FuncionarioDAO();
-                        String resposanvel = linha[3];
-                        Funcionario f = fDAO.recuperar(resposanvel);
-                        if (f == null)
+                        if (Convert.ToDateTime(txtData.Text).Equals(data))
                         {
-                            f = new Funcionario(0, "DEBHE/DE611", resposanvel);
-                            fDAO.incluir(f.encapsularLista());
-                            f = fDAO.recuperar(resposanvel);
+                            upload = true;
+                            break;
                         }
-                        t.Responsavel = f;
-
-                        lista.Add(t);
-
                     }
-
-                    TarefaDAO tDAO = new TarefaDAO();
-                    tDAO.incluir(lista);
-
-                    tblTarefa.ItemsSource = tDAO.recuperar();
-
-
-                    Alerta alerta = new Alerta();
-                    alerta.preencherMensagem("Arquivo incluido com sucesso!");
-                    alerta.Show();
                 }
-                else 
+
+                if (upload == true)
                 {
-                    Alerta alerta = new Alerta();
-                    alerta.preencherMensagem("Arquivo invalido");
-                    alerta.Show();
+                    realizarUpload();
                 }
+            }
+        }
+
+        private void realizarUpload()
+        {
+            string[] lines = System.IO.File.ReadAllLines(txtUpload.Text);
+
+            if (validarArquivo(lines[0]) == true)
+            {
+                List<Tarefa> lista = new List<Tarefa>();
+
+                for (int i = 1; i < lines.Length; i++)
+                {
+                    string[] linha = lines[i].Replace("\"", "").Split('\t');
+
+                    Tarefa t = new Tarefa();
+                    // t.Codigo = reader.GetInt32(0);
+                    t.Tipo = linha[0];
+                    t.Id = Convert.ToInt32(linha[1]);
+                    t.Titulo = linha[2];
+                    t.Status = linha[4];
+                    t.PlanejadoPara = linha[5];
+                    t.Estimativa = DataHoraUtil.formatarHora(linha[6]);
+                    t.EstimaticaCorrigida = DataHoraUtil.formatarHora(linha[7]);
+                    t.TempoGasto = DataHoraUtil.formatarHora(linha[8]);
+                    t.Pai = linha[9];
+
+                    t.DataColeta = Convert.ToDateTime(txtData.Text);
+
+                    FuncionarioDAO fDAO = new FuncionarioDAO();
+                    String resposanvel = linha[3];
+                    Funcionario f = fDAO.recuperar(resposanvel);
+                    if (f == null)
+                    {
+                        f = new Funcionario(0, "DEBHE/DE611", resposanvel);
+                        fDAO.incluir(f.encapsularLista());
+                        f = fDAO.recuperar(resposanvel);
+                    }
+                    t.Responsavel = f;
+
+                    lista.Add(t);
+
+                }
+
+                TarefaDAO tDAO = new TarefaDAO();
+                tDAO.incluir(lista);
+
+                tblTarefa.ItemsSource = tDAO.recuperar();
+
+                Alerta alerta = new Alerta("Arquivo incluido com sucesso!");
+                alerta.Show();
+            }
+            else
+            {
+                Alerta alerta = new Alerta("Arquivo invalido");
+                alerta.Show();
             }
         }
 
@@ -162,6 +185,66 @@ namespace GEP_DE611.visao
             {
                 return false;
             }
+        }
+
+        private void preencherCombos()
+        {
+            ProjetoDAO pDAO = new ProjetoDAO();
+            List<Projeto> lista = pDAO.recuperar();
+            if (lista.Count > 0)
+            {
+                preencherComboProjeto(lista);
+                cmbProjeto.SelectedIndex = 0;
+
+                preencherComboSprint(lista[0].Codigo);
+            }
+        }
+
+        private void preencherComboProjeto(List<Projeto> lista)
+        {
+            foreach (Projeto p in lista)
+            {
+                ComboBoxItem item = new ComboBoxItem();
+                item.Content = p.Nome;
+                item.Tag = p.Codigo;
+                cmbProjeto.Items.Add(item);
+            }
+        }
+
+        private void preencherComboSprint(int codigoProjeto)
+        {
+            cmbSprint.Items.Clear();
+
+            SprintDAO sDAO = new SprintDAO();
+            List<Sprint> lista = sDAO.recuperar(Sprint.criarListaParametrosPesquisaPorProjeto(codigoProjeto));
+            if (lista.Count > 0)
+            {
+                foreach (Sprint s in lista)
+                {
+                    ComboBoxItem item = new ComboBoxItem();
+                    item.Content = s.Nome;
+                    item.Tag = s.Codigo;
+                    cmbSprint.Items.Add(item);
+                }
+                cmbSprint.SelectedIndex = 0;
+            }
+        }
+
+        private void cmbProjeto_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            ComboBoxItem item = (ComboBoxItem)cmbProjeto.SelectedItem;
+            int codigoProjeto = Convert.ToInt32(item.Tag);
+            preencherComboSprint(codigoProjeto);
+        }
+
+        private string recuperarSprint()
+        {
+            if (cmbSprint.SelectedIndex >= 0)
+            {
+                ComboBoxItem item = (ComboBoxItem)cmbSprint.SelectedItem;
+                return item.Content.ToString();
+            }
+            return "";
         }
     }
 }

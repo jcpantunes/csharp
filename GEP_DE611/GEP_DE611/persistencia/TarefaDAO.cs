@@ -52,30 +52,38 @@ namespace GEP_DE611.persistencia
             return estimativaTotal;
         }
 
-        public List<KeyValuePair<string, decimal>> recuperarTempoGastoTotalPorData(string planejadoPara)
+        public List<DateTime> recuperarListaDatasPorString(string planejadoPara)
         {
-            List<KeyValuePair<string, decimal>> tempoGastoPorData = new List<KeyValuePair<string, decimal>>();
-
             string query = "SELECT distinct (dataColeta) FROM " + TABELA
                 + " WHERE planejadoPara = '" + planejadoPara + "'"
                 + " and tempoGasto <> '' "
                 + " ORDER BY dataColeta ASC ";
 
-            List<string> datas = new List<string>();
+            List<DateTime> datas = new List<DateTime>();
+
             SqlConnection conn = null;
             SqlDataReader reader = select(conn, query);
             if (reader != null)
             {
                 while (reader.Read())
                 {
-                    datas.Add(reader.GetDateTime(0).ToString());
+                    datas.Add(reader.GetDateTime(0));
                 }
             }
             desconectar(conn);
 
-            foreach (string data in datas)
+            return datas;
+        }
+
+        public List<KeyValuePair<string, decimal>> recuperarTempoGastoTotalPorData(string planejadoPara)
+        {
+            List<KeyValuePair<string, decimal>> tempoGastoPorData = new List<KeyValuePair<string, decimal>>();
+
+            List<DateTime> datas = recuperarListaDatasPorString(planejadoPara);
+            
+            foreach (DateTime data in datas)
             {
-                query = "SELECT * FROM " + TABELA
+                string query = "SELECT * FROM " + TABELA
                     + " WHERE planejadoPara = '" + planejadoPara + "' "
                     + " and tempoGasto <> '' "
                     + " and dataColeta = '" + data + "' "
@@ -87,7 +95,7 @@ namespace GEP_DE611.persistencia
                 {
                     tempoGasto += t.TempoGasto.Length > 0 ? Convert.ToDecimal(t.TempoGasto) : 0;
                 }
-                tempoGastoPorData.Add(new KeyValuePair<string, decimal>(data, tempoGasto));
+                tempoGastoPorData.Add(new KeyValuePair<string, decimal>(data.ToString(), tempoGasto));
             }
             
             return tempoGastoPorData;
