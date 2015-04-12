@@ -63,6 +63,12 @@ namespace GEP_DE611
         }
 
 
+        private void btnFuncionario_Click(object sender, RoutedEventArgs e)
+        {
+            CadastrarFuncionario tela = new CadastrarFuncionario();
+            tela.Show();
+        }
+
 
 
 

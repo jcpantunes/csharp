@@ -181,9 +181,9 @@ namespace GEP_DE611.visao
                 }
             }
 
+            decimal tempoGasto = estimativaTotal;
             while (dia < numDias && dia < listaX.Count)
             {
-                decimal tempoGasto = estimativaTotal;
                 if (Convert.ToDateTime(listaX[dia]).Equals(Convert.ToDateTime(listaProgresso[diaProgresso].Key)))
                 {
                     tempoGasto = estimativaTotal - listaProgresso[diaProgresso].Value;

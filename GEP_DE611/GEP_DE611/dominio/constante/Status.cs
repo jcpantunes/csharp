@@ -14,5 +14,16 @@ namespace GEP_DE611.dominio.constante
         public const string EM_ANDAMENTO = "Em Andamento";
         public const string PENDENTE = "Pendente";
 
+        public List<string> recuperarListaStatus()
+        {
+            List<string> lista = new List<string>();
+            lista.Add(ABERTA);
+            lista.Add(FINALIZADA);
+            lista.Add(EM_ANDAMENTO);
+            lista.Add(PENDENTE);
+            return lista;
+        }
+
+
     }
 }

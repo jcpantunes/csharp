@@ -35,6 +35,41 @@ namespace GEP_DE611.persistencia
             return null;
         }
 
+        public List<Projeto> recuperar(Dictionary<string, string> parametros)
+        {
+            string query = "SELECT * FROM " + TABELA;
+            if (parametros.Count > 0)
+            {
+                query += " WHERE ";
+
+                foreach (string key in parametros.Keys)
+                {
+                    if (key.Equals(Projeto.CODIGO))
+                    {
+                        query += Projeto.CODIGO + " = " + parametros[key] + " and ";
+                    }
+                    else if (key.Equals(Projeto.Titu))
+                    {
+                        query += Projeto.NOME + " like '%" + parametros[key] + "%' and ";
+                    }
+                    else if (key.Equals(Projeto.ID))
+                    {
+                        query += Projeto.ID + " = " + parametros[key] + " and ";
+                    }
+                    else if (key.Equals(Projeto.DTINICIO))
+                    {
+                        query += Projeto.DTINICIO + " >= '" + Convert.ToDateTime(parametros[key]) + "' and ";
+                    }
+                    else if (key.Equals(Projeto.DTFINAL))
+                    {
+                        query += Projeto.DTFINAL + " <= '" + Convert.ToDateTime(parametros[key]) + "' and ";
+                    }
+                }
+                query = query.Substring(0, (query.Length - 4));
+            }
+            return executarSelect(query);
+        }
+
         public decimal recuperarEstimativaTotalPorSprint(string planejadoPara)
         {
             string query = "SELECT * FROM " + TABELA
@@ -47,7 +82,14 @@ namespace GEP_DE611.persistencia
             decimal estimativaTotal = 0;
             foreach (Tarefa t in lista)
             {
-                estimativaTotal += t.Estimativa.Length > 0 ? Convert.ToDecimal(t.Estimativa) : 0;
+                if (t.EstimaticaCorrigida.Length > 0)
+                {
+                    estimativaTotal += Convert.ToDecimal(t.EstimaticaCorrigida);
+                }
+                else
+                {
+                    estimativaTotal += t.Estimativa.Length > 0 ? Convert.ToDecimal(t.Estimativa) : 0;
+                }
             }
             return estimativaTotal;
         }
@@ -187,6 +229,17 @@ namespace GEP_DE611.persistencia
         {
             string query = "DELETE FROM " + TABELA + " WHERE codigo = @codigo";
             executarQuery(lista, query);
+        }
+
+        public void excluirPorSprintPorData(string planejadoPara, string data)
+        {
+            string query = "DELETE FROM " + TABELA
+                    + " WHERE planejadoPara = '" + planejadoPara + "' "
+                    + " and dataColeta = '" + data + "' ";
+            
+            SqlConnection conn = null;
+            save(conn, query);
+            desconectar(conn);
         }
 
         private void executarQuery(List<Tarefa> lista, string query)

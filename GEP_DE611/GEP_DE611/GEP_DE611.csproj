@@ -63,12 +63,18 @@
     <Compile Include="componente\Alerta.xaml.cs">
       <DependentUpon>Alerta.xaml</DependentUpon>
     </Compile>
+    <Compile Include="componente\AlertaUpload.xaml.cs">
+      <DependentUpon>AlertaUpload.xaml</DependentUpon>
+    </Compile>
     <Compile Include="dominio\constante\DataHoraUtil.cs" />
     <Compile Include="dominio\constante\Util.cs" />
     <Compile Include="dominio\Projeto.cs" />
     <Compile Include="dominio\Sprint.cs" />
     <Compile Include="persistencia\ProjetoDAO.cs" />
     <Compile Include="persistencia\SprintDAO.cs" />
+    <Compile Include="visao\CadastrarFuncionario.xaml.cs">
+      <DependentUpon>CadastrarFuncionario.xaml</DependentUpon>
+    </Compile>
     <Compile Include="visao\CadastrarProjeto.xaml.cs">
       <DependentUpon>CadastrarProjeto.xaml</DependentUpon>
     </Compile>
@@ -78,6 +84,14 @@
     <Compile Include="visao\UploadArquivoTarefa.xaml.cs">
       <DependentUpon>UploadArquivoTarefa.xaml</DependentUpon>
     </Compile>
+    <Page Include="componente\AlertaUpload.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="visao\CadastrarFuncionario.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="visao\VisualizarBurndown.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>

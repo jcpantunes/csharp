@@ -34,7 +34,6 @@ namespace GEP_DE611.visao
 
         private void btnSalvar_Click(object sender, RoutedEventArgs e)
         {
-            int i;
             if (txtNome.Text.Length == 0 || txtId.Text.Length == 0 ||
                     txtDtInicio.Text.Length == 0 || txtDtFinal.Text.Length == 0)
             {

@@ -9,6 +9,18 @@ namespace GEP_DE611.dominio
 {
     class Tarefa : ItemTrabalho
     {
+        public const string CODIGO = "codigo";
+        public const string TIPO = "tipo";
+        public const string ID = "id";
+        public const string RESPONSAVEL = "responsavel";
+        public const string TITULO = "titulo";
+        public const string STATUS = "status";
+        public const string PLANEJADO_PARA = "planejadoPara";
+        public const string DATA_COLETA = "dataColeta";
+        public const string DTINICIO = "dataInicio";
+        public const string DTFINAL = "dataFinal";
+        public const string PAI = "pai";
+
         public Tarefa()
         {
         }

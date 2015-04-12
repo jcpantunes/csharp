@@ -8,6 +8,10 @@ namespace GEP_DE611.dominio
 {
     class Funcionario : BaseBean
     {
+        public const string CODIGO = "codigo";
+        public const string LOTACAO = "lotacao";
+        public const string NOME = "nome";
+        
         public Funcionario()
         {
         }

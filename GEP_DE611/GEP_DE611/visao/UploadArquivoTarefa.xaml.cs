@@ -33,6 +33,13 @@ namespace GEP_DE611.visao
 
             txtData.Text = DateTime.Now.ToShortDateString();
 
+            preencherLista(new Dictionary<string, string>());
+
+            preencherCombos();
+        }
+
+        private void preencherLista(Dictionary<string, string> param)
+        {
             try
             {
                 TarefaDAO tDAO = new TarefaDAO();
@@ -46,8 +53,6 @@ namespace GEP_DE611.visao
 
                 this.Close();
             }
-
-            preencherCombos();
         }
 
         private void btnUpload_Click(object sender, RoutedEventArgs e)
@@ -76,7 +81,8 @@ namespace GEP_DE611.visao
 
         private void btnConfirmar_Click(object sender, RoutedEventArgs e)
         {
-            if (cmbProjeto.SelectedIndex < 0 || cmbSprint.SelectedIndex < 0 || txtUpload.Text.Length == 0)
+            if (cmbProjeto.SelectedIndex < 0 || cmbSprint.SelectedIndex < 0 || 
+                txtData.Text.Length == 0 || txtUpload.Text.Length == 0)
             {
                 Alerta alerta = new Alerta();
                 alerta.preencherMensagem("Favor preencher todos os campos");
@@ -87,29 +93,31 @@ namespace GEP_DE611.visao
                 TarefaDAO tDAO = new TarefaDAO();
                 List<DateTime> listaData = tDAO.recuperarListaDatasPorString(recuperarSprint());
 
-                bool upload = false;
-                if (txtData.Text.Length != 0)
+                bool upload = true;
+                foreach (DateTime data in listaData)
                 {
-                    foreach (DateTime data in listaData)
+                    if (Convert.ToDateTime(txtData.Text).Equals(data))
                     {
-                        if (Convert.ToDateTime(txtData.Text).Equals(data))
-                        {
-                            upload = true;
-                            break;
-                        }
+                        upload = false;
+                        break;
                     }
                 }
 
                 if (upload == true)
                 {
-                    realizarUpload();
+                    realizarUpload(txtUpload.Text);
+                }
+                else
+                {
+                    AlertaUpload alerta = new AlertaUpload(this, txtUpload.Text, recuperarSprint(), txtData.Text);
+                    alerta.Show();
                 }
             }
         }
 
-        private void realizarUpload()
+        public void realizarUpload(String file)
         {
-            string[] lines = System.IO.File.ReadAllLines(txtUpload.Text);
+            string[] lines = System.IO.File.ReadAllLines(file);
 
             if (validarArquivo(lines[0]) == true)
             {
@@ -145,16 +153,15 @@ namespace GEP_DE611.visao
                     t.Responsavel = f;
 
                     lista.Add(t);
-
                 }
 
                 TarefaDAO tDAO = new TarefaDAO();
                 tDAO.incluir(lista);
 
-                tblTarefa.ItemsSource = tDAO.recuperar();
-
                 Alerta alerta = new Alerta("Arquivo incluido com sucesso!");
                 alerta.Show();
+
+                preencherLista(new Dictionary<string, string>());
             }
             else
             {
@@ -245,6 +252,62 @@ namespace GEP_DE611.visao
                 return item.Content.ToString();
             }
             return "";
+        }
+
+        private void iniciarCamposFiltro()
+        {
+            txtFiltroTitulo.Text = "";
+            txtFiltroDtInicio.Text = "";
+            txtFiltroDtFinal.Text = "";
+
+            cmbFiltroProjeto.SelectedIndex = 0;
+            cmbFiltroSprint.SelectedIndex = 0;
+            cmbFiltroFuncionario.SelectedIndex = 0;
+            
+        }
+
+        private void btnFiltroLimpar_Click(object sender, RoutedEventArgs e)
+        {
+            iniciarCamposFiltro();
+            preencherLista(new Dictionary<string, string>());
+        }
+
+        private void btnPesquisar_Click(object sender, RoutedEventArgs e)
+        {
+            Dictionary<string, string> param = new Dictionary<string, string>();
+
+            if (txtFiltroTitulo.Text.Length > 0)
+            {
+                param.Add(Tarefa.TITULO, txtFiltroTitulo.Text);
+            }
+            if (txtFiltroId.Text.Length > 0)
+            {
+                param.Add(Tarefa.ID, txtFiltroId.Text);
+            }
+            if (txtFiltroPai.Text.Length > 0)
+            {
+                param.Add(Tarefa.PAI, txtFiltroPai.Text);
+            }
+            if (txtFiltroDtInicio.Text.Length > 0)
+            {
+                param.Add(Tarefa.DTINICIO, txtFiltroDtInicio.Text);
+            }
+            if (txtFiltroDtFinal.Text.Length > 0)
+            {
+                param.Add(Tarefa.DTFINAL, txtFiltroDtFinal.Text);
+            }
+            if (cmbFiltroSprint.SelectedIndex > 0)
+            {
+                string sprint = Convert.ToString(((ComboBoxItem)cmbFiltroSprint.SelectedItem).Content);
+                param.Add(Tarefa.PLANEJADO_PARA, sprint);
+            }
+            if (cmbFiltroFuncionario.SelectedIndex > 0)
+            {
+                int codigo = Convert.ToInt32(((ComboBoxItem)cmbFiltroFuncionario.SelectedItem).Tag);
+                param.Add(Sprint.PROJETO, Convert.ToString(codigo));
+            }
+
+            preencherLista(new Dictionary<string, string>());
         }
     }
 }

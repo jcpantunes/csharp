@@ -12,6 +12,8 @@
 
             <Button x:Name="btnUploadArquivoTarefa" Content="Upload" HorizontalAlignment="Left" Click="btnUploadArquivoTarefa_Click" Width="60" Height="55" />
 
+            <Button x:Name="btnFuncionario" Content="Funcionario" HorizontalAlignment="Left" Width="60" Height="55" Click="btnFuncionario_Click" />
+            
             <Button x:Name="btnProjeto" Content="Projeto" HorizontalAlignment="Left" Width="60" Height="55" Click="btnProjeto_Click" />
 
             <Button x:Name="btnSprint" Content="Sprint" HorizontalAlignment="Left" Width="60" Height="55" Click="btnSprint_Click" />

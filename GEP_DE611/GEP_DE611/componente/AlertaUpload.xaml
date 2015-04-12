@@ -1,0 +1,18 @@
+﻿<Window x:Class="GEP_DE611.componente.AlertaUpload"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="AlertaUpload" Height="160" Width="340">
+    <Grid>
+        <Label x:Name="lblMensagem" Content="Já existem tarefas incluidas para esse Projeto/Sprint/Data."
+               Margin="10,10,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" />
+        <Label x:Name="lblMensagem2" Content="Os dados serão sobrescritos. Deseja Continuar?"
+               Margin="10,30,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" />
+        
+        <Button x:Name="btnSim" Content="Sim" Margin="70,70,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" 
+                Width="60" Height="30" Click="btnSim_Click" />
+
+        <Button x:Name="btnNao" Content="Não" Margin="160,70,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" 
+                Width="60" Height="30" Click="btnNao_Click" />
+
+    </Grid>
+</Window>

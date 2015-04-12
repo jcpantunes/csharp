@@ -17,8 +17,8 @@ namespace GEP_DE611.persistencia
 
         public static int DELETE = 3;
 
-        // string connectionString = @"Data Source=JULIO-PC\SQLEXPRESS;Initial Catalog=DBD_GEP;"
-        string connectionString = @"Data Source=SERPRO1540297V1\SQLEXPRESS;Initial Catalog=DBD_GEP;"
+        string connectionString = @"Data Source=JULIO-PC\SQLEXPRESS;Initial Catalog=DBD_GEP;"
+        // string connectionString = @"Data Source=SERPRO1540297V1\SQLEXPRESS;Initial Catalog=DBD_GEP;"
             + "Integrated Security=True;Min Pool Size=5;Max Pool Size=250;Connect Timeout=5";
 
         protected SqlConnection conectar(SqlConnection conn)
@@ -47,6 +47,13 @@ namespace GEP_DE611.persistencia
             SqlCommand cmd = new SqlCommand(query, conn);
             reader = cmd.ExecuteReader();
             return reader;
+        }
+
+        protected void save(SqlConnection conn, string query)
+        {
+            conn = conectar(conn);
+            SqlCommand cmd = new SqlCommand(query, conn);
+            cmd.ExecuteNonQuery();
         }
 
         protected void save(SqlConnection conn, string query, List<SqlParameter> listaParametros)

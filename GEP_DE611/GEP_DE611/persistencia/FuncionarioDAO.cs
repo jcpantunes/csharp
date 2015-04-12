@@ -22,6 +22,33 @@ namespace GEP_DE611.persistencia
             return executarSelect(query);
         }
 
+        public List<Funcionario> recuperar(Dictionary<string, string> parametros)
+        {
+            string query = "SELECT * FROM " + TABELA;
+            if (parametros.Count > 0)
+            {
+                query += " WHERE ";
+
+                foreach (string key in parametros.Keys)
+                {
+                    if (key.Equals(Funcionario.CODIGO))
+                    {
+                        query += Funcionario.CODIGO + " = " + parametros[key] + " and ";
+                    }
+                    else if (key.Equals(Funcionario.LOTACAO))
+                    {
+                        query += Funcionario.LOTACAO + " like '%" + parametros[key] + "%' and ";
+                    }
+                    else if (key.Equals(Funcionario.NOME))
+                    {
+                        query += Funcionario.NOME + " like '%" + parametros[key] + "%' and ";
+                    }
+                }
+                query = query.Substring(0, (query.Length - 4));
+            }
+            return executarSelect(query);
+        }
+
         public Funcionario recuperar(int codigo)
         {
             string query = "SELECT * FROM " + TABELA + " WHERE codigo = " + codigo;
