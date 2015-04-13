@@ -43,7 +43,7 @@ namespace GEP_DE611.visao
             try
             {
                 TarefaDAO tDAO = new TarefaDAO();
-                tblTarefa.ItemsSource = tDAO.recuperar();
+                tblTarefa.ItemsSource = tDAO.recuperar(param);
             }
             catch (Exception ex)
             {
@@ -196,37 +196,40 @@ namespace GEP_DE611.visao
 
         private void preencherCombos()
         {
+
+            preencherComboProjeto();
+
+            preencherComboFuncionario();
+
+            preencherComboStatus();
+        }
+
+        private void preencherComboProjeto()
+        {
             ComboBoxItem itemTodos = new ComboBoxItem();
             itemTodos.Content = "Todos";
             itemTodos.Tag = 0;
             cmbFiltroProjeto.Items.Add(itemTodos);
+            cmbFiltroProjeto.SelectedIndex = 0;
 
             ProjetoDAO pDAO = new ProjetoDAO();
             List<Projeto> lista = pDAO.recuperar();
             if (lista.Count > 0)
             {
-                preencherComboProjeto(lista);
+                foreach (Projeto p in lista)
+                {
+                    ComboBoxItem item = new ComboBoxItem();
+                    item.Content = p.Nome;
+                    item.Tag = p.Codigo;
+                    cmbProjeto.Items.Add(item);
+
+                    ComboBoxItem itemFiltro = new ComboBoxItem();
+                    itemFiltro.Content = p.Nome;
+                    itemFiltro.Tag = p.Codigo;
+                    cmbFiltroProjeto.Items.Add(itemFiltro);
+                }
                 cmbProjeto.SelectedIndex = 0;
-
                 preencherComboSprint(lista[0].Codigo);
-
-                preencherComboFiltroSprint(lista[0].Codigo);
-            }
-        }
-
-        private void preencherComboProjeto(List<Projeto> lista)
-        {
-            foreach (Projeto p in lista)
-            {
-                ComboBoxItem item = new ComboBoxItem();
-                item.Content = p.Nome;
-                item.Tag = p.Codigo;
-                cmbProjeto.Items.Add(item);
-
-                ComboBoxItem itemFiltro = new ComboBoxItem();
-                itemFiltro.Content = p.Nome;
-                itemFiltro.Tag = p.Codigo;
-                cmbFiltroProjeto.Items.Add(itemFiltro);
             }
         }
 
@@ -266,6 +269,48 @@ namespace GEP_DE611.visao
             }
         }
 
+        private void preencherComboFuncionario()
+        {
+            ComboBoxItem itemTodos = new ComboBoxItem();
+            itemTodos.Content = "Todos";
+            itemTodos.Tag = 0;
+            cmbFiltroFuncionario.Items.Add(itemTodos);
+            cmbFiltroFuncionario.SelectedIndex = 0;
+
+            FuncionarioDAO fDAO = new FuncionarioDAO();
+            List<Funcionario> lista = fDAO.recuperar();
+            if (lista.Count > 0)
+            {
+                foreach (Funcionario f in lista)
+                {
+                    ComboBoxItem item = new ComboBoxItem();
+                    item.Content = f.Nome;
+                    item.Tag = f.Codigo;
+                    cmbFiltroFuncionario.Items.Add(item);
+                }
+            }
+        }
+
+        private void preencherComboStatus()
+        {
+            ComboBoxItem itemTodos = new ComboBoxItem();
+            itemTodos.Content = "Todos";
+            itemTodos.Tag = 0;
+            cmbFiltroStatus.Items.Add(itemTodos);
+            cmbFiltroStatus.SelectedIndex = 0;
+
+            List<string> lista = StatusUtil.recuperarListaStatus();
+            if (lista.Count > 0)
+            {
+                foreach (string str in lista)
+                {
+                    ComboBoxItem item = new ComboBoxItem();
+                    item.Content = str;
+                    cmbFiltroStatus.Items.Add(item);
+                }
+            }
+        }
+
         private void cmbProjeto_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             ComboBoxItem item = (ComboBoxItem)cmbProjeto.SelectedItem;
@@ -275,7 +320,7 @@ namespace GEP_DE611.visao
 
         private void cmbFiltroProjeto_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            ComboBoxItem item = (ComboBoxItem)cmbProjeto.SelectedItem;
+            ComboBoxItem item = (ComboBoxItem)cmbFiltroProjeto.SelectedItem;
             int codigoProjeto = Convert.ToInt32(item.Tag);
             preencherComboFiltroSprint(codigoProjeto);
         }
@@ -348,7 +393,7 @@ namespace GEP_DE611.visao
                 param.Add(Tarefa.STATUS, sprint);
             }
 
-            preencherLista(new Dictionary<string, string>());
+            preencherLista(param);
         }
 
         

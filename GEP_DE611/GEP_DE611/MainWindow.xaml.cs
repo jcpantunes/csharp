@@ -33,9 +33,8 @@ namespace GEP_DE611
             // testarTarefa();
             // testarProjeto();
             // testarSprint();
-
             // testarHora();
-            
+
         }
 
         private void btnBurndown_Click(object sender, RoutedEventArgs e)
@@ -103,13 +102,13 @@ namespace GEP_DE611
             t.Tipo = TipoItemTrabalho.TAREFA;
             t.Id = 100102;
             t.Titulo = "Tarefa Teste 2";
-            t.Status = Status.EM_ANDAMENTO;
+            t.Status = StatusUtil.EM_ANDAMENTO;
             t.PlanejadoPara = "eSocial-281573-1.0.1-CONS-01";
             t.DataColeta = new DateTime(2015, 04, 07);
             t.Pai = "#100100";
-            t.Estimativa = "5 horas";
-            t.EstimaticaCorrigida = "5 horas";
-            t.TempoGasto = "5 horas";
+            t.Estimativa = 5;
+            t.EstimaticaCorrigida = 6;
+            t.TempoGasto = 6;
             FuncionarioDAO fDao = new FuncionarioDAO();
             t.Responsavel = fDao.recuperar(1);
 

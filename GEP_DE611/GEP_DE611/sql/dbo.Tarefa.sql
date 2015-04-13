@@ -7,9 +7,9 @@
     [planejadoPara]       VARCHAR (40) NULL,
     [pai]                 VARCHAR (10) NULL,
     [dataColeta]          DATETIME     NULL,
-    [estimativa]          DECIMAL NULL,
-    [estimaticaCorrigida] DECIMAL NULL,
-    [tempoGasto]          DECIMAL NULL,
+    [estimativa]          DECIMAL(10, 1) NULL,
+    [estimaticaCorrigida] DECIMAL(10, 1) NULL,
+    [tempoGasto]          DECIMAL(10, 1) NULL,
     [responsavel]         INT          NOT NULL,
     PRIMARY KEY CLUSTERED ([codigo] ASC),
     CONSTRAINT [FK_Tarefa_ToFuncionario] FOREIGN KEY ([responsavel]) REFERENCES [dbo].[Funcionario] ([codigo])

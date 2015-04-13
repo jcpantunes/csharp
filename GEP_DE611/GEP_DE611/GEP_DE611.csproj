@@ -119,7 +119,7 @@
       <DependentUpon>chart.xaml</DependentUpon>
     </Compile>
     <Compile Include="dominio\BaseBean.cs" />
-    <Compile Include="dominio\constante\Status.cs" />
+    <Compile Include="dominio\constante\StatusUtil.cs" />
     <Compile Include="dominio\constante\TipoItemTrabalho.cs" />
     <Compile Include="dominio\Funcionario.cs" />
     <Compile Include="dominio\ItemTrabalho.cs" />

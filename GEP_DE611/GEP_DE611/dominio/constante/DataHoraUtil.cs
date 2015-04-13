@@ -9,35 +9,42 @@ namespace GEP_DE611.dominio.constante
     class DataHoraUtil
     {
 
-        public static string formatarHora(string hora)
+        public static decimal formatarHora(string hora)
         {
             string hr = "";
             string min = "";
-            
-            int i = 0;
-            while (i < hora.Length && Char.IsNumber(hora[i]) == true)
-            {
-                hr = hr + hora[i];
-                i++;
-            }
 
-            while (i < hora.Length && Char.IsNumber(hora[i]) == false)
+            if (hora.Length == 0)
             {
-                i++;
+                return 0;
             }
+            else
+            {
+                int i = 0;
+                while (i < hora.Length && Char.IsNumber(hora[i]) == true)
+                {
+                    hr = hr + hora[i];
+                    i++;
+                }
 
-            while (i < hora.Length && Char.IsNumber(hora[i]) == true)
-            {
-                min = min + hora[i];
-                i++;
-            }
+                while (i < hora.Length && Char.IsNumber(hora[i]) == false)
+                {
+                    i++;
+                }
 
-            string horaFormatada = hr;
-            if (min.Length > 0)
-            {
-                horaFormatada = horaFormatada + "," + (Convert.ToInt32(min) / 6);
+                while (i < hora.Length && Char.IsNumber(hora[i]) == true)
+                {
+                    min = min + hora[i];
+                    i++;
+                }
+
+                decimal horaFormatada = Convert.ToDecimal(hr);
+                if (min.Length > 0)
+                {
+                    horaFormatada = Convert.ToDecimal(horaFormatada + "," + (Convert.ToInt32(min) / 6));
+                }
+                return horaFormatada;
             }
-            return horaFormatada;
         }
     }
 }

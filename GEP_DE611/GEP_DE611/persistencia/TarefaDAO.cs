@@ -98,13 +98,13 @@ namespace GEP_DE611.persistencia
             decimal estimativaTotal = 0;
             foreach (Tarefa t in lista)
             {
-                if (t.EstimaticaCorrigida.Length > 0)
+                if (t.EstimaticaCorrigida > 0)
                 {
                     estimativaTotal += Convert.ToDecimal(t.EstimaticaCorrigida);
                 }
                 else
                 {
-                    estimativaTotal += t.Estimativa.Length > 0 ? Convert.ToDecimal(t.Estimativa) : 0;
+                    estimativaTotal += t.Estimativa > 0 ? Convert.ToDecimal(t.Estimativa) : 0;
                 }
             }
             return estimativaTotal;
@@ -114,7 +114,7 @@ namespace GEP_DE611.persistencia
         {
             string query = "SELECT distinct (dataColeta) FROM " + TABELA
                 + " WHERE planejadoPara = '" + planejadoPara + "'"
-                + " and tempoGasto <> '' "
+                + " and tempoGasto <> 0 "
                 + " ORDER BY dataColeta ASC ";
 
             List<DateTime> datas = new List<DateTime>();
@@ -143,7 +143,7 @@ namespace GEP_DE611.persistencia
             {
                 string query = "SELECT * FROM " + TABELA
                     + " WHERE planejadoPara = '" + planejadoPara + "' "
-                    + " and tempoGasto <> '' "
+                    + " and tempoGasto <> 0 "
                     + " and dataColeta = '" + data + "' "
                     + " ORDER BY dataColeta ASC ";
 
@@ -151,7 +151,7 @@ namespace GEP_DE611.persistencia
                 decimal tempoGasto = 0;
                 foreach (Tarefa t in lista)
                 {
-                    tempoGasto += t.TempoGasto.Length > 0 ? Convert.ToDecimal(t.TempoGasto) : 0;
+                    tempoGasto += t.TempoGasto > 0 ? t.TempoGasto : 0;
                 }
                 tempoGastoPorData.Add(new KeyValuePair<string, decimal>(data.ToString(), tempoGasto));
             }
@@ -181,9 +181,9 @@ namespace GEP_DE611.persistencia
                     t.PlanejadoPara = reader.GetString(5);
                     t.Pai = reader.GetString(6);
                     t.DataColeta = reader.GetDateTime(7);
-                    t.Estimativa = reader.GetString(8);
-                    t.EstimaticaCorrigida = reader.GetString(9);
-                    t.TempoGasto = reader.GetString(10);
+                    t.Estimativa = reader.GetDecimal(8);
+                    t.EstimaticaCorrigida = reader.GetDecimal(9);
+                    t.TempoGasto = reader.GetDecimal(10);
                     t.Responsavel = recuperarFuncionario(listaFuncionario, reader.GetInt32(11));
 
                     lista.Add(t);

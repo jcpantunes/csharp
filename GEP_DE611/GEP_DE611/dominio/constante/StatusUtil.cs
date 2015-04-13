@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace GEP_DE611.dominio.constante
 {
-    class Status
+    class StatusUtil
     {
         //TAREFA
         public const string ABERTA = "Aberta";
@@ -14,7 +14,7 @@ namespace GEP_DE611.dominio.constante
         public const string EM_ANDAMENTO = "Em Andamento";
         public const string PENDENTE = "Pendente";
 
-        public List<string> recuperarListaStatus()
+        public static List<string> recuperarListaStatus()
         {
             List<string> lista = new List<string>();
             lista.Add(ABERTA);
