@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace GEP_DE611.dominio.constante
+namespace GEP_DE611.dominio.util
 {
     class DataHoraUtil
     {

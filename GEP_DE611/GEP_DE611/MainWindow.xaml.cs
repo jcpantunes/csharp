@@ -15,7 +15,7 @@ using System.Windows.Shapes;
 using GEP_DE611.chart;
 using GEP_DE611.visao;
 using GEP_DE611.dominio;
-using GEP_DE611.dominio.constante;
+using GEP_DE611.dominio.util;
 using GEP_DE611.persistencia;
 
 namespace GEP_DE611
@@ -43,9 +43,15 @@ namespace GEP_DE611
             burndown.Show();
         }
 
+        private void btnUploadArquivoItemBacklog_Click(object sender, RoutedEventArgs e)
+        {
+            CadastrarItemBacklog tela = new CadastrarItemBacklog();
+            tela.Show();
+        }
+
         private void btnUploadArquivoTarefa_Click(object sender, RoutedEventArgs e)
         {
-            UploadArquivoTarefa upload = new UploadArquivoTarefa();
+            CadastrarTarefa upload = new CadastrarTarefa();
             upload.Show();
         }
 
@@ -107,7 +113,7 @@ namespace GEP_DE611
             t.DataColeta = new DateTime(2015, 04, 07);
             t.Pai = "#100100";
             t.Estimativa = 5;
-            t.EstimaticaCorrigida = 6;
+            t.EstimativaCorrigida = 6;
             t.TempoGasto = 6;
             FuncionarioDAO fDao = new FuncionarioDAO();
             t.Responsavel = fDao.recuperar(1);
@@ -200,6 +206,7 @@ namespace GEP_DE611
             //hora = util.formatarHora("12 h 52 m");
         }
 
+        
         
     }
 }

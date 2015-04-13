@@ -8,7 +8,6 @@ namespace GEP_DE611.dominio
 {
     class Projeto : BaseBean
     {
-        public const string CODIGO = "codigo";
         public const string NOME = "nome";
         public const string ID = "id";
         public const string DTINICIO = "dtInicio";
@@ -69,9 +68,15 @@ namespace GEP_DE611.dominio
         public static Dictionary<string, string> criarListaParametros(int codigo)
         {
             Dictionary<string, string> param = new Dictionary<string, string>();
-            param.Add(Sprint.CODIGO, Convert.ToString(codigo));
+            param.Add(Projeto.CODIGO, Convert.ToString(codigo));
             return param;
         }
 
+        public static Dictionary<string, string> criarListaParametrosId(int id)
+        {
+            Dictionary<string, string> param = new Dictionary<string, string>();
+            param.Add(Projeto.ID, Convert.ToString(id));
+            return param;
+        }
     }
 }

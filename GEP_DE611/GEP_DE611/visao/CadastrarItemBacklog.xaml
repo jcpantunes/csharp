@@ -1,24 +1,23 @@
-﻿<Window x:Class="GEP_DE611.visao.UploadArquivoTarefa"
+﻿<Window x:Class="GEP_DE611.visao.CadastrarItemBacklog"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        Title="UploadArquivoTarefa" Height="650" Width="1030">
+        Title="CadastrarItemBacklog" Height="800" Width="1200">
     <Grid>
-        <GroupBox x:Name="groupSelecao" Header="Selecao de Arquivo" Margin="10,5,0,0" HorizontalAlignment="Left" VerticalAlignment="Top"
-    		    Width="1000" Height="130" BorderBrush="Black" BorderThickness="1" >
-            
+
+        <GroupBox x:Name="groupSelecao" Header="Selecao de Arquivo" Margin="10,0,0,0" HorizontalAlignment="Left" VerticalAlignment="Top"
+    		    Width="1170" Height="130" BorderBrush="Black" BorderThickness="1" >
+
             <Grid>
                 <Label x:Name="lblProjeto" Content="Projeto" Margin="10,0,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" />
 
-                <ComboBox x:Name="cmbProjeto" Margin="10,25,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" Width="300" SelectionChanged="cmbProjeto_SelectionChanged" />
+                <ComboBox x:Name="cmbProjeto" Margin="10,25,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" Width="300" />
 
                 <Label x:Name="lblSprint" Content="Sprint" Margin="350,0,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" />
 
-                <ComboBox x:Name="cmbSprint" Margin="350,25,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" Width="300" />
-
-                <DatePicker x:Name="txtData" Margin="680,25,0,0" HorizontalAlignment="Left" VerticalAlignment="Top"/>
+                <DatePicker x:Name="txtData" Margin="350,25,0,0" HorizontalAlignment="Left" VerticalAlignment="Top"/>
 
                 <Label x:Name="lblArquivo" Content="Arquivo" Margin="10,45,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" />
-                
+
                 <TextBox x:Name="txtUpload" Margin="10,70,0,0" HorizontalAlignment="Left" TextWrapping="Wrap" Text="" 
     		        VerticalAlignment="Top" Height="25" Width="600" IsEnabled="False" />
 
@@ -27,12 +26,12 @@
 
                 <Button x:Name="btnConfirmar" Content="Confirmar" Margin="710,70,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" 
     		        Width="75" RenderTransformOrigin="-0.84,-2" Click="btnConfirmar_Click"/>
-                
+
             </Grid>
         </GroupBox>
 
         <GroupBox x:Name="groupFiltro" Header="Filtro" Margin="10,145,0,0" HorizontalAlignment="Left" VerticalAlignment="Top"
-    		    Width="1000" Height="170" BorderBrush="Black" BorderThickness="1" >
+    		    Width="1170" Height="130" BorderBrush="Black" BorderThickness="1" >
             <Grid>
 
                 <Label x:Name="lblFiltroTitulo" Content="Titulo" Margin="10,0,0,0" HorizontalAlignment="Left" />
@@ -43,10 +42,6 @@
 
                 <TextBox x:Name="txtFiltroId" Margin="290,25,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" Height="20" Width="100" TextWrapping="Wrap" Text="" />
 
-                <Label x:Name="lblFiltroPai" Content="Pai" Margin="430,0,0,0" HorizontalAlignment="Left" />
-
-                <TextBox x:Name="txtFiltroPai" Margin="430,25,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" Height="20" Width="100" TextWrapping="Wrap" Text="" />
-
                 <Label x:Name="lblFiltroDtInicio" Content="Data Inicio" Margin="570,0,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" />
 
                 <DatePicker x:Name="txtFiltroDtInicio" Margin="570,25,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" />
@@ -54,7 +49,7 @@
                 <Label x:Name="lblFiltroDtFinal" Content="Data Final" Margin="710,0,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" />
 
                 <DatePicker x:Name="txtFiltroDtFinal" Margin="710,25,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" />
-                
+
                 <Label x:Name="lblFiltroProjeto" Content="Projeto" Margin="10,45,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" />
 
                 <ComboBox x:Name="cmbFiltroProjeto" Margin="10,70,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" Width="250" SelectionChanged="cmbFiltroProjeto_SelectionChanged"/>
@@ -63,37 +58,32 @@
 
                 <ComboBox x:Name="cmbFiltroSprint" Margin="290,70,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" Width="250"/>
 
-                <Label x:Name="lblFiltroFuncionario" Content="Funcionario" Margin="570,45,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" />
+                <Label x:Name="lblFiltroStatus" Content="Status" Margin="570,45,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" />
 
-                <ComboBox x:Name="cmbFiltroFuncionario" Margin="570,70,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" Width="250"/>
+                <ComboBox x:Name="cmbFiltroStatus" Margin="570,70,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" Width="250"/>
 
-                <Label x:Name="lblFiltroStatus" Content="Status" Margin="10,90,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" />
+                <Button x:Name="btnFiltroLimpar" Content="Limpar" Margin="930,70,0,0" HorizontalAlignment="Left"  VerticalAlignment="Top" Width="60" Click="btnFiltroLimpar_Click" />
 
-                <ComboBox x:Name="cmbFiltroStatus" Margin="10,115,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" Width="250"/>
-
-                <Button x:Name="btnFiltroLimpar" Content="Limpar" Margin="750,110,0,0" HorizontalAlignment="Left"  VerticalAlignment="Top" Width="60" Click="btnFiltroLimpar_Click" />
-
-                <Button x:Name="btnPesquisar" Content="Pesquisar" Margin="670,110,0,0" HorizontalAlignment="Left"  VerticalAlignment="Top" Width="60" Click="btnPesquisar_Click" />
+                <Button x:Name="btnPesquisar" Content="Pesquisar" Margin="850,70,0,0" HorizontalAlignment="Left"  VerticalAlignment="Top" Width="60" Click="btnPesquisar_Click" />
 
             </Grid>
         </GroupBox>
-        
-        <DataGrid Name="tblTarefa" Margin="10,330,0,0"  HorizontalAlignment="Left" 
-                  VerticalAlignment="Top" Width="1000" Height="290" AutoGenerateColumns="False" >
+
+        <DataGrid Name="tblItemBacklog" Margin="10,300,0,0"  HorizontalAlignment="Left" 
+                  VerticalAlignment="Top" Width="1170" Height="400" AutoGenerateColumns="False" >
 
             <DataGrid.Columns>
                 <DataGridTextColumn Header="Codigo" Width="60" Binding="{Binding Path=Codigo}" />
                 <DataGridTextColumn Header="Tipo" Width="60" Binding="{Binding Path=Tipo}" />
                 <DataGridTextColumn Header="ID" Width="60" Binding="{Binding Path=Id}" />
-                <DataGridTextColumn Header="Titulo" Width="250" Binding="{Binding Path=Titulo}" />
-                <DataGridTextColumn Header="Planejado Para" Width="60" Binding="{Binding Path=PlanejadoPara}" />
+                <DataGridTextColumn Header="Titulo" Width="340" Binding="{Binding Path=Titulo}" />
+                <DataGridTextColumn Header="Planejado Para" Width="150" Binding="{Binding Path=PlanejadoPara}" />
                 <DataGridTextColumn Header="Status" Width="60" Binding="{Binding Path=Status}" />
-                <DataGridTextColumn Header="Data Coleta" Width="70" Binding="{Binding Path=DataColeta}" />
-                <DataGridTextColumn Header="Pai" Width="60" Binding="{Binding Path=Pai}" />
-                <DataGridTextColumn Header="Estimativa" Width="60" Binding="{Binding Path=Estimativa}" />
-                <DataGridTextColumn Header="Est Corrigida" Width="70" Binding="{Binding Path=EstimaticaCorrigida}" />
-                <DataGridTextColumn Header="Tempo Gasto" Width="70" Binding="{Binding Path=TempoGasto}" />
-                <DataGridTextColumn Header="Responsavel" Width="70" Binding="{Binding Path=Responsavel.Nome}" />
+                <DataGridTextColumn Header="Data Coleta" Width="80" Binding="{Binding Path=DataColeta}" />
+                <DataGridTextColumn Header="Valor Negocio" Width="100" Binding="{Binding Path=ValorNegocio}" />
+                <DataGridTextColumn Header="Tamanho" Width="70" Binding="{Binding Path=Tamanho}" />
+                <DataGridTextColumn Header="Complexidade" Width="90" Binding="{Binding Path=Complexidade}" />
+                <DataGridTextColumn Header="PF" Width="70" Binding="{Binding Path=Pf}" />
             </DataGrid.Columns>
 
         </DataGrid>

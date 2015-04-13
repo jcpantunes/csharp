@@ -8,7 +8,6 @@ namespace GEP_DE611.dominio
 {
     class Sprint : BaseBean
     {
-        public const string CODIGO = "codigo";
         public const string NOME = "nome";
         public const string DTINICIO = "dtInicio";
         public const string DTFINAL = "dtFinal";

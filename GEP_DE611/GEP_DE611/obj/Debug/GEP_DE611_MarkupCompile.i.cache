@@ -4,17 +4,17 @@
 winexe
 C#
 .cs
-C:\Users\Julio\Documents\Visual Studio 2012\Projects\csharp\GEP_DE611\GEP_DE611\obj\Debug\
+C:\Users\05163217658\Documents\Visual Studio 2012\Projects\csharp\GEP_DE611\GEP_DE611\obj\Debug\
 GEP_DE611
 none
 false
 DEBUG;TRACE
-C:\Users\Julio\Documents\Visual Studio 2012\Projects\csharp\GEP_DE611\GEP_DE611\App.xaml
-9503671890
+C:\Users\05163217658\Documents\Visual Studio 2012\Projects\csharp\GEP_DE611\GEP_DE611\App.xaml
+10-1399359709
 
-32-1663025602
+35-1329919712
 191740837786
-componente\AlertaUpload.xaml;visao\CadastrarFuncionario.xaml;visao\VisualizarBurndown.xaml;chart\chart.xaml;componente\Alerta.xaml;MainWindow.xaml;visao\CadastrarProjeto.xaml;visao\CadastrarSprint.xaml;visao\UploadArquivoTarefa.xaml;
+componente\AlertaUpload.xaml;visao\CadastrarFuncionario.xaml;visao\CadastrarItemBacklog.xaml;visao\VisualizarBurndown.xaml;chart\chart.xaml;componente\Alerta.xaml;MainWindow.xaml;visao\CadastrarProjeto.xaml;visao\CadastrarSprint.xaml;visao\CadastrarTarefa.xaml;
 
 False
 

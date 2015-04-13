@@ -8,6 +8,8 @@ namespace GEP_DE611.dominio
 {
     class BaseBean
     {
+        public const string CODIGO = "codigo";
+
         private int codigo;
 
         public int Codigo

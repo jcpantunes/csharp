@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Data.SqlClient;
 using GEP_DE611.dominio;
-using GEP_DE611.dominio.constante;
+using GEP_DE611.dominio.util;
 
 namespace GEP_DE611.persistencia
 {
@@ -44,41 +44,10 @@ namespace GEP_DE611.persistencia
 
                 foreach (string key in parametros.Keys)
                 {
-                    if (key.Equals(Tarefa.CODIGO))
-                    {
-                        query += Tarefa.CODIGO + " = " + parametros[key] + " and ";
-                    }
-                    else if (key.Equals(Tarefa.TITULO))
-                    {
-                        query += Tarefa.TITULO + " like '%" + parametros[key] + "%' and ";
-                    }
-                    else if (key.Equals(Tarefa.ID))
-                    {
-                        query += Tarefa.ID + " = '" + parametros[key] + "' and ";
-                    }
-                    else if (key.Equals(Tarefa.PAI))
-                    {
-                        query += Tarefa.PAI + " like '%" + parametros[key] + "%' and ";
-                    }
-                    else if (key.Equals(Tarefa.DTINICIO))
-                    {
-                        query += Tarefa.DATA_COLETA + " >= '" + Convert.ToDateTime(parametros[key]) + "' and ";
-                    }
-                    else if (key.Equals(Tarefa.DTFINAL))
-                    {
-                        query += Tarefa.DATA_COLETA + " <= '" + Convert.ToDateTime(parametros[key]) + "' and ";
-                    }
-                    else if (key.Equals(Tarefa.PLANEJADO_PARA))
-                    {
-                        query += Tarefa.PLANEJADO_PARA + " = '" + parametros[key] + "' and ";
-                    }
-                    else if (key.Equals(Tarefa.RESPONSAVEL))
+                    query += retornarPesquisaWhere(key, parametros);
+                    if (key.Equals(Tarefa.RESPONSAVEL))
                     {
                         query += Tarefa.RESPONSAVEL + " = " + parametros[key] + " and ";
-                    }
-                    else if (key.Equals(Tarefa.STATUS))
-                    {
-                        query += Tarefa.STATUS + " = '" + parametros[key] + "' and ";
                     }
                 }
                 query = query.Substring(0, (query.Length - 4));
@@ -88,25 +57,25 @@ namespace GEP_DE611.persistencia
 
         public decimal recuperarEstimativaTotalPorSprint(string planejadoPara)
         {
-            string query = "SELECT * FROM " + TABELA
-                + " WHERE planejadoPara = '" + planejadoPara + "'"
-                + " and dataColeta in (SELECT distinct MAX (dataColeta) "
-                + " FROM " + TABELA
-                + " WHERE planejadoPara = '" + planejadoPara + "')";
+            string query = "SELECT SUM(estimativa) FROM " + TABELA + " WHERE planejadoPara = '" + planejadoPara + "'"
+                + " and estimativaCorrigida = 0 and dataColeta in (SELECT distinct MAX (dataColeta) "
+				+ " FROM " + TABELA + " WHERE planejadoPara = '" + planejadoPara + "') "
+                + " union "
+                + " SELECT SUM(estimativaCorrigida) FROM " + TABELA + " WHERE planejadoPara = '" + planejadoPara + "'"
+                + " and estimativaCorrigida > 0 and dataColeta in (SELECT distinct MAX (dataColeta) "
+				+ " FROM " + TABELA + " WHERE planejadoPara = '" + planejadoPara + "') ";
 
-            List<Tarefa> lista = executarSelect(query);
             decimal estimativaTotal = 0;
-            foreach (Tarefa t in lista)
+            SqlConnection conn = null;
+            SqlDataReader reader = select(conn, query);
+            if (reader != null)
             {
-                if (t.EstimaticaCorrigida > 0)
+                while (reader.Read())
                 {
-                    estimativaTotal += Convert.ToDecimal(t.EstimaticaCorrigida);
-                }
-                else
-                {
-                    estimativaTotal += t.Estimativa > 0 ? Convert.ToDecimal(t.Estimativa) : 0;
+                    estimativaTotal += reader.GetDecimal(0);
                 }
             }
+            desconectar(conn);
             return estimativaTotal;
         }
 
@@ -136,24 +105,32 @@ namespace GEP_DE611.persistencia
         public List<KeyValuePair<string, decimal>> recuperarTempoGastoTotalPorData(string planejadoPara)
         {
             List<KeyValuePair<string, decimal>> tempoGastoPorData = new List<KeyValuePair<string, decimal>>();
-
             List<DateTime> datas = recuperarListaDatasPorString(planejadoPara);
-            
+
+            string whereData = "";
             foreach (DateTime data in datas)
             {
-                string query = "SELECT * FROM " + TABELA
+                whereData += " dataColeta = '" + data + "' or ";
+            }
+            if (whereData.Length > 0)
+            {
+                string query = "SELECT dataColeta, SUM(tempoGasto) FROM " + TABELA
                     + " WHERE planejadoPara = '" + planejadoPara + "' "
-                    + " and tempoGasto <> 0 "
-                    + " and dataColeta = '" + data + "' "
-                    + " ORDER BY dataColeta ASC ";
+                    + " and tempoGasto > 0 and " + whereData.Substring(0, (whereData.Length - 3))
+                    + " GROUP BY dataColeta ORDER BY dataColeta ASC ";
 
-                List<Tarefa> lista = executarSelect(query);
-                decimal tempoGasto = 0;
-                foreach (Tarefa t in lista)
+                SqlConnection conn = null;
+                SqlDataReader reader = select(conn, query);
+                if (reader != null)
                 {
-                    tempoGasto += t.TempoGasto > 0 ? t.TempoGasto : 0;
+                    while (reader.Read())
+                    {
+                        DateTime data  = reader.GetDateTime(0);
+                        decimal tempoGasto = reader.GetDecimal(1);
+                        tempoGastoPorData.Add(new KeyValuePair<string, decimal>(data.ToShortDateString(), tempoGasto));
+                    }
                 }
-                tempoGastoPorData.Add(new KeyValuePair<string, decimal>(data.ToString(), tempoGasto));
+                desconectar(conn);
             }
             
             return tempoGastoPorData;
@@ -182,7 +159,7 @@ namespace GEP_DE611.persistencia
                     t.Pai = reader.GetString(6);
                     t.DataColeta = reader.GetDateTime(7);
                     t.Estimativa = reader.GetDecimal(8);
-                    t.EstimaticaCorrigida = reader.GetDecimal(9);
+                    t.EstimativaCorrigida = reader.GetDecimal(9);
                     t.TempoGasto = reader.GetDecimal(10);
                     t.Responsavel = recuperarFuncionario(listaFuncionario, reader.GetInt32(11));
 
@@ -217,9 +194,9 @@ namespace GEP_DE611.persistencia
         {
             string queryInsert = "INSERT INTO " + TABELA
                 + " (tipo, id, responsavel, titulo, status, planejadoPara, dataColeta, pai, "
-                + "estimativa, estimaticaCorrigida, tempoGasto) " 
+                + "estimativa, estimativaCorrigida, tempoGasto) " 
                 + " VALUES (@tipo, @id, @responsavel, @titulo, @status, @planejadoPara, @dataColeta, "
-	            + "@pai, @estimativa, @estimaticaCorrigida, @tempoGasto)";
+	            + "@pai, @estimativa, @estimativaCorrigida, @tempoGasto)";
             executarQuery(lista, queryInsert);
         }
 
@@ -235,7 +212,7 @@ namespace GEP_DE611.persistencia
                 + "dataColeta = @dataColeta, "
                 + "pai = @pai, "
                 + "estimativa = @estimativa, "
-                + "estimaticaCorrigida = @estimaticaCorrigida, "
+                + "estimativaCorrigida = @estimativaCorrigida, "
                 + "tempoGasto = @tempoGasto "
                 + "WHERE codigo = @codigo";
             executarQuery(lista, queryUpdate);
@@ -282,7 +259,7 @@ namespace GEP_DE611.persistencia
             parametros.Add(new SqlParameter("dataColeta", t.DataColeta));
             parametros.Add(new SqlParameter("pai", t.Pai));
             parametros.Add(new SqlParameter("estimativa", t.Estimativa));
-            parametros.Add(new SqlParameter("estimaticaCorrigida", t.EstimaticaCorrigida));
+            parametros.Add(new SqlParameter("estimativaCorrigida", t.EstimativaCorrigida));
             parametros.Add(new SqlParameter("tempoGasto", t.TempoGasto));
             return parametros;
         }

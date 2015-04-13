@@ -21,7 +21,7 @@ namespace GEP_DE611.componente
     /// </summary>
     public partial class AlertaUpload : Window
     {
-        UploadArquivoTarefa uploadTela = null;
+        CadastrarTarefa uploadTela = null;
 
         string file = "";
 
@@ -29,7 +29,7 @@ namespace GEP_DE611.componente
 
         string data = "";
 
-        public AlertaUpload(UploadArquivoTarefa uploadTela, String file, String planejadoPara, string data)
+        public AlertaUpload(CadastrarTarefa uploadTela, String file, String planejadoPara, string data)
         {
             InitializeComponent();
 

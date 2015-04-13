@@ -12,7 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using GEP_DE611.dominio;
-using GEP_DE611.dominio.constante;
+using GEP_DE611.dominio.util;
 using GEP_DE611.persistencia;
 using GEP_DE611.componente;
 

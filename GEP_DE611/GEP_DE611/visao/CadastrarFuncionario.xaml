@@ -41,7 +41,7 @@
                 <TextBox x:Name="txtFiltroNome" Margin="10,40,0,0" HorizontalAlignment="Left" VerticalAlignment="Top"
                              Height="20" Width="500" TextWrapping="Wrap" Text="" />
 
-                <Label x:Name="lblFiltroId" Content="Id" Margin="10,75,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" />
+                <Label x:Name="lblFiltroLotacao" Content="Lotacao" Margin="10,75,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" />
 
                 <ComboBox x:Name="cmbFiltroLotacao" Margin="10,105,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" Width="300"/>
 

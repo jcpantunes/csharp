@@ -3,31 +3,21 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using GEP_DE611.dominio.constante;
+using GEP_DE611.dominio.util;
 
 namespace GEP_DE611.dominio
 {
     class Tarefa : ItemTrabalho
     {
-        public const string CODIGO = "codigo";
-        public const string TIPO = "tipo";
-        public const string ID = "id";
         public const string RESPONSAVEL = "responsavel";
-        public const string TITULO = "titulo";
-        public const string STATUS = "status";
-        public const string PLANEJADO_PARA = "planejadoPara";
-        public const string DATA_COLETA = "dataColeta";
-        public const string DTINICIO = "dataInicio";
-        public const string DTFINAL = "dataFinal";
-        public const string PAI = "pai";
-
+        
         public Tarefa()
         {
         }
 
         public Tarefa(int codigo, string tipo, int id, Funcionario responsavel, String titulo,
             string status, string planejadoPara, DateTime dataColeta, string pai, decimal estimativa,
-            decimal estimaticaCorrigida, decimal tempoGasto)
+            decimal estimativaCorrigida, decimal tempoGasto)
         {
             this.Codigo = codigo;
             this.Tipo = tipo;
@@ -39,8 +29,16 @@ namespace GEP_DE611.dominio
             this.DataColeta = dataColeta;
             this.Pai = pai;
             this.Estimativa = estimativa;
-            this.EstimaticaCorrigida = estimaticaCorrigida;
+            this.EstimativaCorrigida = estimativaCorrigida;
             this.TempoGasto = tempoGasto;
+        }
+
+        private Funcionario responsavel;
+
+        public Funcionario Responsavel
+        {
+            get { return responsavel; }
+            set { responsavel = value; }
         }
 
         private decimal estimativa;
@@ -51,12 +49,12 @@ namespace GEP_DE611.dominio
             set { estimativa = value; }
         }
 
-        private decimal estimaticaCorrigida;
+        private decimal estimativaCorrigida;
 
-        public decimal EstimaticaCorrigida
+        public decimal EstimativaCorrigida
         {
-            get { return estimaticaCorrigida; }
-            set { estimaticaCorrigida = value; }
+            get { return estimativaCorrigida; }
+            set { estimativaCorrigida = value; }
         }
 
         private decimal tempoGasto;
