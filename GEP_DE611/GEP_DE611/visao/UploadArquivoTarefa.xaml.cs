@@ -196,6 +196,11 @@ namespace GEP_DE611.visao
 
         private void preencherCombos()
         {
+            ComboBoxItem itemTodos = new ComboBoxItem();
+            itemTodos.Content = "Todos";
+            itemTodos.Tag = 0;
+            cmbFiltroProjeto.Items.Add(itemTodos);
+
             ProjetoDAO pDAO = new ProjetoDAO();
             List<Projeto> lista = pDAO.recuperar();
             if (lista.Count > 0)
@@ -204,6 +209,8 @@ namespace GEP_DE611.visao
                 cmbProjeto.SelectedIndex = 0;
 
                 preencherComboSprint(lista[0].Codigo);
+
+                preencherComboFiltroSprint(lista[0].Codigo);
             }
         }
 
@@ -215,13 +222,17 @@ namespace GEP_DE611.visao
                 item.Content = p.Nome;
                 item.Tag = p.Codigo;
                 cmbProjeto.Items.Add(item);
+
+                ComboBoxItem itemFiltro = new ComboBoxItem();
+                itemFiltro.Content = p.Nome;
+                itemFiltro.Tag = p.Codigo;
+                cmbFiltroProjeto.Items.Add(itemFiltro);
             }
         }
 
         private void preencherComboSprint(int codigoProjeto)
         {
             cmbSprint.Items.Clear();
-
             SprintDAO sDAO = new SprintDAO();
             List<Sprint> lista = sDAO.recuperar(Sprint.criarListaParametrosPesquisaPorProjeto(codigoProjeto));
             if (lista.Count > 0)
@@ -237,11 +248,36 @@ namespace GEP_DE611.visao
             }
         }
 
+        private void preencherComboFiltroSprint(int codigoProjeto)
+        {
+            cmbFiltroSprint.Items.Clear();
+            SprintDAO sDAO = new SprintDAO();
+            List<Sprint> lista = sDAO.recuperar(Sprint.criarListaParametrosPesquisaPorProjeto(codigoProjeto));
+            if (lista.Count > 0)
+            {
+                foreach (Sprint s in lista)
+                {
+                    ComboBoxItem item = new ComboBoxItem();
+                    item.Content = s.Nome;
+                    item.Tag = s.Codigo;
+                    cmbFiltroSprint.Items.Add(item);
+                }
+                cmbFiltroSprint.SelectedIndex = 0;
+            }
+        }
+
         private void cmbProjeto_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             ComboBoxItem item = (ComboBoxItem)cmbProjeto.SelectedItem;
             int codigoProjeto = Convert.ToInt32(item.Tag);
             preencherComboSprint(codigoProjeto);
+        }
+
+        private void cmbFiltroProjeto_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            ComboBoxItem item = (ComboBoxItem)cmbProjeto.SelectedItem;
+            int codigoProjeto = Convert.ToInt32(item.Tag);
+            preencherComboFiltroSprint(codigoProjeto);
         }
 
         private string recuperarSprint()
@@ -263,7 +299,7 @@ namespace GEP_DE611.visao
             cmbFiltroProjeto.SelectedIndex = 0;
             cmbFiltroSprint.SelectedIndex = 0;
             cmbFiltroFuncionario.SelectedIndex = 0;
-            
+            cmbFiltroStatus.SelectedIndex = 0;
         }
 
         private void btnFiltroLimpar_Click(object sender, RoutedEventArgs e)
@@ -304,10 +340,17 @@ namespace GEP_DE611.visao
             if (cmbFiltroFuncionario.SelectedIndex > 0)
             {
                 int codigo = Convert.ToInt32(((ComboBoxItem)cmbFiltroFuncionario.SelectedItem).Tag);
-                param.Add(Sprint.PROJETO, Convert.ToString(codigo));
+                param.Add(Tarefa.RESPONSAVEL, Convert.ToString(codigo));
+            }
+            if (cmbFiltroStatus.SelectedIndex > 0)
+            {
+                string sprint = Convert.ToString(((ComboBoxItem)cmbFiltroStatus.SelectedItem).Content);
+                param.Add(Tarefa.STATUS, sprint);
             }
 
             preencherLista(new Dictionary<string, string>());
         }
+
+        
     }
 }

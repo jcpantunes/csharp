@@ -25,9 +25,9 @@ namespace GEP_DE611.dominio
         {
         }
 
-        public Tarefa(int codigo, string tipo, int id, Funcionario responsavel, String titulo, 
-            string status, string planejadoPara, DateTime dataColeta, string pai, string estimativa, 
-            string estimaticaCorrigida, string tempoGasto)
+        public Tarefa(int codigo, string tipo, int id, Funcionario responsavel, String titulo,
+            string status, string planejadoPara, DateTime dataColeta, string pai, decimal estimativa,
+            decimal estimaticaCorrigida, decimal tempoGasto)
         {
             this.Codigo = codigo;
             this.Tipo = tipo;
@@ -43,25 +43,25 @@ namespace GEP_DE611.dominio
             this.TempoGasto = tempoGasto;
         }
 
-        private string estimativa;
+        private decimal estimativa;
 
-        public string Estimativa
+        public decimal Estimativa
         {
             get { return estimativa; }
             set { estimativa = value; }
         }
 
-        private string estimaticaCorrigida;
+        private decimal estimaticaCorrigida;
 
-        public string EstimaticaCorrigida
+        public decimal EstimaticaCorrigida
         {
             get { return estimaticaCorrigida; }
             set { estimaticaCorrigida = value; }
         }
 
-        private string tempoGasto;
+        private decimal tempoGasto;
 
-        public string TempoGasto
+        public decimal TempoGasto
         {
             get { return tempoGasto; }
             set { tempoGasto = value; }

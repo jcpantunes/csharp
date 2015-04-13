@@ -35,7 +35,7 @@ namespace GEP_DE611.persistencia
             return null;
         }
 
-        public List<Projeto> recuperar(Dictionary<string, string> parametros)
+        public List<Tarefa> recuperar(Dictionary<string, string> parametros)
         {
             string query = "SELECT * FROM " + TABELA;
             if (parametros.Count > 0)
@@ -44,25 +44,41 @@ namespace GEP_DE611.persistencia
 
                 foreach (string key in parametros.Keys)
                 {
-                    if (key.Equals(Projeto.CODIGO))
+                    if (key.Equals(Tarefa.CODIGO))
                     {
-                        query += Projeto.CODIGO + " = " + parametros[key] + " and ";
+                        query += Tarefa.CODIGO + " = " + parametros[key] + " and ";
                     }
-                    else if (key.Equals(Projeto.Titu))
+                    else if (key.Equals(Tarefa.TITULO))
                     {
-                        query += Projeto.NOME + " like '%" + parametros[key] + "%' and ";
+                        query += Tarefa.TITULO + " like '%" + parametros[key] + "%' and ";
                     }
-                    else if (key.Equals(Projeto.ID))
+                    else if (key.Equals(Tarefa.ID))
                     {
-                        query += Projeto.ID + " = " + parametros[key] + " and ";
+                        query += Tarefa.ID + " = '" + parametros[key] + "' and ";
                     }
-                    else if (key.Equals(Projeto.DTINICIO))
+                    else if (key.Equals(Tarefa.PAI))
                     {
-                        query += Projeto.DTINICIO + " >= '" + Convert.ToDateTime(parametros[key]) + "' and ";
+                        query += Tarefa.PAI + " like '%" + parametros[key] + "%' and ";
                     }
-                    else if (key.Equals(Projeto.DTFINAL))
+                    else if (key.Equals(Tarefa.DTINICIO))
                     {
-                        query += Projeto.DTFINAL + " <= '" + Convert.ToDateTime(parametros[key]) + "' and ";
+                        query += Tarefa.DATA_COLETA + " >= '" + Convert.ToDateTime(parametros[key]) + "' and ";
+                    }
+                    else if (key.Equals(Tarefa.DTFINAL))
+                    {
+                        query += Tarefa.DATA_COLETA + " <= '" + Convert.ToDateTime(parametros[key]) + "' and ";
+                    }
+                    else if (key.Equals(Tarefa.PLANEJADO_PARA))
+                    {
+                        query += Tarefa.PLANEJADO_PARA + " = '" + parametros[key] + "' and ";
+                    }
+                    else if (key.Equals(Tarefa.RESPONSAVEL))
+                    {
+                        query += Tarefa.RESPONSAVEL + " = " + parametros[key] + " and ";
+                    }
+                    else if (key.Equals(Tarefa.STATUS))
+                    {
+                        query += Tarefa.STATUS + " = '" + parametros[key] + "' and ";
                     }
                 }
                 query = query.Substring(0, (query.Length - 4));

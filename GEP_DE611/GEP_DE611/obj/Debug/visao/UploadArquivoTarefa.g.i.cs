@@ -411,6 +411,12 @@ namespace GEP_DE611.visao {
             return;
             case 23:
             this.cmbFiltroProjeto = ((System.Windows.Controls.ComboBox)(target));
+            
+            #line 60 "..\..\..\visao\UploadArquivoTarefa.xaml"
+            this.cmbFiltroProjeto.SelectionChanged += new System.Windows.Controls.SelectionChangedEventHandler(this.cmbFiltroProjeto_SelectionChanged);
+            
+            #line default
+            #line hidden
             return;
             case 24:
             this.lblFiltroSprint = ((System.Windows.Controls.Label)(target));

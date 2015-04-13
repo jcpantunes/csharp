@@ -57,7 +57,7 @@
                 
                 <Label x:Name="lblFiltroProjeto" Content="Projeto" Margin="10,45,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" />
 
-                <ComboBox x:Name="cmbFiltroProjeto" Margin="10,70,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" Width="250"/>
+                <ComboBox x:Name="cmbFiltroProjeto" Margin="10,70,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" Width="250" SelectionChanged="cmbFiltroProjeto_SelectionChanged"/>
 
                 <Label x:Name="lblFiltroSprint" Content="Sprint" Margin="290,45,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" />
 
