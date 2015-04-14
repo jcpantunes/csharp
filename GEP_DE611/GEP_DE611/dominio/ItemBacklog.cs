@@ -13,7 +13,7 @@ namespace GEP_DE611.dominio
         public const string TAMANHO = "tamanho";
         public const string COMPLEXIDADE = "complexidade";
         public const string PF = "pf";
-        public const string PROJETO = "projeto";
+        public const string PROJETO = "codigoProjeto";
 
         public ItemBacklog()
         {
@@ -57,6 +57,13 @@ namespace GEP_DE611.dominio
         {
             get { return projeto; }
             set { projeto = value; }
+        }
+
+        public List<ItemBacklog> encapsularLista()
+        {
+            List<ItemBacklog> lista = new List<ItemBacklog>();
+            lista.Add(this);
+            return lista;
         }
     }
 }

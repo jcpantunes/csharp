@@ -91,7 +91,7 @@
                 <DataGridTextColumn Header="Data Coleta" Width="70" Binding="{Binding Path=DataColeta}" />
                 <DataGridTextColumn Header="Pai" Width="60" Binding="{Binding Path=Pai}" />
                 <DataGridTextColumn Header="Estimativa" Width="60" Binding="{Binding Path=Estimativa}" />
-                <DataGridTextColumn Header="Est Corrigida" Width="70" Binding="{Binding Path=EstimaticaCorrigida}" />
+                <DataGridTextColumn Header="Est Corrigida" Width="70" Binding="{Binding Path=EstimativaCorrigida}" />
                 <DataGridTextColumn Header="Tempo Gasto" Width="70" Binding="{Binding Path=TempoGasto}" />
                 <DataGridTextColumn Header="Responsavel" Width="70" Binding="{Binding Path=Responsavel.Nome}" />
             </DataGrid.Columns>

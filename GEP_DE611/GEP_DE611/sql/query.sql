@@ -1,6 +1,7 @@
 select * from [dbo].[Sprint]
 
 -- delete from [dbo].[Tarefa]
+-- delete from [dbo].[TarefaHistorico]
 -- delete from [dbo].[ItemBacklog]
 
 
@@ -53,3 +54,24 @@ SELECT * FROM Tarefa
   WHERE pai in (SELECT distinct(pai) from tarefa where codigo = 3542)
 
 
+UPDATE ItemBacklog
+	SET tipo = 'Item de Backlog', 
+	id = 300778, 
+	titulo = '(N) F01.01 Identificar Usuário',
+	status = 'Pronto', 
+	planejadoPara = 'eSocial-281573-1.0.0-CONS-01', 
+	valorNegocio = 990, 
+	tamanho = 13, 
+	complexidade = 60, 
+	pf = 10,
+	codigoProjeto = 1
+	WHERE codigo = 132;
+
+
+SELECT SUM(estimativa) FROM TarefaHistorico 
+	WHERE planejadoPara = 'eSocial-281573-1.0.1-CONS-01' and estimativaCorrigida = 0 and dataColeta in 
+		(SELECT distinct MAX (dataColeta)  FROM TarefaHistorico WHERE planejadoPara = 'eSocial-281573-1.0.1-CONS-01')
+union  
+SELECT SUM(estimativaCorrigida) FROM TarefaHistorico 
+	WHERE planejadoPara = 'eSocial-281573-1.0.1-CONS-01' and estimativaCorrigida > 0 and dataColeta in 
+		(SELECT distinct MAX (dataColeta)  FROM TarefaHistorico WHERE planejadoPara = 'eSocial-281573-1.0.1-CONS-01')

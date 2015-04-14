@@ -47,6 +47,9 @@ namespace GEP_DE611.componente
             TarefaDAO tDAO = new TarefaDAO();
             tDAO.excluirPorSprintPorData(this.planejadoPara, this.data);
 
+            TarefaHistoricoDAO thDAO = new TarefaHistoricoDAO();
+            thDAO.excluirPorSprintPorData(this.planejadoPara, this.data);
+
             this.uploadTela.realizarUpload(this.file);
 
             this.Close();

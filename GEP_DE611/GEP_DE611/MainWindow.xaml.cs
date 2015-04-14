@@ -74,6 +74,13 @@ namespace GEP_DE611
             tela.Show();
         }
 
+        private void btnIndicador_Click(object sender, RoutedEventArgs e)
+        {
+            VisualizarIndicador tela = new VisualizarIndicador();
+            tela.Show();
+        }
+
+        
 
 
 
@@ -206,7 +213,5 @@ namespace GEP_DE611
             //hora = util.formatarHora("12 h 52 m");
         }
 
-        
-        
     }
 }

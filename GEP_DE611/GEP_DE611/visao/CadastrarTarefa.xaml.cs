@@ -104,7 +104,11 @@ namespace GEP_DE611.visao
 
             if (Util.validarArquivoTarefa(lines[0]) == true)
             {
-                List<Tarefa> lista = new List<Tarefa>();
+                List<Tarefa> listaTarefaIncluir = new List<Tarefa>();
+
+                List<Tarefa> listaTarefaAtualizar = new List<Tarefa>();
+
+                List<Tarefa> listaTarefaHistorico = new List<Tarefa>();
 
                 for (int i = 1; i < lines.Length; i++)
                 {
@@ -134,11 +138,31 @@ namespace GEP_DE611.visao
                     }
                     t.Responsavel = f;
 
-                    lista.Add(t);
+                    if (!existeTarefa(t))
+                    {
+                        listaTarefaIncluir.Add(t);
+                    }
+                    else
+                    {
+                        listaTarefaAtualizar.Add(t);
+                    }
+                    listaTarefaHistorico.Add(t);
                 }
 
                 TarefaDAO tDAO = new TarefaDAO();
-                tDAO.incluir(lista);
+                if (listaTarefaIncluir.Count > 0)
+                {
+                    tDAO.incluir(listaTarefaIncluir);
+                }
+                if (listaTarefaAtualizar.Count > 0)
+                {
+                    tDAO.atualizar(listaTarefaAtualizar);
+                }
+                if (listaTarefaHistorico.Count > 0)
+                {
+                    TarefaHistoricoDAO thDAO = new TarefaHistoricoDAO();
+                    thDAO.incluir(listaTarefaHistorico);
+                }
 
                 Alerta alerta = new Alerta("Arquivo incluido com sucesso!");
                 alerta.Show();
@@ -152,9 +176,22 @@ namespace GEP_DE611.visao
             }
         }
 
+        private bool existeTarefa(Tarefa item)
+        {
+            Dictionary<string, string> param = new Dictionary<string, string>();
+            param.Add(Tarefa.ID, Convert.ToString(item.Id));
+
+            TarefaDAO tDAO = new TarefaDAO();
+            List<Tarefa> listaItem = tDAO.recuperar(param);
+            if (listaItem.Count > 0)
+            {
+                return true;
+            }
+            return false;
+        }
+
         private void preencherCombos()
         {
-
             preencherComboProjeto();
 
             preencherComboFuncionario();

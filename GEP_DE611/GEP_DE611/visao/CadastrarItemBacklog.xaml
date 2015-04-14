@@ -70,16 +70,16 @@
         </GroupBox>
 
         <DataGrid Name="tblItemBacklog" Margin="10,300,0,0"  HorizontalAlignment="Left" 
-                  VerticalAlignment="Top" Width="1170" Height="400" AutoGenerateColumns="False" >
+                  VerticalAlignment="Top" Width="1170" Height="400" AutoGenerateColumns="False" CellEditEnding="tblItemBacklog_CellEditEnding" >
 
             <DataGrid.Columns>
-                <DataGridTextColumn Header="Codigo" Width="60" Binding="{Binding Path=Codigo}" />
-                <DataGridTextColumn Header="Tipo" Width="60" Binding="{Binding Path=Tipo}" />
-                <DataGridTextColumn Header="ID" Width="60" Binding="{Binding Path=Id}" />
-                <DataGridTextColumn Header="Titulo" Width="340" Binding="{Binding Path=Titulo}" />
-                <DataGridTextColumn Header="Planejado Para" Width="150" Binding="{Binding Path=PlanejadoPara}" />
-                <DataGridTextColumn Header="Status" Width="60" Binding="{Binding Path=Status}" />
-                <DataGridTextColumn Header="Data Coleta" Width="80" Binding="{Binding Path=DataColeta}" />
+                <DataGridTextColumn Header="Codigo" Width="60" Binding="{Binding Path=Codigo}" IsReadOnly="True" />
+                <DataGridTextColumn Header="Tipo" Width="60" Binding="{Binding Path=Tipo}" IsReadOnly="True" />
+                <DataGridTextColumn Header="ID" Width="60" Binding="{Binding Path=Id}" IsReadOnly="True" />
+                <DataGridTextColumn Header="Titulo" Width="340" Binding="{Binding Path=Titulo}" IsReadOnly="True" />
+                <DataGridTextColumn Header="Planejado Para" Width="150" Binding="{Binding Path=PlanejadoPara}" IsReadOnly="True" />
+                <DataGridTextColumn Header="Status" Width="60" Binding="{Binding Path=Status}" IsReadOnly="True" />
+                <DataGridTextColumn Header="Data Coleta" Width="80" Binding="{Binding Path=DataColeta}" IsReadOnly="True" />
                 <DataGridTextColumn Header="Valor Negocio" Width="100" Binding="{Binding Path=ValorNegocio}" />
                 <DataGridTextColumn Header="Tamanho" Width="70" Binding="{Binding Path=Tamanho}" />
                 <DataGridTextColumn Header="Complexidade" Width="90" Binding="{Binding Path=Complexidade}" />

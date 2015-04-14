@@ -154,41 +154,57 @@ namespace GEP_DE611.visao
         {
             string[] lines = System.IO.File.ReadAllLines(file);
 
-            if (Util.validarArquivoItemBacklog(lines[0]) == true)
+            if (lines.Length > 1 && Util.validarArquivoItemBacklog(lines[0]) == true)
             {
-                List<ItemBacklog> lista = new List<ItemBacklog>();
+                List<ItemBacklog> listaIncluir = new List<ItemBacklog>();
+                List<ItemBacklog> listaAtualizar = new List<ItemBacklog>();
+
                 List<Projeto> listaProjeto = new List<Projeto>();
 
                 for (int i = 1; i < lines.Length; i++)
                 {
                     string[] linha = lines[i].Replace("\"", "").Split('\t');
-                    ItemBacklog t = new ItemBacklog();
-                    t.Tipo = linha[0];
-                    t.Id = Convert.ToInt32(linha[1]);
-                    t.Titulo = linha[2];
-                    t.Status = linha[3];
-                    t.PlanejadoPara = linha[4];
-                    t.DataColeta = Convert.ToDateTime(txtData.Text);
-                    t.ValorNegocio = Convert.ToInt32(linha[5].Replace("pts", "").Replace("pt", ""));
-                    t.Tamanho = Convert.ToInt32(linha[6]);
-                    t.Complexidade = Convert.ToInt32(linha[8]);
-                    t.Pf = Convert.ToDecimal(linha[9]);
+                    ItemBacklog item = new ItemBacklog();
+                    item.Tipo = linha[0];
+                    item.Id = Convert.ToInt32(linha[1]);
+                    item.Titulo = linha[2];
+                    item.Status = linha[3];
+                    item.PlanejadoPara = linha[4];
+                    item.DataColeta = Convert.ToDateTime(txtData.Text);
+                    item.ValorNegocio = Convert.ToInt32(linha[5].Replace("pts", "").Replace("pt", ""));
+                    item.Tamanho = Convert.ToInt32(linha[6]);
+                    item.Complexidade = Convert.ToInt32(linha[8]);
+                    item.Pf = Convert.ToDecimal(linha[9]);
 
                     Projeto p = recuperarProjeto(listaProjeto, Convert.ToInt32(linha[7]));
                     if (p != null)
                     {
-                        t.Projeto = p.Codigo;
+                        item.Projeto = p.Codigo;
                     }
                     else
                     {
-                        int codigo = Convert.ToInt32(((ComboBoxItem)cmbFiltroProjeto.SelectedItem).Tag);
-                        t.Projeto = codigo;
+                        int codigo = Convert.ToInt32(((ComboBoxItem)cmbProjeto.SelectedItem).Tag);
+                        item.Projeto = codigo;
                     }
-                    
-                    lista.Add(t);
+
+                    if (!existeItemBacklog(item))
+                    {
+                        listaIncluir.Add(item);
+                    }
+                    else
+                    {
+                        listaAtualizar.Add(item);
+                    }
                 }
                 ItemBacklogDAO tDAO = new ItemBacklogDAO();
-                tDAO.incluir(lista);
+                if (listaIncluir.Count > 0)
+                {
+                    tDAO.incluir(listaIncluir);
+                }
+                if (listaAtualizar.Count > 0)
+                {
+                    tDAO.atualizarPorId(listaAtualizar);
+                }
 
                 Alerta alerta = new Alerta("Arquivo incluido com sucesso!");
                 alerta.Show();
@@ -219,6 +235,20 @@ namespace GEP_DE611.visao
                 return lista[0];
             }
             return null;
+        }
+
+        private bool existeItemBacklog(ItemBacklog item)
+        {
+            Dictionary<string, string> param = new Dictionary<string, string>();
+            param.Add(ItemTrabalho.ID, Convert.ToString(item.Id));
+
+            ItemBacklogDAO iDAO = new ItemBacklogDAO();
+            List<ItemBacklog> listaItem = iDAO.recuperar(param);
+            if (listaItem.Count > 0)
+            {
+                return true;
+            }
+            return false;
         }
 
         private void cmbFiltroProjeto_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -276,16 +306,60 @@ namespace GEP_DE611.visao
                 string sprint = Convert.ToString(((ComboBoxItem)cmbFiltroSprint.SelectedItem).Content);
                 param.Add(ItemTrabalho.PLANEJADO_PARA, sprint);
             }
-            else
-            {
-                param.Add(ItemTrabalho.PLANEJADO_PARA, "");
-            }
             if (cmbFiltroStatus.SelectedIndex > 0)
             {
                 string sprint = Convert.ToString(((ComboBoxItem)cmbFiltroStatus.SelectedItem).Content);
                 param.Add(ItemTrabalho.STATUS, sprint);
             }
             preencherLista(param);
+        }
+
+        private void tblItemBacklog_CellEditEnding(object sender, DataGridCellEditEndingEventArgs e)
+        {
+            // ... Get the TextBox that was edited.
+            var element = e.EditingElement as System.Windows.Controls.TextBox;
+            var text = element.Text;
+
+            ItemBacklog item = (ItemBacklog) e.Row.Item;
+
+            var coluna = e.Column.DisplayIndex;
+
+            // ... See if the text edit should be canceled.
+            //     We cancel if the user typed a question mark.
+            if (text.Length == 0)
+            {
+	            e.Cancel = true;
+            }
+            else
+            {
+                ItemBacklogDAO iDAO = new ItemBacklogDAO();
+                if (coluna < 7)
+                {
+                    Alerta alerta = new Alerta("Somente as colunas Valor Negocio, Tamanho, Complexidade e PF podem ser alteradas");
+                    alerta.Show();
+                    e.Cancel = true;
+                }
+                else
+                {
+                    if (coluna == 7)
+                    {
+                        item.ValorNegocio = Convert.ToInt32(text);
+                    }
+                    else if (coluna == 8)
+                    {
+                        item.Tamanho = Convert.ToInt32(text);
+                    }
+                    else if (coluna == 9)
+                    {
+                        item.Complexidade = Convert.ToInt32(text);
+                    }
+                    else if (coluna == 10)
+                    {
+                        item.Pf = Convert.ToDecimal(text);
+                    }
+                    iDAO.atualizar(item.encapsularLista());
+                }
+            }
         }
     }
 }

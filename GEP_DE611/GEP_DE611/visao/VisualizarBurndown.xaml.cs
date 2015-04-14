@@ -104,8 +104,8 @@ namespace GEP_DE611.visao
                     List<string> listaX = gerarEixoX(sprint);
 
                     //Eixo Y
-                    TarefaDAO tDAO = new TarefaDAO();
-                    decimal estimativaTotal = tDAO.recuperarEstimativaTotalPorSprint(sprint.Nome);
+                    TarefaHistoricoDAO thDAO = new TarefaHistoricoDAO();
+                    decimal estimativaTotal = thDAO.recuperarEstimativaTotalPorSprint(sprint.Nome);
 
                     if (estimativaTotal > 0)
                     {
@@ -166,7 +166,7 @@ namespace GEP_DE611.visao
             // =$C$2-SOMA(Dados.J$2:J$201)
             List<KeyValuePair<string, int>> lnProgresso = new List<KeyValuePair<string, int>>();
 
-            TarefaDAO tDAO = new TarefaDAO();
+            TarefaHistoricoDAO tDAO = new TarefaHistoricoDAO();
             List<KeyValuePair<string, decimal>> listaProgresso = tDAO.recuperarTempoGastoTotalPorData(planejadoPara);
 
             int dia = 0;

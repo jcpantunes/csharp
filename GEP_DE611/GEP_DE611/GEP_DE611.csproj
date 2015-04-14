@@ -74,6 +74,8 @@
     <Compile Include="persistencia\ItemBacklogDAO.cs" />
     <Compile Include="persistencia\ProjetoDAO.cs" />
     <Compile Include="persistencia\SprintDAO.cs" />
+    <Compile Include="persistencia\TarefaBaseDAO.cs" />
+    <Compile Include="persistencia\TarefaHistoricoDAO.cs" />
     <Compile Include="visao\CadastrarFuncionario.xaml.cs">
       <DependentUpon>CadastrarFuncionario.xaml</DependentUpon>
     </Compile>
@@ -88,6 +90,9 @@
     </Compile>
     <Compile Include="visao\CadastrarTarefa.xaml.cs">
       <DependentUpon>CadastrarTarefa.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="visao\VisualizarIndicador.xaml.cs">
+      <DependentUpon>VisualizarIndicador.xaml</DependentUpon>
     </Compile>
     <Page Include="componente\AlertaUpload.xaml">
       <SubType>Designer</SubType>
@@ -146,6 +151,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="visao\CadastrarTarefa.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="visao\VisualizarIndicador.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

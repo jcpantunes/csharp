@@ -93,6 +93,7 @@ namespace GEP_DE611.persistencia
                     t.Tamanho = reader.GetInt32(8);
                     t.Complexidade = reader.GetInt32(9);
                     t.Pf = reader.GetDecimal(10);
+                    t.Projeto = reader.GetInt32(11);
                     lista.Add(t);
                 }
             }
@@ -125,6 +126,24 @@ namespace GEP_DE611.persistencia
                 + "pf = @pf, "
                 + "codigoProjeto = @codigoProjeto "
                 + "WHERE codigo = @codigo";
+            executarQuery(lista, queryUpdate);
+        }
+
+        public void atualizarPorId(List<ItemBacklog> lista)
+        {
+            string queryUpdate = "UPDATE " + TABELA
+                + " SET tipo = @tipo, "
+                + "id = @id, "
+                + "titulo = @titulo, "
+                + "status = @status, "
+                + "planejadoPara = @planejadoPara, "
+                + "dataColeta = @dataColeta, "
+                + "valorNegocio = @valorNegocio, "
+                + "tamanho = @tamanho, "
+                + "complexidade = @complexidade, "
+                + "pf = @pf, "
+                + "codigoProjeto = @codigoProjeto "
+                + "WHERE id = @id";
             executarQuery(lista, queryUpdate);
         }
 
