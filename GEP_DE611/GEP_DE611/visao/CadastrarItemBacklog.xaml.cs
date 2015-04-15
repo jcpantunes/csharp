@@ -320,7 +320,7 @@ namespace GEP_DE611.visao
             var element = e.EditingElement as System.Windows.Controls.TextBox;
             var text = element.Text;
 
-            ItemBacklog item = (ItemBacklog) e.Row.Item;
+            ItemBacklog item = (ItemBacklog)e.Row.Item;
 
             var coluna = e.Column.DisplayIndex;
 
@@ -328,7 +328,7 @@ namespace GEP_DE611.visao
             //     We cancel if the user typed a question mark.
             if (text.Length == 0)
             {
-	            e.Cancel = true;
+                e.Cancel = true;
             }
             else
             {

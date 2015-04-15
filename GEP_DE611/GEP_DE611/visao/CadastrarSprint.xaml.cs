@@ -83,7 +83,7 @@ namespace GEP_DE611.visao
             itemTodos.Content = "Todos";
             itemTodos.Tag = 0;
             cmbFiltroProjeto.Items.Add(itemTodos);
-            
+
             ProjetoDAO pDAO = new ProjetoDAO();
             List<Projeto> lista = pDAO.recuperar();
             foreach (Projeto p in lista)

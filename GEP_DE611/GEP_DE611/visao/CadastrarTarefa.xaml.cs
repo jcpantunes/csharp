@@ -65,7 +65,7 @@ namespace GEP_DE611.visao
 
         private void btnConfirmar_Click(object sender, RoutedEventArgs e)
         {
-            if (cmbProjeto.SelectedIndex < 0 || cmbSprint.SelectedIndex < 0 || 
+            if (cmbProjeto.SelectedIndex < 0 || cmbSprint.SelectedIndex < 0 ||
                 txtData.Text.Length == 0 || txtUpload.Text.Length == 0)
             {
                 Alerta alerta = new Alerta("Favor preencher todos os campos");
@@ -104,6 +104,11 @@ namespace GEP_DE611.visao
 
             if (Util.validarArquivoTarefa(lines[0]) == true)
             {
+                List<Funcionario> listaCacheFuncionario = new List<Funcionario>();
+
+                TarefaDAO tDAO = new TarefaDAO();
+                List<Tarefa> listaCacheTarefa = tDAO.recuperar();
+
                 List<Tarefa> listaTarefaIncluir = new List<Tarefa>();
 
                 List<Tarefa> listaTarefaAtualizar = new List<Tarefa>();
@@ -127,18 +132,10 @@ namespace GEP_DE611.visao
                     t.Pai = linha[9].Replace("#", "");
                     t.DataColeta = Convert.ToDateTime(txtData.Text);
 
-                    FuncionarioDAO fDAO = new FuncionarioDAO();
-                    String resposanvel = linha[3];
-                    Funcionario f = fDAO.recuperar(resposanvel);
-                    if (f == null)
-                    {
-                        f = new Funcionario(0, "DEBHE/DE611", resposanvel);
-                        fDAO.incluir(f.encapsularLista());
-                        f = fDAO.recuperar(resposanvel);
-                    }
-                    t.Responsavel = f;
+                    String responsavel = linha[3];
+                    t.Responsavel = recuperarFuncionario(listaCacheFuncionario, responsavel);
 
-                    if (!existeTarefa(t))
+                    if (!existeTarefa(listaCacheTarefa, t))
                     {
                         listaTarefaIncluir.Add(t);
                     }
@@ -149,7 +146,6 @@ namespace GEP_DE611.visao
                     listaTarefaHistorico.Add(t);
                 }
 
-                TarefaDAO tDAO = new TarefaDAO();
                 if (listaTarefaIncluir.Count > 0)
                 {
                     tDAO.incluir(listaTarefaIncluir);
@@ -176,16 +172,35 @@ namespace GEP_DE611.visao
             }
         }
 
-        private bool existeTarefa(Tarefa item)
+        private Funcionario recuperarFuncionario(List<Funcionario> listaFuncionario, string responsavel)
         {
-            Dictionary<string, string> param = new Dictionary<string, string>();
-            param.Add(Tarefa.ID, Convert.ToString(item.Id));
-
-            TarefaDAO tDAO = new TarefaDAO();
-            List<Tarefa> listaItem = tDAO.recuperar(param);
-            if (listaItem.Count > 0)
+            foreach (Funcionario func in listaFuncionario)
             {
-                return true;
+                if (func.Nome.Equals(responsavel))
+                {
+                    return func;
+                }
+            }
+            FuncionarioDAO fDAO = new FuncionarioDAO();
+            Funcionario f = fDAO.recuperar(responsavel);
+            if (f == null)
+            {
+                f = new Funcionario(0, "DEBHE/DE611", responsavel);
+                fDAO.incluir(f.encapsularLista());
+                f = fDAO.recuperar(responsavel);
+            }
+            listaFuncionario.Add(f);
+            return f;
+        }
+
+        private bool existeTarefa(List<Tarefa> listaTarefa, Tarefa item)
+        {
+            foreach (Tarefa t in listaTarefa)
+            {
+                if (t.Id.Equals(item.Id))
+                {
+                    return true;
+                }
             }
             return false;
         }

@@ -109,7 +109,7 @@ namespace GEP_DE611.visao
             int linha = tblProjeto.SelectedIndex;
             if (linha >= 0 && tblProjeto.SelectedItem is Projeto)
             {
-                Projeto p = (Projeto) tblProjeto.SelectedItem;
+                Projeto p = (Projeto)tblProjeto.SelectedItem;
                 preencherCampos(p);
             }
         }
@@ -156,7 +156,7 @@ namespace GEP_DE611.visao
         private void btnPesquisar_Click(object sender, RoutedEventArgs e)
         {
             Dictionary<string, string> param = new Dictionary<string, string>();
-            
+
             if (txtFiltroNome.Text.Length > 0)
             {
                 param.Add(Projeto.NOME, txtFiltroNome.Text);

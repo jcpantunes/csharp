@@ -7,7 +7,7 @@
                Margin="10,10,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" />
         <Label x:Name="lblMensagem2" Content="Os dados serão sobrescritos. Deseja Continuar?"
                Margin="10,30,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" />
-        
+
         <Button x:Name="btnSim" Content="Sim" Margin="70,70,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" 
                 Width="60" Height="30" Click="btnSim_Click" />
 

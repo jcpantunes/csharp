@@ -68,9 +68,11 @@ UPDATE ItemBacklog
 	WHERE codigo = 132;
 
 
-SELECT SUM(estimativa) FROM TarefaHistorico 
-	WHERE planejadoPara = 'eSocial-281573-1.0.1-CONS-01' and estimativaCorrigida = 0 and dataColeta in 
-		(SELECT distinct MAX (dataColeta)  FROM TarefaHistorico WHERE planejadoPara = 'eSocial-281573-1.0.1-CONS-01')
+
+
+	SELECT Count(id) FROM Tarefa
+	WHERE planejadoPara = 'eSocial-281573-1.0.1-CONS-01' and responsavel = 20
+
 union  
 SELECT SUM(estimativaCorrigida) FROM TarefaHistorico 
 	WHERE planejadoPara = 'eSocial-281573-1.0.1-CONS-01' and estimativaCorrigida > 0 and dataColeta in 

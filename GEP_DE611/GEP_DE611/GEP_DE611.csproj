@@ -4,7 +4,7 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{C16C5B98-DD3F-414F-B221-EEB45F3337EF}</ProjectGuid>
+    <ProjectGuid>{7B34ACCF-C768-439A-90BE-2312838F1FF5}</ProjectGuid>
     <OutputType>WinExe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>GEP_DE611</RootNamespace>
@@ -35,27 +35,15 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Accessibility" />
-    <Reference Include="Microsoft.Expression.DesignHost, Version=5.0.30709.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=x86" />
-    <Reference Include="microsoft.expression.designsurface, Version=5.0.30709.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=x86" />
-    <Reference Include="Microsoft.Expression.Markup, Version=5.0.30709.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=x86" />
-    <Reference Include="Microsoft.Expression.Platform, Version=5.0.30709.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=x86" />
-    <Reference Include="Microsoft.Expression.Utility, Version=5.0.30709.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=x86" />
-    <Reference Include="Microsoft.Windows.Design.Extensibility, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" />
-    <Reference Include="Microsoft.Windows.Design.Interaction, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" />
     <Reference Include="PresentationUI, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
     <Reference Include="ReachFramework" />
     <Reference Include="System" />
-    <Reference Include="System.ComponentModel.Composition" />
-    <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Data" />
-    <Reference Include="System.Data.Entity" />
     <Reference Include="System.Deployment" />
-    <Reference Include="System.Drawing" />
     <Reference Include="System.Printing" />
-    <Reference Include="System.Runtime.Serialization" />
-    <Reference Include="System.Security" />
     <Reference Include="system.windows.controls.datavisualization.toolkit, Version=3.5.40128.1, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
     <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Windows.Forms.DataVisualization" />
     <Reference Include="System.Xml" />
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Core" />
@@ -76,22 +64,6 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="componente\Alerta.xaml.cs">
-      <DependentUpon>Alerta.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="componente\AlertaUpload.xaml.cs">
-      <DependentUpon>AlertaUpload.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="dominio\ItemBacklog.cs" />
-    <Compile Include="dominio\util\DataHoraUtil.cs" />
-    <Compile Include="dominio\util\Util.cs" />
-    <Compile Include="dominio\Projeto.cs" />
-    <Compile Include="dominio\Sprint.cs" />
-    <Compile Include="persistencia\ItemBacklogDAO.cs" />
-    <Compile Include="persistencia\ProjetoDAO.cs" />
-    <Compile Include="persistencia\SprintDAO.cs" />
-    <Compile Include="persistencia\TarefaBaseDAO.cs" />
-    <Compile Include="persistencia\TarefaHistoricoDAO.cs" />
     <Compile Include="visao\CadastrarFuncionario.xaml.cs">
       <DependentUpon>CadastrarFuncionario.xaml</DependentUpon>
     </Compile>
@@ -107,30 +79,21 @@
     <Compile Include="visao\CadastrarTarefa.xaml.cs">
       <DependentUpon>CadastrarTarefa.xaml</DependentUpon>
     </Compile>
+    <Compile Include="visao\VisualizarBurndown.xaml.cs">
+      <DependentUpon>VisualizarBurndown.xaml</DependentUpon>
+    </Compile>
     <Compile Include="visao\VisualizarIndicador.xaml.cs">
       <DependentUpon>VisualizarIndicador.xaml</DependentUpon>
     </Compile>
-    <Page Include="componente\AlertaUpload.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="visao\CadastrarFuncionario.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="visao\CadastrarItemBacklog.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="visao\VisualizarBurndown.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
     <Page Include="chart\chart.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="componente\Alerta.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="componente\AlertaUpload.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -142,22 +105,38 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="visao\VisualizarBurndown.xaml.cs">
-      <DependentUpon>VisualizarBurndown.xaml</DependentUpon>
-    </Compile>
     <Compile Include="chart\chart.xaml.cs">
       <DependentUpon>chart.xaml</DependentUpon>
     </Compile>
+    <Compile Include="componente\Alerta.xaml.cs">
+      <DependentUpon>Alerta.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="componente\AlertaUpload.xaml.cs">
+      <DependentUpon>AlertaUpload.xaml</DependentUpon>
+    </Compile>
     <Compile Include="dominio\BaseBean.cs" />
+    <Compile Include="dominio\Funcionario.cs" />
+    <Compile Include="dominio\ItemBacklog.cs" />
+    <Compile Include="dominio\ItemTrabalho.cs" />
+    <Compile Include="dominio\Projeto.cs" />
+    <Compile Include="dominio\Sprint.cs" />
+    <Compile Include="dominio\Tarefa.cs" />
+    <Compile Include="dominio\util\DataHoraUtil.cs" />
     <Compile Include="dominio\util\StatusUtil.cs" />
     <Compile Include="dominio\util\TipoItemTrabalho.cs" />
-    <Compile Include="dominio\Funcionario.cs" />
-    <Compile Include="dominio\ItemTrabalho.cs" />
-    <Compile Include="dominio\Tarefa.cs" />
+    <Compile Include="dominio\util\Util.cs" />
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="visao\CadastrarFuncionario.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="visao\CadastrarItemBacklog.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="visao\CadastrarProjeto.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -170,6 +149,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="visao\VisualizarBurndown.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="visao\VisualizarIndicador.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -178,7 +161,12 @@
   <ItemGroup>
     <Compile Include="persistencia\BaseDAO.cs" />
     <Compile Include="persistencia\FuncionarioDAO.cs" />
+    <Compile Include="persistencia\ItemBacklogDAO.cs" />
+    <Compile Include="persistencia\ProjetoDAO.cs" />
+    <Compile Include="persistencia\SprintDAO.cs" />
+    <Compile Include="persistencia\TarefaBaseDAO.cs" />
     <Compile Include="persistencia\TarefaDAO.cs" />
+    <Compile Include="persistencia\TarefaHistoricoDAO.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -196,18 +184,26 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
     <AppDesigner Include="Properties\" />
+    <None Include="sql\[GDES]Backlog.csv" />
+    <None Include="sql\[GDES]Tarefa.csv" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
-    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+    <Content Include="sql\dbo.Funcionario.sql" />
+    <Content Include="sql\dbo.ItemBacklog.sql" />
+    <Content Include="sql\dbo.Projeto.sql" />
+    <Content Include="sql\dbo.Sprint.sql" />
+    <Content Include="sql\dbo.Tarefa.sql" />
+    <Content Include="sql\dbo.TarefaHistorico.sql" />
+    <Content Include="sql\query.sql" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

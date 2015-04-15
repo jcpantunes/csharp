@@ -9,13 +9,13 @@
         <Menu x:Name="mnu" Margin="10,10,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" Height="60" Width="1170">
 
             <Button x:Name="btnIndicador" Content="Indicador" HorizontalAlignment="Left" Click="btnIndicador_Click" Width="70" Height="55" />
-            
+
             <Button x:Name="btnUploadArquivoItemBacklog" Content="Item Backlog" HorizontalAlignment="Left" Click="btnUploadArquivoItemBacklog_Click" Width="70" Height="55" />
-            
+
             <Button x:Name="btnUploadArquivoTarefa" Content="Tarefa" HorizontalAlignment="Left" Click="btnUploadArquivoTarefa_Click" Width="70" Height="55" />
 
             <Button x:Name="btnFuncionario" Content="Funcionario" HorizontalAlignment="Left" Width="70" Height="55" Click="btnFuncionario_Click" />
-            
+
             <Button x:Name="btnProjeto" Content="Projeto" HorizontalAlignment="Left" Width="70" Height="55" Click="btnProjeto_Click" />
 
             <Button x:Name="btnSprint" Content="Sprint" HorizontalAlignment="Left" Width="70" Height="55" Click="btnSprint_Click" />

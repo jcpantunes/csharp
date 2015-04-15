@@ -64,7 +64,7 @@
                 <Button x:Name="btnFiltroLimpar" Content="Limpar" Margin="560,40,0,0" HorizontalAlignment="Left"  VerticalAlignment="Top" Width="60" Click="btnFiltroLimpar_Click" />
 
                 <Button x:Name="btnPesquisar" Content="Pesquisar" Margin="560,105,0,0" HorizontalAlignment="Left"  VerticalAlignment="Top" Width="60" Click="btnPesquisar_Click" />
-                
+
             </Grid>
 
         </GroupBox>

@@ -2,9 +2,11 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Collections.ObjectModel;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Controls.DataVisualization.Charting;
 using System.Windows.Data;
 using System.Windows.Documents;
 using System.Windows.Input;
@@ -28,7 +30,7 @@ namespace GEP_DE611.visao
 
             preencherCombos();
 
-            gerarBurndown();
+            // gerarBurndown();
         }
 
         private void preencherCombos()
@@ -76,7 +78,7 @@ namespace GEP_DE611.visao
 
         private void cmbProjeto_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            ComboBoxItem item = (ComboBoxItem) cmbProjeto.SelectedItem;
+            ComboBoxItem item = (ComboBoxItem)cmbProjeto.SelectedItem;
             int codigoProjeto = Convert.ToInt32(item.Tag);
             preencherComboSprint(codigoProjeto);
         }
@@ -90,7 +92,7 @@ namespace GEP_DE611.visao
         {
             if (cmbSprint.SelectedIndex >= 0)
             {
-                ComboBoxItem item = (ComboBoxItem) cmbSprint.SelectedItem;
+                ComboBoxItem item = (ComboBoxItem)cmbSprint.SelectedItem;
                 int codigo = Convert.ToInt32(item.Tag);
 
                 SprintDAO sDAO = new SprintDAO();
@@ -113,7 +115,7 @@ namespace GEP_DE611.visao
                     }
                     else
                     {
-                        Alerta alerta = new Alerta("Não Existe Tarefas com estimativas.");
+                        Alerta alerta = new Alerta("Não Existem Tarefas com estimativas.");
                         alerta.Show();
                     }
                 }
@@ -135,18 +137,39 @@ namespace GEP_DE611.visao
 
         private void gerarGrafico(string planejadoPara, int numDias, decimal estimativaTotal, List<string> listaX)
         {
+
             //LINHA IDEAL
             List<KeyValuePair<string, int>> lnIdeal = gerarLinhaIdeal(numDias, estimativaTotal, listaX);
 
             //LINHA PROGRESSO
             List<KeyValuePair<string, int>> lnProgresso = gerarLinhaProgresso(planejadoPara, numDias, estimativaTotal, listaX);
 
-            var dataSourceList = new List<List<KeyValuePair<string, int>>>();
-            dataSourceList.Add(lnIdeal);
-            dataSourceList.Add(lnProgresso);
+            lineChart.Series.Clear();
 
-            //Setting data for line chart
-            lineChart.DataContext = dataSourceList;
+            LineSeries serieIdeal = new LineSeries()
+            {
+                Title = "Ideal",
+                DependentValuePath = "Value",
+                IndependentValuePath = "Key",
+                ItemsSource = lnIdeal,
+            };
+            lineChart.Series.Add(serieIdeal);
+
+            LineSeries serieProgresso = new LineSeries()
+            {
+                Title = "Progresso",
+                DependentValuePath = "Value",
+                IndependentValuePath = "Key",
+                ItemsSource = lnProgresso,
+            };
+            lineChart.Series.Add(serieProgresso);
+
+            // var dataSourceList = new List<List<KeyValuePair<string, int>>>();
+            // dataSourceList.Add(lnIdeal);
+            // dataSourceList.Add(lnProgresso);
+            // Setting data for line chart
+            // lineChart.DataContext = dataSourceList;
+
         }
 
         private List<KeyValuePair<string, int>> gerarLinhaIdeal(int numDias, decimal estimativaTotal, List<string> listaX)
@@ -171,7 +194,7 @@ namespace GEP_DE611.visao
 
             int dia = 0;
             int diaProgresso = 0;
-            
+
             if ((listaProgresso.Count == 0) || (Convert.ToDateTime(listaX[dia]).CompareTo(Convert.ToDateTime(listaProgresso[diaProgresso].Key)) < 0))
             {
                 while (Convert.ToDateTime(listaX[dia]).CompareTo(Convert.ToDateTime(listaProgresso[diaProgresso].Key)) < 0 && dia < listaX.Count)

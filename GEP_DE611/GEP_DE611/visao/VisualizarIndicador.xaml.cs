@@ -12,9 +12,11 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using System.Data;
+using GEP_DE611.componente;
 using GEP_DE611.dominio;
 using GEP_DE611.dominio.util;
 using GEP_DE611.persistencia;
+
 
 namespace GEP_DE611.visao
 {
@@ -113,18 +115,17 @@ namespace GEP_DE611.visao
             {
                 foreach (Sprint s in lista)
                 {
-                    ComboBoxItem item = new ComboBoxItem();
+                    ListBoxItem item = new ListBoxItem();
                     item.Content = s.Nome;
                     item.Tag = s.Codigo;
                     lstSprint.Items.Add(item);
                 }
-                lstSprint.SelectedIndex = 0;
             }
         }
 
         private void cmbLotacao_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            ComboBoxItem item = (ComboBoxItem) cmbLotacao.SelectedItem;
+            ComboBoxItem item = (ComboBoxItem)cmbLotacao.SelectedItem;
             string lotacao = Convert.ToString(item.Content);
             preencherComboFuncionario(lotacao);
         }
@@ -138,42 +139,97 @@ namespace GEP_DE611.visao
 
         private void btnNumItemTrabalhado_Click(object sender, RoutedEventArgs e)
         {
-            if (cmbLotacao.SelectedIndex >= 0 && cmbFuncionario.SelectedIndex >= 0)
+
+        }
+
+        private bool validarExibicaoTabela()
+        {
+            if (cmbLotacao.SelectedIndex >= 0 && cmbFuncionario.SelectedIndex >= 0
+                && cmbProjeto.SelectedIndex >= 0 && lstSprint.SelectedItems.Count > 0)
             {
-                tblNumItemTrabalhado.Columns.Clear();
-                // <DataGridTextColumn Header="Codigo" Width="60" Binding="{Binding Path=Codigo}" />
+                return true;
+            }
+            else 
+            {
+                Alerta alerta = new Alerta("Favor preencher todos os campos");
+                alerta.Show();
+            }
+            return false;
+        }
 
-                // NOME |   eSocial-281573-1.0.0-CONS-01    |   eSocial-281573-1.0.0-CONS-02    |   Media
+        private List<string> prepararTabela(DataGrid grid, DataTable tabela, List<Funcionario> listaFuncionario)
+        {
+            grid.Columns.Clear();
+            
+            List<string> listaColunas = new List<string>();
+            tabela.Columns.Add("Nome", typeof(string));
+            foreach (ListBoxItem item in lstSprint.SelectedItems)
+            {
+                listaColunas.Add(Convert.ToString(item.Content));
+                tabela.Columns.Add(Convert.ToString(item.Content), typeof(int));
+            }
+            tabela.Columns.Add("Media", typeof(decimal));
 
-                DataTable table = new DataTable();
-                table.Columns.Add("Nome", typeof(string));
-                table.Columns.Add("eSocial-281573-1.0.0-CONS-01", typeof(int));
-                table.Columns.Add("eSocial-281573-1.0.0-CONS-02", typeof(int));
-                table.Columns.Add("Media", typeof(decimal));
+            if (cmbFuncionario.SelectedIndex == 0)
+            {
+                listaFuncionario = recuperarListaFuncionario(Convert.ToString(((ComboBoxItem)cmbLotacao.SelectedItem).Content));
+            }
+            else
+            {
+                FuncionarioDAO fDAO = new FuncionarioDAO();
+                listaFuncionario.Add(fDAO.recuperar(Convert.ToInt32(((ComboBoxItem)cmbFuncionario.SelectedItem).Tag)));
+            }
+            return listaColunas;
+        }
 
-                List<Funcionario> listaFuncionario = recuperarListaFuncionario(Convert.ToString(((ComboBoxItem)cmbLotacao.SelectedItem).Content));
-                foreach (Funcionario func in listaFuncionario)
+        private void preencherGrid(DataGrid grid, DataTable tabela)
+        {
+            if (tabela != null) // table is a DataTable
+            {
+                foreach (DataColumn col in tabela.Columns)
                 {
-                    decimal media = (3 + 5) / 2;
-                    table.Rows.Add(func.Nome, 3, 5, media);
-                }
-
-                if (table != null) // table is a DataTable
-                {
-                    foreach (DataColumn col in table.Columns)
+                    tblNumItemTrabalhado.Columns.Add(new DataGridTextColumn
                     {
-                        tblNumItemTrabalhado.Columns.Add(new DataGridTextColumn
-                        {
-                            Header = col.ColumnName,
-                            Width = 100,
-                            Binding = new Binding(string.Format("[{0}]", col.ColumnName))
-                        });
-                    }
-                    tblNumItemTrabalhado.DataContext = table;
+                        Header = col.ColumnName,
+                        Width = 100,
+                        Binding = new Binding(string.Format("[{0}]", col.ColumnName))
+                    });
                 }
+                tblNumItemTrabalhado.DataContext = tabela;
             }
         }
 
-        
+        private void numTarefasPorSprint_Expanded(object sender, RoutedEventArgs e)
+        {
+            if (validarExibicaoTabela())
+            {
+                DataTable tabela = new DataTable();
+                List<Funcionario> listaFuncionario = new List<Funcionario>();
+                
+                List<string> listaColunas = prepararTabela(tblNumItemTrabalhado, tabela, listaFuncionario);
+                
+                TarefaDAO tDAO = new TarefaDAO();
+                foreach (Funcionario func in listaFuncionario)
+                {
+                    object[] linha = new object[listaColunas.Count + 2]; // +2 por causa das colunas nome e media
+
+                    linha[0] = func.Nome;
+
+                    decimal media = 0;
+                    for (int i = 0; i < listaColunas.Count; i++)
+                    {
+                        linha[i + 1] = tDAO.recuperarQtdeTarefasPorSprintPorResponsavel(listaColunas[i], func.Codigo);
+                        // linha[i+1] = i + 1;
+                        media += Convert.ToInt32(linha[i + 1]);
+                    }
+                    linha[listaColunas.Count + 1] = (media / listaColunas.Count);
+
+                    tabela.Rows.Add(linha);
+                }
+
+                preencherGrid(tblNumItemTrabalhado, tabela);
+            }
+            
+        }
     }
 }

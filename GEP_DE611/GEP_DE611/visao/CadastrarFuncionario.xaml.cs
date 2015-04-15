@@ -129,7 +129,7 @@ namespace GEP_DE611.visao
             int linha = tblFuncionario.SelectedIndex;
             if (linha >= 0 && tblFuncionario.SelectedItem is Funcionario)
             {
-                Funcionario f = (Funcionario) tblFuncionario.SelectedItem;
+                Funcionario f = (Funcionario)tblFuncionario.SelectedItem;
                 preencherCampos(f);
             }
         }

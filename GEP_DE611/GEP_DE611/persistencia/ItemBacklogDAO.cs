@@ -156,10 +156,17 @@ namespace GEP_DE611.persistencia
         private void executarQuery(List<ItemBacklog> lista, string query)
         {
             SqlConnection conn = null;
+            conn = conectar(conn);
             for (int i = 0; i < lista.Count; i++)
             {
-                ItemBacklog f = lista[i];
-                save(conn, query, criarListaParametros(f));
+                ItemBacklog item = lista[i];
+                SqlCommand cmd = new SqlCommand(query, conn);
+                List<SqlParameter> listaParametros = criarListaParametros(item);
+                foreach (SqlParameter parametro in listaParametros)
+                {
+                    cmd.Parameters.Add(parametro);
+                }
+                cmd.ExecuteNonQuery();
             }
             desconectar(conn);
         }

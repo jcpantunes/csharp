@@ -245,10 +245,17 @@ namespace GEP_DE611.persistencia
         private void executarQuery(List<Tarefa> lista, string query)
         {
             SqlConnection conn = null;
+            conn = conectar(conn);
             for (int i = 0; i < lista.Count; i++)
             {
                 Tarefa f = lista[i];
-                save(conn, query, criarListaParametros(f));
+                SqlCommand cmd = new SqlCommand(query, conn);
+                List<SqlParameter> listaParametros = criarListaParametros(f);
+                foreach (SqlParameter parametro in listaParametros)
+                {
+                    cmd.Parameters.Add(parametro);
+                }
+                cmd.ExecuteNonQuery();
             }
             desconectar(conn);
         }

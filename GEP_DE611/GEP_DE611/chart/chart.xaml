@@ -25,5 +25,5 @@
             <chartingToolkit:ColumnSeries HorizontalAlignment="Left" Margin="-354,-14,0,0" VerticalAlignment="Top"/>
         </Grid>
     </ScrollViewer>
-    
+
 </Page>

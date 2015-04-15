@@ -55,7 +55,7 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\GEP_DE611\GEP_DE611.csproj">
-      <Project>{c16c5b98-dd3f-414f-b221-eeb45f3337ef}</Project>
+      <Project>{7b34accf-c768-439a-90be-2312838f1ff5}</Project>
       <Name>GEP_DE611</Name>
     </ProjectReference>
   </ItemGroup>
