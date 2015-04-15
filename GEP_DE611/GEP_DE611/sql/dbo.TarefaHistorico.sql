@@ -12,6 +12,6 @@
     [tempoGasto]          DECIMAL (10, 1) NULL,
     [responsavel]         INT             NOT NULL,
     PRIMARY KEY CLUSTERED ([codigo] ASC),
-    CONSTRAINT [FK_Tarefa_ToFuncionario] FOREIGN KEY ([responsavel]) REFERENCES [dbo].[Funcionario] ([codigo])
+    CONSTRAINT [FK_TarefaHistorico_ToFuncionario] FOREIGN KEY ([responsavel]) REFERENCES [dbo].[Funcionario] ([codigo])
 );
 

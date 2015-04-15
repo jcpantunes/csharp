@@ -59,6 +59,7 @@ namespace GEP_DE611.persistencia
 
         private List<Sprint> executarSelect(string query)
         {
+            query += " Order by " + Sprint.NOME;
             List<Sprint> lista = new List<Sprint>();
             SqlConnection conn = null;
             SqlDataReader reader = select(conn, query);

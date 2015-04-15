@@ -27,10 +27,17 @@ namespace GEP_DE611.visao
         {
             InitializeComponent();
 
-            preencherCombo();
+            preencherCombos();
         }
 
-        private void preencherCombo()
+        private void preencherCombos()
+        {
+            preencherComboLotacao();
+
+            preencherComboProjeto();
+        }
+
+        private void preencherComboLotacao()
         {
             List<string> lista = Util.retornarListaLotacao();
             if (lista.Count > 0)
@@ -77,7 +84,42 @@ namespace GEP_DE611.visao
 
             FuncionarioDAO fDAO = new FuncionarioDAO();
             return fDAO.recuperar(param);
-            
+        }
+
+        private void preencherComboProjeto()
+        {
+            ProjetoDAO pDAO = new ProjetoDAO();
+            List<Projeto> lista = pDAO.recuperar();
+            if (lista.Count > 0)
+            {
+                foreach (Projeto p in lista)
+                {
+                    ComboBoxItem item = new ComboBoxItem();
+                    item.Content = p.Nome;
+                    item.Tag = p.Codigo;
+                    cmbProjeto.Items.Add(item);
+                }
+                cmbProjeto.SelectedIndex = 0;
+                preencherListBoxSprint(lista[0].Codigo);
+            }
+        }
+
+        private void preencherListBoxSprint(int codigoProjeto)
+        {
+            lstSprint.Items.Clear();
+            SprintDAO sDAO = new SprintDAO();
+            List<Sprint> lista = sDAO.recuperar(Sprint.criarListaParametrosPesquisaPorProjeto(codigoProjeto));
+            if (lista.Count > 0)
+            {
+                foreach (Sprint s in lista)
+                {
+                    ComboBoxItem item = new ComboBoxItem();
+                    item.Content = s.Nome;
+                    item.Tag = s.Codigo;
+                    lstSprint.Items.Add(item);
+                }
+                lstSprint.SelectedIndex = 0;
+            }
         }
 
         private void cmbLotacao_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -87,52 +129,51 @@ namespace GEP_DE611.visao
             preencherComboFuncionario(lotacao);
         }
 
+        private void cmbProjeto_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            ComboBoxItem item = (ComboBoxItem)cmbProjeto.SelectedItem;
+            int codigo = Convert.ToInt32(item.Tag);
+            preencherListBoxSprint(codigo);
+        }
+
         private void btnNumItemTrabalhado_Click(object sender, RoutedEventArgs e)
         {
             if (cmbLotacao.SelectedIndex >= 0 && cmbFuncionario.SelectedIndex >= 0)
             {
+                tblNumItemTrabalhado.Columns.Clear();
                 // <DataGridTextColumn Header="Codigo" Width="60" Binding="{Binding Path=Codigo}" />
 
-                List<Funcionario> listaFuncionario = recuperarListaFuncionario(Convert.ToString(((ComboBoxItem)cmbLotacao.SelectedItem).Content));
-
                 // NOME |   eSocial-281573-1.0.0-CONS-01    |   eSocial-281573-1.0.0-CONS-02    |   Media
-                tblNumItemTrabalhado.Columns.Add(recuperarColuna("Nome", 100, 0));
-                tblNumItemTrabalhado.Columns.Add(recuperarColuna("eSocial-281573-1.0.0-CONS-01", 200, 1));
-                //tblNumItemTrabalhado.Columns.Add(recuperarColuna("eSocial-281573-1.0.0-CONS-02", 200));
-                //tblNumItemTrabalhado.Columns.Add(recuperarColuna("Media", 100));
 
-                List<DataGridRow> listaRow = new List<DataGridRow>();
+                DataTable table = new DataTable();
+                table.Columns.Add("Nome", typeof(string));
+                table.Columns.Add("eSocial-281573-1.0.0-CONS-01", typeof(int));
+                table.Columns.Add("eSocial-281573-1.0.0-CONS-02", typeof(int));
+                table.Columns.Add("Media", typeof(decimal));
+
+                List<Funcionario> listaFuncionario = recuperarListaFuncionario(Convert.ToString(((ComboBoxItem)cmbLotacao.SelectedItem).Content));
                 foreach (Funcionario func in listaFuncionario)
                 {
-                    listaRow.Add(recuperarLinha(func.Nome, 2, 5));
+                    decimal media = (3 + 5) / 2;
+                    table.Rows.Add(func.Nome, 3, 5, media);
                 }
-                tblNumItemTrabalhado.ItemsSource = listaRow;
+
+                if (table != null) // table is a DataTable
+                {
+                    foreach (DataColumn col in table.Columns)
+                    {
+                        tblNumItemTrabalhado.Columns.Add(new DataGridTextColumn
+                        {
+                            Header = col.ColumnName,
+                            Width = 100,
+                            Binding = new Binding(string.Format("[{0}]", col.ColumnName))
+                        });
+                    }
+                    tblNumItemTrabalhado.DataContext = table;
+                }
             }
         }
 
-        private DataGridTextColumn recuperarColuna(string nomeColuna, int tamanho, int coluna)
-        {
-            return new DataGridTextColumn
-            {
-                Header = nomeColuna,
-                Width = tamanho,
-                Binding = new Binding("["+coluna+"]")
-            };
-        }
-
-        private DataGridRow recuperarLinha(string nome, int t1, int t2)
-        {
-            List<string> lista = new List<String>();
-            lista.Add(nome);
-            lista.Add(Convert.ToString(t1));
-            //lista.Add(Convert.ToString(t2));
-            //int media = (t1 + t2)/2;
-            //lista.Add(Convert.ToString(media));
-
-            DataGridRow linha = new DataGridRow();
-            linha.DataContext = lista;
-
-            return linha;
-        }
+        
     }
 }

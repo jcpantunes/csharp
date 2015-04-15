@@ -378,10 +378,6 @@ namespace GEP_DE611.visao
                 string sprint = Convert.ToString(((ComboBoxItem)cmbFiltroSprint.SelectedItem).Content);
                 param.Add(Tarefa.PLANEJADO_PARA, sprint);
             }
-            else
-            {
-                param.Add(Tarefa.PLANEJADO_PARA, "");
-            }
             if (cmbFiltroFuncionario.SelectedIndex > 0)
             {
                 int codigo = Convert.ToInt32(((ComboBoxItem)cmbFiltroFuncionario.SelectedItem).Tag);
