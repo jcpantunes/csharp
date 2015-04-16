@@ -101,6 +101,23 @@ namespace GEP_DE611.persistencia
             return lista;
         }
 
+        public int recuperarQtdeItensPorSprintPorResponsavel(string planejadoPara, int responsavel)
+        {
+            string query = "SELECT Count(id) FROM " + TABELA
+                + " WHERE planejadoPara = '" + planejadoPara + "' and id in "
+                    + " (SELECT distinct pai FROM Tarefa "
+                    + " WHERE planejadoPara = '" + planejadoPara + "' and responsavel = " + responsavel + ")";
+            return retornarSelectValorInt(query);
+        }
+
+        public int recuperarComplexidadeItensPorSprintPorResponsavel(string planejadoPara, int responsavel)
+        {
+            string query = "SELECT avg(complexidade) FROM " + TABELA
+                + " WHERE id in (SELECT distinct pai FROM Tarefa "
+                    + " WHERE planejadoPara = '" + planejadoPara + "' and responsavel = " + responsavel + ")";
+            return retornarSelectValorInt(query);
+        }
+
         public void incluir (List<ItemBacklog> lista)
         {
             string queryInsert = "INSERT INTO " + TABELA

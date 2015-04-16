@@ -157,11 +157,8 @@ namespace GEP_DE611.visao
             return false;
         }
 
-        private List<string> prepararTabela(DataGrid grid, DataTable tabela, List<Funcionario> listaFuncionario)
+        private void prepararTabela(DataTable tabela, List<Funcionario> listaFuncionario, List<string> listaColunas)
         {
-            grid.Columns.Clear();
-            
-            List<string> listaColunas = new List<string>();
             tabela.Columns.Add("Nome", typeof(string));
             foreach (ListBoxItem item in lstSprint.SelectedItems)
             {
@@ -172,64 +169,99 @@ namespace GEP_DE611.visao
 
             if (cmbFuncionario.SelectedIndex == 0)
             {
-                listaFuncionario = recuperarListaFuncionario(Convert.ToString(((ComboBoxItem)cmbLotacao.SelectedItem).Content));
+                listaFuncionario.AddRange(recuperarListaFuncionario(Convert.ToString(((ComboBoxItem)cmbLotacao.SelectedItem).Content)));
             }
             else
             {
                 FuncionarioDAO fDAO = new FuncionarioDAO();
                 listaFuncionario.Add(fDAO.recuperar(Convert.ToInt32(((ComboBoxItem)cmbFuncionario.SelectedItem).Tag)));
             }
-            return listaColunas;
         }
 
         private void preencherGrid(DataGrid grid, DataTable tabela)
         {
             if (tabela != null) // table is a DataTable
             {
+                grid.Columns.Clear();
                 foreach (DataColumn col in tabela.Columns)
                 {
-                    tblNumItemTrabalhado.Columns.Add(new DataGridTextColumn
+                    grid.Columns.Add(new DataGridTextColumn
                     {
                         Header = col.ColumnName,
                         Width = 100,
                         Binding = new Binding(string.Format("[{0}]", col.ColumnName))
                     });
                 }
-                tblNumItemTrabalhado.DataContext = tabela;
+                grid.DataContext = tabela;
             }
         }
 
-        private void numTarefasPorSprint_Expanded(object sender, RoutedEventArgs e)
+        private void executarAcao(DataGrid grid, int opcao)
         {
             if (validarExibicaoTabela())
             {
                 DataTable tabela = new DataTable();
                 List<Funcionario> listaFuncionario = new List<Funcionario>();
-                
-                List<string> listaColunas = prepararTabela(tblNumItemTrabalhado, tabela, listaFuncionario);
-                
-                TarefaDAO tDAO = new TarefaDAO();
+                List<string> listaColunas = new List<string>();
+                prepararTabela(tabela, listaFuncionario, listaColunas);
+
                 foreach (Funcionario func in listaFuncionario)
                 {
                     object[] linha = new object[listaColunas.Count + 2]; // +2 por causa das colunas nome e media
-
                     linha[0] = func.Nome;
-
                     decimal media = 0;
                     for (int i = 0; i < listaColunas.Count; i++)
                     {
-                        linha[i + 1] = tDAO.recuperarQtdeTarefasPorSprintPorResponsavel(listaColunas[i], func.Codigo);
-                        // linha[i+1] = i + 1;
+                        if (opcao == OpcaoIndicador.NUM_TAREFA_POR_SPRINT)
+                        {
+                            TarefaDAO tDAO = new TarefaDAO();
+                            linha[i + 1] = tDAO.recuperarQtdeTarefasPorSprintPorResponsavel(listaColunas[i], func.Codigo);
+                        }
+                        else if (opcao == OpcaoIndicador.NUM_ITEM_POR_SPRINT)
+                        {
+                            ItemBacklogDAO ibDAO = new ItemBacklogDAO();
+                            linha[i + 1] = ibDAO.recuperarQtdeItensPorSprintPorResponsavel(listaColunas[i], func.Codigo);
+                        }
+                        else if (opcao == OpcaoIndicador.COMPLEXIDADE_ITEM_POR_SPRINT)
+                        {
+                            ItemBacklogDAO ibDAO = new ItemBacklogDAO();
+                            linha[i + 1] = ibDAO.recuperarComplexidadeItensPorSprintPorResponsavel(listaColunas[i], func.Codigo);
+                        }
+                        else
+                        {
+                            linha[i + 1] = i;
+                        }
                         media += Convert.ToInt32(linha[i + 1]);
                     }
                     linha[listaColunas.Count + 1] = (media / listaColunas.Count);
-
                     tabela.Rows.Add(linha);
                 }
-
-                preencherGrid(tblNumItemTrabalhado, tabela);
+                preencherGrid(grid, tabela);
             }
-            
         }
+
+        private void numTarefasPorSprint_Expanded(object sender, RoutedEventArgs e)
+        {
+            executarAcao(tblNumTarefaTrabalhado, OpcaoIndicador.NUM_TAREFA_POR_SPRINT);
+        }
+
+        private void numItensPorSprint_Expanded(object sender, RoutedEventArgs e)
+        {
+            executarAcao(tblNumItemTrabalhado, OpcaoIndicador.NUM_ITEM_POR_SPRINT);
+        }
+
+        private void complexidadeItensPorSprint_Expanded(object sender, RoutedEventArgs e)
+        {
+            executarAcao(tblComplexidadeItemTrabalhado, OpcaoIndicador.COMPLEXIDADE_ITEM_POR_SPRINT);
+        }
+    }
+
+    class OpcaoIndicador
+    {
+        public const int NUM_TAREFA_POR_SPRINT = 0;
+
+        public const int NUM_ITEM_POR_SPRINT = 1;
+
+        public const int COMPLEXIDADE_ITEM_POR_SPRINT = 2;
     }
 }

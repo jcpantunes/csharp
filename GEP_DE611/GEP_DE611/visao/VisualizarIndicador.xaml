@@ -40,10 +40,20 @@
                 <Grid>
                     <Expander Header="Numero de Tarefas Por Sprint" Margin="10,0,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" 
                           Width="1120"  BorderBrush="Black" BorderThickness="1" IsExpanded="False" Expanded="numTarefasPorSprint_Expanded" >
+                        <DataGrid x:Name="tblNumTarefaTrabalhado" Margin="10,0,0,0"  HorizontalAlignment="Left" VerticalAlignment="Top" ItemsSource="{Binding}"
+					        Width="1100" Height="200" AutoGenerateColumns="False" IsReadOnly="True" CanUserSortColumns="False" CanUserReorderColumns="False" />
+                    </Expander>
 
-                        <DataGrid x:Name="tblNumItemTrabalhado" Margin="10,0,0,0"  HorizontalAlignment="Left"  ItemsSource="{Binding}"
-					        VerticalAlignment="Top" Width="1100" Height="Auto" AutoGenerateColumns="False" IsReadOnly="True" CanUserSortColumns="False" CanUserReorderColumns="False" />
+                    <Expander Header="Numero de Itens Por Sprint" Margin="10,230,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" 
+                          Width="1120"  BorderBrush="Black" BorderThickness="1" IsExpanded="False" Expanded="numItensPorSprint_Expanded" >
+                        <DataGrid x:Name="tblNumItemTrabalhado" Margin="10,0,0,0" HorizontalAlignment="Left"  VerticalAlignment="Top" ItemsSource="{Binding}"
+					        Width="1100" Height="200" AutoGenerateColumns="False" IsReadOnly="True" CanUserSortColumns="False" CanUserReorderColumns="False" />
+                    </Expander>
 
+                    <Expander Header="Complexidade dos Itens Por Sprint" Margin="10,460,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" 
+                          Width="1120"  BorderBrush="Black" BorderThickness="1" IsExpanded="False" Expanded="complexidadeItensPorSprint_Expanded" >
+                        <DataGrid x:Name="tblComplexidadeItemTrabalhado" Margin="10,0,0,0" HorizontalAlignment="Left"  VerticalAlignment="Top" ItemsSource="{Binding}"
+					        Width="1100" Height="200" AutoGenerateColumns="False" IsReadOnly="True" CanUserSortColumns="False" CanUserReorderColumns="False" />
                     </Expander>
                 </Grid>
             </ScrollViewer>

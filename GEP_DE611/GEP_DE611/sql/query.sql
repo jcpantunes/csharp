@@ -70,8 +70,25 @@ UPDATE ItemBacklog
 
 
 
-	SELECT Count(id) FROM Tarefa
+SELECT Count(id) FROM Tarefa
 	WHERE planejadoPara = 'eSocial-281573-1.0.1-CONS-01' and responsavel = 20
+
+SELECT Count(id) FROM ItemBacklog
+	WHERE planejadoPara = 'eSocial-281573-1.0.0-CONS-01'
+	and id in (SELECT distinct pai FROM Tarefa
+				WHERE planejadoPara = 'eSocial-281573-1.0.0-CONS-01' and responsavel = 8)
+
+SELECT avg(complexidade) FROM ItemBacklog
+	WHERE id in (SELECT distinct pai FROM Tarefa
+				WHERE planejadoPara = 'eSocial-281573-1.0.0-CONS-01' and responsavel = 8)
+
+SELECT * FROM Tarefa WHERE planejadoPara = 'eSocial-281573-1.0.0-CONS-01' and responsavel = 2
+
+select * from Funcionario
+
+SELECT titulo, pai FROM Tarefa WHERE planejadoPara = 'eSocial-281573-1.0.0-CONS-01' and responsavel = 2
+
+
 
 union  
 SELECT SUM(estimativaCorrigida) FROM TarefaHistorico 
