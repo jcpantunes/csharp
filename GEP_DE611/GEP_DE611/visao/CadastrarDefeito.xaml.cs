@@ -20,111 +20,36 @@ using GEP_DE611.componente;
 namespace GEP_DE611.visao
 {
     /// <summary>
-    /// Interaction logic for CadastrarItemBacklog.xaml
+    /// Interaction logic for CadastrarDefeito.xaml
     /// </summary>
-    public partial class CadastrarItemBacklog : Window
+    public partial class CadastrarDefeito : Window
     {
-        public CadastrarItemBacklog()
+        private BaseWindow baseWindow;
+
+        public CadastrarDefeito()
         {
             InitializeComponent();
 
             txtData.Text = DateTime.Now.ToShortDateString();
 
-            preencherLista(new Dictionary<string, string>());
+            baseWindow = new BaseWindow();
 
             preencherCombos();
         }
 
         private void preencherLista(Dictionary<string, string> param)
         {
-            try
-            {
-                ItemBacklogDAO tDAO = new ItemBacklogDAO();
-                tblItemBacklog.ItemsSource = tDAO.recuperar(param);
-            }
-            catch (Exception ex)
-            {
-                Alerta alerta = new Alerta("Problema ao tentar acessar o banco de dados: \n" + ex.Message);
-                alerta.Show();
-                this.Close();
-            }
+            DefeitoDAO tDAO = new DefeitoDAO();
+            tblDefeito.ItemsSource = tDAO.recuperar(param);
         }
 
         private void preencherCombos()
         {
-            preencherComboProjeto();
-            preencherComboStatus();
-        }
+            baseWindow.preencherComboProjeto(cmbProjeto, false);
+            
+            baseWindow.preencherComboProjeto(cmbFiltroProjeto, true);
 
-        private void preencherComboProjeto()
-        {
-            ProjetoDAO pDAO = new ProjetoDAO();
-            List<Projeto> lista = pDAO.recuperar();
-            if (lista.Count > 0)
-            {
-                ComboBoxItem itemTodos = new ComboBoxItem();
-                itemTodos.Content = "Todos";
-                itemTodos.Tag = 0;
-                cmbFiltroProjeto.Items.Add(itemTodos);
-                cmbFiltroProjeto.SelectedIndex = 0;
-
-                foreach (Projeto p in lista)
-                {
-                    ComboBoxItem item = new ComboBoxItem();
-                    item.Content = p.Nome;
-                    item.Tag = p.Codigo;
-                    cmbProjeto.Items.Add(item);
-
-                    ComboBoxItem itemFiltro = new ComboBoxItem();
-                    itemFiltro.Content = p.Nome;
-                    itemFiltro.Tag = p.Codigo;
-                    cmbFiltroProjeto.Items.Add(itemFiltro);
-                }
-                cmbProjeto.SelectedIndex = 0;
-            }
-        }
-
-        private void preencherComboFiltroSprint(int codigoProjeto)
-        {
-            cmbFiltroSprint.Items.Clear();
-            SprintDAO sDAO = new SprintDAO();
-            List<Sprint> lista = sDAO.recuperar(Sprint.criarListaParametrosPesquisaPorProjeto(codigoProjeto));
-            if (lista.Count > 0)
-            {
-                ComboBoxItem itemTodos = new ComboBoxItem();
-                itemTodos.Content = "Todos";
-                itemTodos.Tag = 0;
-                cmbFiltroSprint.Items.Add(itemTodos);
-                cmbFiltroSprint.SelectedIndex = 0;
-
-                foreach (Sprint s in lista)
-                {
-                    ComboBoxItem item = new ComboBoxItem();
-                    item.Content = s.Nome;
-                    item.Tag = s.Codigo;
-                    cmbFiltroSprint.Items.Add(item);
-                }
-            }
-        }
-
-        private void preencherComboStatus()
-        {
-            ComboBoxItem itemTodos = new ComboBoxItem();
-            itemTodos.Content = "Todos";
-            itemTodos.Tag = 0;
-            cmbFiltroStatus.Items.Add(itemTodos);
-            cmbFiltroStatus.SelectedIndex = 0;
-
-            List<string> lista = StatusUtil.recuperarListaStatus();
-            if (lista.Count > 0)
-            {
-                foreach (string str in lista)
-                {
-                    ComboBoxItem item = new ComboBoxItem();
-                    item.Content = str;
-                    cmbFiltroStatus.Items.Add(item);
-                }
-            }
+            baseWindow.preencherComboStatus(cmbFiltroStatus, true);
         }
 
         private void btnUpload_Click(object sender, RoutedEventArgs e)
@@ -154,40 +79,34 @@ namespace GEP_DE611.visao
         {
             string[] lines = System.IO.File.ReadAllLines(file);
 
-            if (lines.Length > 1 && Util.validarArquivoItemBacklog(lines[0]) == true)
+            if (lines.Length > 1 && Util.validarArquivoDefeito(lines[0]) == true)
             {
-                List<ItemBacklog> listaIncluir = new List<ItemBacklog>();
-                List<ItemBacklog> listaAtualizar = new List<ItemBacklog>();
-
+                List<Defeito> listaIncluir = new List<Defeito>();
+                List<Defeito> listaAtualizar = new List<Defeito>();
+                List<Funcionario> listaFuncionario = new List<Funcionario>();
                 List<Projeto> listaProjeto = new List<Projeto>();
 
                 for (int i = 1; i < lines.Length; i++)
                 {
                     string[] linha = lines[i].Replace("\"", "").Split('\t');
-                    ItemBacklog item = new ItemBacklog();
+                    Defeito item = new Defeito();
                     item.Tipo = linha[0];
                     item.Id = Convert.ToInt32(linha[1]);
                     item.Titulo = linha[2];
-                    item.Status = linha[3];
-                    item.PlanejadoPara = linha[4];
+                    item.Responsavel = baseWindow.recuperarFuncionarioInCache(listaFuncionario, Convert.ToString(linha[3]));
+                    item.Status = linha[4];
+                    item.PlanejadoPara = linha[5];
                     item.DataColeta = Convert.ToDateTime(txtData.Text);
-                    item.ValorNegocio = Convert.ToInt32(linha[5].Replace("pts", "").Replace("pt", ""));
-                    item.Tamanho = Convert.ToInt32(linha[6]);
-                    item.Complexidade = Convert.ToInt32(linha[8]);
-                    item.Pf = Convert.ToDecimal(linha[9]);
+                    item.EncontradoProjeto = Convert.ToString(linha[6]);
+                    item.TipoRelato = Convert.ToString(linha[7]);
+                    item.Resolucao = Convert.ToString(linha[8]);
+                    
+                    int codigo = Convert.ToInt32(((ComboBoxItem)cmbProjeto.SelectedItem).Tag);
+                    string nome = Convert.ToString(((ComboBoxItem)cmbProjeto.SelectedItem).Content);
+                    Projeto p = baseWindow.recuperarProjetoInCache(listaProjeto, Convert.ToInt32(linha[7]), codigo, nome);
+                    item.Projeto = p.Codigo;
 
-                    Projeto p = recuperarProjeto(listaProjeto, Convert.ToInt32(linha[7]));
-                    if (p != null)
-                    {
-                        item.Projeto = p.Codigo;
-                    }
-                    else
-                    {
-                        int codigo = Convert.ToInt32(((ComboBoxItem)cmbProjeto.SelectedItem).Tag);
-                        item.Projeto = codigo;
-                    }
-
-                    if (!existeItemBacklog(item))
+                    if (!existeDefeito(item))
                     {
                         listaIncluir.Add(item);
                     }
@@ -196,7 +115,7 @@ namespace GEP_DE611.visao
                         listaAtualizar.Add(item);
                     }
                 }
-                ItemBacklogDAO tDAO = new ItemBacklogDAO();
+                DefeitoDAO tDAO = new DefeitoDAO();
                 if (listaIncluir.Count > 0)
                 {
                     tDAO.incluir(listaIncluir);
@@ -218,36 +137,13 @@ namespace GEP_DE611.visao
             }
         }
 
-        private Projeto recuperarProjeto(List<Projeto> listaProjeto, int idProjeto)
-        {
-            foreach (Projeto p in listaProjeto)
-            {
-                if (p.Id.Equals(idProjeto))
-                {
-                    return p;
-                }
-            }
-            ProjetoDAO pDAO = new ProjetoDAO();
-            List<Projeto> lista = pDAO.recuperar(Projeto.criarListaParametrosId(idProjeto));
-            if (lista.Count > 0)
-            {
-                listaProjeto.Add(lista[0]);
-                return lista[0];
-            }
-            else
-            {
-                int codigo = Convert.ToInt32(((ComboBoxItem)cmbProjeto.SelectedItem).Tag);
-                return new Projeto(codigo, "Unssigned", 0, DateTime.Now, DateTime.Now);
-            }
-        }
-
-        private bool existeItemBacklog(ItemBacklog item)
+        private bool existeDefeito(Defeito item)
         {
             Dictionary<string, string> param = new Dictionary<string, string>();
             param.Add(ItemTrabalho.ID, Convert.ToString(item.Id));
 
-            ItemBacklogDAO iDAO = new ItemBacklogDAO();
-            List<ItemBacklog> listaItem = iDAO.recuperar(param);
+            DefeitoDAO iDAO = new DefeitoDAO();
+            List<Defeito> listaItem = iDAO.recuperar(param);
             if (listaItem.Count > 0)
             {
                 return true;
@@ -303,7 +199,7 @@ namespace GEP_DE611.visao
             if (cmbFiltroProjeto.SelectedIndex > 0)
             {
                 int codigo = Convert.ToInt32(((ComboBoxItem)cmbFiltroProjeto.SelectedItem).Tag);
-                param.Add(ItemBacklog.PROJETO, Convert.ToString(codigo));
+                param.Add(Defeito.PROJETO, Convert.ToString(codigo));
             }
             if (cmbFiltroSprint.SelectedIndex > 0)
             {
@@ -318,13 +214,13 @@ namespace GEP_DE611.visao
             preencherLista(param);
         }
 
-        private void tblItemBacklog_CellEditEnding(object sender, DataGridCellEditEndingEventArgs e)
+        private void tblDefeito_CellEditEnding(object sender, DataGridCellEditEndingEventArgs e)
         {
             // ... Get the TextBox that was edited.
             var element = e.EditingElement as System.Windows.Controls.TextBox;
             var text = element.Text;
 
-            ItemBacklog item = (ItemBacklog)e.Row.Item;
+            Defeito item = (Defeito)e.Row.Item;
 
             var coluna = e.Column.DisplayIndex;
 
@@ -336,7 +232,7 @@ namespace GEP_DE611.visao
             }
             else
             {
-                ItemBacklogDAO iDAO = new ItemBacklogDAO();
+                DefeitoDAO iDAO = new DefeitoDAO();
                 if (coluna < 7)
                 {
                     Alerta alerta = new Alerta("Somente as colunas Valor Negocio, Tamanho, Complexidade e PF podem ser alteradas");

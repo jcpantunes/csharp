@@ -8,12 +8,13 @@ namespace GEP_DE611.dominio
 {
     class ItemBacklog : ItemTrabalho
     {
-
         public const string VALOR_NEGOCIO = "valorNegocio";
+
         public const string TAMANHO = "tamanho";
+
         public const string COMPLEXIDADE = "complexidade";
+
         public const string PF = "pf";
-        public const string PROJETO = "codigoProjeto";
 
         public ItemBacklog()
         {
@@ -49,14 +50,6 @@ namespace GEP_DE611.dominio
         {
             get { return pf; }
             set { pf = value; }
-        }
-
-        private int projeto;
-
-        public int Projeto
-        {
-            get { return projeto; }
-            set { projeto = value; }
         }
 
         public List<ItemBacklog> encapsularLista()

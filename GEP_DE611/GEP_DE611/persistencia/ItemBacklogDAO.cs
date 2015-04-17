@@ -128,25 +128,7 @@ namespace GEP_DE611.persistencia
             executarQuery(lista, queryInsert);
         }
 
-        public void atualizar (List<ItemBacklog> lista)
-        {
-            string queryUpdate = "UPDATE " + TABELA 
-                + " SET tipo = @tipo, "
-                + "id = @id, "
-                + "titulo = @titulo, "
-                + "status = @status, "
-                + "planejadoPara = @planejadoPara, "
-                + "dataColeta = @dataColeta, "
-                + "valorNegocio = @valorNegocio, "
-                + "tamanho = @tamanho, "
-                + "complexidade = @complexidade, "
-                + "pf = @pf, "
-                + "codigoProjeto = @codigoProjeto "
-                + "WHERE codigo = @codigo";
-            executarQuery(lista, queryUpdate);
-        }
-
-        public void atualizarPorId(List<ItemBacklog> lista)
+        private string retornarQueryAtualizar(string campo)
         {
             string queryUpdate = "UPDATE " + TABELA
                 + " SET tipo = @tipo, "
@@ -160,7 +142,19 @@ namespace GEP_DE611.persistencia
                 + "complexidade = @complexidade, "
                 + "pf = @pf, "
                 + "codigoProjeto = @codigoProjeto "
-                + "WHERE id = @id";
+                + "WHERE " + campo + " = @" + campo;
+            return queryUpdate;
+        }
+
+        public void atualizar(List<ItemBacklog> lista)
+        {
+            string queryUpdate = retornarQueryAtualizar("codigo");
+            executarQuery(lista, queryUpdate);
+        }
+
+        public void atualizarPorId(List<ItemBacklog> lista)
+        {
+            string queryUpdate = retornarQueryAtualizar("id");
             executarQuery(lista, queryUpdate);
         }
 

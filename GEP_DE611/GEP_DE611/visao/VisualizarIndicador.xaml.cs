@@ -188,7 +188,7 @@ namespace GEP_DE611.visao
                     grid.Columns.Add(new DataGridTextColumn
                     {
                         Header = col.ColumnName,
-                        Width = 100,
+                        Width = 70,
                         Binding = new Binding(string.Format("[{0}]", col.ColumnName))
                     });
                 }

@@ -112,5 +112,25 @@ namespace GEP_DE611.dominio.util
                 return false;
             }
         }
+
+        public static bool validarArquivoDefeito(string linha)
+        {
+            linha = linha.Replace("\"", "");
+            string[] colunas = linha.Split('\t');
+            if (colunas[0].Equals("Tipo") &&
+                    colunas[1].Equals("ID") &&
+                    colunas[2].Equals("Título") &&
+                    colunas[3].Equals("Status") &&
+                    colunas[4].Equals("Planejado Para") &&
+                    colunas[5].Equals("Encontrado no Projeto") &&
+                    colunas[6].Equals("Tipo do Relato"))
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
     }
 }

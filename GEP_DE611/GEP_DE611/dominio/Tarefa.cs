@@ -9,7 +9,6 @@ namespace GEP_DE611.dominio
 {
     class Tarefa : ItemTrabalho
     {
-        public const string RESPONSAVEL = "responsavel";
         
         public Tarefa()
         {
@@ -31,14 +30,6 @@ namespace GEP_DE611.dominio
             this.Estimativa = estimativa;
             this.EstimativaCorrigida = estimativaCorrigida;
             this.TempoGasto = tempoGasto;
-        }
-
-        private Funcionario responsavel;
-
-        public Funcionario Responsavel
-        {
-            get { return responsavel; }
-            set { responsavel = value; }
         }
 
         private decimal estimativa;

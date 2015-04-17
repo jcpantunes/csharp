@@ -1,7 +1,7 @@
-﻿<Window x:Class="GEP_DE611.visao.CadastrarItemBacklog"
+﻿<Window x:Class="GEP_DE611.visao.CadastrarDefeito"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        Title="CadastrarItemBacklog" Height="800" Width="1200">
+        Title="CadastrarDefeito" Height="800" Width="1200">
     <Grid>
 
         <GroupBox x:Name="groupSelecao" Header="Selecao de Arquivo" Margin="10,0,0,0" HorizontalAlignment="Left" VerticalAlignment="Top"
@@ -69,8 +69,8 @@
             </Grid>
         </GroupBox>
 
-        <DataGrid Name="tblItemBacklog" Margin="10,300,0,0"  HorizontalAlignment="Left" 
-                  VerticalAlignment="Top" Width="1170" Height="400" AutoGenerateColumns="False" CellEditEnding="tblItemBacklog_CellEditEnding" >
+        <DataGrid Name="tblDefeito" Margin="10,300,0,0"  HorizontalAlignment="Left" 
+                  VerticalAlignment="Top" Width="1170" Height="400" AutoGenerateColumns="False" CellEditEnding="tblDefeito_CellEditEnding" >
 
             <DataGrid.Columns>
                 <DataGridTextColumn Header="Codigo" Width="60" Binding="{Binding Path=Codigo}" IsReadOnly="True" />
@@ -80,10 +80,9 @@
                 <DataGridTextColumn Header="Planejado Para" Width="150" Binding="{Binding Path=PlanejadoPara}" IsReadOnly="True" />
                 <DataGridTextColumn Header="Status" Width="60" Binding="{Binding Path=Status}" IsReadOnly="True" />
                 <DataGridTextColumn Header="Data Coleta" Width="80" Binding="{Binding Path=DataColeta}" IsReadOnly="True" />
-                <DataGridTextColumn Header="Valor Negocio" Width="100" Binding="{Binding Path=ValorNegocio}" />
-                <DataGridTextColumn Header="Tamanho" Width="70" Binding="{Binding Path=Tamanho}" />
-                <DataGridTextColumn Header="Complexidade" Width="90" Binding="{Binding Path=Complexidade}" />
-                <DataGridTextColumn Header="PF" Width="70" Binding="{Binding Path=Pf}" />
+                <DataGridTextColumn Header="Encontrado Em" Width="100" Binding="{Binding Path=ValorNegocio}" />
+                <DataGridTextColumn Header="Tipo Relato" Width="70" Binding="{Binding Path=Tamanho}" />
+                <DataGridTextColumn Header="Resolucao" Width="90" Binding="{Binding Path=Complexidade}" />
             </DataGrid.Columns>
 
         </DataGrid>

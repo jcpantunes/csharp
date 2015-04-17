@@ -64,6 +64,14 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="dominio\Defeito.cs" />
+    <Compile Include="dominio\util\ResolucaoRelato.cs" />
+    <Compile Include="dominio\util\TipoRelato.cs" />
+    <Compile Include="persistencia\DefeitoDAO.cs" />
+    <Compile Include="visao\BaseWindow.xaml.cs" />
+    <Compile Include="visao\CadastrarDefeito.xaml.cs">
+      <DependentUpon>CadastrarDefeito.xaml</DependentUpon>
+    </Compile>
     <Compile Include="visao\CadastrarFuncionario.xaml.cs">
       <DependentUpon>CadastrarFuncionario.xaml</DependentUpon>
     </Compile>
@@ -129,6 +137,10 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="visao\CadastrarDefeito.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="visao\CadastrarFuncionario.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>

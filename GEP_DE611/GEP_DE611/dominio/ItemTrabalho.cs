@@ -21,6 +21,10 @@ namespace GEP_DE611.dominio
         public const string DTINICIO = "dataInicio";
         public const string DTFINAL = "dataFinal";
 
+        public const string RESPONSAVEL = "responsavel";
+
+        public const string PROJETO = "codigoProjeto";
+
         private string tipo;
 
         public string Tipo
@@ -77,6 +81,21 @@ namespace GEP_DE611.dominio
             set { dataColeta = value; }
         }
 
+        private Funcionario responsavel;
+
+        public Funcionario Responsavel
+        {
+            get { return responsavel; }
+            set { responsavel = value; }
+        }
+
+        private int projeto;
+
+        public int Projeto
+        {
+            get { return projeto; }
+            set { projeto = value; }
+        }
 
     }
 }

@@ -13,6 +13,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using System.Data;
 using GEP_DE611.persistencia;
 using GEP_DE611.dominio;
 using GEP_DE611.componente;
@@ -170,6 +171,51 @@ namespace GEP_DE611.visao
             // Setting data for line chart
             // lineChart.DataContext = dataSourceList;
 
+            preencherTabela(listaX, lnIdeal, lnProgresso);
+        }
+
+        private void preencherTabela(List<string> listaX, List<KeyValuePair<string, int>> lnIdeal, List<KeyValuePair<string, int>> lnProgresso)
+        {
+            DataTable tabela = new DataTable();
+            tabela.Columns.Add("Dia", typeof(string));
+            tabela.Columns.Add("Ideal", typeof(int));
+            tabela.Columns.Add("Progresso", typeof(int));
+
+            int i = 0;
+            while (i < listaX.Count && i < lnIdeal.Count && i < lnProgresso.Count)
+            {
+                object[] linha = new object[3];
+                linha[0] = listaX[i];
+                linha[1] = lnIdeal[i].Value;
+                linha[2] = lnProgresso[i].Value;
+                tabela.Rows.Add(linha);
+                i++;
+            }
+
+            while (i < listaX.Count && i < lnIdeal.Count)
+            {
+                object[] linha = new object[3];
+                linha[0] = listaX[i];
+                linha[1] = lnIdeal[i].Value;
+                linha[2] = 0;
+                tabela.Rows.Add(linha);
+                i++;
+            }
+
+            if (tabela != null)
+            {
+                tblBurndown.Columns.Clear();
+                foreach (DataColumn col in tabela.Columns)
+                {
+                    tblBurndown.Columns.Add(new DataGridTextColumn
+                    {
+                        Header = col.ColumnName,
+                        Width = 70,
+                        Binding = new Binding(string.Format("[{0}]", col.ColumnName))
+                    });
+                }
+                tblBurndown.DataContext = tabela;
+            }
         }
 
         private List<KeyValuePair<string, int>> gerarLinhaIdeal(int numDias, decimal estimativaTotal, List<string> listaX)
@@ -195,9 +241,9 @@ namespace GEP_DE611.visao
             int dia = 0;
             int diaProgresso = 0;
 
-            if ((listaProgresso.Count == 0) || (Convert.ToDateTime(listaX[dia]).CompareTo(Convert.ToDateTime(listaProgresso[diaProgresso].Key)) < 0))
+            if ((listaProgresso.Count == 0 && dia < listaX.Count) || (Convert.ToDateTime(listaX[dia]).CompareTo(Convert.ToDateTime(listaProgresso[diaProgresso].Key)) < 0))
             {
-                while (Convert.ToDateTime(listaX[dia]).CompareTo(Convert.ToDateTime(listaProgresso[diaProgresso].Key)) < 0 && dia < listaX.Count)
+                while (dia < listaX.Count && Convert.ToDateTime(listaX[dia]).CompareTo(Convert.ToDateTime(listaProgresso[diaProgresso].Key)) < 0)
                 {
                     lnProgresso.Add(new KeyValuePair<string, int>(listaX[dia], Convert.ToInt32(estimativaTotal)));
                     dia++;

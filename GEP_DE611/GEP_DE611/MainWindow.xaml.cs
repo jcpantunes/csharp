@@ -17,6 +17,7 @@ using GEP_DE611.visao;
 using GEP_DE611.dominio;
 using GEP_DE611.dominio.util;
 using GEP_DE611.persistencia;
+using GEP_DE611.componente;
 
 namespace GEP_DE611
 {
@@ -28,6 +29,17 @@ namespace GEP_DE611
         public MainWindow()
         {
             InitializeComponent();
+
+            try
+            {
+                FuncionarioDAO fDAO = new FuncionarioDAO();
+                fDAO.recuperar(1);
+            }
+            catch (Exception ex)
+            {
+                Alerta alerta = new Alerta("Problema ao tentar acessar o banco de dados: \n" + ex.Message);
+                alerta.Show();
+            }
 
             // testarFuncionario();
             // testarTarefa();
