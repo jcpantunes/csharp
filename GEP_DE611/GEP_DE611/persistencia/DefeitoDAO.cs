@@ -72,6 +72,7 @@ namespace GEP_DE611.persistencia
         private List<Defeito> executarSelect(string query)
         {
             List<Defeito> lista = new List<Defeito>();
+            List<Funcionario> listaFuncionario = new List<Funcionario>();
             
             SqlConnection conn = null;
             SqlDataReader reader = select(conn, query);
@@ -90,7 +91,10 @@ namespace GEP_DE611.persistencia
                     d.EncontradoProjeto = reader.GetString(7);
                     d.TipoRelato = reader.GetString(8);
                     d.Resolucao = reader.GetString(9);
-                    d.Projeto = reader.GetInt32(10);
+                    d.Pai = reader.GetString(10);
+                    d.Projeto = reader.GetInt32(11);
+                    FuncionarioDAO fDAO = new FuncionarioDAO();
+                    d.Responsavel = fDAO.recuperarFuncionarioInCache(listaFuncionario, reader.GetInt32(12));
                     lista.Add(d);
                 }
             }
@@ -98,7 +102,7 @@ namespace GEP_DE611.persistencia
             return lista;
         }
 
-        public int recuperarQtdeDefeitosPorSprintPorResponsavel(string planejadoPara, int responsavel)
+        public int recuperarQtdeDefeitosPorItemPorResponsavel(string planejadoPara, int responsavel)
         {
             //string query = "SELECT Count(id) FROM " + TABELA
             //    + " WHERE planejadoPara = '" + planejadoPara + "' and id in "
@@ -112,9 +116,9 @@ namespace GEP_DE611.persistencia
         {
             string queryInsert = "INSERT INTO " + TABELA
                 + " (tipo, id, titulo, status, planejadoPara, dataColeta, "
-                + " encontradoProjeto, tipoRelato, resolucao, codigoProjeto) "
+                + " encontradoProjeto, tipoRelato, resolucao, pai, codigoProjeto, responsavel) "
                 + " VALUES (@tipo, @id, @titulo, @status, @planejadoPara, @dataColeta, "
-                + " @encontradoProjeto, @tipoRelato, @resolucao, @codigoProjeto)";
+                + " @encontradoProjeto, @tipoRelato, @resolucao, @pai, @codigoProjeto, @responsavel)";
             executarQuery(lista, queryInsert);
         }
 
@@ -130,7 +134,9 @@ namespace GEP_DE611.persistencia
                 + "encontradoProjeto = @encontradoProjeto, "
                 + "tipoRelato = @tipoRelato, "
                 + "resolucao = @resolucao, "
-                + "codigoProjeto = @codigoProjeto "
+                + "pai = @pai, "
+                + "codigoProjeto = @codigoProjeto, "
+                + "responsavel = @responsavel "
                 + "WHERE " + campo + " = @" + campo;
             return queryUpdate;
         }
@@ -184,7 +190,9 @@ namespace GEP_DE611.persistencia
             parametros.Add(new SqlParameter("encontradoProjeto", d.EncontradoProjeto));
             parametros.Add(new SqlParameter("tipoRelato", d.TipoRelato));
             parametros.Add(new SqlParameter("resolucao", d.Resolucao));
+            parametros.Add(new SqlParameter("pai", d.Pai));
             parametros.Add(new SqlParameter("codigoProjeto", d.Projeto));
+            parametros.Add(new SqlParameter("responsavel", d.Responsavel.Codigo));
             return parametros;
         }
 

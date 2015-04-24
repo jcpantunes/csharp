@@ -24,11 +24,16 @@ namespace GEP_DE611.visao
     /// </summary>
     public partial class CadastrarItemBacklog : Window
     {
+        
+        private BaseWindow baseWindow;
+
         public CadastrarItemBacklog()
         {
             InitializeComponent();
 
             txtData.Text = DateTime.Now.ToShortDateString();
+
+            baseWindow = new BaseWindow();
 
             preencherLista(new Dictionary<string, string>());
 
@@ -52,36 +57,11 @@ namespace GEP_DE611.visao
 
         private void preencherCombos()
         {
-            preencherComboProjeto();
-            preencherComboStatus();
-        }
+            baseWindow.preencherComboProjeto(cmbProjeto, false);
 
-        private void preencherComboProjeto()
-        {
-            ProjetoDAO pDAO = new ProjetoDAO();
-            List<Projeto> lista = pDAO.recuperar();
-            if (lista.Count > 0)
-            {
-                ComboBoxItem itemTodos = new ComboBoxItem();
-                itemTodos.Content = "Todos";
-                itemTodos.Tag = 0;
-                cmbFiltroProjeto.Items.Add(itemTodos);
-                cmbFiltroProjeto.SelectedIndex = 0;
-
-                foreach (Projeto p in lista)
-                {
-                    ComboBoxItem item = new ComboBoxItem();
-                    item.Content = p.Nome;
-                    item.Tag = p.Codigo;
-                    cmbProjeto.Items.Add(item);
-
-                    ComboBoxItem itemFiltro = new ComboBoxItem();
-                    itemFiltro.Content = p.Nome;
-                    itemFiltro.Tag = p.Codigo;
-                    cmbFiltroProjeto.Items.Add(itemFiltro);
-                }
-                cmbProjeto.SelectedIndex = 0;
-            }
+            baseWindow.preencherComboProjeto(cmbFiltroProjeto, true);
+            
+            baseWindow.preencherComboStatus(cmbFiltroStatus, StatusUtil.recuperarListaStatusItemBacklog(), true);
         }
 
         private void preencherComboFiltroSprint(int codigoProjeto)
@@ -103,26 +83,6 @@ namespace GEP_DE611.visao
                     item.Content = s.Nome;
                     item.Tag = s.Codigo;
                     cmbFiltroSprint.Items.Add(item);
-                }
-            }
-        }
-
-        private void preencherComboStatus()
-        {
-            ComboBoxItem itemTodos = new ComboBoxItem();
-            itemTodos.Content = "Todos";
-            itemTodos.Tag = 0;
-            cmbFiltroStatus.Items.Add(itemTodos);
-            cmbFiltroStatus.SelectedIndex = 0;
-
-            List<string> lista = StatusUtil.recuperarListaStatus();
-            if (lista.Count > 0)
-            {
-                foreach (string str in lista)
-                {
-                    ComboBoxItem item = new ComboBoxItem();
-                    item.Content = str;
-                    cmbFiltroStatus.Items.Add(item);
                 }
             }
         }

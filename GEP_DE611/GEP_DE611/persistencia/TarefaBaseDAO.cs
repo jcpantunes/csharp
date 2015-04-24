@@ -168,33 +168,14 @@ namespace GEP_DE611.persistencia
                     t.Estimativa = reader.GetDecimal(8);
                     t.EstimativaCorrigida = reader.GetDecimal(9);
                     t.TempoGasto = reader.GetDecimal(10);
-                    t.Responsavel = recuperarFuncionario(listaFuncionario, reader.GetInt32(11));
+                    FuncionarioDAO fDAO = new FuncionarioDAO();
+                    t.Responsavel = fDAO.recuperarFuncionarioInCache(listaFuncionario, reader.GetInt32(11));
 
                     lista.Add(t);
                 }
             }
             desconectar(conn);
             return lista;
-        }
-
-        private Funcionario recuperarFuncionario(List<Funcionario> listaFuncionario, int codigo)
-        {
-            Funcionario funcionario = null;
-            foreach (Funcionario f in listaFuncionario)
-            {
-                if (f.Codigo == codigo)
-                {
-                    funcionario = f;
-                    break;
-                }
-            }
-            if (funcionario == null)
-            {
-                FuncionarioDAO dao = new FuncionarioDAO();
-                funcionario = dao.recuperar(codigo);
-                listaFuncionario.Add(funcionario);
-            }
-            return funcionario;
         }
 
         public void incluir (List<Tarefa> lista)

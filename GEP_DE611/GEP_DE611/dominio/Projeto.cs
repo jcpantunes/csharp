@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace GEP_DE611.dominio
 {
-    class Projeto : BaseBean
+    public class Projeto : BaseBean
     {
         public const string NOME = "nome";
         public const string ID = "id";

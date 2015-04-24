@@ -8,6 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
+[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("sql/dbo.defeito.sql")]
 [assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("sql/dbo.funcionario.sql")]
 [assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("sql/dbo.itembacklog.sql")]
 [assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("sql/dbo.projeto.sql")]

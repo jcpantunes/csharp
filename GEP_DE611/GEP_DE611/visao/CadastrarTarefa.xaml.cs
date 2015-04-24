@@ -309,7 +309,7 @@ namespace GEP_DE611.visao
             cmbFiltroStatus.Items.Add(itemTodos);
             cmbFiltroStatus.SelectedIndex = 0;
 
-            List<string> lista = StatusUtil.recuperarListaStatus();
+            List<string> lista = StatusUtil.recuperarListaStatusTarefa();
             if (lista.Count > 0)
             {
                 foreach (string str in lista)

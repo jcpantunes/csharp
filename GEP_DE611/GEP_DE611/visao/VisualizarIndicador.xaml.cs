@@ -25,101 +25,28 @@ namespace GEP_DE611.visao
     /// </summary>
     public partial class VisualizarIndicador : Window
     {
+        BaseWindow baseWindow = null;
+
         public VisualizarIndicador()
         {
             InitializeComponent();
+
+            baseWindow = new BaseWindow();
 
             preencherCombos();
         }
 
         private void preencherCombos()
         {
-            preencherComboLotacao();
+            baseWindow.preencherComboLotacao(cmbLotacao, cmbFuncionario);
 
-            preencherComboProjeto();
-        }
+            baseWindow.preencherComboProjeto(cmbProjeto, false);
 
-        private void preencherComboLotacao()
-        {
-            List<string> lista = Util.retornarListaLotacao();
-            if (lista.Count > 0)
+            if (cmbProjeto.Items.Count > 0)
             {
-                foreach (string lotacao in lista)
-                {
-                    ComboBoxItem item = new ComboBoxItem();
-                    item.Content = lotacao;
-                    cmbLotacao.Items.Add(item);
-                }
-                cmbLotacao.SelectedIndex = 0;
-                preencherComboFuncionario(lista[0]);
-            }
-        }
-
-        private void preencherComboFuncionario(string lotacao)
-        {
-            cmbFuncionario.Items.Clear();
-            List<Funcionario> lista = recuperarListaFuncionario(lotacao);
-
-            if (lista.Count > 0)
-            {
-                ComboBoxItem itemTodos = new ComboBoxItem();
-                itemTodos.Content = "Todos";
-                itemTodos.Tag = 0;
-                cmbFuncionario.Items.Add(itemTodos);
-                cmbFuncionario.SelectedIndex = 0;
-
-                foreach (Funcionario f in lista)
-                {
-                    ComboBoxItem item = new ComboBoxItem();
-                    item.Content = f.Nome;
-                    item.Tag = f.Codigo;
-                    cmbFuncionario.Items.Add(item);
-                }
-                cmbFuncionario.SelectedIndex = 0;
-            }
-        }
-
-        private List<Funcionario> recuperarListaFuncionario(string lotacao)
-        {
-            Dictionary<string, string> param = new Dictionary<string, string>();
-            param.Add(Funcionario.LOTACAO, lotacao);
-
-            FuncionarioDAO fDAO = new FuncionarioDAO();
-            return fDAO.recuperar(param);
-        }
-
-        private void preencherComboProjeto()
-        {
-            ProjetoDAO pDAO = new ProjetoDAO();
-            List<Projeto> lista = pDAO.recuperar();
-            if (lista.Count > 0)
-            {
-                foreach (Projeto p in lista)
-                {
-                    ComboBoxItem item = new ComboBoxItem();
-                    item.Content = p.Nome;
-                    item.Tag = p.Codigo;
-                    cmbProjeto.Items.Add(item);
-                }
                 cmbProjeto.SelectedIndex = 0;
-                preencherListBoxSprint(lista[0].Codigo);
-            }
-        }
-
-        private void preencherListBoxSprint(int codigoProjeto)
-        {
-            lstSprint.Items.Clear();
-            SprintDAO sDAO = new SprintDAO();
-            List<Sprint> lista = sDAO.recuperar(Sprint.criarListaParametrosPesquisaPorProjeto(codigoProjeto));
-            if (lista.Count > 0)
-            {
-                foreach (Sprint s in lista)
-                {
-                    ListBoxItem item = new ListBoxItem();
-                    item.Content = s.Nome;
-                    item.Tag = s.Codigo;
-                    lstSprint.Items.Add(item);
-                }
+                int codigo = Convert.ToInt32(((ComboBoxItem)cmbProjeto.SelectedItem).Tag);
+                baseWindow.preencherListBoxSprint(lstSprint, codigo);
             }
         }
 
@@ -127,14 +54,13 @@ namespace GEP_DE611.visao
         {
             ComboBoxItem item = (ComboBoxItem)cmbLotacao.SelectedItem;
             string lotacao = Convert.ToString(item.Content);
-            preencherComboFuncionario(lotacao);
+            baseWindow.preencherComboFuncionario(cmbFuncionario, lotacao, true);
         }
 
         private void cmbProjeto_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            ComboBoxItem item = (ComboBoxItem)cmbProjeto.SelectedItem;
-            int codigo = Convert.ToInt32(item.Tag);
-            preencherListBoxSprint(codigo);
+            int codigo = Convert.ToInt32(((ComboBoxItem)cmbProjeto.SelectedItem).Tag);
+            baseWindow.preencherListBoxSprint(lstSprint, codigo);
         }
 
         private void btnNumItemTrabalhado_Click(object sender, RoutedEventArgs e)
@@ -169,7 +95,12 @@ namespace GEP_DE611.visao
 
             if (cmbFuncionario.SelectedIndex == 0)
             {
-                listaFuncionario.AddRange(recuperarListaFuncionario(Convert.ToString(((ComboBoxItem)cmbLotacao.SelectedItem).Content)));
+                FuncionarioDAO fDAO = new FuncionarioDAO();
+                String lotacao = Convert.ToString(((ComboBoxItem)cmbLotacao.SelectedItem).Content);
+
+                Dictionary<string, string> param = new Dictionary<string, string>();
+                param.Add(Funcionario.LOTACAO, lotacao);
+                listaFuncionario.AddRange(fDAO.recuperar(param));
             }
             else
             {
@@ -224,8 +155,23 @@ namespace GEP_DE611.visao
                         }
                         else if (opcao == OpcaoIndicador.COMPLEXIDADE_ITEM_POR_SPRINT)
                         {
+                            // =SOMARPRODUTO(($Backlog.$E$2:$E$200=B$2)*($Backlog.$R$2:$R$200>0)*($Backlog.$I$2:$I$200))/SOMARPRODUTO(($Backlog.$E$2:$E$200=B$2)*($Backlog.$R$2:$R$200>0))
+                            // E = Planejado Para
+                            // R = Somatorio numero tarefas do funcionario no item de backlog
+                            // I = Complexidade do Item
+
                             ItemBacklogDAO ibDAO = new ItemBacklogDAO();
                             linha[i + 1] = ibDAO.recuperarComplexidadeItensPorSprintPorResponsavel(listaColunas[i], func.Codigo);
+                        }
+                        else if (opcao == OpcaoIndicador.NUM_DEFEITO_POR_ITEM_BACKLOG)
+                        {
+                            // =SOMARPRODUTO(($Backlog.$E$2:$E$200=B$2)*($Backlog.$R$2:$R$200>0)*($Backlog.$M$2:$M$200))/SOMARPRODUTO(($Backlog.$E$2:$E$200=B$2)*($Backlog.$R$2:$R$200>0))
+                            // E = Planejado Para
+                            // R = Somatorio numero tarefas do funcionario no item de backlog
+                            // M = Quantidade de defeitos do Item
+
+                            // ItemBacklogDAO ibDAO = new ItemBacklogDAO();
+                            // linha[i + 1] = ibDAO.recuperarComplexidadeItensPorSprintPorResponsavel(listaColunas[i], func.Codigo);
                         }
                         else
                         {
@@ -254,6 +200,11 @@ namespace GEP_DE611.visao
         {
             executarAcao(tblComplexidadeItemTrabalhado, OpcaoIndicador.COMPLEXIDADE_ITEM_POR_SPRINT);
         }
+
+        private void numDefeitosPorItemBacklog_Expanded(object sender, RoutedEventArgs e)
+        {
+            executarAcao(tblNumDefeitosPorItemBacklog, OpcaoIndicador.NUM_DEFEITO_POR_ITEM_BACKLOG);
+        }
     }
 
     class OpcaoIndicador
@@ -263,5 +214,7 @@ namespace GEP_DE611.visao
         public const int NUM_ITEM_POR_SPRINT = 1;
 
         public const int COMPLEXIDADE_ITEM_POR_SPRINT = 2;
+
+        public const int NUM_DEFEITO_POR_ITEM_BACKLOG = 3;
     }
 }

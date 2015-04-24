@@ -20,10 +20,7 @@ namespace GEP_DE611.visao
 {
     public class BaseWindow
     {
-        public BaseWindow()
-        {
-
-        }
+        public BaseWindow() {}
 
         public void preencherComboProjeto(ComboBox cmb, bool todos)
         {
@@ -40,7 +37,7 @@ namespace GEP_DE611.visao
                 {
                     cmb.Items.Add(preencherComboItem(p.Codigo, p.Nome));
                 }
-                cmb.SelectedIndex = 0;
+                // cmb.SelectedIndex = 0;
             }
         }
 
@@ -52,7 +49,7 @@ namespace GEP_DE611.visao
             return item;
         }
 
-        private void preencherComboSprint(int codigoProjeto, ComboBox cmb, bool todos)
+        public void preencherComboSprint(int codigoProjeto, ComboBox cmb, bool todos)
         {
             cmb.Items.Clear();
             SprintDAO sDAO = new SprintDAO();
@@ -72,9 +69,66 @@ namespace GEP_DE611.visao
             }
         }
 
-        public void preencherComboStatus(ComboBox cmb, bool todos)
+        public void preencherComboStatus(ComboBox cmb, List<string> listaStatus, bool todos)
         {
-            List<string> lista = StatusUtil.recuperarListaStatus();
+            if (listaStatus.Count > 0)
+            {
+                if (todos)
+                {
+                    cmb.Items.Add(preencherComboItem(0, "Todos"));
+                }
+
+                for (int i = 0; i < listaStatus.Count; i++)
+                {
+                    cmb.Items.Add(preencherComboItem(i + 1, listaStatus[i]));
+                }
+                cmb.SelectedIndex = 0;
+            }
+        }
+
+        public void preencherComboLotacao(ComboBox cmb, ComboBox cmbFuncionario)
+        {
+            List<string> lista = Util.retornarListaLotacao();
+            if (lista.Count > 0)
+            {
+                foreach (string lotacao in lista)
+                {
+                    ComboBoxItem item = new ComboBoxItem();
+                    item.Content = lotacao;
+                    cmb.Items.Add(item);
+                }
+                cmb.SelectedIndex = 0;
+                preencherComboFuncionario(cmbFuncionario, lista[0], true);
+            }
+        }
+
+        public void preencherListBoxSprint(ListBox lst, int codigoProjeto)
+        {
+            lst.Items.Clear();
+            SprintDAO sDAO = new SprintDAO();
+            List<Sprint> lista = sDAO.recuperar(Sprint.criarListaParametrosPesquisaPorProjeto(codigoProjeto));
+            if (lista.Count > 0)
+            {
+                foreach (Sprint s in lista)
+                {
+                    ListBoxItem item = new ListBoxItem();
+                    item.Content = s.Nome;
+                    item.Tag = s.Codigo;
+                    lst.Items.Add(item);
+                }
+            }
+        }
+
+        public void preencherComboFuncionario(ComboBox cmb, string lotacao, bool todos)
+        {
+            cmb.Items.Clear();
+
+            Dictionary<string, string> param = new Dictionary<string, string>();
+            param.Add(Funcionario.LOTACAO, lotacao);
+
+            FuncionarioDAO fDAO = new FuncionarioDAO();
+            List<Funcionario> lista = fDAO.recuperar(param);
+
             if (lista.Count > 0)
             {
                 if (todos)
@@ -82,9 +136,12 @@ namespace GEP_DE611.visao
                     cmb.Items.Add(preencherComboItem(0, "Todos"));
                 }
 
-                for (int i = 0; i < lista.Count; i++)
+                foreach (Funcionario f in lista)
                 {
-                    cmb.Items.Add(preencherComboItem(i+1, lista[i]));
+                    ComboBoxItem item = new ComboBoxItem();
+                    item.Content = f.Nome;
+                    item.Tag = f.Codigo;
+                    cmb.Items.Add(item);
                 }
                 cmb.SelectedIndex = 0;
             }
@@ -106,13 +163,10 @@ namespace GEP_DE611.visao
                 listaProjeto.Add(lista[0]);
                 return lista[0];
             }
-            else
-            {
-                return new Projeto(codProjeto, nomeProjeto, idProjeto, DateTime.Now, DateTime.Now);
-            }
+            return new Projeto(codProjeto, nomeProjeto, idProjeto, DateTime.Now, DateTime.Now);
         }
 
-        private Funcionario recuperarFuncionarioInCache(List<Funcionario> listaFuncionario, string responsavel)
+        public Funcionario recuperarFuncionarioInCache(List<Funcionario> listaFuncionario, string responsavel)
         {
             foreach (Funcionario func in listaFuncionario)
             {
@@ -132,9 +186,5 @@ namespace GEP_DE611.visao
             listaFuncionario.Add(f);
             return f;
         }
-
-        
-
-        
     }
 }

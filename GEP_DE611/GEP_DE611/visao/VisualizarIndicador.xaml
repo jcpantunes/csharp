@@ -55,6 +55,12 @@
                         <DataGrid x:Name="tblComplexidadeItemTrabalhado" Margin="10,0,0,0" HorizontalAlignment="Left"  VerticalAlignment="Top" ItemsSource="{Binding}"
 					        Width="1100" Height="200" AutoGenerateColumns="False" IsReadOnly="True" CanUserSortColumns="False" CanUserReorderColumns="False" />
                     </Expander>
+
+                    <Expander Header="Número de Defeitos nos Itens de Backlog Relacionados" Margin="10,690,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" 
+                          Width="1120"  BorderBrush="Black" BorderThickness="1" IsExpanded="False" Expanded="numDefeitosPorItemBacklog_Expanded" >
+                        <DataGrid x:Name="tblNumDefeitosPorItemBacklog" Margin="10,0,0,0" HorizontalAlignment="Left"  VerticalAlignment="Top" ItemsSource="{Binding}"
+					        Width="1100" Height="200" AutoGenerateColumns="False" IsReadOnly="True" CanUserSortColumns="False" CanUserReorderColumns="False" />
+                    </Expander>
                 </Grid>
             </ScrollViewer>
         </GroupBox>

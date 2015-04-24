@@ -122,5 +122,4 @@ namespace GEP_DE611.persistencia
             return query;
         }
     }
-
 }

@@ -14,6 +14,8 @@
 
             <Button x:Name="btnUploadArquivoTarefa" Content="Tarefa" HorizontalAlignment="Left" Click="btnUploadArquivoTarefa_Click" Width="70" Height="55" />
 
+            <Button x:Name="btnUploadArquivoDefeito" Content="Defeito" HorizontalAlignment="Left" Click="btnUploadArquivoDefeito_Click" Width="70" Height="55" />
+            
             <Button x:Name="btnFuncionario" Content="Funcionario" HorizontalAlignment="Left" Width="70" Height="55" Click="btnFuncionario_Click" />
 
             <Button x:Name="btnProjeto" Content="Projeto" HorizontalAlignment="Left" Width="70" Height="55" Click="btnProjeto_Click" />
@@ -21,6 +23,8 @@
             <Button x:Name="btnSprint" Content="Sprint" HorizontalAlignment="Left" Width="70" Height="55" Click="btnSprint_Click" />
 
             <Button x:Name="btnBurndown" Content="Burndown" HorizontalAlignment="Left" Click="btnBurndown_Click" Width="70" Height="55" />
+
+            
         </Menu>
 
     </Grid>

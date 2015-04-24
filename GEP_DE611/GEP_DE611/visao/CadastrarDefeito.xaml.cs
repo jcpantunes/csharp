@@ -35,6 +35,7 @@ namespace GEP_DE611.visao
             baseWindow = new BaseWindow();
 
             preencherCombos();
+
         }
 
         private void preencherLista(Dictionary<string, string> param)
@@ -49,7 +50,7 @@ namespace GEP_DE611.visao
             
             baseWindow.preencherComboProjeto(cmbFiltroProjeto, true);
 
-            baseWindow.preencherComboStatus(cmbFiltroStatus, true);
+            baseWindow.preencherComboStatus(cmbFiltroStatus, StatusUtil.recuperarListaStatusDefeito(), true);
         }
 
         private void btnUpload_Click(object sender, RoutedEventArgs e)
@@ -100,10 +101,11 @@ namespace GEP_DE611.visao
                     item.EncontradoProjeto = Convert.ToString(linha[6]);
                     item.TipoRelato = Convert.ToString(linha[7]);
                     item.Resolucao = Convert.ToString(linha[8]);
+                    item.Pai = linha[9].Replace("#", "");
                     
                     int codigo = Convert.ToInt32(((ComboBoxItem)cmbProjeto.SelectedItem).Tag);
                     string nome = Convert.ToString(((ComboBoxItem)cmbProjeto.SelectedItem).Content);
-                    Projeto p = baseWindow.recuperarProjetoInCache(listaProjeto, Convert.ToInt32(linha[7]), codigo, nome);
+                    Projeto p = baseWindow.recuperarProjetoInCache(listaProjeto, Convert.ToInt32(linha[10]), codigo, nome);
                     item.Projeto = p.Codigo;
 
                     if (!existeDefeito(item))
@@ -154,8 +156,11 @@ namespace GEP_DE611.visao
         private void cmbFiltroProjeto_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             ComboBoxItem item = (ComboBoxItem)cmbFiltroProjeto.SelectedItem;
-            int codigoProjeto = Convert.ToInt32(item.Tag);
-            preencherComboFiltroSprint(codigoProjeto);
+            if (item != null)
+            {
+                int codigoProjeto = Convert.ToInt32(item.Tag);
+                baseWindow.preencherComboSprint(codigoProjeto, cmbFiltroSprint, true);
+            }
         }
 
         private void iniciarCamposFiltro()
@@ -199,7 +204,7 @@ namespace GEP_DE611.visao
             if (cmbFiltroProjeto.SelectedIndex > 0)
             {
                 int codigo = Convert.ToInt32(((ComboBoxItem)cmbFiltroProjeto.SelectedItem).Tag);
-                param.Add(Defeito.PROJETO, Convert.ToString(codigo));
+                param.Add(ItemTrabalho.PROJETO, Convert.ToString(codigo));
             }
             if (cmbFiltroSprint.SelectedIndex > 0)
             {
@@ -235,27 +240,19 @@ namespace GEP_DE611.visao
                 DefeitoDAO iDAO = new DefeitoDAO();
                 if (coluna < 7)
                 {
-                    Alerta alerta = new Alerta("Somente as colunas Valor Negocio, Tamanho, Complexidade e PF podem ser alteradas");
+                    Alerta alerta = new Alerta("Somente as colunas Resolucao e Pai podem ser alteradas");
                     alerta.Show();
                     e.Cancel = true;
                 }
                 else
                 {
-                    if (coluna == 7)
+                    if (coluna == 9)
                     {
-                        item.ValorNegocio = Convert.ToInt32(text);
-                    }
-                    else if (coluna == 8)
-                    {
-                        item.Tamanho = Convert.ToInt32(text);
-                    }
-                    else if (coluna == 9)
-                    {
-                        item.Complexidade = Convert.ToInt32(text);
+                        item.Resolucao = Convert.ToString(text);
                     }
                     else if (coluna == 10)
                     {
-                        item.Pf = Convert.ToDecimal(text);
+                        item.Pai = Convert.ToString(text);
                     }
                     iDAO.atualizar(item.encapsularLista());
                 }

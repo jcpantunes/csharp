@@ -209,6 +209,7 @@
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
+    <Content Include="sql\dbo.Defeito.sql" />
     <Content Include="sql\dbo.Funcionario.sql" />
     <Content Include="sql\dbo.ItemBacklog.sql" />
     <Content Include="sql\dbo.Projeto.sql" />

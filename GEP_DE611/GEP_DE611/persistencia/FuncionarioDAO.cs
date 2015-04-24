@@ -71,6 +71,25 @@ namespace GEP_DE611.persistencia
             return null;
         }
 
+        public Funcionario recuperarFuncionarioInCache(List<Funcionario> listaFuncionario, int codigo)
+        {
+            Funcionario funcionario = null;
+            foreach (Funcionario f in listaFuncionario)
+            {
+                if (f.Codigo == codigo)
+                {
+                    funcionario = f;
+                    break;
+                }
+            }
+            if (funcionario == null)
+            {
+                funcionario = recuperar(codigo);
+                listaFuncionario.Add(funcionario);
+            }
+            return funcionario;
+        }
+
         private List<Funcionario> executarSelect(string query)
         {
             List<Funcionario> lista = new List<Funcionario>();

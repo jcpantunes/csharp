@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace GEP_DE611.dominio
 {
-    class Funcionario : BaseBean
+    public class Funcionario : BaseBean
     {
         public const string LOTACAO = "lotacao";
         public const string NOME = "nome";
