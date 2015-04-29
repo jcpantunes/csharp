@@ -102,14 +102,15 @@ namespace GEP_DE611.persistencia
             return lista;
         }
 
-        public int recuperarQtdeDefeitosPorItemPorResponsavel(string planejadoPara, int responsavel)
+        public decimal recuperarMediaDefeitosPorSprintPorResponsavel(string planejadoPara, int responsavel)
         {
-            //string query = "SELECT Count(id) FROM " + TABELA
-            //    + " WHERE planejadoPara = '" + planejadoPara + "' and id in "
-            //        + " (SELECT distinct pai FROM Tarefa "
-            //        + " WHERE planejadoPara = '" + planejadoPara + "' and responsavel = " + responsavel + ")";
-            //return retornarSelectValorInt(query);
-            return 0;
+            string query = "SELECT ROUND(AVG(CAST(total AS DECIMAL)), 2) FROM ( "
+                + "SELECT id, count(codigo) as total FROM "
+                    + "(SELECT distinct item.id as id, d.codigo as codigo FROM ItemBacklog AS item "
+                        + "LEFT JOIN Defeito AS d ON d.pai = item.id LEFT JOIN Tarefa AS t ON item.id = t.pai "
+                        + "WHERE t.planejadoPara = '" + planejadoPara + "' and t.responsavel = " + responsavel + ") as defeitosPorItem "
+                    + "GROUP BY id) as mediaDefeitos";
+            return retornarSelectValorDecimal(query);
         }
 
         public void incluir (List<Defeito> lista)

@@ -44,19 +44,19 @@
 					        Width="1100" Height="200" AutoGenerateColumns="False" IsReadOnly="True" CanUserSortColumns="False" CanUserReorderColumns="False" />
                     </Expander>
 
-                    <Expander Header="Numero de Itens Por Sprint" Margin="10,230,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" 
+                    <Expander Header="Numero de Itens Por Sprint" Margin="10,30,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" 
                           Width="1120"  BorderBrush="Black" BorderThickness="1" IsExpanded="False" Expanded="numItensPorSprint_Expanded" >
                         <DataGrid x:Name="tblNumItemTrabalhado" Margin="10,0,0,0" HorizontalAlignment="Left"  VerticalAlignment="Top" ItemsSource="{Binding}"
 					        Width="1100" Height="200" AutoGenerateColumns="False" IsReadOnly="True" CanUserSortColumns="False" CanUserReorderColumns="False" />
                     </Expander>
 
-                    <Expander Header="Complexidade dos Itens Por Sprint" Margin="10,460,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" 
+                    <Expander Header="Complexidade dos Itens Por Sprint" Margin="10,60,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" 
                           Width="1120"  BorderBrush="Black" BorderThickness="1" IsExpanded="False" Expanded="complexidadeItensPorSprint_Expanded" >
                         <DataGrid x:Name="tblComplexidadeItemTrabalhado" Margin="10,0,0,0" HorizontalAlignment="Left"  VerticalAlignment="Top" ItemsSource="{Binding}"
 					        Width="1100" Height="200" AutoGenerateColumns="False" IsReadOnly="True" CanUserSortColumns="False" CanUserReorderColumns="False" />
                     </Expander>
 
-                    <Expander Header="Número de Defeitos nos Itens de Backlog Relacionados" Margin="10,690,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" 
+                    <Expander Header="Número de Defeitos nos Itens de Backlog Relacionados" Margin="10,90,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" 
                           Width="1120"  BorderBrush="Black" BorderThickness="1" IsExpanded="False" Expanded="numDefeitosPorItemBacklog_Expanded" >
                         <DataGrid x:Name="tblNumDefeitosPorItemBacklog" Margin="10,0,0,0" HorizontalAlignment="Left"  VerticalAlignment="Top" ItemsSource="{Binding}"
 					        Width="1100" Height="200" AutoGenerateColumns="False" IsReadOnly="True" CanUserSortColumns="False" CanUserReorderColumns="False" />

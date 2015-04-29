@@ -80,7 +80,7 @@ SELECT Count(id) FROM ItemBacklog
 
 SELECT avg(complexidade) FROM ItemBacklog
 	WHERE id in (SELECT distinct pai FROM Tarefa
-				WHERE planejadoPara = 'eSocial-281573-1.0.0-CONS-01' and responsavel = 8)
+				WHERE planejadoPara = 'eSocial-281573-1.0.0-CONS-01' and responsavel = 24)
 
 SELECT * FROM Tarefa WHERE planejadoPara = 'eSocial-281573-1.0.0-CONS-01' and responsavel = 2
 
@@ -94,3 +94,25 @@ union
 SELECT SUM(estimativaCorrigida) FROM TarefaHistorico 
 	WHERE planejadoPara = 'eSocial-281573-1.0.1-CONS-01' and estimativaCorrigida > 0 and dataColeta in 
 		(SELECT distinct MAX (dataColeta)  FROM TarefaHistorico WHERE planejadoPara = 'eSocial-281573-1.0.1-CONS-01')
+
+SELECT * FROM Defeito WHERE planejadoPara = 'eSocial-281573-1.0.0-CONS-02' and responsavel = 23
+
+SELECT id FROM ItemBacklog
+	WHERE id in (SELECT distinct pai FROM Tarefa
+				WHERE planejadoPara = 'eSocial-281573-1.0.0-CONS-02' and responsavel = 23)
+
+SELECT count(codigo) FROM
+(SELECT distinct item.id as id, d.codigo as codigo FROM ItemBacklog AS item JOIN Defeito AS d ON d.pai = item.id JOIN Tarefa AS t ON item.id = t.pai
+	WHERE t.planejadoPara = 'eSocial-281573-1.0.0-CONS-02' and t.responsavel = 25) as defeitos
+
+SELECT count (distinct item.id) as id FROM ItemBacklog as item inner join Tarefa as t on item.id = t.pai
+		WHERE t.planejadoPara = 'eSocial-281573-1.0.0-CONS-02' and t.responsavel = 25
+
+
+SELECT ROUND(AVG(CAST(total AS DECIMAL)), 2) FROM (
+	SELECT id, count(codigo) as total FROM
+		(SELECT distinct item.id as id, d.codigo as codigo FROM ItemBacklog AS item LEFT JOIN Defeito AS d ON d.pai = item.id LEFT JOIN Tarefa AS t ON item.id = t.pai
+		WHERE t.planejadoPara = 'eSocial-281573-1.0.0-CONS-02' and t.responsavel = 25) as defeitosPorItem
+		GROUP BY id) as mediaDefeitos
+
+

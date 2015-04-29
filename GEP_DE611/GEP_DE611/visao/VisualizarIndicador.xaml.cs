@@ -83,13 +83,20 @@ namespace GEP_DE611.visao
             return false;
         }
 
-        private void prepararTabela(DataTable tabela, List<Funcionario> listaFuncionario, List<string> listaColunas)
+        private void prepararTabela(DataTable tabela, List<Funcionario> listaFuncionario, List<string> listaColunas, bool inteiro)
         {
             tabela.Columns.Add("Nome", typeof(string));
             foreach (ListBoxItem item in lstSprint.SelectedItems)
             {
                 listaColunas.Add(Convert.ToString(item.Content));
-                tabela.Columns.Add(Convert.ToString(item.Content), typeof(int));
+                if (inteiro)
+                {
+                    tabela.Columns.Add(Convert.ToString(item.Content), typeof(int));
+                }
+                else
+                {
+                    tabela.Columns.Add(Convert.ToString(item.Content), typeof(decimal));
+                }
             }
             tabela.Columns.Add("Media", typeof(decimal));
 
@@ -120,21 +127,21 @@ namespace GEP_DE611.visao
                     {
                         Header = col.ColumnName,
                         Width = 70,
-                        Binding = new Binding(string.Format("[{0}]", col.ColumnName))
+                        Binding = new Binding(string.Format("[{0:0.##}]", col.ColumnName))
                     });
                 }
                 grid.DataContext = tabela;
             }
         }
 
-        private void executarAcao(DataGrid grid, int opcao)
+        private void executarAcao(DataGrid grid, int opcao, bool inteiro)
         {
             if (validarExibicaoTabela())
             {
                 DataTable tabela = new DataTable();
                 List<Funcionario> listaFuncionario = new List<Funcionario>();
                 List<string> listaColunas = new List<string>();
-                prepararTabela(tabela, listaFuncionario, listaColunas);
+                prepararTabela(tabela, listaFuncionario, listaColunas, inteiro);
 
                 foreach (Funcionario func in listaFuncionario)
                 {
@@ -166,18 +173,16 @@ namespace GEP_DE611.visao
                         else if (opcao == OpcaoIndicador.NUM_DEFEITO_POR_ITEM_BACKLOG)
                         {
                             // =SOMARPRODUTO(($Backlog.$E$2:$E$200=B$2)*($Backlog.$R$2:$R$200>0)*($Backlog.$M$2:$M$200))/SOMARPRODUTO(($Backlog.$E$2:$E$200=B$2)*($Backlog.$R$2:$R$200>0))
-                            // E = Planejado Para
-                            // R = Somatorio numero tarefas do funcionario no item de backlog
                             // M = Quantidade de defeitos do Item
 
-                            // ItemBacklogDAO ibDAO = new ItemBacklogDAO();
-                            // linha[i + 1] = ibDAO.recuperarComplexidadeItensPorSprintPorResponsavel(listaColunas[i], func.Codigo);
+                            DefeitoDAO dDAO = new DefeitoDAO();
+                            linha[i + 1] = dDAO.recuperarMediaDefeitosPorSprintPorResponsavel(listaColunas[i], func.Codigo);
                         }
                         else
                         {
                             linha[i + 1] = i;
                         }
-                        media += Convert.ToInt32(linha[i + 1]);
+                        media += Convert.ToDecimal(linha[i + 1]);
                     }
                     linha[listaColunas.Count + 1] = (media / listaColunas.Count);
                     tabela.Rows.Add(linha);
@@ -188,22 +193,22 @@ namespace GEP_DE611.visao
 
         private void numTarefasPorSprint_Expanded(object sender, RoutedEventArgs e)
         {
-            executarAcao(tblNumTarefaTrabalhado, OpcaoIndicador.NUM_TAREFA_POR_SPRINT);
+            executarAcao(tblNumTarefaTrabalhado, OpcaoIndicador.NUM_TAREFA_POR_SPRINT, true);
         }
 
         private void numItensPorSprint_Expanded(object sender, RoutedEventArgs e)
         {
-            executarAcao(tblNumItemTrabalhado, OpcaoIndicador.NUM_ITEM_POR_SPRINT);
+            executarAcao(tblNumItemTrabalhado, OpcaoIndicador.NUM_ITEM_POR_SPRINT, true);
         }
 
         private void complexidadeItensPorSprint_Expanded(object sender, RoutedEventArgs e)
         {
-            executarAcao(tblComplexidadeItemTrabalhado, OpcaoIndicador.COMPLEXIDADE_ITEM_POR_SPRINT);
+            executarAcao(tblComplexidadeItemTrabalhado, OpcaoIndicador.COMPLEXIDADE_ITEM_POR_SPRINT, false);
         }
 
         private void numDefeitosPorItemBacklog_Expanded(object sender, RoutedEventArgs e)
         {
-            executarAcao(tblNumDefeitosPorItemBacklog, OpcaoIndicador.NUM_DEFEITO_POR_ITEM_BACKLOG);
+            executarAcao(tblNumDefeitosPorItemBacklog, OpcaoIndicador.NUM_DEFEITO_POR_ITEM_BACKLOG, false);
         }
     }
 
