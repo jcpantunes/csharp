@@ -184,7 +184,7 @@ namespace GEP_DE611.visao
                         }
                         media += Convert.ToDecimal(linha[i + 1]);
                     }
-                    linha[listaColunas.Count + 1] = (media / listaColunas.Count);
+                    linha[listaColunas.Count + 1] = Decimal.Round((media / listaColunas.Count), 2);
                     tabela.Rows.Add(linha);
                 }
                 preencherGrid(grid, tabela);

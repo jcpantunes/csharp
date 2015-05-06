@@ -39,9 +39,11 @@
 			    Width="1160" Height="610" BorderBrush="Black" BorderThickness="1" >
                 <Grid>
                     <Expander Header="Numero de Tarefas Por Sprint" Margin="10,0,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" 
-                          Width="1120"  BorderBrush="Black" BorderThickness="1" IsExpanded="False" Expanded="numTarefasPorSprint_Expanded" >
-                        <DataGrid x:Name="tblNumTarefaTrabalhado" Margin="10,0,0,0"  HorizontalAlignment="Left" VerticalAlignment="Top" ItemsSource="{Binding}"
-					        Width="1100" Height="200" AutoGenerateColumns="False" IsReadOnly="True" CanUserSortColumns="False" CanUserReorderColumns="False" />
+                          Width="1120" Height="300"  BorderBrush="Black" BorderThickness="1" IsExpanded="False" Expanded="numTarefasPorSprint_Expanded" >
+                        <StackPanel>
+                            <DataGrid x:Name="tblNumTarefaTrabalhado" Margin="10,0,0,0"  HorizontalAlignment="Left" VerticalAlignment="Top" ItemsSource="{Binding}"
+					            Width="1100" Height="200" AutoGenerateColumns="False" IsReadOnly="True" CanUserSortColumns="False" CanUserReorderColumns="False" />
+                        </StackPanel>
                     </Expander>
 
                     <Expander Header="Numero de Itens Por Sprint" Margin="10,30,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" 
