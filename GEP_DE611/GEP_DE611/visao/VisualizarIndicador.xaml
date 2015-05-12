@@ -37,32 +37,68 @@
 
             <ScrollViewer x:Name="scrollResultado" Margin="0,5,0,0" HorizontalAlignment="Left" VerticalAlignment="Top"
 			    Width="1160" Height="610" BorderBrush="Black" BorderThickness="1" >
+
+
                 <Grid>
-                    <Expander Header="Numero de Tarefas Por Sprint" Margin="10,0,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" 
-                          Width="1120" Height="300"  BorderBrush="Black" BorderThickness="1" IsExpanded="False" Expanded="numTarefasPorSprint_Expanded" >
-                        <StackPanel>
-                            <DataGrid x:Name="tblNumTarefaTrabalhado" Margin="10,0,0,0"  HorizontalAlignment="Left" VerticalAlignment="Top" ItemsSource="{Binding}"
-					            Width="1100" Height="200" AutoGenerateColumns="False" IsReadOnly="True" CanUserSortColumns="False" CanUserReorderColumns="False" />
-                        </StackPanel>
-                    </Expander>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition />
+                        <ColumnDefinition />
+                    </Grid.ColumnDefinitions>
 
-                    <Expander Header="Numero de Itens Por Sprint" Margin="10,30,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" 
-                          Width="1120"  BorderBrush="Black" BorderThickness="1" IsExpanded="False" Expanded="numItensPorSprint_Expanded" >
-                        <DataGrid x:Name="tblNumItemTrabalhado" Margin="10,0,0,0" HorizontalAlignment="Left"  VerticalAlignment="Top" ItemsSource="{Binding}"
-					        Width="1100" Height="200" AutoGenerateColumns="False" IsReadOnly="True" CanUserSortColumns="False" CanUserReorderColumns="False" />
-                    </Expander>
+                    <Grid Grid.Column="0">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                        </Grid.RowDefinitions>
 
-                    <Expander Header="Complexidade dos Itens Por Sprint" Margin="10,60,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" 
-                          Width="1120"  BorderBrush="Black" BorderThickness="1" IsExpanded="False" Expanded="complexidadeItensPorSprint_Expanded" >
-                        <DataGrid x:Name="tblComplexidadeItemTrabalhado" Margin="10,0,0,0" HorizontalAlignment="Left"  VerticalAlignment="Top" ItemsSource="{Binding}"
-					        Width="1100" Height="200" AutoGenerateColumns="False" IsReadOnly="True" CanUserSortColumns="False" CanUserReorderColumns="False" />
-                    </Expander>
+                        <Expander Header="Numero de Tarefas Por Sprint" HorizontalAlignment="Left" VerticalAlignment="Top"
+                                  ExpandDirection="Down" Expanded="numTarefasPorSprint_Expanded" Grid.Row="0" >
+                            <Grid>
+                                <Label x:Name="lblMediaNumTarefas0" Content="Media: " />
+                                <Label x:Name="lblMediaNumTarefas" Content="0" Margin="50,0,0,0" />
+                                <DataGrid x:Name="tblNumTarefaTrabalhado" Margin="0,30,0,0" ItemsSource="{Binding}"
+					                AutoGenerateColumns="False" IsReadOnly="True" CanUserSortColumns="False" CanUserReorderColumns="False" />
+                            </Grid>
+                        </Expander>
 
-                    <Expander Header="Número de Defeitos nos Itens de Backlog Relacionados" Margin="10,90,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" 
-                          Width="1120"  BorderBrush="Black" BorderThickness="1" IsExpanded="False" Expanded="numDefeitosPorItemBacklog_Expanded" >
-                        <DataGrid x:Name="tblNumDefeitosPorItemBacklog" Margin="10,0,0,0" HorizontalAlignment="Left"  VerticalAlignment="Top" ItemsSource="{Binding}"
-					        Width="1100" Height="200" AutoGenerateColumns="False" IsReadOnly="True" CanUserSortColumns="False" CanUserReorderColumns="False" />
-                    </Expander>
+                        <Expander Header="Numero de Itens Por Sprint" HorizontalAlignment="Left" VerticalAlignment="Top"
+                                  ExpandDirection="Down" Expanded="numItensPorSprint_Expanded" Grid.Row="1" >
+                            <Grid>
+                                <Label x:Name="lblMediaNumItens0" Content="Media: " />
+                                <Label x:Name="lblMediaNumItens" Content="0" Margin="50,0,0,0" />
+                                <DataGrid x:Name="tblNumItemTrabalhado" Margin="0,30,0,0" ItemsSource="{Binding}"
+    					            AutoGenerateColumns="False" IsReadOnly="True" CanUserSortColumns="False" CanUserReorderColumns="False" />
+                            </Grid>
+                        </Expander>
+                    </Grid>
+
+                    <Grid Grid.Column="1">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                        </Grid.RowDefinitions>
+
+                        <Expander Header="Complexidade dos Itens Por Sprint" HorizontalAlignment="Left" VerticalAlignment="Top"
+                                  ExpandDirection="Down" Expanded="complexidadeItensPorSprint_Expanded" Grid.Row="0" >
+                            <Grid>
+                                <Label x:Name="lblMediaComplexidade0" Content="Media: " />
+                                <Label x:Name="lblMediaComplexidade" Content="0" Margin="50,0,0,0" />
+                                <DataGrid x:Name="tblComplexidadeItemTrabalhado" Margin="0,30,0,0" HorizontalAlignment="Left"  VerticalAlignment="Top" ItemsSource="{Binding}"
+					                AutoGenerateColumns="False" IsReadOnly="True" CanUserSortColumns="False" CanUserReorderColumns="False" />
+                            </Grid>
+                        </Expander>
+
+                        <Expander Header="Número de Defeitos nos Itens de Backlog Relacionados" HorizontalAlignment="Left" VerticalAlignment="Top"
+                                  ExpandDirection="Down" Expanded="numDefeitosPorItemBacklog_Expanded" Grid.Row="1" >
+                            <Grid>
+                                <Label x:Name="lblMediaNumDefeitos0" Content="Media: " />
+                                <Label x:Name="lblMediaNumDefeitos" Content="0" Margin="50,0,0,0" />
+                                <DataGrid x:Name="tblNumDefeitosPorItemBacklog" Margin="0,30,0,0" HorizontalAlignment="Left"  VerticalAlignment="Top" ItemsSource="{Binding}"
+					                AutoGenerateColumns="False" IsReadOnly="True" CanUserSortColumns="False" CanUserReorderColumns="False" />
+                            </Grid>
+                        </Expander>
+                    </Grid>
+
                 </Grid>
             </ScrollViewer>
         </GroupBox>

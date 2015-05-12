@@ -120,21 +120,35 @@ namespace GEP_DE611.visao
         {
             if (tabela != null) // table is a DataTable
             {
+                int i = 0;
                 grid.Columns.Clear();
                 foreach (DataColumn col in tabela.Columns)
                 {
-                    grid.Columns.Add(new DataGridTextColumn
+                    if (i == 0)
                     {
-                        Header = col.ColumnName,
-                        Width = 70,
-                        Binding = new Binding(string.Format("[{0:0.##}]", col.ColumnName))
-                    });
+                        grid.Columns.Add(new DataGridTextColumn
+                        {
+                            Header = col.ColumnName,
+                            Width = 180,
+                            Binding = new Binding(string.Format("[{0:0.##}]", col.ColumnName))
+                        });
+                    }
+                    else
+                    {
+                        grid.Columns.Add(new DataGridTextColumn
+                        {
+                            Header = col.ColumnName,
+                            Width = 40,
+                            Binding = new Binding(string.Format("[{0:0.##}]", col.ColumnName))
+                        });
+                    }
+                    i++;
                 }
                 grid.DataContext = tabela;
             }
         }
 
-        private void executarAcao(DataGrid grid, int opcao, bool inteiro)
+        private void executarAcao(DataGrid grid, Label lbl, int opcao, bool inteiro)
         {
             if (validarExibicaoTabela())
             {
@@ -143,6 +157,7 @@ namespace GEP_DE611.visao
                 List<string> listaColunas = new List<string>();
                 prepararTabela(tabela, listaFuncionario, listaColunas, inteiro);
 
+                decimal mediaGeral = 0;
                 foreach (Funcionario func in listaFuncionario)
                 {
                     object[] linha = new object[listaColunas.Count + 2]; // +2 por causa das colunas nome e media
@@ -184,32 +199,36 @@ namespace GEP_DE611.visao
                         }
                         media += Convert.ToDecimal(linha[i + 1]);
                     }
+                    mediaGeral += Decimal.Round((media / listaColunas.Count), 2);
                     linha[listaColunas.Count + 1] = Decimal.Round((media / listaColunas.Count), 2);
                     tabela.Rows.Add(linha);
                 }
+                lbl.Content = Decimal.Round((mediaGeral / tabela.Rows.Count), 2); ;
                 preencherGrid(grid, tabela);
             }
         }
 
         private void numTarefasPorSprint_Expanded(object sender, RoutedEventArgs e)
         {
-            executarAcao(tblNumTarefaTrabalhado, OpcaoIndicador.NUM_TAREFA_POR_SPRINT, true);
+            executarAcao(tblNumTarefaTrabalhado, lblMediaNumTarefas, OpcaoIndicador.NUM_TAREFA_POR_SPRINT, true);
         }
 
         private void numItensPorSprint_Expanded(object sender, RoutedEventArgs e)
         {
-            executarAcao(tblNumItemTrabalhado, OpcaoIndicador.NUM_ITEM_POR_SPRINT, true);
+            executarAcao(tblNumItemTrabalhado, lblMediaNumItens, OpcaoIndicador.NUM_ITEM_POR_SPRINT, true);
         }
 
         private void complexidadeItensPorSprint_Expanded(object sender, RoutedEventArgs e)
         {
-            executarAcao(tblComplexidadeItemTrabalhado, OpcaoIndicador.COMPLEXIDADE_ITEM_POR_SPRINT, false);
+            executarAcao(tblComplexidadeItemTrabalhado, lblMediaComplexidade, OpcaoIndicador.COMPLEXIDADE_ITEM_POR_SPRINT, false);
         }
 
         private void numDefeitosPorItemBacklog_Expanded(object sender, RoutedEventArgs e)
         {
-            executarAcao(tblNumDefeitosPorItemBacklog, OpcaoIndicador.NUM_DEFEITO_POR_ITEM_BACKLOG, false);
+            executarAcao(tblNumDefeitosPorItemBacklog, lblMediaNumDefeitos, OpcaoIndicador.NUM_DEFEITO_POR_ITEM_BACKLOG, false);
         }
+
+        // Numero de horas apropriadas por sprint
     }
 
     class OpcaoIndicador
