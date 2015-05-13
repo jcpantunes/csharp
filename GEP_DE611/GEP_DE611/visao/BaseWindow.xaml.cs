@@ -102,6 +102,22 @@ namespace GEP_DE611.visao
             }
         }
 
+        public void preencherComboLotacao(ComboBox cmb, ListBox lstFuncionario)
+        {
+            List<string> lista = Util.retornarListaLotacao();
+            if (lista.Count > 0)
+            {
+                foreach (string lotacao in lista)
+                {
+                    ComboBoxItem item = new ComboBoxItem();
+                    item.Content = lotacao;
+                    cmb.Items.Add(item);
+                }
+                cmb.SelectedIndex = 0;
+                preencherListBoxFuncionario(lstFuncionario, lista[0]);
+            }
+        }
+
         public void preencherListBoxSprint(ListBox lst, int codigoProjeto)
         {
             lst.Items.Clear();
@@ -118,6 +134,28 @@ namespace GEP_DE611.visao
                 }
             }
         }
+
+        public void preencherListBoxFuncionario(ListBox lst, string lotacao)
+        {
+            lst.Items.Clear();
+            Dictionary<string, string> param = new Dictionary<string, string>();
+            param.Add(Funcionario.LOTACAO, lotacao);
+
+            FuncionarioDAO fDAO = new FuncionarioDAO();
+            List<Funcionario> lista = fDAO.recuperar(param);
+
+            if (lista.Count > 0)
+            {
+                foreach (Funcionario f in lista)
+                {
+                    ListBoxItem item = new ListBoxItem();
+                    item.Content = f.Nome;
+                    item.Tag = f.Codigo;
+                    lst.Items.Add(item);
+                }
+            }
+        }
+
 
         public void preencherComboFuncionario(ComboBox cmb, string lotacao, bool todos)
         {

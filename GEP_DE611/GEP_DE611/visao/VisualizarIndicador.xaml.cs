@@ -38,7 +38,7 @@ namespace GEP_DE611.visao
 
         private void preencherCombos()
         {
-            baseWindow.preencherComboLotacao(cmbLotacao, cmbFuncionario);
+            baseWindow.preencherComboLotacao(cmbLotacao, lstFuncionario);
 
             baseWindow.preencherComboProjeto(cmbProjeto, false);
 
@@ -54,7 +54,9 @@ namespace GEP_DE611.visao
         {
             ComboBoxItem item = (ComboBoxItem)cmbLotacao.SelectedItem;
             string lotacao = Convert.ToString(item.Content);
-            baseWindow.preencherComboFuncionario(cmbFuncionario, lotacao, true);
+            baseWindow.preencherListBoxFuncionario(lstFuncionario, lotacao);
+
+            chkTodosFuncionario.IsChecked = true;
         }
 
         private void cmbProjeto_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -63,15 +65,10 @@ namespace GEP_DE611.visao
             baseWindow.preencherListBoxSprint(lstSprint, codigo);
         }
 
-        private void btnNumItemTrabalhado_Click(object sender, RoutedEventArgs e)
-        {
-
-        }
-
         private bool validarExibicaoTabela()
         {
-            if (cmbLotacao.SelectedIndex >= 0 && cmbFuncionario.SelectedIndex >= 0
-                && cmbProjeto.SelectedIndex >= 0 && lstSprint.SelectedItems.Count > 0)
+            if (cmbProjeto.SelectedIndex >= 0 && lstSprint.SelectedItems.Count > 0 && cmbLotacao.SelectedIndex >= 0 && 
+                lstFuncionario.Items.Count > 0 && (chkTodosFuncionario.IsChecked == true || lstFuncionario.SelectedItems.Count > 0))
             {
                 return true;
             }
@@ -100,7 +97,7 @@ namespace GEP_DE611.visao
             }
             tabela.Columns.Add("Media", typeof(decimal));
 
-            if (cmbFuncionario.SelectedIndex == 0)
+            if (chkTodosFuncionario.IsChecked == true)
             {
                 FuncionarioDAO fDAO = new FuncionarioDAO();
                 String lotacao = Convert.ToString(((ComboBoxItem)cmbLotacao.SelectedItem).Content);
@@ -112,7 +109,11 @@ namespace GEP_DE611.visao
             else
             {
                 FuncionarioDAO fDAO = new FuncionarioDAO();
-                listaFuncionario.Add(fDAO.recuperar(Convert.ToInt32(((ComboBoxItem)cmbFuncionario.SelectedItem).Tag)));
+                foreach (ListBoxItem item in lstFuncionario.SelectedItems)
+                {
+                    int codigo = Convert.ToInt32(item.Tag);
+                    listaFuncionario.Add(fDAO.recuperar(codigo));
+                }
             }
         }
 
