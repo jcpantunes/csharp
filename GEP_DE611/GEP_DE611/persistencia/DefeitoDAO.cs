@@ -113,6 +113,13 @@ namespace GEP_DE611.persistencia
             return retornarSelectValorDecimal(query);
         }
 
+        public int recuperarDefeitosCorrigidosResponsavel(string planejadoPara, int responsavel)
+        {
+            string query = "SELECT COUNT(id) FROM Defeito d "
+                + "WHERE d.planejadoPara = '" + planejadoPara + "' and d.tipoRelato = 'Erro' and d.responsavel = " + responsavel;
+            return retornarSelectValorInt(query);
+        }
+        
         public void incluir (List<Defeito> lista)
         {
             string queryInsert = "INSERT INTO " + TABELA

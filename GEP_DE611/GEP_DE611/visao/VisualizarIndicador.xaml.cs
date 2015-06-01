@@ -38,7 +38,7 @@ namespace GEP_DE611.visao
 
         private void preencherCombos()
         {
-            baseWindow.preencherComboLotacao(cmbLotacao, lstFuncionario);
+            baseWindow.preencherComboLotacao(cmbLotacao, lstFuncionario, 10);
 
             baseWindow.preencherComboProjeto(cmbProjeto, false);
 
@@ -63,6 +63,31 @@ namespace GEP_DE611.visao
         {
             int codigo = Convert.ToInt32(((ComboBoxItem)cmbProjeto.SelectedItem).Tag);
             baseWindow.preencherListBoxSprint(lstSprint, codigo);
+        }
+
+        private void btnAtualizar_Click(object sender, RoutedEventArgs e)
+        {
+            expNumTarefasPorSprint.IsExpanded = false;
+            expNumItensPorSprint.IsExpanded = false;
+            expComplexidadeItensPorSprint.IsExpanded = false;
+            expNumDefeitosPorItemBacklog.IsExpanded = false;
+
+            expNumTarefasPorSprint.IsExpanded = true;
+            expNumItensPorSprint.IsExpanded = true;
+            expComplexidadeItensPorSprint.IsExpanded = true;
+            expNumDefeitosPorItemBacklog.IsExpanded = true;
+        }
+
+        private void lstFuncionario_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            if (lstFuncionario.SelectedItems.Count > 0)
+            {
+                chkTodosFuncionario.IsChecked = false;
+            }
+            else
+            {
+                chkTodosFuncionario.IsChecked = true;
+            }
         }
 
         private bool validarExibicaoTabela()
@@ -194,6 +219,14 @@ namespace GEP_DE611.visao
                             DefeitoDAO dDAO = new DefeitoDAO();
                             linha[i + 1] = dDAO.recuperarMediaDefeitosPorSprintPorResponsavel(listaColunas[i], func.Codigo);
                         }
+                        else if (opcao == OpcaoIndicador.NUM_DEFEITO_CORRIGIDO_POR_SPRINT)
+                        {
+                            // =SOMARPRODUTO(($Backlog.$E$2:$E$200=B$2)*($Backlog.$R$2:$R$200>0)*($Backlog.$M$2:$M$200))/SOMARPRODUTO(($Backlog.$E$2:$E$200=B$2)*($Backlog.$R$2:$R$200>0))
+                            // M = Quantidade de defeitos do Item
+
+                            DefeitoDAO dDAO = new DefeitoDAO();
+                            linha[i + 1] = dDAO.recuperarDefeitosCorrigidosResponsavel(listaColunas[i], func.Codigo);
+                        }
                         else
                         {
                             linha[i + 1] = i;
@@ -229,6 +262,12 @@ namespace GEP_DE611.visao
             executarAcao(tblNumDefeitosPorItemBacklog, lblMediaNumDefeitos, OpcaoIndicador.NUM_DEFEITO_POR_ITEM_BACKLOG, false);
         }
 
+        private void numDefeitosCorrigidosPorSprint_Expanded(object sender, RoutedEventArgs e)
+        {
+            executarAcao(tblNumDefeitosCorrigidos, lblMediaNumDefeitosCorrigidos, OpcaoIndicador.NUM_DEFEITO_CORRIGIDO_POR_SPRINT, true);
+        }
+
+
         // Numero de horas apropriadas por sprint
     }
 
@@ -241,5 +280,7 @@ namespace GEP_DE611.visao
         public const int COMPLEXIDADE_ITEM_POR_SPRINT = 2;
 
         public const int NUM_DEFEITO_POR_ITEM_BACKLOG = 3;
+
+        public const int NUM_DEFEITO_CORRIGIDO_POR_SPRINT = 3;
     }
 }

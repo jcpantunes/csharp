@@ -116,3 +116,4 @@ SELECT ROUND(AVG(CAST(total AS DECIMAL)), 2) FROM (
 		GROUP BY id) as mediaDefeitos
 
 
+

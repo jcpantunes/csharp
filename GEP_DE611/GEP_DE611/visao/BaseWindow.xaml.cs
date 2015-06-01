@@ -102,7 +102,7 @@ namespace GEP_DE611.visao
             }
         }
 
-        public void preencherComboLotacao(ComboBox cmb, ListBox lstFuncionario)
+        public void preencherComboLotacao(ComboBox cmb, ListBox lstFuncionario, int selectedIndex)
         {
             List<string> lista = Util.retornarListaLotacao();
             if (lista.Count > 0)
@@ -113,8 +113,8 @@ namespace GEP_DE611.visao
                     item.Content = lotacao;
                     cmb.Items.Add(item);
                 }
-                cmb.SelectedIndex = 0;
-                preencherListBoxFuncionario(lstFuncionario, lista[0]);
+                cmb.SelectedIndex = selectedIndex;
+                preencherListBoxFuncionario(lstFuncionario, lista[selectedIndex]);
             }
         }
 
