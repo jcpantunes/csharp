@@ -115,5 +115,11 @@ SELECT ROUND(AVG(CAST(total AS DECIMAL)), 2) FROM (
 		WHERE t.planejadoPara = 'eSocial-281573-1.0.0-CONS-02' and t.responsavel = 25) as defeitosPorItem
 		GROUP BY id) as mediaDefeitos
 
+select * from funcionario
 
+SELECT * FROM Tarefa
+                WHERE planejadoPara = 'eSocial-281573-1.0.0-CONS-02'
+                and tempoGasto > (1.2*estimativa)
 
+SELECT * FROM Tarefa
+                WHERE planejadoPara = 'eSocial-281573-1.0.0-CONS-02'

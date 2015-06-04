@@ -71,11 +71,17 @@ namespace GEP_DE611.visao
             expNumItensPorSprint.IsExpanded = false;
             expComplexidadeItensPorSprint.IsExpanded = false;
             expNumDefeitosPorItemBacklog.IsExpanded = false;
+            expNumDefeitosCorrigidosPorSprint.IsExpanded = false;
+            expNumTarefasEstimativaMaiorTempoGasto.IsExpanded = false;
+            expNumTarefasTempoGastoMaior24.IsExpanded = false;
 
             expNumTarefasPorSprint.IsExpanded = true;
             expNumItensPorSprint.IsExpanded = true;
             expComplexidadeItensPorSprint.IsExpanded = true;
             expNumDefeitosPorItemBacklog.IsExpanded = true;
+            expNumDefeitosCorrigidosPorSprint.IsExpanded = true;
+            expNumTarefasEstimativaMaiorTempoGasto.IsExpanded = true;
+            expNumTarefasTempoGastoMaior24.IsExpanded = true;
         }
 
         private void lstFuncionario_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -196,6 +202,16 @@ namespace GEP_DE611.visao
                             TarefaDAO tDAO = new TarefaDAO();
                             linha[i + 1] = tDAO.recuperarQtdeTarefasPorSprintPorResponsavel(listaColunas[i], func.Codigo);
                         }
+                        else if (opcao == OpcaoIndicador.NUM_TAREFA_ESTIMATIVA_MAIOR_TEMPO_GASTO)
+                        {
+                            TarefaDAO tDAO = new TarefaDAO();
+                            linha[i + 1] = tDAO.recuperarQtdeTarefasPorSprintTempoGastoMaiorEstimativa(listaColunas[i], func.Codigo);
+                        }
+                        else if (opcao == OpcaoIndicador.NUM_TAREFA_TEMPO_GASTO_MAIOR_24)
+                        {
+                            TarefaDAO tDAO = new TarefaDAO();
+                            linha[i + 1] = tDAO.recuperarQtdeTarefasTempoGastoMaior24(listaColunas[i], func.Codigo);
+                        }
                         else if (opcao == OpcaoIndicador.NUM_ITEM_POR_SPRINT)
                         {
                             ItemBacklogDAO ibDAO = new ItemBacklogDAO();
@@ -267,6 +283,15 @@ namespace GEP_DE611.visao
             executarAcao(tblNumDefeitosCorrigidos, lblMediaNumDefeitosCorrigidos, OpcaoIndicador.NUM_DEFEITO_CORRIGIDO_POR_SPRINT, true);
         }
 
+        private void numTarefasEstimativaMaiorTempoGasto_Expanded(object sender, RoutedEventArgs e)
+        {
+            executarAcao(tblNumTarefasEstimativaMaiorTempoGasto, lblMediaNumTarefasEstimativaMaiorTempoGasto, OpcaoIndicador.NUM_TAREFA_ESTIMATIVA_MAIOR_TEMPO_GASTO, true);
+        }
+
+        private void numTarefasTempoGastoMaior24_Expanded(object sender, RoutedEventArgs e)
+        {
+            executarAcao(tblNumTarefasTempoGastoMaior24, lblMediaNumTarefasTempoGastoMaior24, OpcaoIndicador.NUM_TAREFA_TEMPO_GASTO_MAIOR_24, true);
+        }
 
         // Numero de horas apropriadas por sprint
     }
@@ -275,12 +300,16 @@ namespace GEP_DE611.visao
     {
         public const int NUM_TAREFA_POR_SPRINT = 0;
 
-        public const int NUM_ITEM_POR_SPRINT = 1;
+        public const int NUM_TAREFA_ESTIMATIVA_MAIOR_TEMPO_GASTO = 1;
 
-        public const int COMPLEXIDADE_ITEM_POR_SPRINT = 2;
+        public const int NUM_TAREFA_TEMPO_GASTO_MAIOR_24 = 2;
 
-        public const int NUM_DEFEITO_POR_ITEM_BACKLOG = 3;
+        public const int NUM_ITEM_POR_SPRINT = 3;
 
-        public const int NUM_DEFEITO_CORRIGIDO_POR_SPRINT = 3;
+        public const int COMPLEXIDADE_ITEM_POR_SPRINT = 4;
+
+        public const int NUM_DEFEITO_POR_ITEM_BACKLOG =5;
+
+        public const int NUM_DEFEITO_CORRIGIDO_POR_SPRINT = 6;
     }
 }
