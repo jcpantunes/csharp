@@ -75,13 +75,13 @@ namespace GEP_DE611.visao
             expNumTarefasEstimativaMaiorTempoGasto.IsExpanded = false;
             expNumTarefasTempoGastoMaior24.IsExpanded = false;
 
-            expNumTarefasPorSprint.IsExpanded = true;
-            expNumItensPorSprint.IsExpanded = true;
-            expComplexidadeItensPorSprint.IsExpanded = true;
-            expNumDefeitosPorItemBacklog.IsExpanded = true;
-            expNumDefeitosCorrigidosPorSprint.IsExpanded = true;
-            expNumTarefasEstimativaMaiorTempoGasto.IsExpanded = true;
-            expNumTarefasTempoGastoMaior24.IsExpanded = true;
+            //expNumTarefasPorSprint.IsExpanded = true;
+            //expNumItensPorSprint.IsExpanded = true;
+            //expComplexidadeItensPorSprint.IsExpanded = true;
+            //expNumDefeitosPorItemBacklog.IsExpanded = true;
+            //expNumDefeitosCorrigidosPorSprint.IsExpanded = true;
+            //expNumTarefasEstimativaMaiorTempoGasto.IsExpanded = true;
+            //expNumTarefasTempoGastoMaior24.IsExpanded = true;
         }
 
         private void lstFuncionario_SelectionChanged(object sender, SelectionChangedEventArgs e)

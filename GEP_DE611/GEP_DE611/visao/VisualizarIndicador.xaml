@@ -36,7 +36,7 @@
         </GroupBox>
 
         <ScrollViewer x:Name="scrollResultado" Margin="10,190,0,0" HorizontalAlignment="Left" VerticalAlignment="Top"
-			    Width="1500" Height="600" BorderBrush="Black" BorderThickness="1" >
+			    Width="1500" Height="500" BorderBrush="Black" BorderThickness="1" >
 
             <Grid>
     
