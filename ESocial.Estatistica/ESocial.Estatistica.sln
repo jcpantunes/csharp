@@ -1,0 +1,26 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2012
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ESocial.Estatistica", "ESocial.Estatistica\ESocial.Estatistica.csproj", "{926B25CB-2F73-46D0-A6A2-985F4D98A03A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ESocial.Estatistica.Tests", "ESocial.Estatistica.Tests\ESocial.Estatistica.Tests.csproj", "{937F080F-FE16-4116-ADFF-33B6833E4BF8}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{926B25CB-2F73-46D0-A6A2-985F4D98A03A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{926B25CB-2F73-46D0-A6A2-985F4D98A03A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{926B25CB-2F73-46D0-A6A2-985F4D98A03A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{926B25CB-2F73-46D0-A6A2-985F4D98A03A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{937F080F-FE16-4116-ADFF-33B6833E4BF8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{937F080F-FE16-4116-ADFF-33B6833E4BF8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{937F080F-FE16-4116-ADFF-33B6833E4BF8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{937F080F-FE16-4116-ADFF-33B6833E4BF8}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
