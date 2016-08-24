@@ -6,30 +6,29 @@ using System.Threading.Tasks;
 
 namespace GEP_DE607.Dominio
 {
-    class Tarefa : ItemTrabalho
+    public class Tarefa : ItemTrabalho
     {
+
+        public const string CLASSIFICACAO = "classificacao";
+        public const string ESTIMATIVA = "estimativa";
+        public const string TEMPO_GASTO = "tempogasto";
 
         public Tarefa()
         {
         }
 
-        public Tarefa(int codigo, string tipo, int id, Funcionario responsavel, String titulo,
-            string status, string macroatividade, string planejadoPara, string pai, decimal estimativa, decimal tempoGasto)
+        public Tarefa (int codigo, string tipo, int id, string titulo, Funcionario responsavel, string status,
+            string planejadoPara, string pai, DateTime dataModificacao, int projeto,
+            string classificacao, decimal estimativa, decimal tempoGasto) : 
+                base (codigo, tipo, id, titulo, responsavel, status,
+                        planejadoPara, pai, dataModificacao, projeto)
         {
-            this.Codigo = codigo;
-            this.Tipo = tipo;
-            this.Id = id;
-            this.Responsavel = responsavel;
-            this.Titulo = titulo;
-            this.Status = status;
-            this.PlanejadoPara = planejadoPara;
-            this.Pai = pai;
-            this.Macroatividade = macroatividade;
+            this.Classificacao = classificacao;
             this.Estimativa = estimativa;
             this.TempoGasto = tempoGasto;
         }
 
-        public String Macroatividade { get; set; }
+        public string Classificacao { get; set; }
 
         public decimal Estimativa { get; set; }
 

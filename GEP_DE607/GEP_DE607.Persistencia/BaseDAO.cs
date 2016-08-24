@@ -6,16 +6,15 @@ using System.Threading.Tasks;
 using Microsoft.SqlServer;
 using System.Data;
 using System.Data.SqlClient;
+using GEP_DE607.Dominio;
 
 namespace GEP_DE607.Persistencia
 {
-    class BaseDAO
+    public class BaseDAO
     {
-        public static int INSERT = 1;
-
-        public static int UPDATE = 2;
-
-        public static int DELETE = 3;
+        public static const int INSERT = 1;
+        public static const int UPDATE = 2;
+        public static const int DELETE = 3;
 
         // string connectionString = @"Data Source=JULIO-PC\SQLEXPRESS;Initial Catalog=DBD_GEP;"
         string connectionString = @"Data Source=SERPRO1540297V1\SQLEXPRESS;Initial Catalog=DBD_GEP;"
@@ -107,40 +106,48 @@ namespace GEP_DE607.Persistencia
             return quantidade;
         }
 
-        protected string retornarPesquisaWhere(String key, Dictionary<string, string> parametros)
+        protected string retornarPesquisaWhere(string key, Dictionary<string, string> parametros)
         {
             string query = "";
             if (key.Equals(ItemTrabalho.CODIGO))
             {
                 query += ItemTrabalho.CODIGO + " = " + parametros[key] + " and ";
             }
-            else if (key.Equals(ItemTrabalho.TITULO))
+            else if (key.Equals(ItemTrabalho.TIPO))
             {
-                query += ItemTrabalho.TITULO + " like '%" + parametros[key] + "%' and ";
+                query += ItemTrabalho.TIPO + " like '%" + parametros[key] + "%' and ";
             }
             else if (key.Equals(ItemTrabalho.ID))
             {
                 query += ItemTrabalho.ID + " = '" + parametros[key] + "' and ";
             }
-            else if (key.Equals(ItemTrabalho.PAI))
+            else if (key.Equals(ItemTrabalho.TITULO))
             {
-                query += ItemTrabalho.PAI + " like '%" + parametros[key] + "%' and ";
+                query += ItemTrabalho.TITULO + " like '%" + parametros[key] + "%' and ";
             }
-            else if (key.Equals(ItemTrabalho.DTINICIO))
+            else if (key.Equals(ItemTrabalho.RESPONSAVEL))
             {
-                query += ItemTrabalho.DATA_COLETA + " >= '" + Convert.ToDateTime(parametros[key]) + "' and ";
+                query += ItemTrabalho.RESPONSAVEL + " = " + parametros[key] + " and ";
             }
-            else if (key.Equals(ItemTrabalho.DTFINAL))
+            else if (key.Equals(ItemTrabalho.STATUS))
             {
-                query += ItemTrabalho.DATA_COLETA + " <= '" + Convert.ToDateTime(parametros[key]) + "' and ";
+                query += ItemTrabalho.STATUS + " = '" + parametros[key] + "' and ";
             }
             else if (key.Equals(ItemTrabalho.PLANEJADO_PARA))
             {
                 query += ItemTrabalho.PLANEJADO_PARA + " = '" + parametros[key] + "' and ";
             }
-            else if (key.Equals(ItemTrabalho.STATUS))
+            else if (key.Equals(ItemTrabalho.PAI))
             {
-                query += ItemTrabalho.STATUS + " = '" + parametros[key] + "' and ";
+                query += ItemTrabalho.PAI + " = '" + parametros[key] + "' and ";
+            }
+            else if (key.Equals(ItemTrabalho.DTMODIFICACAO))
+            {
+                query += ItemTrabalho.DTMODIFICACAO + " = '" + Convert.ToDateTime(parametros[key]) + "' and ";
+            }
+            else if (key.Equals(ItemTrabalho.PROJETO))
+            {
+                query += ItemTrabalho.PROJETO + " = " + parametros[key] + " and ";
             }
             return query;
         }

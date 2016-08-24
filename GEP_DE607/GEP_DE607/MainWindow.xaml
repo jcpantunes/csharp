@@ -3,6 +3,14 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         Title="MainWindow" Height="350" Width="525">
     <Grid>
-        
+        <DockPanel HorizontalAlignment="Left" Height="Auto" Width="Auto" LastChildFill="False" 
+                   Margin="0,10,0,0" VerticalAlignment="Top" />
+
+        <Menu x:Name="mnu" Margin="10,10,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" Height="60" Width="500">
+
+            <Button x:Name="btnCarga" Margin="10,5,0,0" Content="Carga" HorizontalAlignment="Left" Click="btnCarga_Click" Width="40" Height="40" />
+
+       </Menu>
+
     </Grid>
 </Window>

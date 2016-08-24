@@ -1,0 +1,23 @@
+﻿Tipo	ID	Título	Responsável	Status	Planejado Para	Pai	Data de Modificação	ID do Projeto	Classificação	Estimativa	Tempo Gasto
+Tarefa	313423	Projetar Casos de Testes	Alexandre Henrique Vieira Soares	Finalizada	eSocial-281573-1.0.0-CONS-02	#335029	20/10/2014 11:46	282935	Testes	16 horas	8 horas
+Tarefa	313424	Mapear telas	Francisco Dimas Santos Coimbra	Finalizada	eSocial-281573-1.0.0-CONS-02	#335029	20/10/2014 11:45	282935	Testes	8 horas	17 horas
+Tarefa	313433	Informações Cadastrais do Empregador – Verificar integridade dos XMLs enviados para o ambiente Nacional	Filipe Montenegro Campos de Albuquerque	Finalizada	eSocial-281573-1.0.0-CONS-02	#335071	10/10/2014 16:28	282935	Implementação	4 horas	1 hora
+Tarefa	313471	Implementar Comportamento da tela para apresentação dos dados – Visão Resumida e Completa	Lisiene Bruna de Lima Pio Santos	Finalizada	eSocial-281573-1.0.0-CONS-02	#335919	08/10/2014 15:11	282935	Implementação	12 horas	10 horas
+Tarefa	313481	Implementar Tela do Resultado do Histórico de Alterações do cadastro do Empregador	Eduardo Resende Gomes	Finalizada	eSocial-281573-1.0.0-CONS-02	#335908	09/10/2014 14:59	282935	Implementação	16 horas	20 horas
+Tarefa	313482	Verificar Tratamento de Histórico dado pelo Módulo Completo	Eduardo Resende Gomes	Finalizada	eSocial-281573-1.0.0-CONS-02	#335908	08/10/2014 15:48	282935	Implementação	8 horas	9 horas 30 m
+Tarefa	313510	Tabela Rubrica – Implementar Tratamento para Informações padrão da Tabela	Eduardo Resende Gomes	Finalizada	eSocial-281573-1.0.0-CONS-02	#335909	17/10/2014 16:02	282935	Implementação	8 horas	8 horas 30 m
+Tarefa	313511	Projetar Casos de Testes	Alexandre Henrique Vieira Soares	Finalizada	eSocial-281573-1.0.0-CONS-02	#335909	20/10/2014 11:46	282935	Testes	16 horas	7 horas
+Tarefa	313512	Mapear telas	Francisco Dimas Santos Coimbra	Finalizada	eSocial-281573-1.0.0-CONS-02	#335909	20/10/2014 08:47	282935	Testes	8 horas	7 horas
+Tarefa	313546	Tabela Rubrica - Remover histórico	Claudia Helena Souza e Silva Santos Behring	Finalizada	eSocial-281573-1.0.0-CONS-02	#335910	02/10/2014 08:59	282935	Implementação	4 horas	1 hora
+Tarefa	313557	Tabela Cargo – Implementar Tratamento para Informações padrão da Tabela	Eduardo Resende Gomes	Finalizada	eSocial-281573-1.0.0-CONS-02	#335911	17/10/2014 16:03	282935	Implementação	8 horas	15 horas
+Tarefa	313558	Projetar Casos de Testes	Alexandre Henrique Vieira Soares	Finalizada	eSocial-281573-1.0.0-CONS-02	#335911	20/10/2014 11:47	282935	Testes	8 horas	3 horas
+Tarefa	313564	Tabela Cargo - Remover histórico	Rafael Goncalves Mafuz	Finalizada	eSocial-281573-1.0.0-CONS-02	#335914	02/10/2014 13:46	282935	Testes	4 horas	4 horas
+Tarefa	313565	Executar Casos de Testes	Sergio Marcio Magalhaes Teixeira	Finalizada	eSocial-281573-1.0.0-CONS-02	#335924	21/10/2014 08:46	282935	Testes	8 horas	8 horas
+Tarefa	313574	Mapear telas	Francisco Dimas Santos Coimbra	Finalizada	eSocial-281573-1.0.0-CONS-02	#335920	08/10/2014 14:40	282935	Testes	16 horas	12 horas
+Tarefa	313576	Tabela Estabelecimentos e Obras – Implementar Mapeamento do Evento com o Modelo	Claudia Helena Souza e Silva Santos Behring	Finalizada	eSocial-281573-1.0.0-CONS-02	#335924	03/10/2014 10:12	282935	Implementação	4 horas	4 horas
+Tarefa	313583	Tabela Lotação/Departamento – Implementar Tratamento para Informações padrão da Tabela	Não Designado	Cancelada	eSocial-281573-1.0.0-CONS-02	#335916	02/10/2014 11:07	282935	Implementação	0 horas	
+Tarefa	313592	Tabela Horário/Turno – Implementar Editar	Rafael Goncalves Mafuz	Finalizada	eSocial-281573-1.0.0-CONS-02	#335917	10/10/2014 15:34	282935	Implementação	8 horas	12 horas
+Tarefa	313594	Tabela Horário/Turno – Implementar Tratamento para Informações padrão da Tabela	Não Designado	Cancelada	eSocial-281573-1.0.0-CONS-02	#335917	10/10/2014 16:17	282935	Implementação	0 horas	
+Tarefa	313598	Tabela Horario/Turno - Remover histórico	Raphael Schumann	Finalizada	eSocial-281573-1.0.0-CONS-02	#335918	02/10/2014 08:30	282935	Implementação	4 horas	4 horas
+Tarefa	313599	Tabela Função - Remover histórico	Raphael Schumann	Finalizada	eSocial-281573-1.0.0-CONS-02	#335915	30/09/2014 09:47	282935	Implementação	8 horas	8 horas
+Tarefa	313607	Tabelas do Empregador – Verificar integridade dos XMLs enviados para o ambiente Nacional	Claudia Helena Souza e Silva Santos Behring	Finalizada	eSocial-281573-1.0.0-CONS-02	#335922	10/10/2014 16:34	282935	Implementação	8 horas	1 hora

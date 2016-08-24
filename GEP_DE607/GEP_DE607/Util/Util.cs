@@ -1,0 +1,137 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using GEP_DE607.Dominio;
+using GEP_DE607.Persistencia;
+
+namespace GEP_DE607.Util
+{
+    class Util
+    {
+        public static bool verificarStringNumero(string s)
+        {
+            char[] vetor = s.ToCharArray();
+            foreach (char c in vetor)
+            {
+                if (!char.IsNumber(c))
+                {
+                    return false;
+                }
+            }
+            return true;
+        }
+
+        public static List<string> retornarListaLotacao()
+        {
+            List<string> lista = new List<string>();
+            lista.Add("DEBHE/DE601");
+            lista.Add("DEBHE/DE602");
+            lista.Add("DEBHE/DE603");
+            lista.Add("DEBHE/DE604");
+            lista.Add("DEBHE/DE605");
+            lista.Add("DEBHE/DE606");
+            lista.Add("DEBHE/DE607");
+            lista.Add("DEBHE/DE608");
+            lista.Add("DEBHE/DE609");
+            lista.Add("DEBHE/DE610");
+            lista.Add("DEBHE/DE611");
+            lista.Add("DEBHE/DE612");
+            lista.Add("DEBHE/DE613");
+            lista.Add("DEBHE/DE614");
+            lista.Add("DEBHE/DE615");
+            lista.Add("DEBHE/DE616");
+            lista.Add("DEBHE/DE617");
+            lista.Add("DEBHE/DE6ED");
+            lista.Add("DEBHE/DE6CT");
+
+            return lista;
+        }
+
+        public static bool validarArquivoTarefa(string linha)
+        {
+            linha = linha.Replace("\"", "");
+            string[] colunas = linha.Split('\t');
+            if (colunas[0].Equals("Tipo") &&
+                    colunas[1].Equals("ID") &&
+                    colunas[2].Equals("Título") &&
+                    colunas[3].Equals("Responsável") &&
+                    colunas[4].Equals("Status") &&
+                    colunas[5].Equals("Planejado Para") &&
+                    colunas[6].Equals("Estimativa") &&
+                    colunas[7].Equals("Estimativa Corrigida") &&
+                    colunas[8].Equals("Tempo Gasto") &&
+                    colunas[9].Equals("Pai"))
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+
+        public static bool validarArquivo(string linha, string[] campos)
+        {
+            linha = linha.Replace("\"", "");
+            string[] colunas = linha.Split('\t');
+
+            for (int i = 0 ; i < colunas.Length ; i++)
+            {
+                if (!colunas[i].Equals(campos[i]))
+                {
+                    return false;
+                }
+            }
+            return true;
+        }
+
+        public static bool validarArquivoItemBacklog(string linha)
+        {
+            linha = linha.Replace("\"", "");
+            string[] colunas = linha.Split('\t');
+            if (colunas[0].Equals("Tipo") &&
+                    colunas[1].Equals("ID") &&
+                    colunas[2].Equals("Título") &&
+                    colunas[3].Equals("Status") &&
+                    colunas[4].Equals("Planejado Para") &&
+                    colunas[5].Equals("Valor definido para o Negócio") &&
+                    colunas[6].Equals("Tamanho Estimado"))
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+
+        public static bool validarArquivoDefeito(string linha)
+        {
+            // Tipo	ID	Título	Responsável	Status	
+            // Planejado Para	Encontrado no Projeto	
+            // Tipo do Relato	Resolução	Pai	ID do Projeto
+
+
+            linha = linha.Replace("\"", "");
+            string[] colunas = linha.Split('\t');
+            if (colunas[0].Equals("Tipo") &&
+                    colunas[1].Equals("ID") &&
+                    colunas[2].Equals("Título") &&
+                    colunas[3].Equals("Responsável") &&
+                    colunas[4].Equals("Status") &&
+                    colunas[5].Equals("Planejado Para") &&
+                    colunas[6].Equals("Encontrado no Projeto") &&
+                    colunas[7].Equals("Tipo do Relato") &&
+                    colunas[8].Equals("Resolução"))
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+    }
+}

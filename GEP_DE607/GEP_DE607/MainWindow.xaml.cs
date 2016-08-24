@@ -24,5 +24,11 @@ namespace GEP_DE607
         {
             InitializeComponent();
         }
+
+        private void btnCarga_Click(object sender, RoutedEventArgs e)
+        {
+            RealizarCarga tela = new RealizarCarga();
+            tela.Show();
+        }
     }
 }
