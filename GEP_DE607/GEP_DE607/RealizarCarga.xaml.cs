@@ -31,6 +31,22 @@ namespace GEP_DE607
         public RealizarCarga()
         {
             InitializeComponent();
+
+            prepararTela();
+        }
+
+        private void prepararTela()
+        {
+            ComboBoxItem itemTodos = new ComboBoxItem();
+            
+            List<string> lista = Constantes.recuperarDominioTipoCarga();
+            foreach (string str in lista)
+            {
+                ComboBoxItem item = new ComboBoxItem();
+                item.Content = str;
+                cmbTipoCarga.Items.Add(item);
+            }
+            cmbTipoCarga.SelectedIndex = 0;
         }
 
         private void btnUpload_Click(object sender, RoutedEventArgs e)
@@ -55,44 +71,105 @@ namespace GEP_DE607
             }
         }
 
-        public void realizarUpload(String file)
+        private void realizarUpload(string file)
         {
-            string[] campos = { "nome", "lotacao" };
-            string[] lines = System.IO.File.ReadAllLines(file);
-            if (Util.Util.validarArquivo(lines[0], campos) == true)
+            string msg = "";
+            ComboBoxItem item = (ComboBoxItem)cmbTipoCarga.SelectedItem;
+            string[] linhas = System.IO.File.ReadAllLines(file);
+            if (linhas.Length > 1 && validarArquivo(item.Content.ToString(), linhas[0]))
             {
-                List<Funcionario> listaFuncionario = new List<Funcionario>();
-                for (int i = 1; i < lines.Length; i++)
+                if (item.Content.Equals(Constantes.FUNCIONARIO))
                 {
-                    string[] linha = lines[i].Replace("\"", "").Split('\t');
-
-                    Funcionario funcionario = new Funcionario();
-                    funcionario.Nome = linha[0];
-                    funcionario.Lotacao = linha[1];
-
-                    listaFuncionario.Add(funcionario);
-                }
-      
-                string msg = "";
-                if (listaFuncionario.Count > 0)
-                {
+                    List<Funcionario> listaFuncionario = recuperarListaFuncionario(linhas);
                     FuncionarioBO funcBO = new FuncionarioBO();
                     funcBO.incluirLista(listaFuncionario);
-                    msg = "Arquivo incluido com sucesso!";
                 }
-                else
+                else if (item.Content.Equals(Constantes.TAREFA))
                 {
-                    msg = "Arquivo sem dados!";
+                    List<Tarefa> listaTarefa = recuperarListaTarefa(linhas);
+                    TarefaBO tarefaBO = new TarefaBO();
+                    tarefaBO.incluirLista(listaTarefa);
                 }
-                Alerta alerta = new Alerta(msg);
-                alerta.Show();
-
+                msg = "Arquivo incluido com sucesso";
             }
             else
             {
-                Alerta alerta = new Alerta("Arquivo invalido");
-                alerta.Show();
+                msg = "Arquivo sem dados ou invalido";
             }
+            Alerta alerta = new Alerta(msg);
+            alerta.Show();
         }
+
+        private bool validarArquivo(string tipoCarga, string linha)
+        {
+            if (tipoCarga.Equals(Constantes.FUNCIONARIO))
+            {
+                string[] campos = { "nome", "lotacao" };
+                return Util.Util.validarArquivo(linha, campos);
+            }
+            else if (tipoCarga.Equals(Constantes.TAREFA))
+            {
+                string[] campos = { "Tipo", "ID", "Título", "Responsável", "Status", "Planejado Para", "Pai", "Data de Modificação", "ID do Projeto", "Classificação", "Estimativa", "Tempo Gasto" };
+                return Util.Util.validarArquivo(linha, campos);
+            }
+            return false;
+        }
+
+        private List<Funcionario> recuperarListaFuncionario(string[] linhas)
+        {
+            List<Funcionario> listaFuncionario = new List<Funcionario>();
+            for (int i = 1; i < linhas.Length; i++)
+            {
+                string[] linha = linhas[i].Replace("\"", "").Split('\t');
+                Funcionario funcionario = new Funcionario();
+                funcionario.Nome = linha[0];
+                funcionario.Lotacao = linha[1];
+                listaFuncionario.Add(funcionario);
+            }
+            return listaFuncionario;
+        }
+
+        private List<Tarefa> recuperarListaTarefa(string[] linhas)
+        {
+            FuncionarioDAO fDAO = new FuncionarioDAO();
+            List<Funcionario> listaCacheFuncionario = fDAO.recuperar();
+
+            List<Tarefa> listaTarefa = new List<Tarefa>();
+            for (int i = 1; i < linhas.Length; i++)
+            {
+                string[] linha = linhas[i].Replace("\"", "").Split('\t');
+
+                Tarefa tarefa = new Tarefa();
+                tarefa.Tipo = linha[0];
+                tarefa.Id = Convert.ToInt32(linha[1]);
+                tarefa.Titulo = linha[2];
+
+                string nomeResponsavel = linha[3];
+                var funcExistente = listaCacheFuncionario.Where(t => t.Nome.Equals(nomeResponsavel));
+                if (funcExistente.Count() == 0)
+                {
+                    Funcionario funcionario = new Funcionario(0, "SUPDE/DEBHE/DE607", nomeResponsavel);
+                    fDAO.incluir(funcionario.encapsularLista());
+                    tarefa.Responsavel = fDAO.recuperar(nomeResponsavel);
+                    listaCacheFuncionario.Add(fDAO.recuperar(nomeResponsavel));
+                }
+                else
+                {
+                    tarefa.Responsavel = funcExistente.First();
+                }
+
+                tarefa.Status = linha[4];
+                tarefa.PlanejadoPara = linha[5];
+                tarefa.Pai = linha[6].Replace("#", "");
+                tarefa.DataModificacao = Convert.ToDateTime(linha[7]);
+                tarefa.Projeto = Convert.ToInt32(linha[8]);
+                tarefa.Classificacao = linha[9];
+                tarefa.Estimativa = DataHoraUtil.formatarHora(linha[10]);
+                tarefa.TempoGasto = DataHoraUtil.formatarHora(linha[11]);
+                listaTarefa.Add(tarefa);
+            }
+            return listaTarefa;
+        }
+
     }
 }

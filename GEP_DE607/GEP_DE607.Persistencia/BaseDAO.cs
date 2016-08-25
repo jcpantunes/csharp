@@ -12,9 +12,9 @@ namespace GEP_DE607.Persistencia
 {
     public class BaseDAO
     {
-        public static const int INSERT = 1;
-        public static const int UPDATE = 2;
-        public static const int DELETE = 3;
+        protected const int INSERT = 1;
+        protected const int UPDATE = 2;
+        protected const int DELETE = 3;
 
         // string connectionString = @"Data Source=JULIO-PC\SQLEXPRESS;Initial Catalog=DBD_GEP;"
         string connectionString = @"Data Source=SERPRO1540297V1\SQLEXPRESS;Initial Catalog=DBD_GEP;"

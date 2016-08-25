@@ -76,6 +76,8 @@
     <Compile Include="RealizarCarga.xaml.cs">
       <DependentUpon>RealizarCarga.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Util\Constantes.cs" />
+    <Compile Include="Util\DataHoraUtil.cs" />
     <Compile Include="Util\Util.cs" />
     <Page Include="Componente\Alerta.xaml">
       <SubType>Designer</SubType>

@@ -104,7 +104,7 @@ namespace GEP_DE607.Persistencia
             string queryInsert = "INSERT INTO " + TABELA
                 + " (tipo, id, titulo, responsavel, status, planejadoPara, pai, dataModificacao, projeto, "
                 + " classificacao, estimativa, tempoGasto) "
-                + " VALUES (@tipo, @id, @titulo, @responsavel, @status, @planejadoPara, @pai, @dataModificacao, @projeto"
+                + " VALUES (@tipo, @id, @titulo, @responsavel, @status, @planejadoPara, @pai, @dataModificacao, @projeto, "
                 + " @classificacao, @estimativa, @tempoGasto)";
             executarQuery(lista, queryInsert);
         }

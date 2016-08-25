@@ -15,8 +15,8 @@ namespace GEP_DE607.Dominio
         public const string STATUS = "status";
         public const string PLANEJADO_PARA = "planejadoPara";
         public const string PAI = "pai";
-        public const string DTMODIFICACAO = "dataModificao";
-        public const string PROJETO = "codigoProjeto";
+        public const string DTMODIFICACAO = "dataModificacao";
+        public const string PROJETO = "projeto";
 
         public string Tipo { get; set; }
 

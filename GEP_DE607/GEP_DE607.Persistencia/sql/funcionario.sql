@@ -1,0 +1,34 @@
+﻿USE [DBD_GEP]
+
+GO
+
+DROP TABLE [dbo].[Funcionario]
+
+GO
+
+/****** Object:  Table [dbo].[Funcionario]    Script Date: 25/08/2016 17:19:44 ******/
+SET ANSI_NULLS ON
+GO
+
+SET QUOTED_IDENTIFIER ON
+GO
+
+SET ANSI_PADDING ON
+GO
+
+CREATE TABLE [dbo].[Funcionario](
+	[codigo] [int] IDENTITY(1,1) NOT NULL,
+	[lotacao] [varchar](30) NULL,
+	[nome] [varchar](80) NULL,
+PRIMARY KEY CLUSTERED 
+(
+	[codigo] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]
+
+GO
+
+SET ANSI_PADDING OFF
+GO
+
+

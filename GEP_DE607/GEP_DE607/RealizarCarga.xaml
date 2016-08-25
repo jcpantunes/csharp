@@ -4,21 +4,24 @@
         Title="Carga de dados" Height="300" Width="1000">
     <Grid>
 
-        <GroupBox x:Name="groupCargaUsuario" Header="Carga de Usuarios" Margin="10,5,0,0" HorizontalAlignment="Left" VerticalAlignment="Top"
+        <GroupBox x:Name="groupCargaFuncionario" Header="Carga de Funcionarios" Margin="10,5,0,0" HorizontalAlignment="Left" VerticalAlignment="Top"
     		    Width="970" Height="100" BorderBrush="Black" BorderThickness="1" >
-
             <Grid>
                 <Label x:Name="lblArquivo" Content="Arquivo" Margin="10,0,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" />
 
                 <TextBox x:Name="txtUpload" Margin="10,30,0,0" HorizontalAlignment="Left" TextWrapping="Wrap" Text="" 
-    		        VerticalAlignment="Top" Height="25" Width="600" IsEnabled="False" />
+    		        VerticalAlignment="Top" Height="25" Width="500" IsEnabled="False" />
 
-                <Button x:Name="btnUpload" Content="Selecionar" Margin="640,30,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" 
+                <Button x:Name="btnUpload" Content="Selecionar" Margin="520,30,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" 
     		        Width="75" Click="btnUpload_Click" RenderTransformOrigin="0.4,0.636"/>
 
-                <Button x:Name="btnConfirmar" Content="Confirmar" Margin="730,30,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" 
-    		        Width="75" Click="btnConfirmar_Click"/>
+                <Label x:Name="lblTipoCarga" Content="Tipo Carga" Margin="605,0,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" />
+                
+                <ComboBox x:Name="cmbTipoCarga" Margin="605,30,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" Width="180"/>
 
+                <Button x:Name="btnConfirmar" Content="Confirmar" Margin="795,30,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" 
+    		        Width="75" Click="btnConfirmar_Click"/>
+                
             </Grid>
         </GroupBox>
 
