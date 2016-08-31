@@ -30,5 +30,11 @@ namespace GEP_DE607
             RealizarCarga tela = new RealizarCarga();
             tela.Show();
         }
+
+        private void btnProjeto_Click(object sender, RoutedEventArgs e)
+        {
+            CadastrarProjeto tela = new CadastrarProjeto();
+            tela.Show();
+        }
     }
 }

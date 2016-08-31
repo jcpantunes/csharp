@@ -1,8 +1,151 @@
 ﻿<Window x:Class="GEP_DE607.CadastrarProjeto"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        Title="CadastrarProjeto" Height="300" Width="300">
+        Title="Projeto" Height="700" Width="1170">
     <Grid>
-        
+
+        <GroupBox x:Name="groupCadastro" Header="Cadastro de Projeto" Margin="30,10,0,0" HorizontalAlignment="Left" VerticalAlignment="Top"
+    		Width="1100" Height="180" BorderBrush="Black" BorderThickness="1" >
+
+            <Grid>
+                <Label x:Name="lblTipo" Content="Tipo" Margin="5,5,0,0" HorizontalAlignment="Left" />
+
+                <ComboBox x:Name="cmbTipo" Margin="10,30,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" Width="200"/>
+
+                <Label x:Name="lblNome" Content="Nome" Margin="5,50,0,0" HorizontalAlignment="Left" />
+
+                <TextBox x:Name="txtNome" Margin="10,75,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" Height="25" Width="200" TextWrapping="Wrap" Text="" />
+
+                <Label x:Name="lblId" Content="Id" Margin="5,100,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" />
+
+                <TextBox x:Name="txtId" Margin="10,125,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" Height="25" Width="200" TextWrapping="Wrap" />
+
+                <Label x:Name="lblSistema" Content="Sistema" Margin="225,5,0,0" HorizontalAlignment="Left" />
+
+                <ComboBox x:Name="cmbSistema" Margin="230,30,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" Width="200"/>
+
+                <Label x:Name="lblLinguagem" Content="Linguagem" Margin="225,50,0,0" HorizontalAlignment="Left" />
+
+                <ComboBox x:Name="cmbLinguagem" Margin="230,75,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" Width="200"/>
+
+                <Label x:Name="lblProcesso" Content="Processo" Margin="225,100,0,0" HorizontalAlignment="Left" />
+
+                <ComboBox x:Name="cmbProcesso" Margin="230,125,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" Width="200"/>
+
+                <Label x:Name="lblTipoProjeto" Content="Tipo Projeto" Margin="440,5,0,0" HorizontalAlignment="Left" />
+
+                <ComboBox x:Name="cmbTipoProjeto" Margin="445,30,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" Width="200"/>
+
+                <Label x:Name="lblSituacao" Content="Situação" Margin="440,50,0,0" HorizontalAlignment="Left" />
+
+                <ComboBox x:Name="cmbSituacao" Margin="445,75,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" Width="200"/>
+
+                <Label x:Name="lblConclusividade" Content="Conclusividade" Margin="440,100,0,0" HorizontalAlignment="Left" />
+
+                <ComboBox x:Name="cmbConclusividade" Margin="445,125,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" Width="200"/>
+
+                <Label x:Name="lblPFPrev" Content="PF Prev" Margin="655,5,0,0" HorizontalAlignment="Left" />
+
+                <TextBox x:Name="cmbPFPrev" Margin="655,30,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" Height="25" Width="200" TextWrapping="Wrap" Text="" />
+
+                <Label x:Name="lblPFReal" Content="PF Real" Margin="655,50,0,0" HorizontalAlignment="Left" />
+
+                <TextBox x:Name="txtPFReal" Margin="655,75,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" Height="25" Width="200" TextWrapping="Wrap" Text="" />
+
+                <Label x:Name="lblApropriacao" Content="Apropriacao" Margin="655,100,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" />
+
+                <TextBox x:Name="txtApropriacao" Margin="655,125,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" Height="25" Width="200" TextWrapping="Wrap" />
+                
+                <Label x:Name="lblDtInicio" Content="Data Inicio" Margin="865,5,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" />
+
+                <DatePicker x:Name="txtDtInicio" Margin="870,30,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" />
+
+                <Label x:Name="lblDtEntrega" Content="Data Entrega" Margin="865,50,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" />
+
+                <DatePicker x:Name="txtDtEntrega" Margin="870,75,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" />
+
+                <Label x:Name="lblDtFinal" Content="Data Final" Margin="865,100,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" />
+
+                <DatePicker x:Name="txtDtFinal" Margin="870,125,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" />
+
+                <TextBox x:Name="txtCodigo" Text="TextBox" Margin="1000,10,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" Height="25" Width="60" TextWrapping="Wrap" IsEnabled="False" />
+
+                <Button x:Name="btnLimpar" Content="Limpar" Margin="1000,50,0,0" HorizontalAlignment="Left"  VerticalAlignment="Top" Width="60" Click="btnLimpar_Click" />
+
+                <Button x:Name="btnSalvar" Content="Salvar" Margin="1000,80,0,0" HorizontalAlignment="Left"  VerticalAlignment="Top" Width="60" Click="btnSalvar_Click" />
+
+                <Button x:Name="btnExcluir" Content="Excluir" Margin="1000,110,0,0" HorizontalAlignment="Left"  VerticalAlignment="Top" Width="60" Click="btnExcluir_Click" />
+
+            </Grid>
+
+        </GroupBox>
+
+        <GroupBox x:Name="groupFiltro" Header="Filtro" Margin="30,200,0,0" HorizontalAlignment="Left" VerticalAlignment="Top"
+    		Width="1100" Height="130" BorderBrush="Black" BorderThickness="1" >
+
+            <Grid>
+
+                <Label x:Name="lblFiltroNome" Content="Nome" Margin="5,5,0,0" HorizontalAlignment="Left" />
+
+                <TextBox x:Name="txtFiltroNome" Margin="10,30,0,0" HorizontalAlignment="Left" VerticalAlignment="Top"
+                             Height="20" Width="200" TextWrapping="Wrap" Text="" />
+
+                <Label x:Name="lblFiltroId" Content="Id" Margin="10,50,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" />
+
+                <TextBox x:Name="txtFiltroId" Margin="10,75,0,0" HorizontalAlignment="Left" VerticalAlignment="Top"
+                             Height="20" Width="200" TextWrapping="Wrap" />
+
+                <Label x:Name="lblDtFiltroInicio" Content="Data Inicio" Margin="400,5,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" />
+
+                <DatePicker x:Name="txtFiltroDtInicio" Margin="400,30,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" />
+
+                <Label x:Name="lblFiltroDtFinal" Content="Data Final" Margin="400,50,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" />
+
+                <DatePicker x:Name="txtFiltroDtFinal" Margin="400,75,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" />
+
+                <Button x:Name="btnFiltroLimpar" Content="Limpar" Margin="560,30,0,0" HorizontalAlignment="Left"  VerticalAlignment="Top" Width="60" Click="btnFiltroLimpar_Click" />
+
+                <Button x:Name="btnPesquisar" Content="Pesquisar" Margin="560,60,0,0" HorizontalAlignment="Left"  VerticalAlignment="Top" Width="60" Click="btnPesquisar_Click" />
+
+
+            </Grid>
+
+        </GroupBox>
+
+        <GroupBox x:Name="groupResultado" Header="Projetos" Margin="30,340,0,0" HorizontalAlignment="Left" VerticalAlignment="Top"
+    		Width="1100" Height="300" BorderBrush="Black" BorderThickness="1" >
+
+            <Grid>
+
+                <DataGrid x:Name="tblProjeto" HorizontalAlignment="Left" Margin="10,10,-12,-71" 
+    				VerticalAlignment="Top" Width="1070" Height="250" AutoGenerateColumns="False" Grid.ColumnSpan="2" SelectionChanged="tblProjeto_SelectionChanged" >
+
+                    <DataGrid.Columns>
+
+                        <DataGridTextColumn Header="Codigo" Width="60" Binding="{Binding Codigo}" />
+                        <DataGridTextColumn Header="Tipo" Width="60" Binding="{Binding Tipo}" />
+                        <DataGridTextColumn Header="Id" Width="60" Binding="{Binding Id}" />
+                        <DataGridTextColumn Header="Nome" Width="200" Binding="{Binding Nome}" />
+                        <DataGridTextColumn Header="Sistema" Width="60" Binding="{Binding Sistema}" />
+                        <DataGridTextColumn Header="Linguagem" Width="60" Binding="{Binding Linguagem}" />
+                        <DataGridTextColumn Header="Processo" Width="60" Binding="{Binding Processo}" />
+                        <DataGridTextColumn Header="TipoProjeto" Width="60" Binding="{Binding TipoProjeto}" />
+                        <DataGridTextColumn Header="Situacao" Width="60" Binding="{Binding Situacao}" />
+                        <DataGridTextColumn Header="Conclusividade" Width="80" Binding="{Binding Conclusividade}" />
+                        <DataGridTextColumn Header="PFPRev" Width="50" Binding="{Binding PFPrev}" />
+                        <DataGridTextColumn Header="PFPReal" Width="50" Binding="{Binding PFReal}" />
+                        <DataGridTextColumn Header="Apropriacao" Width="70" Binding="{Binding Apropriacao}" />
+                        <DataGridTextColumn Header="Data Inicio" Width="60" Binding="{Binding DtInicio}" />
+                        <DataGridTextColumn Header="Data Entrega" Width="60" Binding="{Binding DtEntrega}" />
+                        <DataGridTextColumn Header="Data Final" Width="60" Binding="{Binding DtFinal}" />
+
+                    </DataGrid.Columns>
+
+                </DataGrid>
+
+            </Grid>
+
+        </GroupBox>
+
     </Grid>
 </Window>

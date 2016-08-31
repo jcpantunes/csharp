@@ -63,6 +63,23 @@ namespace GEP_DE607.Persistencia
             return executarSelect(query);
         }
 
+        public List<int> recuperarID()
+        {
+            List<int> listaID = new List<int>();
+            string query = "SELECT distinct id from Tarefa;";
+            SqlConnection conn = null;
+            SqlDataReader reader = select(conn, query);
+            if (reader != null)
+            {
+                while (reader.Read())
+                {
+                    listaID.Add(reader.GetInt32(0));
+                }
+            }
+            desconectar(conn);
+            return listaID;
+        }
+
         private List<Tarefa> executarSelect(string query)
         {
             List<Tarefa> lista = new List<Tarefa>();

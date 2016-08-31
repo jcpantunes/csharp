@@ -37,8 +37,6 @@ namespace GEP_DE607
 
         private void prepararTela()
         {
-            ComboBoxItem itemTodos = new ComboBoxItem();
-            
             List<string> lista = Constantes.recuperarDominioTipoCarga();
             foreach (string str in lista)
             {
@@ -78,6 +76,7 @@ namespace GEP_DE607
             string[] linhas = System.IO.File.ReadAllLines(file);
             if (linhas.Length > 1 && validarArquivo(item.Content.ToString(), linhas[0]))
             {
+                msg = "Arquivo incluido com sucesso";
                 if (item.Content.Equals(Constantes.FUNCIONARIO))
                 {
                     List<Funcionario> listaFuncionario = recuperarListaFuncionario(linhas);
@@ -90,7 +89,13 @@ namespace GEP_DE607
                     TarefaBO tarefaBO = new TarefaBO();
                     tarefaBO.incluirLista(listaTarefa);
                 }
-                msg = "Arquivo incluido com sucesso";
+                else if (item.Content.Equals(Constantes.APROPRIACAO))
+                {
+                    List<Apropriacao> listaApropriacao = recuperarListaApropriacao(linhas);
+                    ApropriacaoBO apropBO = new ApropriacaoBO();
+                    apropBO.validarListaTarefaInexistente(listaApropriacao);
+                    //tarefaBO.incluirLista(listaTarefa);
+                }
             }
             else
             {
@@ -110,6 +115,11 @@ namespace GEP_DE607
             else if (tipoCarga.Equals(Constantes.TAREFA))
             {
                 string[] campos = { "Tipo", "ID", "Título", "Responsável", "Status", "Planejado Para", "Pai", "Data de Modificação", "ID do Projeto", "Classificação", "Estimativa", "Tempo Gasto" };
+                return Util.Util.validarArquivo(linha, campos);
+            }
+            else if (tipoCarga.Equals(Constantes.APROPRIACAO))
+            {
+                string[] campos = { "Nome", "Data", "Horas", "Tarefa", "Macroatividade", "Projeto" };
                 return Util.Util.validarArquivo(linha, campos);
             }
             return false;
@@ -169,6 +179,22 @@ namespace GEP_DE607
                 listaTarefa.Add(tarefa);
             }
             return listaTarefa;
+        }
+
+        private List<Apropriacao> recuperarListaApropriacao(string[] linhas)
+        {
+            List<Apropriacao> listaApropriacao = new List<Apropriacao>();
+            for (int i = 1; i < linhas.Length; i++)
+            {
+                string[] linha = linhas[i].Replace("\"", "").Split('\t');
+                Apropriacao apropriacao = new Apropriacao();
+                apropriacao.Nome = linha[0];
+                apropriacao.Data = Convert.ToDateTime(linha[1]);
+                apropriacao.Hora = Convert.ToDecimal(linha[2]);
+                apropriacao.Tarefa = Convert.ToInt32(linha[3]);
+                listaApropriacao.Add(apropriacao);
+            }
+            return listaApropriacao;
         }
 
     }

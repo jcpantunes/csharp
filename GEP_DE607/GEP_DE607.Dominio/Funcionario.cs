@@ -22,21 +22,9 @@ namespace GEP_DE607.Dominio
             this.Nome = nome;
         }
 
-        private string lotacao;
+        public string Lotacao { get; set; }
 
-        public string Lotacao
-        {
-            get { return lotacao; }
-            set { lotacao = value; }
-        }
-
-        private string nome;
-
-        public string Nome
-        {
-            get { return nome; }
-            set { nome = value; }
-        }
+        public string Nome { get; set; }
 
         public List<Funcionario> encapsularLista()
         {

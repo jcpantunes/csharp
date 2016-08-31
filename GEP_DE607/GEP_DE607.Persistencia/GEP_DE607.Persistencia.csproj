@@ -39,8 +39,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ApropriacaoDAO.cs" />
     <Compile Include="BaseDAO.cs" />
     <Compile Include="FuncionarioDAO.cs" />
+    <Compile Include="ProjetoDAO.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="TarefaDAO.cs" />
   </ItemGroup>
@@ -51,8 +53,11 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="sql\apropriacao.sql" />
     <Content Include="sql\funcionario.sql" />
+    <Content Include="sql\projeto.sql" />
     <Content Include="sql\query.sql" />
+    <Content Include="sql\ss.sql" />
     <Content Include="sql\tarefa.sql" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
