@@ -16,8 +16,8 @@ namespace GEP_DE607.Persistencia
         protected const int UPDATE = 2;
         protected const int DELETE = 3;
 
-        string connectionString = @"Data Source=DESKTOP-H3JA6SK\SQLEXPRESS;Initial Catalog=DBD_GEP;"
-        // string connectionString = @"Data Source=SERPRO1540297V1\SQLEXPRESS;Initial Catalog=DBD_GEP;"
+        // string connectionString = @"Data Source=DESKTOP-H3JA6SK\SQLEXPRESS;Initial Catalog=DBD_GEP;"
+        string connectionString = @"Data Source=SERPRO1540297V1\SQLEXPRESS;Initial Catalog=DBD_GEP;"
             + "Integrated Security=True;Min Pool Size=5;Max Pool Size=250;Connect Timeout=20";
 
         protected SqlConnection conectar(SqlConnection conn)

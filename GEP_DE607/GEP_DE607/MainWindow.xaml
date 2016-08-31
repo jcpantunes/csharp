@@ -8,11 +8,13 @@
 
         <Menu x:Name="mnu" Margin="10,10,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" Height="60" Width="500">
 
-            <Button x:Name="btnCarga" Margin="10,5,0,0" Content="Carga" HorizontalAlignment="Left" Click="btnCarga_Click" Width="40" Height="40" />
+            <Button x:Name="btnCarga" Margin="10,5,0,0" Content="Carga" HorizontalAlignment="Left" Click="btnCarga_Click" Width="60" Height="40" />
             
-            <Button x:Name="btnProjeto" Margin="10,5,0,0" Content="Projeto" HorizontalAlignment="Left" Click="btnProjeto_Click" Width="40" Height="40" />
+            <Button x:Name="btnProjeto" Margin="10,5,0,0" Content="Projeto" HorizontalAlignment="Left" Click="btnProjeto_Click" Width="60" Height="40" />
 
-       </Menu>
+            <Button x:Name="btnSolicitacao" Margin="10,5,0,0" Content="Solicitacao" HorizontalAlignment="Left" Click="btnSolicitacao_Click" Width="60" Height="40" />
+
+        </Menu>
 
     </Grid>
 </Window>

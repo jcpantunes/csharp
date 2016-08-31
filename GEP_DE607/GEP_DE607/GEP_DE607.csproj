@@ -72,6 +72,9 @@
     <Compile Include="CadastrarProjeto.xaml.cs">
       <DependentUpon>CadastrarProjeto.xaml</DependentUpon>
     </Compile>
+    <Compile Include="CadastrarSolicitacao.xaml.cs">
+      <DependentUpon>CadastrarSolicitacao.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Componente\Alerta.xaml.cs">
       <DependentUpon>Alerta.xaml</DependentUpon>
     </Compile>
@@ -83,6 +86,10 @@
     <Compile Include="Util\DataHoraUtil.cs" />
     <Compile Include="Util\Util.cs" />
     <Page Include="CadastrarProjeto.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="CadastrarSolicitacao.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

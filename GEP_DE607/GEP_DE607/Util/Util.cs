@@ -8,7 +8,7 @@ using GEP_DE607.Persistencia;
 
 namespace GEP_DE607.Util
 {
-    class Util
+    public class Util
     {
         public static bool verificarStringNumero(string s)
         {

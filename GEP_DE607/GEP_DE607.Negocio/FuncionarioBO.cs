@@ -34,5 +34,17 @@ namespace GEP_DE607.Negocio
             }
         }
 
+        public List<string> recuperarNomes()
+        {
+            List<Funcionario> listaFuncionario = funcDAO.recuperar();
+            
+            List<string> listaNomes = new List<string>();
+            foreach (Funcionario funcionario in listaFuncionario)
+            {
+                listaNomes.Add(funcionario.Nome);
+            }
+            return listaNomes;
+        }
+
     }
 }

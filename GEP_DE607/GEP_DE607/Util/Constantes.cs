@@ -127,5 +127,50 @@ namespace GEP_DE607.Util
             lista.Add(CONCLUSIVIDADE_100);
             return lista;
         }
+
+        public const string SOLICITACAO_ABERTA = "Aberta";
+        public const string SOLICITACAO_EM_ATENDIMENTO = "Em Atendimento";
+        public const string SOLICITACAO_ENTREGUE = "Entregue";
+        public const string SOLICITACAO_EM_HOMOLOGACAO = "Em Homologação";
+        public const string SOLICITACAO_SUSPENSA = "Suspensa";
+        public const string SOLICITACAO_HOMOLOGADA = "Homologada";
+        public const string SOLICITACAO_CONCLUIDA = "Concluída";
+
+        public static List<string> recuperarDominioSolicitacaoStatus()
+        {
+            List<string> lista = new List<string>();
+            lista.Add(SOLICITACAO_ABERTA);
+            lista.Add(SOLICITACAO_EM_ATENDIMENTO);
+            lista.Add(SOLICITACAO_ENTREGUE);
+            lista.Add(SOLICITACAO_EM_HOMOLOGACAO);
+            lista.Add(SOLICITACAO_SUSPENSA);
+            lista.Add(SOLICITACAO_HOMOLOGADA);
+            lista.Add(SOLICITACAO_CONCLUIDA);
+            return lista;
+        }
+
+        public const string SOLICITACAO_APOIO = "Apoio";
+        public const string SOLICITACAO_APURACAO_ESPECIAL = "Apuração Especial";
+        public const string SOLICITACAO_CONSULTORIA = "Consultoria";
+        public const string SOLICITACAO_MANUTENCAO_EVOLUTIVA = "Manutenção Evolutiva";
+        public const string SOLICITACAO_MANUTENCAO_CORRETIVA = "Manutenção Corretiva";
+        public const string SOLICITACAO_MANUTENCAO_ADAPTATIVA = "Manutenção Adaptativa";
+        public const string SOLICITACAO_NOVO_SISTEMA = "Novo Sistema";
+        public const string SOLICITACAO_ORCAMENTACAO = "Orçamentação";
+
+        public static List<string> recuperarDominioSolicitacaoTipoDemanda()
+        {
+            List<string> lista = new List<string>();
+            lista.Add(SOLICITACAO_APOIO);
+            lista.Add(SOLICITACAO_APURACAO_ESPECIAL);
+            lista.Add(SOLICITACAO_CONSULTORIA);
+            lista.Add(SOLICITACAO_MANUTENCAO_EVOLUTIVA);
+            lista.Add(SOLICITACAO_MANUTENCAO_CORRETIVA);
+            lista.Add(SOLICITACAO_MANUTENCAO_ADAPTATIVA);
+            lista.Add(SOLICITACAO_NOVO_SISTEMA);
+            lista.Add(SOLICITACAO_ORCAMENTACAO);
+            return lista;
+        }
+
     }
 }

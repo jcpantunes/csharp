@@ -25,6 +25,10 @@ namespace GEP_DE607.Dominio
         public const string DTENTREGA = "dtEntrega";
         public const string DTFINAL = "dtFinal";
 
+        public Projeto()
+        {
+        }
+
         public Projeto(int codigo, int ss, string tipo, int id, string nome, string sistema, string linguagem, string processo, string tipoProjeto, 
             string situacao, int conclusividade, decimal pfprev, decimal pfreal, decimal apropriacao, DateTime dtInicio, DateTime dtEntrega, DateTime dtFinal)
         {
@@ -78,6 +82,20 @@ namespace GEP_DE607.Dominio
         public DateTime DtEntrega { get; set; }
 
         public DateTime DtFinal { get; set; }
+
+        public List<Projeto> encapsularLista()
+        {
+            List<Projeto> lista = new List<Projeto>();
+            lista.Add(this);
+            return lista;
+        }
+
+        public static Dictionary<string, string> criarListaParametros(int codigo)
+        {
+            Dictionary<string, string> param = new Dictionary<string, string>();
+            param.Add(Projeto.CODIGO, Convert.ToString(codigo));
+            return param;
+        }
 
     }
 }

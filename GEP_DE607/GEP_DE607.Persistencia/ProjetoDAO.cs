@@ -8,7 +8,7 @@ using System.Data.SqlClient;
 
 namespace GEP_DE607.Persistencia
 {
-    class ProjetoDAO : BaseDAO
+    public class ProjetoDAO : BaseDAO
     {
         private string TABELA = "Projeto";
 
@@ -78,17 +78,32 @@ namespace GEP_DE607.Persistencia
 
         public void incluir(List<Projeto> lista)
         {
-            string queryInsert = "INSERT INTO " + TABELA + " (nome, id, dtInicio, dtFinal) "
-                + "values (@nome, @id, @dtInicio, @dtFinal)";
+            string queryInsert = "INSERT INTO " + TABELA + " (ss, tipo, id, nome, sistema, linguagem, processo, tipoProjeto, situacao, "
+                + " conclusividade, pfprev, pfreal, apropriacao, dtInicio, dtEntrega, dtFinal) "
+                + " values (@ss, @tipo, @id, @nome, @sistema, @linguagem, @processo, @tipoProjeto, @situacao, "
+                + " @conclusividade, @pfprev, @pfreal, @apropriacao, @dtInicio, @dtEntrega, @dtFinal);";
+
             executarQuery(lista, queryInsert);
         }
 
         public void atualizar(List<Projeto> lista)
         {
             string queryUpdate = "UPDATE " + TABELA + " SET "
-                + " nome = @nome, "
+                + " ss = @ss, "
+                + " tipo = @tipo, "
                 + " id = @id, "
+                + " nome = @nome, "
+                + " sistema = @sistema, "
+                + " linguagem = @linguagem, "
+                + " processo = @processo, "
+                + " tipoProjeto = @tipoProjeto, "
+                + " situacao = @situacao, "
+                + " conclusividade = @conclusividade, "
+                + " pfprev = @pfprev, "
+                + " pfreal = @pfreal, "
+                + " apropriacao = @apropriacao, "
                 + " dtInicio = @dtInicio, "
+                + " dtEntrega = @dtEntrega, "
                 + " dtFinal = @dtFinal "
                 + "WHERE codigo = @codigo";
             executarQuery(lista, queryUpdate);
@@ -115,9 +130,21 @@ namespace GEP_DE607.Persistencia
         {
             List<SqlParameter> parametros = new List<SqlParameter>();
             parametros.Add(new SqlParameter("codigo", p.Codigo));
-            parametros.Add(new SqlParameter("nome", p.Nome));
+            parametros.Add(new SqlParameter("ss", p.Ss));
+            parametros.Add(new SqlParameter("tipo", p.Tipo));
             parametros.Add(new SqlParameter("id", p.Id));
+            parametros.Add(new SqlParameter("nome", p.Nome));
+            parametros.Add(new SqlParameter("sistema", p.Sistema));
+            parametros.Add(new SqlParameter("linguagem", p.Linguagem));
+            parametros.Add(new SqlParameter("processo", p.Processo));
+            parametros.Add(new SqlParameter("tipoProjeto", p.TipoProjeto));
+            parametros.Add(new SqlParameter("situacao", p.Situacao));
+            parametros.Add(new SqlParameter("conclusividade", p.Conclusividade));
+            parametros.Add(new SqlParameter("pfprev", p.Pfprev));
+            parametros.Add(new SqlParameter("pfreal", p.Pfreal));
+            parametros.Add(new SqlParameter("apropriacao", p.Apropriacao));
             parametros.Add(new SqlParameter("dtInicio", p.DtInicio));
+            parametros.Add(new SqlParameter("dtEntrega", p.DtEntrega));
             parametros.Add(new SqlParameter("dtFinal", p.DtFinal));
             return parametros;
         }
