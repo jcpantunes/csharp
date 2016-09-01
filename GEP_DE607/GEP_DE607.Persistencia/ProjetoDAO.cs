@@ -10,21 +10,21 @@ namespace GEP_DE607.Persistencia
 {
     public class ProjetoDAO : BaseDAO
     {
-        private string TABELA = "Projeto";
-
+        
         public ProjetoDAO()
         {
+            this.Tabela = "Projeto";
         }
 
         public List<Projeto> recuperar()
         {
-            string query = "SELECT * FROM " + TABELA;
+            string query = "SELECT * FROM " + Tabela;
             return executarSelect(query);
         }
 
         public List<Projeto> recuperar(Dictionary<string, string> parametros)
         {
-            string query = "SELECT * FROM " + TABELA;
+            string query = "SELECT * FROM " + Tabela;
             if (parametros.Count > 0)
             {
                 query += " WHERE ";
@@ -78,7 +78,7 @@ namespace GEP_DE607.Persistencia
 
         public void incluir(List<Projeto> lista)
         {
-            string queryInsert = "INSERT INTO " + TABELA + " (ss, tipo, id, nome, sistema, linguagem, processo, tipoProjeto, situacao, "
+            string queryInsert = "INSERT INTO " + Tabela + " (ss, tipo, id, nome, sistema, linguagem, processo, tipoProjeto, situacao, "
                 + " conclusividade, pfprev, pfreal, apropriacao, dtInicio, dtEntrega, dtFinal) "
                 + " values (@ss, @tipo, @id, @nome, @sistema, @linguagem, @processo, @tipoProjeto, @situacao, "
                 + " @conclusividade, @pfprev, @pfreal, @apropriacao, @dtInicio, @dtEntrega, @dtFinal);";
@@ -88,7 +88,7 @@ namespace GEP_DE607.Persistencia
 
         public void atualizar(List<Projeto> lista)
         {
-            string queryUpdate = "UPDATE " + TABELA + " SET "
+            string queryUpdate = "UPDATE " + Tabela + " SET "
                 + " ss = @ss, "
                 + " tipo = @tipo, "
                 + " id = @id, "
@@ -111,7 +111,7 @@ namespace GEP_DE607.Persistencia
 
         public void excluir(List<Projeto> lista)
         {
-            string query = "DELETE FROM " + TABELA + " WHERE codigo = @codigo";
+            string query = "DELETE FROM " + Tabela + " WHERE codigo = @codigo";
             executarQuery(lista, query);
         }
 

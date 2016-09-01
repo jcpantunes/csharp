@@ -1,4 +1,9 @@
 ﻿USE [DBD_GEP]
+
+GO
+
+DROP TABLE [dbo].[Apropriacao]
+
 GO
 
 /****** Object:  Table [dbo].[Apropriacao]    Script Date: 30/08/2016 22:43:29 ******/

@@ -89,6 +89,12 @@ namespace GEP_DE607
                     TarefaBO tarefaBO = new TarefaBO();
                     tarefaBO.incluirLista(listaTarefa);
                 }
+                else if (item.Content.Equals(Constantes.DEFEITO) || item.Content.Equals(Constantes.RELATO))
+                {
+                    List<Bug> listaBug = recuperarListaBug(linhas);
+                    BugBO bugBO = new BugBO();
+                    bugBO.incluirLista(listaBug);
+                }
                 else if (item.Content.Equals(Constantes.APROPRIACAO))
                 {
                     List<Apropriacao> listaApropriacao = recuperarListaApropriacao(linhas);
@@ -115,6 +121,11 @@ namespace GEP_DE607
             else if (tipoCarga.Equals(Constantes.TAREFA))
             {
                 string[] campos = { "Tipo", "ID", "Título", "Responsável", "Status", "Planejado Para", "Pai", "Data de Modificação", "ID do Projeto", "Classificação", "Estimativa", "Tempo Gasto" };
+                return Util.Util.validarArquivo(linha, campos);
+            }
+            else if (tipoCarga.Equals(Constantes.DEFEITO) || tipoCarga.Equals(Constantes.RELATO))
+            {
+                string[] campos = { "Tipo", "ID", "Título", "Responsável", "Status", "Planejado Para", "Pai", "Data de Modificação", "ID do Projeto", "Criado Por", "Encontrado no Projeto", "Tipo do Relato", "Resolução" };
                 return Util.Util.validarArquivo(linha, campos);
             }
             else if (tipoCarga.Equals(Constantes.APROPRIACAO))
@@ -179,6 +190,49 @@ namespace GEP_DE607
                 listaTarefa.Add(tarefa);
             }
             return listaTarefa;
+        }
+
+        private List<Bug> recuperarListaBug(string[] linhas)
+        {
+            FuncionarioDAO fDAO = new FuncionarioDAO();
+            List<Funcionario> listaCacheFuncionario = fDAO.recuperar();
+
+            List<Bug> listaBug = new List<Bug>();
+            for (int i = 1; i < linhas.Length; i++)
+            {
+                string[] linha = linhas[i].Replace("\"", "").Split('\t');
+
+                Bug bug = new Bug();
+                bug.Tipo = linha[0];
+                bug.Id = Convert.ToInt32(linha[1]);
+                bug.Titulo = linha[2];
+
+                string nomeResponsavel = linha[3];
+                var funcExistente = listaCacheFuncionario.Where(t => t.Nome.Equals(nomeResponsavel));
+                if (funcExistente.Count() == 0)
+                {
+                    Funcionario funcionario = new Funcionario(0, "SUPDE/DEBHE/DE607", nomeResponsavel);
+                    fDAO.incluir(funcionario.encapsularLista());
+                    bug.Responsavel = fDAO.recuperar(nomeResponsavel);
+                    listaCacheFuncionario.Add(fDAO.recuperar(nomeResponsavel));
+                }
+                else
+                {
+                    bug.Responsavel = funcExistente.First();
+                }
+
+                bug.Status = linha[4];
+                bug.PlanejadoPara = linha[5];
+                bug.Pai = linha[6].Replace("#", "");
+                bug.DataModificacao = Convert.ToDateTime(linha[7]);
+                bug.Projeto = Convert.ToInt32(linha[8]);
+                bug.CriadoPor = linha[9];
+                bug.EncontradoProjeto = linha[10];
+                bug.TipoRelato = linha[11];
+                bug.Resolucao = linha[12];
+                listaBug.Add(bug);
+            }
+            return listaBug;
         }
 
         private List<Apropriacao> recuperarListaApropriacao(string[] linhas)

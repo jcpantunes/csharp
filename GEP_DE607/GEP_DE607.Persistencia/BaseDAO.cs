@@ -16,9 +16,11 @@ namespace GEP_DE607.Persistencia
         protected const int UPDATE = 2;
         protected const int DELETE = 3;
 
-        // string connectionString = @"Data Source=DESKTOP-H3JA6SK\SQLEXPRESS;Initial Catalog=DBD_GEP;"
-        string connectionString = @"Data Source=SERPRO1540297V1\SQLEXPRESS;Initial Catalog=DBD_GEP;"
+        string connectionString = @"Data Source=DESKTOP-H3JA6SK\SQLEXPRESS;Initial Catalog=DBD_GEP;"
+        // string connectionString = @"Data Source=SERPRO1540297V1\SQLEXPRESS;Initial Catalog=DBD_GEP;"
             + "Integrated Security=True;Min Pool Size=5;Max Pool Size=250;Connect Timeout=20";
+
+        protected string Tabela { get; set; }
 
         protected SqlConnection conectar(SqlConnection conn)
         {
@@ -151,5 +153,24 @@ namespace GEP_DE607.Persistencia
             }
             return query;
         }
+
+        public List<int> recuperarListaID()
+        {
+            List<int> listaID = new List<int>();
+            string query = "SELECT DISTINCT id FROM " + Tabela;
+            SqlConnection conn = null;
+            SqlDataReader reader = select(conn, query);
+            if (reader != null)
+            {
+                while (reader.Read())
+                {
+                    listaID.Add(reader.GetInt32(0));
+                }
+            }
+            desconectar(conn);
+            return listaID;
+        }
+
+
     }
 }

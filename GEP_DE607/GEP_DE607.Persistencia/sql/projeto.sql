@@ -33,7 +33,7 @@ CREATE TABLE [dbo].[Projeto](
 	[apropriacao] [decimal] (10, 1) NOT NULL,
 	[dtInicio] [datetime] NOT NULL,
 	[dtEntrega] [datetime] NOT NULL,
-	[dtFim] [datetime] NOT NULL,
+	[dtFinal] [datetime] NOT NULL,
 	PRIMARY KEY CLUSTERED
 (
 	[codigo] ASC

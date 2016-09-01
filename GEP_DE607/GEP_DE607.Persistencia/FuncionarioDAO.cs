@@ -11,21 +11,21 @@ namespace GEP_DE607.Persistencia
 {
     public class FuncionarioDAO : BaseDAO
     {
-        private string TABELA = "Funcionario";
 
         public FuncionarioDAO()
         {
-        }
+            this.Tabela = "Funcionario";
+    }
 
         public List<Funcionario> recuperar()
         {
-            string query = "SELECT * FROM " + TABELA;
+            string query = "SELECT * FROM " + Tabela;
             return executarSelect(query);
         }
 
         public List<Funcionario> recuperar(Dictionary<string, string> parametros)
         {
-            string query = "SELECT * FROM " + TABELA;
+            string query = "SELECT * FROM " + Tabela;
             if (parametros.Count > 0)
             {
                 query += " WHERE ";
@@ -52,7 +52,7 @@ namespace GEP_DE607.Persistencia
 
         public Funcionario recuperar(int codigo)
         {
-            string query = "SELECT * FROM " + TABELA + " WHERE codigo = " + codigo;
+            string query = "SELECT * FROM " + Tabela + " WHERE codigo = " + codigo;
             List<Funcionario> lista = executarSelect(query);
             if (lista.Count > 0)
             {
@@ -63,7 +63,7 @@ namespace GEP_DE607.Persistencia
 
         public Funcionario recuperar(string nome)
         {
-            string query = "SELECT * FROM " + TABELA + " WHERE nome = '" + nome + "'";
+            string query = "SELECT * FROM " + Tabela + " WHERE nome = '" + nome + "'";
             List<Funcionario> lista = executarSelect(query);
             if (lista.Count > 0)
             {
@@ -110,14 +110,14 @@ namespace GEP_DE607.Persistencia
 
         public void incluir(List<Funcionario> lista)
         {
-            string queryInsert = "INSERT INTO " + TABELA + " (lotacao, nome) "
+            string queryInsert = "INSERT INTO " + Tabela + " (lotacao, nome) "
                 + "values (@lotacao, @nome)";
             executarQuery(lista, queryInsert);
         }
 
         public void atualizar(List<Funcionario> lista)
         {
-            string queryUpdate = "UPDATE " + TABELA + " SET lotacao = @lotacao, "
+            string queryUpdate = "UPDATE " + Tabela + " SET lotacao = @lotacao, "
                 + "nome = @nome "
                 + "WHERE codigo = @codigo";
             executarQuery(lista, queryUpdate);
@@ -125,7 +125,7 @@ namespace GEP_DE607.Persistencia
 
         public void excluir(List<Funcionario> lista)
         {
-            string query = "DELETE FROM " + TABELA + " WHERE codigo = @codigo";
+            string query = "DELETE FROM " + Tabela + " WHERE codigo = @codigo";
             executarQuery(lista, query);
         }
 

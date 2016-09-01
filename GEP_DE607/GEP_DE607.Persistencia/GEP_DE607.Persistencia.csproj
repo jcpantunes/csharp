@@ -41,6 +41,7 @@
   <ItemGroup>
     <Compile Include="ApropriacaoDAO.cs" />
     <Compile Include="BaseDAO.cs" />
+    <Compile Include="BugDAO.cs" />
     <Compile Include="FuncionarioDAO.cs" />
     <Compile Include="ProjetoDAO.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -61,6 +62,7 @@
     <Content Include="sql\query.sql" />
     <Content Include="sql\sprint.sql" />
     <Content Include="sql\solicitacao.sql" />
+    <Content Include="sql\bug.sql" />
     <Content Include="sql\tarefa.sql" />
     <Content Include="sql\tarefaHistorico.sql" />
   </ItemGroup>

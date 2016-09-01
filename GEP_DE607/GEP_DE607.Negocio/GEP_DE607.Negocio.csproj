@@ -40,6 +40,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ApropriacaoBO.cs" />
+    <Compile Include="BugBO.cs" />
     <Compile Include="FuncionarioBO.cs" />
     <Compile Include="ProjetoBO.cs" />
     <Compile Include="SolicitacaoBO.cs" />

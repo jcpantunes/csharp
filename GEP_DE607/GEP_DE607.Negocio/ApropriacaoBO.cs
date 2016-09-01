@@ -18,7 +18,7 @@ namespace GEP_DE607.Negocio
             if (lista.Count > 0)
             {
                 TarefaDAO tarefaDAO = new TarefaDAO();
-                List<int> listaID = tarefaDAO.recuperarID();
+                List<int> listaID = tarefaDAO.recuperarListaID();
                 foreach (Apropriacao aprop in lista)
                 {
                     if (!listaTarefaInexistente.Contains(aprop.Tarefa) && listaID.Where(id => id == aprop.Tarefa).Count() == 0)

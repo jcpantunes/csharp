@@ -12,21 +12,20 @@ namespace GEP_DE607.Persistencia
     public class SolicitacaoDAO : BaseDAO
     {
 
-        private string TABELA = "Solicitacao";
-
         public SolicitacaoDAO()
         {
+            this.Tabela = "Solicitacao";
         }
 
         public List<Solicitacao> recuperar()
         {
-            string query = "SELECT * FROM " + TABELA;
+            string query = "SELECT * FROM " + Tabela;
             return executarSelect(query);
         }
 
         public List<Solicitacao> recuperar(Dictionary<string, string> parametros)
         {
-            string query = "SELECT * FROM " + TABELA;
+            string query = "SELECT * FROM " + Tabela;
             if (parametros.Count > 0)
             {
                 query += " WHERE ";
@@ -84,7 +83,7 @@ namespace GEP_DE607.Persistencia
 
         public void incluir(List<Solicitacao> lista)
         {
-            string queryInsert = "INSERT INTO " + TABELA + " (id, demanda, sistema, tipoDemanda, assunto, destinatario, status, "
+            string queryInsert = "INSERT INTO " + Tabela + " (id, demanda, sistema, tipoDemanda, assunto, destinatario, status, "
                 + " dtInicio, dtEntrega, dtFinal) "
                 + " values (@id, @demanda, @sistema, @tipoDemanda, @assunto, @destinatario, @status, @dtInicio, @dtEntrega, @dtFinal);";
 
@@ -93,7 +92,7 @@ namespace GEP_DE607.Persistencia
 
         public void atualizar(List<Solicitacao> lista)
         {
-            string queryUpdate = "UPDATE " + TABELA + " SET "
+            string queryUpdate = "UPDATE " + Tabela + " SET "
                 + " id = @id, "
                 + " demanda = @demanda, "
                 + " sistema = @sistema, "
@@ -110,7 +109,7 @@ namespace GEP_DE607.Persistencia
 
         public void excluir(List<Solicitacao> lista)
         {
-            string query = "DELETE FROM " + TABELA + " WHERE codigo = @codigo";
+            string query = "DELETE FROM " + Tabela + " WHERE codigo = @codigo";
             executarQuery(lista, query);
         }
 

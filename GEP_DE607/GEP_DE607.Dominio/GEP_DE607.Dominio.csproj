@@ -41,6 +41,7 @@
   <ItemGroup>
     <Compile Include="Apropriacao.cs" />
     <Compile Include="BaseBean.cs" />
+    <Compile Include="Bug.cs" />
     <Compile Include="Funcionario.cs" />
     <Compile Include="ItemTrabalho.cs" />
     <Compile Include="Projeto.cs" />
