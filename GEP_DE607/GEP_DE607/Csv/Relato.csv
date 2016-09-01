@@ -1,19 +1,48 @@
 ﻿Tipo	ID	Título	Responsável	Status	Planejado Para	Pai	Data de Modificação	ID do Projeto	Criado Por	Encontrado no Projeto	Tipo do Relato	Resolução
-Relato	198480	[Desligamento Versão 2.1] Desligamento com folha do mês encerrada	SERGIO MARCIO MAGALHAES TEIXEIRA	atribuído			31/08/16	282935	Fernando Castro		Erro	nenhuma
-Relato	197901	[Produção] - Desligamento - Erro na folha após efetuar desligamento	Raphael Schumann	atribuído			31/08/16	282936	Erica Alves Dias Franca		Erro	nenhuma
-Relato	198046	[DESLIGAMENTO] Unidades de horas extras e adicional noturno no formato HH:MM e outros ajustes no Desligamento		aberto			31/08/16	282937	Margarida Barreto de Almeida		Sugestão	nenhuma
-Relato	198437	Versão 2.1 [FOLHA] - FOLHA FECHAMENTO - CALCULO FGTS	Raphael Schumann	verificação			31/08/16	282938	Leonardo William de Lacerda		Erro	nenhuma
-Relato	198424	[Produção] Folha de Pagamentos - Erro ao finalizar as competências de 2015 - SW11422	Claudia Helena Souza e Santos Behring	verificação			31/08/16	282939	Erica Alves Dias Franca		Erro	nenhuma
-Relato	193454	Versão 2.1 [FÉRIAS] - Habilitar opção de alterar período aquisitivo de férias 	Claudia Helena Souza e Santos Behring	verificação			31/08/16	282940	Zander Gonçalves da Silva		Erro	nenhuma
-Relato	198431	Versão 2.1 [DESLIGAMENTO] Tela Verbas Rescisórias apresentada a cada comando efetuado	Eduardo Resende Gomes	verificação			31/08/16	282941	Erica Alves Dias Franca		Erro	nenhuma
-Relato	198442	PRODUÇÃO - DESLIGAMENTO - ERRO IMPEDITIVO PARA INFORMAR DESLIGAMENTO	RAFAEL GONCALVES MAFUZ	atribuído			31/08/16	282942	Leonardo William de Lacerda		Erro	nenhuma
-Relato	198438	PRODUÇÃO -  [ADMISSÃO/CADASTRAMENTO INICIAL] - campo obrigatório	RAFAEL GONCALVES MAFUZ	pendente			31/08/16	282943	Paulo Cesar Santos Brandao		Erro	nenhuma
-Relato	198455	PRODUÇÃO - AFASTAMENTO - Consulta e retificação não exibe data de término.	Eduardo Resende Gomes	atribuído			31/08/16	282944	Zander Gonçalves da Silva		Erro	nenhuma
-Relato	198430	Versão 2.1 [DESLIGAMENTO] Valor líquido de R$ 0,01 no desligamento com insuficiência de saldo	Raphael Schumann	verificação			31/08/16	282945	Fernando de oliveira Lisboa		Erro	nenhuma
-Relato	198115	[Férias] A funcionalidade de programação de férias não está sendo sensibilizada pela retificação jornada		pendente			30/08/16	282946	Meire Cássia Alves		Erro	rejeitado
-Relato	198203	[Produção] - Urgente - Evento de Admissão - Data de opção do FGTS diferente da admissão	Claudia Helena Souza e Santos Behring	verificação			30/08/16	282947	Geiza Amelia Alves Demetrio		Erro	nenhuma
-Relato	198449	PRODUÇÃO - EMPREGADO COM "SITUAÇÃO" EXCLUIDO NO CADASTRO	SERGIO MARCIO MAGALHAES TEIXEIRA	atribuído			29/08/16	282948	Leonardo William de Lacerda		Erro	nenhuma
-Relato	198427	PRODUÇÃO - AFASTAMENTO - sistema não permite cadastrar afastamento pelo motivo 21 (Licença não remunerada)	SERGIO MARCIO MAGALHAES TEIXEIRA	atribuído			29/08/16	282949	Zander Gonçalves da Silva		Erro	nenhuma
-Relato	198423	Produção - registro de dois períodos de aquisição de férias diferentes com períodos de gozo sobrepostos	Claudia Helena Souza e Santos Behring	verificação			26/08/16	282950	Alexsandra Basso		Erro	nenhuma
-Relato	198396	[PRODUÇÃO] URGENTE: Erro de cálculo do IRRF sobre férias ao encerrar folha de pagamento	Raphael Schumann	verificação			24/08/16	282951	Fernando de oliveira Lisboa		Erro	nenhuma
-Relato	198378	[PRODUÇÃO] MENSAGEM DE ERRO - TANURE	Lisiene Bruna de Lima Pio Santos	verificação			23/08/16	282952	Carlos Alberto Nasta Tanure		Erro	nenhuma
+Relato	198376	Produção -   Erro no eSocial - Folha Pagamento e Recebimentos Mensais	Julio Cesar Pereira Antunes	fechado			26/07/16	282935	Shirley Hiromi Kuniyoshi		Erro	rejeitado
+Relato	193111	Retorno antecipado de férias para cadastramento de novo afastamento no período (Pendente)	Julio Cesar Pereira Antunes	fechado			13/07/16	282935	Alexsandra Basso		Sugestão	rejeitado
+Relato	198208	[Produção] Erro ao cadastrar empregador	Julio Cesar Pereira Antunes	fechado			06/07/16	282935	Meire Cássia Alves		Erro	rejeitado
+Relato	198152	[FÉRIAS] Inserção do modelo de Aviso de Férias	Julio Cesar Pereira Antunes	fechado			28/06/16	282935	Fernando de oliveira Lisboa		Sugestão	corrigido
+Relato	198117	[FÉRIAS][Para 24/06] Pagamento de Férias - Alteração de informações no pop-up	Julio Cesar Pereira Antunes	fechado			27/06/16	282935	Zander Gonçalves da Silva		Sugestão	corrigido
+Relato	196444	Desligamento 08/03/2016 - Integração SERPRO x CAIXA	Julio Cesar Pereira Antunes	fechado			15/04/16	282935	Shirley Hiromi Kuniyoshi		Erro	nenhuma
+Relato	194004	V102 - Link dados contratuais	Julio Cesar Pereira Antunes	fechado			03/03/16	282935	Samuel Kruger		Sugestão	rejeitado
+Relato	196187	PRODUÇÃO - Mensagem de erro quando existem eventos com data posterior (empilhamento de eventos)	Julio Cesar Pereira Antunes	fechado			22/02/16	282935	Zander Gonçalves da Silva		Sugestão	corrigido
+Relato	196131	PRODUÇÃO - URGENTE - Geração de DAE - Erro	Julio Cesar Pereira Antunes	fechado			18/02/16	282935	Eugênio Pacelli  Mendes Bomfim		Erro	corrigido
+Relato	193139	Alterar as verbas constantes do resumo "Valores a recolher"	Julio Cesar Pereira Antunes	fechado			16/02/16	282935	Margarida Barreto de Almeida		Sugestão	rejeitado
+Relato	193348	Pendente - cadastramento de início de afastamento antes do início da obrigatoriedade do Esocial	Julio Cesar Pereira Antunes	fechado			16/02/16	282935	Alexsandra Basso		Sugestão	corrigido
+Relato	191107	Informações Complementares - Disposição na Tela (Luciano)	Julio Cesar Pereira Antunes	fechado			16/02/16	282935	Luciano Souza de Paula		Sugestão	corrigido
+Relato	193337	FECHAR - Pendente - Melhorar tela "Encerramento das remunerações Mensais"	Julio Cesar Pereira Antunes	fechado			11/12/15	282935	Samuel Kruger		Sugestão	rejeitado
+Relato	193095	FECHAR - Erro na Folha de trabalhador - Afastamento com recolhimento FGTS	Julio Cesar Pereira Antunes	fechado			11/12/15	282935	Erica Alves Dias Franca		Sugestão	rejeitado
+Relato	191977	FECHAR - Trabalhador - Evento trabalhista - Movimentações Trabalhistas do Trabalhador (Érica) (01/11) Pendente	Julio Cesar Pereira Antunes	fechado			11/12/15	282935	Leonardo William de Lacerda		Sugestão	rejeitado
+Relato	191347	Afastamento Temporário - Motivos de Afastamento (26/10)	Julio Cesar Pereira Antunes	fechado			28/10/15	282935	Cesar Augusto Alves Neto		Sugestão	corrigido
+Relato	192988	FECHAR ESSE MANTIS - Salário família não esta sendo deduzido do valor a pagar (Pendente)	Julio Cesar Pereira Antunes	fechado			26/10/15	282935	Marcos Antonio Salustiano da Silva		Sugestão	corrigido
+Relato	192675	DCTF - Emissão DAE - Documento de Arrecadação do Empregador - DATA DE PAGAMENTO	Julio Cesar Pereira Antunes	fechado			14/10/15	282935	Leonardo William de Lacerda		Sugestão	rejeitado
+Relato	192420	Visualizar Movimentações Trabalhistas - opção para consultar apenas dentro do cadastro do empregado	Julio Cesar Pereira Antunes	fechado			14/10/15	282935	Zander Gonçalves da Silva		Sugestão	rejeitado
+Relato	192386	DADOS CONTRATUAIS - FOLHA DE PAGAMENTO - SALARIO DIVERGENTE	Julio Cesar Pereira Antunes	fechado			14/10/15	282935	Leonardo William de Lacerda		Erro	rejeitado
+Relato	192421	[Remuneração] Adiantamentos recebidos pelo trabalhador não salvos no rascunho	Julio Cesar Pereira Antunes	fechado			14/10/15	282935	Fernando de oliveira Lisboa		Erro	corrigido
+Relato	192498	Cadastramento de CPF de Dependente igual ao do Empregado (01/10)	Julio Cesar Pereira Antunes	fechado			30/09/15	282935	Adilson da Silva Bastos		Sugestão	corrigido
+Relato	192801	Incluir modelos de documentos no sistema	Julio Cesar Pereira Antunes	fechado			30/09/15	282935	Mylene Soraya Sabarense		Sugestão	corrigido
+Relato	192852	Cadastramento empregado - passo 2 - ambiente externo (www.hom.esocial.gov.br) - erro ticket	Julio Cesar Pereira Antunes	fechado			30/09/15	282935	Zander Gonçalves da Silva		Erro	corrigido
+Relato	192884	CADASTRAR TRABALHADOR - PASSO 7 - MENSAGEM DE ERRO	Julio Cesar Pereira Antunes	fechado			30/09/15	282935	Leonardo William de Lacerda		Erro	corrigido
+Relato	191267	campo CARGO não permite digitar para localizar (01/10)	Julio Cesar Pereira Antunes	fechado			10/09/15	282935	Zander Gonçalves da Silva		Sugestão	corrigido
+Relato	191930	(sugestão da reunião de 08/07/2015) - Alteração de tamanho do texto ""Clique no nome do trabalhador para visualizar..." (01/10)	Julio Cesar Pereira Antunes	fechado			10/09/15	282935	Zander Gonçalves da Silva		Sugestão	corrigido
+Relato	191929	(sugestão da reunião de 08/07/2015) - Colocar o Link de Dados cadastrais na tela de gestão de trabalhadores (01/10)	Julio Cesar Pereira Antunes	fechado			10/09/15	282935	Zander Gonçalves da Silva		Sugestão	corrigido
+Relato	191973	Cadastramento Inicial/Admissão - alteração na data de admissão (01/10)	Julio Cesar Pereira Antunes	fechado			09/09/15	282935	Shirley Hiromi Kuniyoshi		Sugestão	corrigido
+Relato	191907	Mensagem da tela "Identificação do Trabalhador" (Luciano) (01/10)	Julio Cesar Pereira Antunes	fechado			09/09/15	282935	Luciano Souza de Paula		Sugestão	corrigido
+Relato	191851	S -2100 -Cadastramento Inicial - Ao informar dados do trabalhador,altear pergunta sobre aposentadoria (01/10)	Julio Cesar Pereira Antunes	fechado			09/09/15	282935	Meire Cássia Alves		Sugestão	corrigido
+Relato	191957	Evento Afastamento - Inserir link para o registro da CAT quando o motivo do Afastamento for Doença/Acidente Trabalho (01/10)	Julio Cesar Pereira Antunes	fechado			09/09/15	282935	Meire Cássia Alves		Erro	corrigido
+Relato	191942	Cad Inicial ou Admissão- Criar Filtros para cargos específicos para empregado doméstico (01/10)	Julio Cesar Pereira Antunes	fechado			09/09/15	282935	Meire Cássia Alves		Erro	corrigido
+Relato	191912	Férias - Data do Aviso Registrada no Sistema. (Agora)	Julio Cesar Pereira Antunes	fechado			09/09/15	282935	Diogo dos Santos Ferreira		Sugestão	corrigido
+Relato	191836	Verbas Rescisórias - Campo data de pagamento (01/10)	Julio Cesar Pereira Antunes	fechado			08/09/15	282935	Leonardo William de Lacerda		Sugestão	corrigido
+Relato	191838	Jornada de Trabalho - Tabela de horários (01/10)	Julio Cesar Pereira Antunes	fechado			08/09/15	282935	Leonardo William de Lacerda		Sugestão	corrigido
+Relato	191881	Gestão de Trabalhadores - Cadastrar/Admitir Trabalhador (01/10)	Julio Cesar Pereira Antunes	fechado			08/09/15	282935	Leonardo William de Lacerda		Erro	corrigido
+Relato	191910	FECHAR COMO REJEITADO - Cadastro/Admissão do Trabalhador – Passo 7 = Jornada de Trabalho, criar hint para botão de opção (01/10)	Julio Cesar Pereira Antunes	fechado			13/08/15	282935	Meire Cássia Alves		Sugestão	rejeitado
+Relato	191840	Dados do desligamento - Data Projetada para o Término do Aviso Prévio Indenizado	Julio Cesar Pereira Antunes	fechado			13/08/15	282935	Leonardo William de Lacerda		Sugestão	rejeitado
+Relato	191845	Jornada de Trabalho - Tipo de Jornada	Julio Cesar Pereira Antunes	fechado			13/08/15	282935	Leonardo William de Lacerda		Sugestão	rejeitado
+Relato	191064	Sugestão de melhoria de mensagem a ser apresentada	Julio Cesar Pereira Antunes	fechado			12/08/15	282935	Diogo dos Santos Ferreira		Sugestão	corrigido
+Relato	191018	"Admissão"" - Exibição de erros,fechado,rejeitado,,,,,,,Implementação,,,,[Informe o Item de menu utilizado],,,,Indefinido,,,,,,Implementação,,,,,,Indefinido,Funcional,XP
+0191933,eSocial-281573_Validação,Zander Gonçalves da Silva,,média,leve,sempre,,nenhuma,Sugestão,12/08/15,nenhum,windows xp professional,2002, eSocial ambiente WEB,privado,12/08/15,(sugestão da reunião de 08/07/2015) - Alterar texto do hint do campo ""Dependente para Fins de Recebimento..."	Julio Cesar Pereira Antunes	fechado			12/08/15	282935	Marcos Dal Bianco Ribeiro		Sugestão	rejeitado
+Relato	191030	cadastramento do trabalhador - email invalido	Julio Cesar Pereira Antunes	fechado			12/08/15	282935	Leonardo William de Lacerda		Sugestão	corrigido
+Relato	191152	Admissão  - Passo 7 - ao salvar cpf-empregador = cpf_trabalhador (erro de exceção)	Julio Cesar Pereira Antunes	fechado			07/07/15	282935	Cesar Augusto Alves Neto		Erro	rejeitado
+Relato	191164	Admissão - Passo 7 - ao salvar	Julio Cesar Pereira Antunes	fechado			07/07/15	282935	Cesar Augusto Alves Neto		Erro	rejeitado
+Relato	198180	[Homologação] Erro ao tentar excluir Trabalhador	Julio Cesar Pereira Antunes	atribuído			01/09/16	282935	Geiza Amelia Alves Demetrio		Erro	nenhuma

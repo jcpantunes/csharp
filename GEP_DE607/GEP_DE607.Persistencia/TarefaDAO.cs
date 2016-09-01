@@ -12,21 +12,21 @@ namespace GEP_DE607.Persistencia
 {
     public class TarefaDAO : BaseDAO
     {
-        private string TABELA = "Tarefa";
 
         public TarefaDAO()
         {
+            this.Tabela = "Tarefa";
         }
         
         public List<Tarefa> recuperar()
         {
-            string query = "SELECT * FROM " + TABELA;
+            string query = "SELECT * FROM " + Tabela;
             return executarSelect(query);
         }
 
         public Tarefa recuperar(int codigo)
         {
-            string query = "SELECT * FROM " + TABELA + " WHERE codigo = " + codigo;
+            string query = "SELECT * FROM " + Tabela + " WHERE codigo = " + codigo;
             List<Tarefa> lista = executarSelect(query);
             if (lista.Count > 0)
             {
@@ -37,7 +37,7 @@ namespace GEP_DE607.Persistencia
 
         public List<Tarefa> recuperar(Dictionary<string, string> parametros)
         {
-            string query = "SELECT * FROM " + TABELA;
+            string query = "SELECT * FROM " + Tabela;
             if (parametros.Count > 0)
             {
                 query += " WHERE ";
@@ -101,7 +101,7 @@ namespace GEP_DE607.Persistencia
 
         public void incluir (List<Tarefa> lista)
         {
-            string queryInsert = "INSERT INTO " + TABELA
+            string queryInsert = "INSERT INTO " + Tabela
                 + " (tipo, id, titulo, responsavel, status, planejadoPara, pai, dataModificacao, projeto, "
                 + " classificacao, estimativa, tempoGasto) "
                 + " VALUES (@tipo, @id, @titulo, @responsavel, @status, @planejadoPara, @pai, @dataModificacao, @projeto, "
@@ -111,7 +111,7 @@ namespace GEP_DE607.Persistencia
 
         public void atualizar (List<Tarefa> lista)
         {
-            string queryUpdate = "UPDATE " + TABELA 
+            string queryUpdate = "UPDATE " + Tabela 
                 + " SET tipo = @tipo, "
                 + "id = @id, "
                 + "titulo = @titulo, "
@@ -130,7 +130,7 @@ namespace GEP_DE607.Persistencia
 
         public void excluir(List<Tarefa> lista)
         {
-            string query = "DELETE FROM " + TABELA + " WHERE codigo = @codigo";
+            string query = "DELETE FROM " + Tabela + " WHERE codigo = @codigo";
             executarQuery(lista, query);
         }
 

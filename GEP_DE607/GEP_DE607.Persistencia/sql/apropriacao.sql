@@ -16,12 +16,19 @@ GO
 SET ANSI_PADDING ON
 GO
 
+-- Nome	Data	Horas	Tarefa	Macroatividade	Mnemonico	Projeto
+-- JULIO CESAR PEREIRA ANTUNES	2016-08-01	8.000000	995994	Gestão de Projeto de Software	eSocial-281573	282935
+-- (int codigo, string nome, DateTime data, decimal hora, int tarefa, string macroatividade, string mnemonico, int projeto)
 CREATE TABLE [dbo].[Apropriacao](
 	[codigo] [int] IDENTITY(1,1) NOT NULL,
-	[nome] [varchar](40) NULL,
-	[data] [datetime] NULL,
-	[tarefa] [int] NULL,
-	[hora] [decimal](10, 1) NULL,
+	[nome] [varchar](40) NOT NULL,
+	[data] [datetime] NOT NULL,
+	[hora] [decimal](10, 1) NOT NULL,
+	[tarefa] [int] NOT NULL,
+	[macroatividade] [varchar](40) NULL,
+	[mnemonico] [varchar](40) NULL,
+	[projeto] [int] NULL,
+	
 PRIMARY KEY CLUSTERED 
 (
 	[codigo] ASC

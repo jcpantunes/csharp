@@ -133,6 +133,7 @@
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
     <None Include="Csv\apropriacao.csv" />
+    <None Include="Csv\carga.ods" />
     <None Include="Csv\defeito.csv" />
     <None Include="Csv\tarefa.csv" />
     <None Include="Properties\Settings.settings">

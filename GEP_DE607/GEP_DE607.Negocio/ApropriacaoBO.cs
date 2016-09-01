@@ -12,29 +12,53 @@ namespace GEP_DE607.Negocio
     {
         ApropriacaoDAO apropDAO = new ApropriacaoDAO();
 
-        public List<int> validarListaTarefaInexistente(List<Apropriacao> lista)
+        public List<int> validarListaApropriacaoInexistente(List<Apropriacao> lista)
         {
-            List<int> listaTarefaInexistente = new List<int>();
+            List<int> listaApropriacaoInexistente = new List<int>();
             if (lista.Count > 0)
             {
                 TarefaDAO tarefaDAO = new TarefaDAO();
                 List<int> listaID = tarefaDAO.recuperarListaID();
                 foreach (Apropriacao aprop in lista)
                 {
-                    if (!listaTarefaInexistente.Contains(aprop.Tarefa) && listaID.Where(id => id == aprop.Tarefa).Count() == 0)
+                    if (!listaApropriacaoInexistente.Contains(aprop.Tarefa) && listaID.Where(id => id == aprop.Tarefa).Count() == 0)
                     {
-                        listaTarefaInexistente.Add(aprop.Tarefa);
+                        listaApropriacaoInexistente.Add(aprop.Tarefa);
                     }
                 }
             }
-            return listaTarefaInexistente;
+            return listaApropriacaoInexistente;
         }
 
         public void incluirLista(List<Apropriacao> lista)
         {
             if (lista.Count > 0)
             {
+                List<Apropriacao> listaBanco = apropDAO.recuperar();
 
+                List<Apropriacao> listaApropriacaoInclusao = new List<Apropriacao>();
+
+                List<Apropriacao> listaApropriacaoAtualizacao = new List<Apropriacao>();
+
+                foreach (Apropriacao apropriacao in lista)
+                {
+                    var apropriacaoExistente = listaBanco.Where(t => t.Nome.Equals(apropriacao.Nome)
+                                                                        && t.Data.Equals(apropriacao.Data)
+                                                                        && t.Tarefa.Equals(apropriacao.Tarefa));
+                    if (apropriacaoExistente.Count() == 0)
+                    {
+                        listaApropriacaoInclusao.Add(apropriacao);
+                    }
+                    else
+                    {
+                        apropriacao.Codigo = ((Apropriacao)apropriacaoExistente.First()).Codigo;
+                        listaApropriacaoAtualizacao.Add(apropriacao);
+                    }
+                }
+
+                apropDAO.incluir(listaApropriacaoInclusao);
+
+                apropDAO.atualizar(listaApropriacaoAtualizacao);
             }
         }
     }

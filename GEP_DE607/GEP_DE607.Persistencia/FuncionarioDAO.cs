@@ -15,7 +15,7 @@ namespace GEP_DE607.Persistencia
         public FuncionarioDAO()
         {
             this.Tabela = "Funcionario";
-    }
+        }
 
         public List<Funcionario> recuperar()
         {

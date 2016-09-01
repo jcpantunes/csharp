@@ -23,11 +23,11 @@ CREATE TABLE [dbo].[Tarefa] (
 	[titulo] [text] NULL,
 	[responsavel] [int] NOT NULL,
 	[status] [varchar](20) NULL,
-	[planejadoPara] [varchar](40) NULL,
+	[planejadoPara] [varchar](60) NULL,
 	[pai] [varchar](10) NULL,
 	[dataModificacao] [datetime] NULL,
 	[projeto] [int] NULL,
-	[classificacao] [varchar](20) NULL,
+	[classificacao] [varchar](40) NULL,
 	[estimativa] [decimal](10, 1) NULL,
 	[tempoGasto] [decimal](10, 1) NULL,
 PRIMARY KEY CLUSTERED 

@@ -32,6 +32,7 @@ namespace GEP_DE607.Negocio
                     }
                     else
                     {
+                        bug.Codigo = ((Bug)bugsExistente.First()).Codigo;
                         listaBugAtualizacao.Add(bug);
                     }
                 }

@@ -38,7 +38,17 @@ namespace GEP_DE607.Componente
 
         public void preencherMensagem(string mensagem)
         {
-            this.lblMensagem.Content = mensagem;
+            int tam = mensagem.Length;
+            int indice = (tam / 46);
+            string label = "";
+            int i = 0;
+            while (i < indice)
+            {
+                label += mensagem.Substring(i * 46, 46) + '\n';
+                i++;
+            }
+            label += mensagem.Substring(i * 46, (mensagem.Length - (i * 46)));
+            this.lblMensagem.Content = label;
         }
     }
 }

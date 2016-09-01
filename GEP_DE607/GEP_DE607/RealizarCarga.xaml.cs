@@ -99,8 +99,20 @@ namespace GEP_DE607
                 {
                     List<Apropriacao> listaApropriacao = recuperarListaApropriacao(linhas);
                     ApropriacaoBO apropBO = new ApropriacaoBO();
-                    apropBO.validarListaTarefaInexistente(listaApropriacao);
-                    //tarefaBO.incluirLista(listaTarefa);
+                    List<int> listaTarefasInexistentes = apropBO.validarListaApropriacaoInexistente(listaApropriacao);
+                    if (listaTarefasInexistentes.Count > 0)
+                    {
+                        msg = "As seguintes tarefas não estão cadastradas: ";
+                        foreach (int i in listaTarefasInexistentes)
+                        {
+                            msg += i + ", ";
+                        }
+                        msg.Substring(0, msg.Length - 2);
+                    }
+                    else
+                    {
+                        apropBO.incluirLista(listaApropriacao);
+                    }
                 }
             }
             else
@@ -130,7 +142,7 @@ namespace GEP_DE607
             }
             else if (tipoCarga.Equals(Constantes.APROPRIACAO))
             {
-                string[] campos = { "Nome", "Data", "Horas", "Tarefa", "Macroatividade", "Projeto" };
+                string[] campos = { "Nome", "Data", "Horas", "Tarefa", "Macroatividade", "Mnemonico", "Projeto" };
                 return Util.Util.validarArquivo(linha, campos);
             }
             return false;
@@ -246,6 +258,9 @@ namespace GEP_DE607
                 apropriacao.Data = Convert.ToDateTime(linha[1]);
                 apropriacao.Hora = Convert.ToDecimal(linha[2]);
                 apropriacao.Tarefa = Convert.ToInt32(linha[3]);
+                apropriacao.Macroatividade = Convert.ToString(linha[4]);
+                apropriacao.Mnemonico = Convert.ToString(linha[5]);
+                apropriacao.Projeto = Convert.ToInt32(linha[6]);
                 listaApropriacao.Add(apropriacao);
             }
             return listaApropriacao;

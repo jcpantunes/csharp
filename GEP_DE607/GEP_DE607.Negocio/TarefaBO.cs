@@ -32,6 +32,7 @@ namespace GEP_DE607.Negocio
                     }
                     else
                     {
+                        tarefa.Codigo = ((Tarefa)tarefasExistente.First()).Codigo;
                         listaTarefaAtualizacao.Add(tarefa);
                     }
                 }

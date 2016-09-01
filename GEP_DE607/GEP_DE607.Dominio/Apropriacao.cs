@@ -8,26 +8,30 @@ namespace GEP_DE607.Dominio
 {
     public class Apropriacao : BaseBean
     {
-        //Nome	Data	Horas	Tarefa	Macroatividade	Projeto
 
         public const string NOME = "nome";
         public const string DATA = "data";
         public const string HORA = "hora";
         public const string TAREFA = "tarefa";
-        // public const string MACROATIVIDADE = "macroatividade";
-        // public const string PROJETO = "projeto";
+        public const string MACROATIVIDADE = "macroatividade";
+        public const string MNEMONICO = "mnemonico";
+        public const string PROJETO = "projeto";
 
         public Apropriacao()
         {
         }
 
-        public Apropriacao(int codigo, string nome, DateTime data, decimal hora, int tarefa)
+        public Apropriacao(int codigo, string nome, DateTime data, decimal hora, 
+            int tarefa, string macroatividade, string mnemonico, int projeto)
         {
             this.Codigo = codigo;
             this.Nome = nome;
             this.Data = data;
             this.Hora = hora;
             this.Tarefa = tarefa;
+            this.Macroatividade = macroatividade;
+            this.Mnemonico = mnemonico;
+            this.Projeto = projeto;
         }
 
         public string Nome { get; set; }
@@ -37,6 +41,12 @@ namespace GEP_DE607.Dominio
         public decimal Hora { get; set; }
 
         public int Tarefa { get; set; }
+
+        public string Macroatividade { get; set; }
+
+        public string Mnemonico { get; set; }
+
+        public int Projeto { get; set; }
 
         public List<Apropriacao> encapsularLista()
         {

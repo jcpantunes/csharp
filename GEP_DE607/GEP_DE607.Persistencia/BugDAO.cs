@@ -141,17 +141,10 @@ namespace GEP_DE607.Persistencia
         private void executarQuery(List<Bug> lista, string query)
         {
             SqlConnection conn = null;
-            conn = conectar(conn);
             for (int i = 0; i < lista.Count; i++)
             {
                 Bug f = lista[i];
-                SqlCommand cmd = new SqlCommand(query, conn);
-                List<SqlParameter> listaParametros = criarListaParametros(f);
-                foreach (SqlParameter parametro in listaParametros)
-                {
-                    cmd.Parameters.Add(parametro);
-                }
-                cmd.ExecuteNonQuery();
+                save(conn, query, criarListaParametros(f));
             }
             desconectar(conn);
         }
