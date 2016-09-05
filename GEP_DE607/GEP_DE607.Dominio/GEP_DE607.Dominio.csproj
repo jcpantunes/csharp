@@ -43,6 +43,7 @@
     <Compile Include="BaseBean.cs" />
     <Compile Include="Bug.cs" />
     <Compile Include="Funcionario.cs" />
+    <Compile Include="ItemBacklog.cs" />
     <Compile Include="ItemTrabalho.cs" />
     <Compile Include="Projeto.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

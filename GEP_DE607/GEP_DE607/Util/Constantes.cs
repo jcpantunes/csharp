@@ -13,6 +13,7 @@ namespace GEP_DE607.Util
         public const string RELATO = "Relato";
         public const string FUNCIONARIO = "Funcionario";
         public const string APROPRIACAO = "Apropriacao";
+        public const string ITEM_BACKLOG = "Item Backlog";
 
         public static List<string> recuperarDominioTipoCarga()
         { 
@@ -22,6 +23,7 @@ namespace GEP_DE607.Util
             listaTipoCarga.Add(RELATO);
             listaTipoCarga.Add(FUNCIONARIO);
             listaTipoCarga.Add(APROPRIACAO);
+            listaTipoCarga.Add(ITEM_BACKLOG);
             return listaTipoCarga;
         }
 

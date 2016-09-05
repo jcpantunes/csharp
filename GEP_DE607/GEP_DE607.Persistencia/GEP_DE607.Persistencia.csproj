@@ -43,6 +43,7 @@
     <Compile Include="BaseDAO.cs" />
     <Compile Include="BugDAO.cs" />
     <Compile Include="FuncionarioDAO.cs" />
+    <Compile Include="ItemBacklogDAO.cs" />
     <Compile Include="ProjetoDAO.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SolicitacaoDAO.cs" />

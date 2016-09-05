@@ -1,0 +1,8 @@
+﻿Tipo	ID	Título	Responsável	Status	Planejado Para	Pai	Data de Modificação	ID do Projeto	Valor definido para o Negócio	Tamanho Estimado	Complexidade	PF
+Item de Backlog	927326	Ferias – Recibo de Ferias	Não Designado	Pronto	eSocial-1005228-1.0.8-CONS		25/08/2016 14:21	1031720	440	3 pts	99	5
+Item de Backlog	1031738	Ajustes nas telas (mensal, décimo terceiro, desligamento, afastamento)	Não Designado	Preparado	eSocial-1005228-1.0.8-CONS		24/08/2016 09:41	1031720	100	5 pts	98	5
+Item de Backlog	1031739	Ajustes nas rubricas já existentes	Não Designado	Preparado	eSocial-1005228-1.0.8-CONS		24/08/2016 09:41	1031720	100	5 pts	97	5
+Item de Backlog	1031740	Novas rubricas (mensal e décimo terceiro)	Não Designado	Preparado	eSocial-1005228-1.0.8-CONS		24/08/2016 09:41	1031720	100	5 pts	96	5
+Item de Backlog	1032626	Mês anterior e mês da rescisão na mesma guia rescisória (incluindo alteração do leiaute de guia)	Não Designado	Preparado	eSocial-1005228-1.0.8-CONS		24/08/2016 09:41	1031720	100	5 pts	95	5
+Item de Backlog	1032628	Geração de relatório (PDF) para movimentações trabalhistas (Mantis 198081)	Não Designado	Preparado	eSocial-1005228-1.0.8-CONS		24/08/2016 09:41	1031720	100	5 pts	94	5
+Item de Backlog	1032633	Tratamento da 2ª parcela do FGTS sobre 13º salário no desligamento	Não Designado	Preparado	eSocial-1005228-1.0.8-CONS		24/08/2016 09:41	1031720	100	5 pts	93	5

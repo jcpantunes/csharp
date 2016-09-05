@@ -85,6 +85,9 @@
     <Compile Include="Util\Constantes.cs" />
     <Compile Include="Util\DataHoraUtil.cs" />
     <Compile Include="Util\Util.cs" />
+    <Compile Include="Window1.xaml.cs">
+      <DependentUpon>Window1.xaml</DependentUpon>
+    </Compile>
     <Page Include="CadastrarProjeto.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -113,6 +116,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Window1.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs">
@@ -135,6 +142,7 @@
     <None Include="Csv\apropriacao.csv" />
     <None Include="Csv\carga.ods" />
     <None Include="Csv\defeito.csv" />
+    <None Include="Csv\itembacklog.csv" />
     <None Include="Csv\tarefa.csv" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>

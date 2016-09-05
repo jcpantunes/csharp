@@ -114,6 +114,13 @@ namespace GEP_DE607
                         apropBO.incluirLista(listaApropriacao);
                     }
                 }
+                else if (item.Content.Equals(Constantes.ITEM_BACKLOG))
+                {
+                    List<ItemBacklog> listaItemBacklog = recuperarListaItemBacklog(linhas);
+                    ItemBacklogBO itemBO = new ItemBacklogBO();
+                    itemBO.incluirLista(listaItemBacklog);
+                }
+
             }
             else
             {
@@ -145,6 +152,12 @@ namespace GEP_DE607
                 string[] campos = { "Nome", "Data", "Horas", "Tarefa", "Macroatividade", "Mnemonico", "Projeto" };
                 return Util.Util.validarArquivo(linha, campos);
             }
+            else if (tipoCarga.Equals(Constantes.ITEM_BACKLOG))
+            {
+                string[] campos = { "Tipo", "ID", "Título", "Responsável", "Status", "Planejado Para", "Pai", "Data de Modificação", "ID do Projeto", "Valor definido para o Negócio", "Tamanho Estimado", "Complexidade", "PF" };
+                return Util.Util.validarArquivo(linha, campos);
+            }
+
             return false;
         }
 
@@ -176,21 +189,7 @@ namespace GEP_DE607
                 tarefa.Tipo = linha[0];
                 tarefa.Id = Convert.ToInt32(linha[1]);
                 tarefa.Titulo = linha[2];
-
-                string nomeResponsavel = linha[3];
-                var funcExistente = listaCacheFuncionario.Where(t => t.Nome.Equals(nomeResponsavel));
-                if (funcExistente.Count() == 0)
-                {
-                    Funcionario funcionario = new Funcionario(0, "SUPDE/DEBHE/DE607", nomeResponsavel);
-                    fDAO.incluir(funcionario.encapsularLista());
-                    tarefa.Responsavel = fDAO.recuperar(nomeResponsavel);
-                    listaCacheFuncionario.Add(fDAO.recuperar(nomeResponsavel));
-                }
-                else
-                {
-                    tarefa.Responsavel = funcExistente.First();
-                }
-
+                tarefa.Responsavel = identificarFuncionario(linha[3], listaCacheFuncionario);
                 tarefa.Status = linha[4];
                 tarefa.PlanejadoPara = linha[5];
                 tarefa.Pai = linha[6].Replace("#", "");
@@ -202,6 +201,24 @@ namespace GEP_DE607
                 listaTarefa.Add(tarefa);
             }
             return listaTarefa;
+        }
+
+        private Funcionario identificarFuncionario(string nomeResponsavel, List<Funcionario> listaCacheFuncionario)
+        {
+            FuncionarioDAO fDAO = new FuncionarioDAO();
+            var funcExistente = listaCacheFuncionario.Where(t => t.Nome.Equals(nomeResponsavel));
+            if (funcExistente.Count() == 0)
+            {
+                Funcionario funcionario = new Funcionario(0, "SUPDE/DEBHE/DE607", nomeResponsavel);
+                fDAO.incluir(funcionario.encapsularLista());
+                funcionario = fDAO.recuperar(nomeResponsavel);
+                listaCacheFuncionario.Add(funcionario);
+                return funcionario;
+            }
+            else
+            {
+                return funcExistente.First();
+            }
         }
 
         private List<Bug> recuperarListaBug(string[] linhas)
@@ -218,21 +235,7 @@ namespace GEP_DE607
                 bug.Tipo = linha[0];
                 bug.Id = Convert.ToInt32(linha[1]);
                 bug.Titulo = linha[2];
-
-                string nomeResponsavel = linha[3];
-                var funcExistente = listaCacheFuncionario.Where(t => t.Nome.Equals(nomeResponsavel));
-                if (funcExistente.Count() == 0)
-                {
-                    Funcionario funcionario = new Funcionario(0, "SUPDE/DEBHE/DE607", nomeResponsavel);
-                    fDAO.incluir(funcionario.encapsularLista());
-                    bug.Responsavel = fDAO.recuperar(nomeResponsavel);
-                    listaCacheFuncionario.Add(fDAO.recuperar(nomeResponsavel));
-                }
-                else
-                {
-                    bug.Responsavel = funcExistente.First();
-                }
-
+                bug.Responsavel = identificarFuncionario(linha[3], listaCacheFuncionario);
                 bug.Status = linha[4];
                 bug.PlanejadoPara = linha[5];
                 bug.Pai = linha[6].Replace("#", "");
@@ -264,6 +267,34 @@ namespace GEP_DE607
                 listaApropriacao.Add(apropriacao);
             }
             return listaApropriacao;
+        }
+
+        private List<ItemBacklog> recuperarListaItemBacklog(string[] linhas)
+        {
+            FuncionarioDAO fDAO = new FuncionarioDAO();
+            List<Funcionario> listaCacheFuncionario = fDAO.recuperar();
+
+            List<ItemBacklog> listaItemBacklog = new List<ItemBacklog>();
+            for (int i = 1; i < linhas.Length; i++)
+            {
+                string[] linha = linhas[i].Replace("\"", "").Split('\t');
+
+                ItemBacklog itemBacklog = new ItemBacklog();
+                itemBacklog.Tipo = linha[0];
+                itemBacklog.Id = Convert.ToInt32(linha[1]);
+                itemBacklog.Titulo = linha[2];
+                itemBacklog.Status = linha[4];
+                itemBacklog.PlanejadoPara = linha[5];
+                itemBacklog.Pai = linha[6].Replace("#", "");
+                itemBacklog.DataModificacao = Convert.ToDateTime(linha[7]);
+                itemBacklog.Projeto = Convert.ToInt32(linha[8]);
+                itemBacklog.ValorNegocio = Convert.ToInt32(linha[9]);
+                itemBacklog.Tamanho = Convert.ToInt32(linha[10].Replace("pts", "").Replace("pt", "")); 
+                itemBacklog.Complexidade = Convert.ToInt32(linha[11]); 
+                itemBacklog.Pf = Convert.ToDecimal(linha[12]); 
+                listaItemBacklog.Add(itemBacklog);
+            }
+            return listaItemBacklog;
         }
 
     }
