@@ -21,7 +21,7 @@ CREATE TABLE [dbo].[ItemBacklog] (
 	[tipo] [varchar](20) NULL,
 	[id] [int] NULL,
 	[titulo] [text] NULL,
-	[responsavel] [int] NOT NULL,
+	[responsavel] [int] NULL,
 	[status] [varchar](20) NULL,
 	[planejadoPara] [varchar](60) NULL,
 	[pai] [varchar](10) NULL,

@@ -69,6 +69,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="BaseWindow.cs" />
     <Compile Include="CadastrarProjeto.xaml.cs">
       <DependentUpon>CadastrarProjeto.xaml</DependentUpon>
     </Compile>
@@ -85,8 +86,8 @@
     <Compile Include="Util\Constantes.cs" />
     <Compile Include="Util\DataHoraUtil.cs" />
     <Compile Include="Util\Util.cs" />
-    <Compile Include="Window1.xaml.cs">
-      <DependentUpon>Window1.xaml</DependentUpon>
+    <Compile Include="VisualizarIndicador.xaml.cs">
+      <DependentUpon>VisualizarIndicador.xaml</DependentUpon>
     </Compile>
     <Page Include="CadastrarProjeto.xaml">
       <SubType>Designer</SubType>
@@ -116,7 +117,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Window1.xaml">
+    <Page Include="VisualizarIndicador.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

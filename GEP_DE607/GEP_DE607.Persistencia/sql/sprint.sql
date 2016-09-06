@@ -44,7 +44,7 @@ INSERT INTO [dbo].[Sprint] ([nome],[dtInicio],[dtFinal],[projeto]) VALUES('eSoci
 INSERT INTO [dbo].[Sprint] ([nome],[dtInicio],[dtFinal],[projeto]) VALUES('eSocial-281573-1.0.1-CONS-02', Convert(date, '2015-04-27'), Convert(date, '2015-05-22'), 282935);
 INSERT INTO [dbo].[Sprint] ([nome],[dtInicio],[dtFinal],[projeto]) VALUES('eSocial-281573-1.0.1-CONS-03', Convert(date, '2015-05-25'), Convert(date, '2015-06-26'), 282935);
 INSERT INTO [dbo].[Sprint] ([nome],[dtInicio],[dtFinal],[projeto]) VALUES('eSocial-281573-1.0.1-CONS-04', Convert(date, '2015-06-29'), Convert(date, '2015-07-24'), 282935);
-INSERT INTO [dbo].[Sprint] ([nome],[dtInicio],[dtFinal],[projeto]) VALUES('eSocial-281573-1.0.1-CONS-05', Convert(date, '2015-03-27'), Convert(date, '2015-08-21'), 282935);
+INSERT INTO [dbo].[Sprint] ([nome],[dtInicio],[dtFinal],[projeto]) VALUES('eSocial-281573-1.0.1-CONS-05', Convert(date, '2015-07-27'), Convert(date, '2015-08-21'), 282935);
 INSERT INTO [dbo].[Sprint] ([nome],[dtInicio],[dtFinal],[projeto]) VALUES('eSocial-281573-1.0.1-CONS-06', Convert(date, '2015-08-24'), Convert(date, '2015-09-04'), 282935);
 INSERT INTO [dbo].[Sprint] ([nome],[dtInicio],[dtFinal],[projeto]) VALUES('eSocial-281573-1.0.1-TRANS', Convert(date, '2015-09-08'), Convert(date, '2015-11-01'), 282935);
 

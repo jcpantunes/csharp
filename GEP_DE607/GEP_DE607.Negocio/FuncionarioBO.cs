@@ -22,7 +22,7 @@ namespace GEP_DE607.Negocio
                 List<Funcionario> listaFuncionario = new List<Funcionario>();
                 foreach (Funcionario funcionario in lista)
                 {
-                    var funcionarioExistente = listaBanco.Where(f => f.Nome.Equals(funcionario.Nome));
+                    var funcionarioExistente = listaBanco.Where(f => f.Nome.ToLower().Equals(funcionario.Nome.ToLower()));
                     if (funcionarioExistente.Count() == 0)
                     {
                         listaFuncionario.Add(funcionario);

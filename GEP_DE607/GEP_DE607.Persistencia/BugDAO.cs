@@ -11,6 +11,10 @@ namespace GEP_DE607.Persistencia
 {
     public class BugDAO : BaseDAO
     {
+
+        public static string TIPO_DEFEITO = "Defeito";
+        public static string TIPO_RELATO = "Relato";
+
         public BugDAO(string tipo)
         {
             this.Tabela = tipo;
@@ -167,6 +171,24 @@ namespace GEP_DE607.Persistencia
             parametros.Add(new SqlParameter("tipoRelato", bug.TipoRelato));
             parametros.Add(new SqlParameter("resolucao", bug.Resolucao));
             return parametros;
+        }
+
+        public decimal recuperarMediaDefeitosPorSprintPorResponsavel(string planejadoPara, int responsavel)
+        {
+            string query = "SELECT ROUND(AVG(CAST(total AS DECIMAL)), 2) FROM ( "
+                + "SELECT id, count(codigo) as total FROM "
+                    + "(SELECT distinct item.id as id, d.codigo as codigo FROM ItemBacklog AS item "
+                        + "LEFT JOIN Defeito AS d ON d.pai = item.id LEFT JOIN Tarefa AS t ON item.id = t.pai "
+                        + "WHERE t.planejadoPara = '" + planejadoPara + "' and t.responsavel = " + responsavel + ") as defeitosPorItem "
+                    + "GROUP BY id) as mediaDefeitos";
+            return retornarSelectValorDecimal(query);
+        }
+
+        public int recuperarDefeitosCorrigidosResponsavel(string planejadoPara, int responsavel)
+        {
+            string query = "SELECT COUNT(id) FROM Defeito d "
+                + "WHERE d.planejadoPara = '" + planejadoPara + "' and d.tipoRelato = 'Erro' and d.responsavel = " + responsavel;
+            return retornarSelectValorInt(query);
         }
     }
 }

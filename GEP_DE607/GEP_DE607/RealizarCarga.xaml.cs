@@ -206,7 +206,7 @@ namespace GEP_DE607
         private Funcionario identificarFuncionario(string nomeResponsavel, List<Funcionario> listaCacheFuncionario)
         {
             FuncionarioDAO fDAO = new FuncionarioDAO();
-            var funcExistente = listaCacheFuncionario.Where(t => t.Nome.Equals(nomeResponsavel));
+            var funcExistente = listaCacheFuncionario.Where(t => t.Nome.ToLower().Equals(nomeResponsavel.ToLower()));
             if (funcExistente.Count() == 0)
             {
                 Funcionario funcionario = new Funcionario(0, "SUPDE/DEBHE/DE607", nomeResponsavel);
@@ -272,7 +272,7 @@ namespace GEP_DE607
         private List<ItemBacklog> recuperarListaItemBacklog(string[] linhas)
         {
             FuncionarioDAO fDAO = new FuncionarioDAO();
-            List<Funcionario> listaCacheFuncionario = fDAO.recuperar();
+            // List<Funcionario> listaCacheFuncionario = fDAO.recuperar();
 
             List<ItemBacklog> listaItemBacklog = new List<ItemBacklog>();
             for (int i = 1; i < linhas.Length; i++)

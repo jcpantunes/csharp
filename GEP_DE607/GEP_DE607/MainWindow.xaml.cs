@@ -42,5 +42,11 @@ namespace GEP_DE607
             CadastrarSolicitacao tela = new CadastrarSolicitacao();
             tela.Show();
         }
+
+        private void btnIndicadores_Click(object sender, RoutedEventArgs e)
+        {
+            VisualizarIndicador tela = new VisualizarIndicador();
+            tela.Show();
+        }
     }
 }
