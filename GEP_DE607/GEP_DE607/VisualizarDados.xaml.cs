@@ -113,69 +113,55 @@ namespace GEP_DE607
             return false;
         }
 
-        private void prepararTabela(DataTable tabela, List<Funcionario> listaFuncionario, List<string> listaColunas, bool inteiro)
-        {
-            tabela.Columns.Add("Nome", typeof(string));
-            foreach (ListBoxItem item in lstSprint.SelectedItems)
-            {
-                listaColunas.Add(Convert.ToString(item.Content));
-                if (inteiro)
-                {
-                    tabela.Columns.Add(Convert.ToString(item.Content), typeof(int));
-                }
-                else
-                {
-                    tabela.Columns.Add(Convert.ToString(item.Content), typeof(decimal));
-                }
-            }
+        //private void prepararTabela(DataTable tabela, List<Funcionario> listaFuncionario, List<string> listaColunas, bool inteiro)
+        //{
+        //    tabela.Columns.Add("Nome", typeof(string));
+        //    foreach (ListBoxItem item in lstSprint.SelectedItems)
+        //    {
+        //        listaColunas.Add(Convert.ToString(item.Content));
+        //        if (inteiro)
+        //        {
+        //            tabela.Columns.Add(Convert.ToString(item.Content), typeof(int));
+        //        }
+        //        else
+        //        {
+        //            tabela.Columns.Add(Convert.ToString(item.Content), typeof(decimal));
+        //        }
+        //    }
 
-            if (chkTodosFuncionario.IsChecked == true)
-            {
-                FuncionarioDAO fDAO = new FuncionarioDAO();
-                String lotacao = Convert.ToString(((ComboBoxItem)cmbLotacao.SelectedItem).Content);
+        //    if (chkTodosFuncionario.IsChecked == true)
+        //    {
+        //        FuncionarioDAO fDAO = new FuncionarioDAO();
+        //        String lotacao = Convert.ToString(((ComboBoxItem)cmbLotacao.SelectedItem).Content);
 
-                Dictionary<string, string> param = new Dictionary<string, string>();
-                param.Add(Funcionario.LOTACAO, lotacao);
-                listaFuncionario.AddRange(fDAO.recuperar(param));
-            }
-            else
-            {
-                FuncionarioDAO fDAO = new FuncionarioDAO();
-                foreach (ListBoxItem item in lstFuncionario.SelectedItems)
-                {
-                    int codigo = Convert.ToInt32(item.Tag);
-                    listaFuncionario.Add(fDAO.recuperar(codigo));
-                }
-            }
-        }
+        //        Dictionary<string, string> param = new Dictionary<string, string>();
+        //        param.Add(Funcionario.LOTACAO, lotacao);
+        //        listaFuncionario.AddRange(fDAO.recuperar(param));
+        //    }
+        //    else
+        //    {
+        //        FuncionarioDAO fDAO = new FuncionarioDAO();
+        //        foreach (ListBoxItem item in lstFuncionario.SelectedItems)
+        //        {
+        //            int codigo = Convert.ToInt32(item.Tag);
+        //            listaFuncionario.Add(fDAO.recuperar(codigo));
+        //        }
+        //    }
+        //}
 
         private void preencherGrid(DataGrid grid, DataTable tabela)
         {
             if (tabela != null) // table is a DataTable
             {
-                int i = 0;
                 grid.Columns.Clear();
                 foreach (DataColumn col in tabela.Columns)
                 {
-                    if (i == 0)
+                    grid.Columns.Add(new DataGridTextColumn
                     {
-                        grid.Columns.Add(new DataGridTextColumn
-                        {
-                            Header = col.ColumnName,
-                            Width = 180,
-                            Binding = new Binding(string.Format("[{0:0.##}]", col.ColumnName))
-                        });
-                    }
-                    else
-                    {
-                        grid.Columns.Add(new DataGridTextColumn
-                        {
-                            Header = col.ColumnName,
-                            Width = 60,
-                            Binding = new Binding(string.Format("[{0:0.##}]", col.ColumnName))
-                        });
-                    }
-                    i++;
+                        Header = col.ColumnName,
+                        Width = 80,
+                        Binding = new Binding(string.Format("[{0:0.##}]", col.ColumnName))
+                    });
                 }
                 grid.DataContext = tabela;
             }
@@ -185,28 +171,60 @@ namespace GEP_DE607
         {
             if (validarExibicaoTabela())
             {
-                DataTable tabela = new DataTable();
                 List<Funcionario> listaFuncionario = new List<Funcionario>();
-                List<string> listaColunas = new List<string>();
-                prepararTabela(tabela, listaFuncionario, listaColunas, inteiro);
-
+                if (chkTodosFuncionario.IsChecked == true)
+                {
+                    FuncionarioDAO fDAO = new FuncionarioDAO();
+                    String lotacao = Convert.ToString(((ComboBoxItem)cmbLotacao.SelectedItem).Content);
+                    Dictionary<string, string> param = new Dictionary<string, string>();
+                    param.Add(Funcionario.LOTACAO, lotacao);
+                    listaFuncionario.AddRange(fDAO.recuperar(param));
+                }
+                else
+                {
+                    FuncionarioDAO fDAO = new FuncionarioDAO();
+                    foreach (ListBoxItem item in lstFuncionario.SelectedItems)
+                    {
+                        int codigo = Convert.ToInt32(item.Tag);
+                        listaFuncionario.Add(fDAO.recuperar(codigo));
+                    }
+                }
+                List<ItemBacklog> listaItemBacklog = new List<ItemBacklog>();
                 foreach (Funcionario func in listaFuncionario)
                 {
-                    object[] linha = new object[listaColunas.Count]; // +2 por causa das colunas nome e media
-                    for (int i = 0; i < listaColunas.Count; i++)
+                    List<string> listaSprint = new List<string>();
+                    foreach (ListBoxItem item in lstSprint.SelectedItems)
                     {
-                        if (opcao == OpcaoIndicador.NUM_TAREFA_POR_SPRINT)
-                        {
-                            TarefaDAO tDAO = new TarefaDAO();
-                            linha[i + 1] = tDAO.recuperarQtdeItensPorSprintPorResponsavel(listaColunas[i], func.Codigo);
-                        }
-                        else if (opcao == OpcaoIndicadorDados.ITEM_BACKLOG_TRABALHADO)
-                        {
-                            ItemBacklogDAO ibDAO = new ItemBacklogDAO();
-                            linha[i + 1] = ibDAO.recuperarQtdeItensBacklogPorSprintPorResponsavel(listaColunas[i], func.Codigo);
-                        }
-
+                        listaSprint.Add(Convert.ToString(item.Content));
                     }
+                    ItemBacklogDAO ibDAO = new ItemBacklogDAO();
+                    listaItemBacklog = ibDAO.recuperarItensBacklogPorSprintPorResponsavel(listaSprint, func.Codigo);
+                }
+                
+                DataTable tabela = new DataTable();
+                
+                object[] listaColunas = { "Tipo", "ID", "Título", "Responsável", "Status", "Planejado Para", "Pai", "Data de Modificação", "ID do Projeto", "Valor definido para o Negócio", "Tamanho Estimado", "Complexidade", "PF" };
+                foreach(string str in listaColunas)
+                {
+                    tabela.Columns.Add(Convert.ToString(str));
+                }
+
+                foreach (ItemBacklog item in listaItemBacklog)
+                {
+                    object[] linha = new object[listaColunas.Count()];
+                    linha[0] = item.Tipo;
+                    linha[1] = item.Id;
+                    linha[2] = item.Titulo;
+                    linha[3] = item.Responsavel;
+                    linha[4] = item.Status;
+                    linha[5] = item.PlanejadoPara;
+                    linha[6] = item.Pai;
+                    linha[7] = item.DataModificacao;
+                    linha[8] = item.Projeto;
+                    linha[9] = item.ValorNegocio;
+                    linha[10] = item.Tamanho;
+                    linha[11] = item.Complexidade;
+                    linha[12] = item.Pf;
                     tabela.Rows.Add(linha);
                 }
                 preencherGrid(grid, tabela);

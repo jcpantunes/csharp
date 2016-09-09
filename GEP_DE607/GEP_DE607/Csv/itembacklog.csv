@@ -160,6 +160,7 @@ Item de Backlog	927328	Automatizar Folha a partir da repercussão de Férias	Nã
 Item de Backlog	927330	(I) Performance de queries	Não Designado	Pronto	eSocial-281573-1.0.6-CONS		12/07/2016 09:51	282935	415	5 pts	80	5
 Item de Backlog	946746	Mantis 0197836 - PRODUÇÃO - URGENTE - REAPROVEITAMENTO DE MATRICULA	Não Designado	Pronto	eSocial-281573-1.0.6-CONS		12/07/2016 09:51	282935	410	3 pts	70	5
 Item de Backlog	927329	Mantis 197280 (CANCELADO)	Não Designado	Cancelado	eSocial-281573-1.0.6-CONS		25/05/2016 10:41	282935	410	2 pts	60	5
+Item de Backlog	927326	Ferias – Recibo de Ferias	Não Designado	Pronto	eSocial-281573-1.0.6-CONS		25/08/2016 14:21	282935	440	3 pts	90	5
 Item de Backlog	1020150	Tratamento do FGTS Compensatório na Rescisão	Não Designado	Pronto	eSocial-921077-1.7.0-CONS		23/08/2016 14:23	994361	100	5 pts	80	5
 Item de Backlog	999692	Adaptar desligamento para processamento da folha	Não Designado	Pronto	eSocial-921077-1.7.0-CONS		23/08/2016 14:23	994361	100	5 pts	90	5
 Item de Backlog	956231	Mantis 0197893 - Alteração de Nomes nas Telas de Afastamento	Não Designado	Pronto	eSocial-921077-1.7.0-CONS		23/08/2016 14:23	994361	100	5 pts	60	5
@@ -174,7 +175,7 @@ Item de Backlog	999756	Implementar alterações de interface	Não Designado	Pron
 Item de Backlog	994423	Evoluir funcionalidade de remuneração para automatizar as rubricas a partir da repercussão do Férias	Não Designado	Pronto	eSocial-921077-1.7.0-CONS		23/08/2016 14:23	994361	100	5 pts	95	5
 Item de Backlog	955514	Mantis 0197841 - Dispensa de Retenção de IR	Não Designado	Pronto	eSocial-921077-1.7.0-CONS		23/08/2016 14:23	994361	100	5 pts	80	5
 Item de Backlog	994677	Mantis 198092:  [FÉRIAS] RETORNO AUTOMÁTICO PARA TELA PROGRAMAR FÉRIAS - EXECUÇÃO AUTORIZADA	Não Designado	Pronto	eSocial-921077-1.7.0-CONS		23/08/2016 14:23	994361	100	5 pts	60	5
-Item de Backlog	927326	Ferias – Recibo de Ferias	Não Designado	Pronto	eSocial-1005228-1.0.8-CONS		25/08/2016 14:21	1031720	440	3 pts	90	5
+Item de Backlog	1046010	Ferias – Recibo de Ferias	Não Designado	Preparado	eSocial-1005228-1.0.8-CONS		09/09/2016	1031720	440	3 pts	90	5
 Item de Backlog	1031738	Ajustes nas telas (mensal, décimo terceiro, desligamento, afastamento)	Não Designado	Preparado	eSocial-1005228-1.0.8-CONS		24/08/2016 09:41	1031720	100	5 pts	90	5
 Item de Backlog	1031739	Ajustes nas rubricas já existentes	Não Designado	Preparado	eSocial-1005228-1.0.8-CONS		24/08/2016 09:41	1031720	100	5 pts	80	5
 Item de Backlog	1031740	Novas rubricas (mensal e décimo terceiro)	Não Designado	Preparado	eSocial-1005228-1.0.8-CONS		24/08/2016 09:41	1031720	100	5 pts	80	5
