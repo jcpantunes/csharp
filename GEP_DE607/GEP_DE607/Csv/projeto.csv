@@ -1,0 +1,27 @@
+﻿Tipo	SS	Id	Mnemonico	Sistema	Linguagem	Processo	Tipo Projeto	Situacao	Conclusividade	PF Prev	PF Real	Apropriacao	DT inicio	DT Entrega	DT termino
+Não Software	281552	282805	eSocial-281552-CON	eSocial	CSharp		Consultoria	Concluído	100	0	0	4150,25	01/08/2014	26/02/2016	29/03/2016
+Não Software	281622	281766	eSocial-281622 	eSocial	CSharp		Consultoria	Concluído	100	0	0	4,00	31/07/2014	26/02/2016	30/03/2016
+Não Software	846941	849205	eSocial-APO-846941	eSocial	CSharp		Apoio	Concluído	100	0	0	16,00	17/02/2016	26/02/2016	04/04/2016
+Não Software	855567	856774	DCTFWeb-APO-855567	DCTF-Web	CSharp		Apoio	Concluído	100	0	0	10,20	26/02/2016	11/03/2016	28/03/2016
+Não Software	835064	844838	DCTFWeb-CON-835064	DCTF-Web	CSharp		Consultoria	Concluído	100	0	0	7,00	15/02/2016	15/02/2016	18/02/2016
+Não Software	908030	917120	eSocial-908030	eSocial	CSharp		Consultoria	Concluído	100	0	0	31,50	18/04/2016	29/04/2016	03/05/2016
+Não Software	905130	921401	DCTF-Web-CON-905130	DCTF-Web	CSharp		Consultoria	Concluído	100	0	0	19,30	29/04/2016	06/05/2016	24/05/2016
+Não Software	942156	949061	DCTF-Web-CON-942156	DCTF-Web	CSharp		Consultoria	Concluído	100	0	0	2,00	24/05/2016	25/05/2016	01/06/2016
+Não Software	978922	996072	eSocial-978922	eSocial	CSharp		Consultoria	Concluído	100	0	0	8,00	12/07/2016	12/07/2016	13/07/2016
+Não Software	1011793	1013492	eSocial-CON-1011793	eSocial	CSharp		Consultoria	Concluído	100	0	0	0,25	03/08/2016	03/08/2016	03/08/2016
+Não Software	1011770	1026503	eSocial-CON-1011770	eSocial	CSharp		Consultoria	Concluído	100	0	0	10,00	16/08/2016	18/08/2016	26/08/2016
+Não Software	1020935	1025998	eSocial-CON-1020935	eSocial	CSharp		Consultoria	Concluído	100	0	0	2,00	16/08/2016	16/08/2016	26/08/2016
+Software	883166	885225	eSocial-883166	eSocial	CSharp	Sumário	Manutenção Preventiva	Concluído	100	7	7	16,00	23/03/2016	28/03/2016	28/03/2016
+Software	845950	849236	eSocial-845950	eSocial	CSharp	Sumário	Manutenção Evolutiva	Concluído	100	3,6	3,6	7,00	17/02/2016	08/04/2016	29/04/2016
+Software	760524	787139	eSocial-760524	eSocial	CSharp	Sumário	Manutenção Evolutiva	Concluído	100	34,17	26,52	24,00	26/11/2015	15/02/2016	29/04/2016
+Software	875686	917075	eSocial-875686	eSocial	CSharp	Expresso	Apuração Especial	Concluído	100	10	10	35,00	18/04/2016	29/04/2016	29/04/2016
+Software	860898	916358	DCTF-Web-860898	DCTF-Web	CSharp	Sumário	Manutenção Evolutiva	Concluído	100	9	9	37,00	18/04/2016	29/04/2016	03/05/2016
+Software	927069	929065	eSocial-927069	eSocial	CSharp	Expresso	Apuração Especial	Concluído	100	4	4	16,00	05/05/2016	16/05/2016	01/06/2016
+Software	954785	956523	DCTF-Web-954785	DCTF-Web	CSharp	Sumário	Manutenção Evolutiva	Concluído	100	8,75	8,75	24,50	01/06/2016	30/06/2016	13/07/2016
+Software	752629	811352	DCTF-Web-752629	DCTF-Web	CSharp	Ágil	Novo Sistema	Concluído	100	825,23	800,96	2722,50	08/06/2015	08/01/2016	31/01/2016
+Software	1013537	1014661	eSocial-1013537	eSocial	CSharp	Expresso	Execução AESP	Concluído	100	1	5	14,00	01/08/2014	09/08/2016	09/08/2016
+Software	370057	374017	DCTF-Web-370057	DCTF-Web	CSharp	Ágil	Novo Sistema	Em Atendimento	70	1587,35	1587,35	8080,00	03/11/2014	31/12/2016	31/12/2016
+Software	281573	282935	eSocial-281573	eSocial	CSharp	Agil	Novo Projeto	Em Atendimento	80	4079,76	4079,76	27932,00	01/08/2014	31/07/2016	30/09/2016
+Software	921077	994361	eSocial-921077	eSocial	CSharp	Agil	Manutenção Evolutiva	Em Atendimento	50	350	350	1000,00	04/07/2016	30/09/2016	31/10/2016
+Software	1005228	1031720	eSocial-1005228 	eSocial	CSharp	Agil	Manutenção Evolutiva	Em Atendimento	20	81	81	200,00	23/08/2016	30/09/2016	31/10/2016
+Não Software	1019803	1026571	eSocial-CON-1019803	eSocial	CSharp		Apoio	Em Atendimento	20	0	0	10,00	16/08/2016	31/08/2016	31/10/2016

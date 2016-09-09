@@ -24,6 +24,36 @@ namespace GEP_DE607.Negocio
             }
         }
 
+        public void incluirLista(List<Projeto> lista)
+        {
+            if (lista.Count > 0)
+            {
+                List<Projeto> listaBanco = pDAO.recuperar();
+
+                List<Projeto> listaProjetoInclusao = new List<Projeto>();
+
+                List<Projeto> listaProjetoAtualizacao = new List<Projeto>();
+
+                foreach (Projeto projeto in lista)
+                {
+                    var projetosExistente = listaBanco.Where(t => t.Id.Equals(projeto.Id));
+                    if (projetosExistente.Count() == 0)
+                    {
+                        listaProjetoInclusao.Add(projeto);
+                    }
+                    else
+                    {
+                        projeto.Codigo = ((Projeto)projetosExistente.First()).Codigo;
+                        listaProjetoAtualizacao.Add(projeto);
+                    }
+                }
+
+                pDAO.incluir(listaProjetoInclusao);
+
+                pDAO.atualizar(listaProjetoAtualizacao);
+            }
+        }
+
         public List<Projeto> recuperar(Dictionary<string, string> parametros)
         {
             return pDAO.recuperar(parametros);

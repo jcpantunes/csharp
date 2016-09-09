@@ -86,6 +86,9 @@
     <Compile Include="Util\Constantes.cs" />
     <Compile Include="Util\DataHoraUtil.cs" />
     <Compile Include="Util\Util.cs" />
+    <Compile Include="VisualizarDados.xaml.cs">
+      <DependentUpon>VisualizarDados.xaml</DependentUpon>
+    </Compile>
     <Compile Include="VisualizarIndicador.xaml.cs">
       <DependentUpon>VisualizarIndicador.xaml</DependentUpon>
     </Compile>
@@ -117,6 +120,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="VisualizarDados.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="VisualizarIndicador.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -144,6 +151,8 @@
     <None Include="Csv\carga.ods" />
     <None Include="Csv\defeito.csv" />
     <None Include="Csv\itembacklog.csv" />
+    <None Include="Csv\projeto.csv" />
+    <None Include="Csv\sprint.csv" />
     <None Include="Csv\tarefa.csv" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>

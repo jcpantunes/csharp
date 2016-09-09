@@ -97,5 +97,11 @@ namespace GEP_DE607.Dominio
             return param;
         }
 
+        public static Dictionary<string, string> criarListaParametros(string sistema)
+        {
+            Dictionary<string, string> param = new Dictionary<string, string>();
+            param.Add(Projeto.SISTEMA, sistema);
+            return param;
+        }
     }
 }

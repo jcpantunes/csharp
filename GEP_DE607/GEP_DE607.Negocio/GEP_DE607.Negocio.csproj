@@ -45,6 +45,7 @@
     <Compile Include="ItemBacklogBO.cs" />
     <Compile Include="ProjetoBO.cs" />
     <Compile Include="SolicitacaoBO.cs" />
+    <Compile Include="SprintBO.cs" />
     <Compile Include="TarefaBO.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

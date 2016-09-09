@@ -22,8 +22,17 @@ namespace GEP_DE607
     {
         public BaseWindow() { }
 
+        public void preencherComboSistema(ComboBox cmb)
+        {
+            cmb.Items.Add(preencherComboItem(0, "Todos"));
+            cmb.Items.Add(preencherComboItem(0, Constantes.SISTEMA_ESOCIAL));
+            cmb.Items.Add(preencherComboItem(0, Constantes.SISTEMA_DCTFWEB));
+            cmb.SelectedIndex = 0;
+        }
+
         public void preencherComboProjeto(ComboBox cmb, bool todos)
         {
+            cmb.Items.Clear();
             ProjetoDAO pDAO = new ProjetoDAO();
             List<Projeto> lista = pDAO.recuperar();
             if (lista.Count > 0)
@@ -41,9 +50,41 @@ namespace GEP_DE607
             }
         }
 
+        public void preencherListBoxProjeto(ListBox lst, string sistema)
+        {
+            lst.Items.Clear();
+            ProjetoDAO pDAO = new ProjetoDAO();
+            List<Projeto> lista = new List<Projeto>();
+            if (sistema.Length == 0 || sistema.Equals("Todos"))
+            {
+                lista = pDAO.recuperar();
+            }
+            else
+            {
+                Dictionary<string, string> param = new Dictionary<string, string>();
+                param.Add(Projeto.SISTEMA, sistema);
+                lista = pDAO.recuperar(param);
+            }
+            if (lista.Count > 0)
+            {
+                foreach (Projeto p in lista)
+                {
+                    lst.Items.Add(preencherListItem(p.Id, p.Nome));
+                }
+            }
+        }
+
         private ComboBoxItem preencherComboItem(int codigo, string nome)
         {
             ComboBoxItem item = new ComboBoxItem();
+            item.Tag = codigo;
+            item.Content = nome;
+            return item;
+        }
+
+        private ListBoxItem preencherListItem(int codigo, string nome)
+        {
+            ListBoxItem item = new ListBoxItem();
             item.Tag = codigo;
             item.Content = nome;
             return item;
@@ -93,9 +134,7 @@ namespace GEP_DE607
             {
                 foreach (string lotacao in lista)
                 {
-                    ComboBoxItem item = new ComboBoxItem();
-                    item.Content = lotacao;
-                    cmb.Items.Add(item);
+                    cmb.Items.Add(preencherComboItem(0, lotacao));
                 }
                 cmb.SelectedIndex = 0;
                 preencherComboFuncionario(cmbFuncionario, lista[0], true);
@@ -109,9 +148,7 @@ namespace GEP_DE607
             {
                 foreach (string lotacao in lista)
                 {
-                    ComboBoxItem item = new ComboBoxItem();
-                    item.Content = lotacao;
-                    cmb.Items.Add(item);
+                    cmb.Items.Add(preencherComboItem(0, lotacao));
                 }
                 cmb.SelectedIndex = selectedIndex;
                 preencherListBoxFuncionario(lstFuncionario, lista[selectedIndex]);
@@ -137,10 +174,21 @@ namespace GEP_DE607
             {
                 foreach (Sprint s in lista)
                 {
-                    ListBoxItem item = new ListBoxItem();
-                    item.Content = s.Nome;
-                    item.Tag = s.Codigo;
-                    lst.Items.Add(item);
+                    lst.Items.Add(preencherListItem(s.Codigo, s.Nome));
+                }
+            }
+        }
+
+        public void preencherListBoxSprint(ListBox lst, List<int> listaProjeto)
+        {
+            lst.Items.Clear();
+            SprintDAO sDAO = new SprintDAO();
+            List<Sprint> lista = sDAO.recuperar(listaProjeto);
+            if (lista.Count > 0)
+            {
+                foreach (Sprint s in lista)
+                {
+                    lst.Items.Add(preencherListItem(s.Codigo, s.Nome));
                 }
             }
         }
@@ -158,10 +206,7 @@ namespace GEP_DE607
             {
                 foreach (Funcionario f in lista)
                 {
-                    ListBoxItem item = new ListBoxItem();
-                    item.Content = f.Nome;
-                    item.Tag = f.Codigo;
-                    lst.Items.Add(item);
+                    lst.Items.Add(preencherListItem(f.Codigo, f.Nome));
                 }
             }
         }
@@ -186,10 +231,7 @@ namespace GEP_DE607
 
                 foreach (Funcionario f in lista)
                 {
-                    ComboBoxItem item = new ComboBoxItem();
-                    item.Content = f.Nome;
-                    item.Tag = f.Codigo;
-                    cmb.Items.Add(item);
+                    cmb.Items.Add(preencherComboItem(f.Codigo, f.Nome));
                 }
                 cmb.SelectedIndex = 0;
             }

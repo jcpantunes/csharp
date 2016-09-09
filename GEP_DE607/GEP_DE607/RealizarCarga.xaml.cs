@@ -120,7 +120,18 @@ namespace GEP_DE607
                     ItemBacklogBO itemBO = new ItemBacklogBO();
                     itemBO.incluirLista(listaItemBacklog);
                 }
-
+                else if (item.Content.Equals(Constantes.SPRINT))
+                {
+                    List<Sprint> listaSprint = recuperarListaSprint(linhas);
+                    SprintBO itemBO = new SprintBO();
+                    itemBO.incluirLista(listaSprint);
+                }
+                else if (item.Content.Equals(Constantes.PROJETO))
+                {
+                    List<Projeto> listaProjeto = recuperarListaProjeto(linhas);
+                    ProjetoBO itemBO = new ProjetoBO();
+                    itemBO.incluirLista(listaProjeto);
+                }
             }
             else
             {
@@ -157,7 +168,16 @@ namespace GEP_DE607
                 string[] campos = { "Tipo", "ID", "Título", "Responsável", "Status", "Planejado Para", "Pai", "Data de Modificação", "ID do Projeto", "Valor definido para o Negócio", "Tamanho Estimado", "Complexidade", "PF" };
                 return Util.Util.validarArquivo(linha, campos);
             }
-
+            else if (tipoCarga.Equals(Constantes.SPRINT))
+            {
+                string[] campos = { "Nome", "Data Inicio", "Data Final", "Projeto" };
+                return Util.Util.validarArquivo(linha, campos);
+            }
+            else if (tipoCarga.Equals(Constantes.PROJETO))
+            {
+                string[] campos = { "Tipo", "SS", "Id", "Mnemonico", "Sistema", "Linguagem", "Processo", "Tipo Projeto", "Situacao", "Conclusividade", "PF Prev", "PF Real", "Apropriacao", "DT inicio", "DT Entrega", "DT termino" };
+                return Util.Util.validarArquivo(linha, campos);
+            }
             return false;
         }
 
@@ -206,6 +226,10 @@ namespace GEP_DE607
         private Funcionario identificarFuncionario(string nomeResponsavel, List<Funcionario> listaCacheFuncionario)
         {
             FuncionarioDAO fDAO = new FuncionarioDAO();
+            if(nomeResponsavel.Length == 0)
+            {
+                nomeResponsavel = "Não Designado";
+            }
             var funcExistente = listaCacheFuncionario.Where(t => t.Nome.ToLower().Equals(nomeResponsavel.ToLower()));
             if (funcExistente.Count() == 0)
             {
@@ -272,7 +296,7 @@ namespace GEP_DE607
         private List<ItemBacklog> recuperarListaItemBacklog(string[] linhas)
         {
             FuncionarioDAO fDAO = new FuncionarioDAO();
-            // List<Funcionario> listaCacheFuncionario = fDAO.recuperar();
+            List<Funcionario> listaCacheFuncionario = fDAO.recuperar();
 
             List<ItemBacklog> listaItemBacklog = new List<ItemBacklog>();
             for (int i = 1; i < linhas.Length; i++)
@@ -283,6 +307,7 @@ namespace GEP_DE607
                 itemBacklog.Tipo = linha[0];
                 itemBacklog.Id = Convert.ToInt32(linha[1]);
                 itemBacklog.Titulo = linha[2];
+                itemBacklog.Responsavel = identificarFuncionario(linha[3], listaCacheFuncionario);
                 itemBacklog.Status = linha[4];
                 itemBacklog.PlanejadoPara = linha[5];
                 itemBacklog.Pai = linha[6].Replace("#", "");
@@ -295,6 +320,51 @@ namespace GEP_DE607
                 listaItemBacklog.Add(itemBacklog);
             }
             return listaItemBacklog;
+        }
+
+        private List<Sprint> recuperarListaSprint(string[] linhas)
+        {
+            List<Sprint> listaSprint = new List<Sprint>();
+            for (int i = 1; i < linhas.Length; i++)
+            {
+                string[] linha = linhas[i].Replace("\"", "").Split('\t');
+
+                Sprint sprint = new Sprint();
+                sprint.Nome = linha[0];
+                sprint.DtInicio = Convert.ToDateTime(linha[1]);
+                sprint.DtFinal = Convert.ToDateTime(linha[2]);
+                sprint.Projeto = Convert.ToInt32(linha[3]);
+                listaSprint.Add(sprint);
+            }
+            return listaSprint;
+        }
+
+        private List<Projeto> recuperarListaProjeto(string[] linhas)
+        {
+            List<Projeto> listaProjeto = new List<Projeto>();
+            for (int i = 1; i < linhas.Length; i++)
+            {
+                string[] linha = linhas[i].Replace("\"", "").Split('\t');
+                Projeto projeto = new Projeto();
+                projeto.Tipo = linha[0];
+                projeto.Ss = Convert.ToInt32(linha[1]);
+                projeto.Id = Convert.ToInt32(linha[2]);
+                projeto.Nome = linha[3];
+                projeto.Sistema = linha[4];
+                projeto.Linguagem = linha[5];
+                projeto.Processo = linha[6];
+                projeto.TipoProjeto = linha[7];
+                projeto.Situacao = linha[8];
+                projeto.Conclusividade = Convert.ToInt32(linha[9]);
+                projeto.Pfprev = Convert.ToDecimal(linha[10]);
+                projeto.Pfreal = Convert.ToDecimal(linha[11]);
+                projeto.Apropriacao = Convert.ToDecimal(linha[12]);
+                projeto.DtInicio = Convert.ToDateTime(linha[13]);
+                projeto.DtEntrega = Convert.ToDateTime(linha[14]);
+                projeto.DtFinal = Convert.ToDateTime(linha[15]);
+                listaProjeto.Add(projeto);
+            }
+            return listaProjeto;
         }
 
     }

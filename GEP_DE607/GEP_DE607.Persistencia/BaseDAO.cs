@@ -16,9 +16,9 @@ namespace GEP_DE607.Persistencia
         protected const int UPDATE = 2;
         protected const int DELETE = 3;
 
-        // string connectionString = @"Data Source=DESKTOP-H3JA6SK\SQLEXPRESS;Initial Catalog=DBD_GEP;"
-        string connectionString = @"Data Source=SERPRO1540297V1\SQLEXPRESS;Initial Catalog=DBD_GEP;"
-            + "Integrated Security=True;Min Pool Size=5;Max Pool Size=250;Connect Timeout=20";
+        string connectionString = @"Data Source=DESKTOP-H3JA6SK\SQLEXPRESS;Initial Catalog=DBD_GEP;"
+        // string connectionString = @"Data Source=SERPRO1540297V1\SQLEXPRESS;Initial Catalog=DBD_GEP;"
+            + "Integrated Security=True;Min Pool Size=5;Max Pool Size=200;Connect Timeout=20";
 
         protected string Tabela { get; set; }
 
@@ -171,6 +171,11 @@ namespace GEP_DE607.Persistencia
             return listaID;
         }
 
-
+        public int recuperarQtdeItensPorSprintPorResponsavel(string planejadoPara, int responsavel)
+        {
+            string query = "SELECT Count(id) FROM " + Tabela
+                + " WHERE planejadoPara = '" + planejadoPara + "' and responsavel = " + responsavel;
+            return retornarSelectValorInt(query);
+        }
     }
 }

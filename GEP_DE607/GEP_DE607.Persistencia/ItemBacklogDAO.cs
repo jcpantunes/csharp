@@ -85,15 +85,16 @@ namespace GEP_DE607.Persistencia
                     t.Tipo = reader.GetString(1);
                     t.Id = reader.GetInt32(2);
                     t.Titulo = reader.GetString(3);
-                    t.Status = reader.GetString(4);
-                    t.PlanejadoPara = reader.GetString(5);
-                    t.Pai = reader.GetString(6);
-                    t.DataModificacao = reader.GetDateTime(7);
-                    t.Projeto = reader.GetInt32(8);
-                    t.ValorNegocio = reader.GetInt32(9);
-                    t.Tamanho = reader.GetInt32(10);
-                    t.Complexidade = reader.GetInt32(11);
-                    t.Pf = reader.GetDecimal(12);
+                    // t.Responsavel = reader.GetInt32(4);
+                    t.Status = reader.GetString(5);
+                    t.PlanejadoPara = reader.GetString(6);
+                    t.Pai = reader.GetString(7);
+                    t.DataModificacao = reader.GetDateTime(8);
+                    t.Projeto = reader.GetInt32(9);
+                    t.ValorNegocio = reader.GetInt32(10);
+                    t.Tamanho = reader.GetInt32(11);
+                    t.Complexidade = reader.GetInt32(12);
+                    t.Pf = reader.GetDecimal(13);
                     lista.Add(t);
                 }
             }
@@ -101,7 +102,7 @@ namespace GEP_DE607.Persistencia
             return lista;
         }
 
-        public int recuperarQtdeItensPorSprintPorResponsavel(string planejadoPara, int responsavel)
+        public int recuperarQtdeItensBacklogPorSprintPorResponsavel(string planejadoPara, int responsavel)
         {
             string query = "SELECT Count(id) FROM " + Tabela
                 + " WHERE planejadoPara = '" + planejadoPara + "' and id in "
@@ -121,9 +122,9 @@ namespace GEP_DE607.Persistencia
         public void incluir(List<ItemBacklog> lista)
         {
             string queryInsert = "INSERT INTO " + Tabela
-                + " (tipo, id, titulo, status, planejadoPara, pai, dataModificacao, projeto, "
+                + " (tipo, id, titulo, responsavel, status, planejadoPara, pai, dataModificacao, projeto, "
                 + " valorNegocio, tamanho, complexidade, pf) "
-                + " VALUES (@tipo, @id, @titulo, @status, @planejadoPara, @pai, @dataModificacao, @projeto, "
+                + " VALUES (@tipo, @id, @titulo, @responsavel, @status, @planejadoPara, @pai, @dataModificacao, @projeto, "
                 + " @valorNegocio, @tamanho, @complexidade, @pf)";
             executarQuery(lista, queryInsert);
         }
@@ -134,6 +135,7 @@ namespace GEP_DE607.Persistencia
                 + " SET tipo = @tipo, "
                 + "id = @id, "
                 + "titulo = @titulo, "
+                + "responsavel = @responsavel, "
                 + "status = @status, "
                 + "planejadoPara = @planejadoPara, "
                 + "pai = @pai, "
@@ -142,7 +144,7 @@ namespace GEP_DE607.Persistencia
                 + "valorNegocio = @valorNegocio, "
                 + "tamanho = @tamanho, "
                 + "complexidade = @complexidade, "
-                + "pf = @pf, "
+                + "pf = @pf "
                 + "WHERE " + campo + " = @" + campo;
             return queryUpdate;
         }
@@ -190,7 +192,7 @@ namespace GEP_DE607.Persistencia
             parametros.Add(new SqlParameter("tipo", t.Tipo));
             parametros.Add(new SqlParameter("id", t.Id));
             parametros.Add(new SqlParameter("titulo", t.Titulo));
-            // parametros.Add(new SqlParameter("responsavel", t.Responsavel.Codigo));
+            parametros.Add(new SqlParameter("responsavel", t.Responsavel.Codigo));
             parametros.Add(new SqlParameter("status", t.Status));
             parametros.Add(new SqlParameter("planejadoPara", t.PlanejadoPara));
             parametros.Add(new SqlParameter("pai", t.Pai));

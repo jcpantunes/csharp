@@ -43,6 +43,10 @@ namespace GEP_DE607.Persistencia
                     {
                         query += Projeto.ID + " = " + parametros[key] + " and ";
                     }
+                    else if (key.Equals(Projeto.SISTEMA))
+                    {
+                        query += Projeto.SISTEMA + " = '" + parametros[key] + "' and ";
+                    }
                     else if (key.Equals(Projeto.DTINICIO))
                     {
                         query += Projeto.DTINICIO + " >= '" + Convert.ToDateTime(parametros[key]) + "' and ";

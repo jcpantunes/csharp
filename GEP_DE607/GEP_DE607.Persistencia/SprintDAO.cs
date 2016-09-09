@@ -24,6 +24,24 @@ namespace GEP_DE607.Persistencia
             return executarSelect(query);
         }
 
+        public List<Sprint> recuperar(List<int> listaIdProjeto)
+        {
+            if (listaIdProjeto.Count > 0)
+            {
+                string where = " where projeto in (";
+                foreach (int id in listaIdProjeto)
+                {
+                    where = where + id + ",";
+                }
+                string query = "SELECT * FROM " + this.Tabela + where.Substring(0, where.Length-1) + ")";
+                return executarSelect(query);
+            }
+            else
+            {
+                return new List<Sprint>();
+            }
+        }
+
         public List<Sprint> recuperar(Dictionary<string, string> parametros)
         {
             string query = "SELECT * FROM " + this.Tabela;

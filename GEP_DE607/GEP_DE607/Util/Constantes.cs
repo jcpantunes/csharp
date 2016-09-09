@@ -14,6 +14,8 @@ namespace GEP_DE607.Util
         public const string FUNCIONARIO = "Funcionario";
         public const string APROPRIACAO = "Apropriacao";
         public const string ITEM_BACKLOG = "Item Backlog";
+        public const string SPRINT = "Sprint";
+        public const string PROJETO = "Projeto";
 
         public static List<string> recuperarDominioTipoCarga()
         { 
@@ -24,6 +26,8 @@ namespace GEP_DE607.Util
             listaTipoCarga.Add(FUNCIONARIO);
             listaTipoCarga.Add(APROPRIACAO);
             listaTipoCarga.Add(ITEM_BACKLOG);
+            listaTipoCarga.Add(SPRINT);
+            listaTipoCarga.Add(PROJETO);
             return listaTipoCarga;
         }
 
@@ -39,7 +43,7 @@ namespace GEP_DE607.Util
         }
 
         public const string SISTEMA_ESOCIAL = "eSocial";
-        public const string SISTEMA_DCTFWEB = "DCTFWeb";
+        public const string SISTEMA_DCTFWEB = "DCTF-Web";
 
         public static List<string> recuperarDominioSistema()
         {
@@ -61,8 +65,8 @@ namespace GEP_DE607.Util
         }
 
         public const string PROCESSO_NENHUM = "";
-        public const string PROCESSO_AGIL = "Agil";
-        public const string PROCESSO_SUMARIO = "Sumario";
+        public const string PROCESSO_AGIL = "Ágil";
+        public const string PROCESSO_SUMARIO = "Sumário";
         public const string PROCESSO_EXPRESSO = "Expresso";
 
         public static List<string> recuperarDominioProcesso()
@@ -75,13 +79,13 @@ namespace GEP_DE607.Util
             return lista;
         }
 
-        public const string PROJETO_NOVO = "Novo";
-        public const string PROJETO_MANUTENCAO_EVOLUTIVA = "ME";
-        public const string PROJETO_MANUTENCAO_CORRETIVA = "MC";
-        public const string PROJETO_MANUTENCAO_ADAPTATIVA = "MA";
-        public const string PROJETO_MANUTENCAO_PREVENTIVA = "MP";
-        public const string PROJETO_APURACAO_ESPECIAL = "AESP";
-        public const string PROJETO_EXECUCAO_AESP = "Exec AESP";
+        public const string PROJETO_NOVO = "Novo Projeto";
+        public const string PROJETO_MANUTENCAO_EVOLUTIVA = "Manutenção Evolutiva";
+        public const string PROJETO_MANUTENCAO_CORRETIVA = "Manutenção Corretiva";
+        public const string PROJETO_MANUTENCAO_ADAPTATIVA = "Manutenção Adaptativa";
+        public const string PROJETO_MANUTENCAO_PREVENTIVA = "Manutenção Preventiva";
+        public const string PROJETO_APURACAO_ESPECIAL = "Apuração Especial";
+        public const string PROJETO_EXECUCAO_AESP = "Execução AESP";
         public const string PROJETO_CONSULTORIA = "Consultoria";
         public const string PROJETO_APOIO = "Apoio";
 
@@ -102,7 +106,7 @@ namespace GEP_DE607.Util
 
         public const string SITUACAO_EM_ATENDIMENTO = "Em Atendimento";
         public const string SITUACAO_EM_HOMOLOGACAO = "Em Homologação";
-        public const string SITUACAO_CONCLUIDO = "Concluido";
+        public const string SITUACAO_CONCLUIDO = "Concluído";
         public const string SITUACAO_CANCELADO = "Cancelado";
 
         public static List<string> recuperarDominioSituacao()

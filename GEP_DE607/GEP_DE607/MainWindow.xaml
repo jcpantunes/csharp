@@ -16,6 +16,8 @@
 
             <Button x:Name="btnIndicadores" Margin="10,5,0,0" Content="Indicadores" HorizontalAlignment="Left" Click="btnIndicadores_Click" Width="60" Height="40" />
 
+            <Button x:Name="btnDados" Margin="10,5,0,0" Content="Dados" HorizontalAlignment="Left" Click="btnDados_Click" Width="60" Height="40" />
+
         </Menu>
 
     </Grid>

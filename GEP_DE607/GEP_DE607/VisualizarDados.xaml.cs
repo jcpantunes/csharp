@@ -19,14 +19,14 @@ using GEP_DE607.Persistencia;
 namespace GEP_DE607
 {
     /// <summary>
-    /// Interaction logic for VisualizarIndicador.xaml
+    /// Interaction logic for VisualizarDados.xaml
     /// </summary>
-    public partial class VisualizarIndicador : Window
+    public partial class VisualizarDados : Window
     {
 
         BaseWindow baseWindow = null;
 
-        public VisualizarIndicador()
+        public VisualizarDados()
         {
             InitializeComponent();
 
@@ -58,7 +58,7 @@ namespace GEP_DE607
             List<int> listaProjeto = new List<int>();
             if (lstProjeto.SelectedItems.Count > 0)
             {
-                foreach(ListBoxItem item in lstProjeto.SelectedItems)
+                foreach (ListBoxItem item in lstProjeto.SelectedItems)
                 {
                     int idProjeto = Convert.ToInt32(item.Tag);
                     listaProjeto.Add(idProjeto);
@@ -77,13 +77,13 @@ namespace GEP_DE607
 
         private void btnAtualizar_Click(object sender, RoutedEventArgs e)
         {
-            expNumTarefasPorSprint.IsExpanded = false;
-            expNumItensPorSprint.IsExpanded = false;
-            expComplexidadeItensPorSprint.IsExpanded = false;
-            expNumDefeitosPorItemBacklog.IsExpanded = false;
-            expNumDefeitosCorrigidosPorSprint.IsExpanded = false;
-            expNumTarefasEstimativaMaiorTempoGasto.IsExpanded = false;
-            expNumRelatosPorSprint.IsExpanded = false;
+            //expNumTarefasPorSprint.IsExpanded = false;
+            //expNumItensPorSprint.IsExpanded = false;
+            //expComplexidadeItensPorSprint.IsExpanded = false;
+            //expNumDefeitosPorItemBacklog.IsExpanded = false;
+            //expNumDefeitosCorrigidosPorSprint.IsExpanded = false;
+            //expNumTarefasEstimativaMaiorTempoGasto.IsExpanded = false;
+            //expNumRelatosPorSprint.IsExpanded = false;
         }
 
         private void lstFuncionario_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -128,7 +128,6 @@ namespace GEP_DE607
                     tabela.Columns.Add(Convert.ToString(item.Content), typeof(decimal));
                 }
             }
-            tabela.Columns.Add("Media", typeof(decimal));
 
             if (chkTodosFuncionario.IsChecked == true)
             {
@@ -182,7 +181,7 @@ namespace GEP_DE607
             }
         }
 
-        private void executarAcao(DataGrid grid, Label lbl, int opcao, bool inteiro)
+        private void executarAcao(DataGrid grid, int opcao, bool inteiro)
         {
             if (validarExibicaoTabela())
             {
@@ -191,12 +190,9 @@ namespace GEP_DE607
                 List<string> listaColunas = new List<string>();
                 prepararTabela(tabela, listaFuncionario, listaColunas, inteiro);
 
-                decimal mediaGeral = 0;
                 foreach (Funcionario func in listaFuncionario)
                 {
-                    object[] linha = new object[listaColunas.Count + 2]; // +2 por causa das colunas nome e media
-                    linha[0] = func.Nome;
-                    decimal media = 0;
+                    object[] linha = new object[listaColunas.Count]; // +2 por causa das colunas nome e media
                     for (int i = 0; i < listaColunas.Count; i++)
                     {
                         if (opcao == OpcaoIndicador.NUM_TAREFA_POR_SPRINT)
@@ -204,126 +200,27 @@ namespace GEP_DE607
                             TarefaDAO tDAO = new TarefaDAO();
                             linha[i + 1] = tDAO.recuperarQtdeItensPorSprintPorResponsavel(listaColunas[i], func.Codigo);
                         }
-                        else if (opcao == OpcaoIndicador.NUM_TAREFA_ESTIMATIVA_MAIOR_TEMPO_GASTO)
-                        {
-                            TarefaDAO tDAO = new TarefaDAO();
-                            linha[i + 1] = tDAO.recuperarQtdeTarefasPorSprintTempoGastoMaiorEstimativa(listaColunas[i], func.Codigo);
-                        }
-                        else if (opcao == OpcaoIndicador.NUM_TAREFA_TEMPO_GASTO_MAIOR_24)
-                        {
-                            TarefaDAO tDAO = new TarefaDAO();
-                            linha[i + 1] = tDAO.recuperarQtdeTarefasTempoGastoMaior24(listaColunas[i], func.Codigo);
-                        }
-                        else if (opcao == OpcaoIndicador.NUM_RELATO_POR_SPRINT)
-                        {
-                            BugDAO rDAO = new BugDAO(BugDAO.TIPO_RELATO);
-                            linha[i + 1] = rDAO.recuperarQtdeItensPorSprintPorResponsavel(listaColunas[i], func.Codigo);
-                        }
-                        else if (opcao == OpcaoIndicador.NUM_ITEM_POR_SPRINT)
+                        else if (opcao == OpcaoIndicadorDados.ITEM_BACKLOG_TRABALHADO)
                         {
                             ItemBacklogDAO ibDAO = new ItemBacklogDAO();
                             linha[i + 1] = ibDAO.recuperarQtdeItensBacklogPorSprintPorResponsavel(listaColunas[i], func.Codigo);
                         }
-                        else if (opcao == OpcaoIndicador.COMPLEXIDADE_ITEM_POR_SPRINT)
-                        {
-                            // =SOMARPRODUTO(($Backlog.$E$2:$E$200=B$2)*($Backlog.$R$2:$R$200>0)*($Backlog.$I$2:$I$200))/SOMARPRODUTO(($Backlog.$E$2:$E$200=B$2)*($Backlog.$R$2:$R$200>0))
-                            // E = Planejado Para
-                            // R = Somatorio numero tarefas do funcionario no item de backlog
-                            // I = Complexidade do Item
 
-                            ItemBacklogDAO ibDAO = new ItemBacklogDAO();
-                            linha[i + 1] = ibDAO.recuperarComplexidadeItensPorSprintPorResponsavel(listaColunas[i], func.Codigo);
-                        }
-                        else if (opcao == OpcaoIndicador.NUM_DEFEITO_POR_ITEM_BACKLOG)
-                        {
-                            // =SOMARPRODUTO(($Backlog.$E$2:$E$200=B$2)*($Backlog.$R$2:$R$200>0)*($Backlog.$M$2:$M$200))/SOMARPRODUTO(($Backlog.$E$2:$E$200=B$2)*($Backlog.$R$2:$R$200>0))
-                            // M = Quantidade de defeitos do Item
-
-                            BugDAO dDAO = new BugDAO(BugDAO.TIPO_DEFEITO);
-                            linha[i + 1] = dDAO.recuperarMediaDefeitosPorSprintPorResponsavel(listaColunas[i], func.Codigo);
-                        }
-                        else if (opcao == OpcaoIndicador.NUM_DEFEITO_CORRIGIDO_POR_SPRINT)
-                        {
-                            // =SOMARPRODUTO(($Backlog.$E$2:$E$200=B$2)*($Backlog.$R$2:$R$200>0)*($Backlog.$M$2:$M$200))/SOMARPRODUTO(($Backlog.$E$2:$E$200=B$2)*($Backlog.$R$2:$R$200>0))
-                            // M = Quantidade de defeitos do Item
-
-                            BugDAO dDAO = new BugDAO(BugDAO.TIPO_DEFEITO);
-                            linha[i + 1] = dDAO.recuperarQtdeItensPorSprintPorResponsavel(listaColunas[i], func.Codigo);
-                        }
-                        else
-                        {
-                            linha[i + 1] = i;
-                        }
-                        media += Convert.ToDecimal(linha[i + 1]);
                     }
-                    mediaGeral += Decimal.Round((media / listaColunas.Count), 2);
-                    linha[listaColunas.Count + 1] = Decimal.Round((media / listaColunas.Count), 2);
                     tabela.Rows.Add(linha);
                 }
-                lbl.Content = Decimal.Round((mediaGeral / tabela.Rows.Count), 2); ;
                 preencherGrid(grid, tabela);
             }
         }
 
-        private void numTarefasPorSprint_Expanded(object sender, RoutedEventArgs e)
+        private void itensBacklogTrabalhado_Expanded(object sender, RoutedEventArgs e)
         {
-            executarAcao(tblNumTarefaTrabalhado, lblMediaNumTarefas, OpcaoIndicador.NUM_TAREFA_POR_SPRINT, true);
+            executarAcao(tbltemBacklogTrabalhado, OpcaoIndicadorDados.ITEM_BACKLOG_TRABALHADO, true);
         }
-
-        private void numItensPorSprint_Expanded(object sender, RoutedEventArgs e)
-        {
-            executarAcao(tblNumItemTrabalhado, lblMediaNumItens, OpcaoIndicador.NUM_ITEM_POR_SPRINT, true);
-        }
-
-        private void complexidadeItensPorSprint_Expanded(object sender, RoutedEventArgs e)
-        {
-            executarAcao(tblComplexidadeItemTrabalhado, lblMediaComplexidade, OpcaoIndicador.COMPLEXIDADE_ITEM_POR_SPRINT, false);
-        }
-
-        private void numDefeitosPorItemBacklog_Expanded(object sender, RoutedEventArgs e)
-        {
-            executarAcao(tblNumDefeitosPorItemBacklog, lblMediaNumDefeitos, OpcaoIndicador.NUM_DEFEITO_POR_ITEM_BACKLOG, false);
-        }
-
-        private void numDefeitosCorrigidosPorSprint_Expanded(object sender, RoutedEventArgs e)
-        {
-            executarAcao(tblNumDefeitosCorrigidos, lblMediaNumDefeitosCorrigidos, OpcaoIndicador.NUM_DEFEITO_CORRIGIDO_POR_SPRINT, true);
-        }
-
-        private void numTarefasEstimativaMaiorTempoGasto_Expanded(object sender, RoutedEventArgs e)
-        {
-            executarAcao(tblNumTarefasEstimativaMaiorTempoGasto, lblMediaNumTarefasEstimativaMaiorTempoGasto, OpcaoIndicador.NUM_TAREFA_ESTIMATIVA_MAIOR_TEMPO_GASTO, true);
-        }
-
-        private void numRelatosPorSprint_Expanded(object sender, RoutedEventArgs e)
-        {
-            executarAcao(tblNumNumRelatosPorSprint, lblMediaNumRelatosPorSprint, OpcaoIndicador.NUM_RELATO_POR_SPRINT, true);
-        }
-
-        private void numTarefasTempoGastoMaior24_Expanded(object sender, RoutedEventArgs e)
-        {
-            executarAcao(tblNumTarefasTempoGastoMaior24, lblMediaNumTarefasTempoGastoMaior24, OpcaoIndicador.NUM_TAREFA_TEMPO_GASTO_MAIOR_24, true);
-        }
-
-        // Numero de horas apropriadas por sprint
     }
 
-    class OpcaoIndicador
+    class OpcaoIndicadorDados
     {
-        public const int NUM_TAREFA_POR_SPRINT = 0;
-
-        public const int NUM_TAREFA_ESTIMATIVA_MAIOR_TEMPO_GASTO = 1;
-
-        public const int NUM_RELATO_POR_SPRINT = 2;
-
-        public const int NUM_ITEM_POR_SPRINT = 3;
-
-        public const int COMPLEXIDADE_ITEM_POR_SPRINT = 4;
-
-        public const int NUM_DEFEITO_POR_ITEM_BACKLOG = 5;
-
-        public const int NUM_DEFEITO_CORRIGIDO_POR_SPRINT = 6;
-
-        public const int NUM_TAREFA_TEMPO_GASTO_MAIOR_24 = 7;
+        public const int ITEM_BACKLOG_TRABALHADO = 0;
     }
 }

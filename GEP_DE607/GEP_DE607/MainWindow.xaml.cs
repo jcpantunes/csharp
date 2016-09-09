@@ -48,5 +48,11 @@ namespace GEP_DE607
             VisualizarIndicador tela = new VisualizarIndicador();
             tela.Show();
         }
+
+        private void btnDados_Click(object sender, RoutedEventArgs e)
+        {
+            VisualizarDados tela = new VisualizarDados();
+            tela.Show();
+        }
     }
 }

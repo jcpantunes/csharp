@@ -171,13 +171,6 @@ namespace GEP_DE607.Persistencia
             return parametros;
         }
 
-        public int recuperarQtdeTarefasPorSprintPorResponsavel(string planejadoPara, int responsavel)
-        {
-            string query = "SELECT Count(id) FROM " + Tabela
-                + " WHERE planejadoPara = '" + planejadoPara + "' and responsavel = " + responsavel;
-            return retornarSelectValorInt(query);
-        }
-
         public int recuperarQtdeTarefasPorSprintTempoGastoMaiorEstimativa(string planejadoPara, int responsavel)
         {
             string query = "SELECT Count(id) FROM " + Tabela

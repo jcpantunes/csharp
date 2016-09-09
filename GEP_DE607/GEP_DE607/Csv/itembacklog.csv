@@ -1,8 +1,267 @@
 ﻿Tipo	ID	Título	Responsável	Status	Planejado Para	Pai	Data de Modificação	ID do Projeto	Valor definido para o Negócio	Tamanho Estimado	Complexidade	PF
-Item de Backlog	927326	Ferias – Recibo de Ferias	Não Designado	Pronto	eSocial-1005228-1.0.8-CONS		25/08/2016 14:21	1031720	440	3 pts	99	5
-Item de Backlog	1031738	Ajustes nas telas (mensal, décimo terceiro, desligamento, afastamento)	Não Designado	Preparado	eSocial-1005228-1.0.8-CONS		24/08/2016 09:41	1031720	100	5 pts	98	5
-Item de Backlog	1031739	Ajustes nas rubricas já existentes	Não Designado	Preparado	eSocial-1005228-1.0.8-CONS		24/08/2016 09:41	1031720	100	5 pts	97	5
-Item de Backlog	1031740	Novas rubricas (mensal e décimo terceiro)	Não Designado	Preparado	eSocial-1005228-1.0.8-CONS		24/08/2016 09:41	1031720	100	5 pts	96	5
-Item de Backlog	1032626	Mês anterior e mês da rescisão na mesma guia rescisória (incluindo alteração do leiaute de guia)	Não Designado	Preparado	eSocial-1005228-1.0.8-CONS		24/08/2016 09:41	1031720	100	5 pts	95	5
-Item de Backlog	1032628	Geração de relatório (PDF) para movimentações trabalhistas (Mantis 198081)	Não Designado	Preparado	eSocial-1005228-1.0.8-CONS		24/08/2016 09:41	1031720	100	5 pts	94	5
-Item de Backlog	1032633	Tratamento da 2ª parcela do FGTS sobre 13º salário no desligamento	Não Designado	Preparado	eSocial-1005228-1.0.8-CONS		24/08/2016 09:41	1031720	100	5 pts	93	5
+Item de Backlog	315556	(N) F06.02.6 Evento Trabalhista: Cancelamento de Aviso Prévio (Registrar, Retificar, Excluir, Visualizar detalhes)	Não Designado	Cancelado	eSocial-281573-1.0.1		12/07/2016 10:03	282935	700	3 pts	70	5
+Item de Backlog	315549	F08.07 Emissão de recibo de pagamento do trabalhador	Não Designado	Cancelado	eSocial-281573-1.0.1		12/07/2016 10:03	282935	600	3 pts	90	5
+Item de Backlog	315519	(N) F05.09 Excluir trabalhador (Exclusão da Admissão)	Não Designado	Cancelado	eSocial-281573-1.0.1		12/07/2016 10:03	282935	500	3 pts	60	5
+Item de Backlog	315520	(N) F05.12 Excluir uma alteração contratual/cadastral do trabalhador	Não Designado	Cancelado	eSocial-281573-1.0.1		12/07/2016 10:03	282935	490	3 pts	60	5
+Item de Backlog	315507	(N) F06.02.1 Evento Trabalhista: Afastamento Temporário (Excluir)	Não Designado	Cancelado	eSocial-281573-1.0.1		12/07/2016 10:02	282935	480	2 pts	60	5
+Item de Backlog	568912	[Sugestão] [Cadastro do Empregador] Alteração do Cadastro - Melhoria na Opção Informar Novo Período Manualmente	Não Designado	Cancelado	eSocial-281573-1.0.1		12/07/2016 10:02	282935	100	13 pts	60	5
+Item de Backlog	568251	[Sugestão] [Geral] Usabilidade - Regra para Combo-Box	Não Designado	Validado	eSocial-281573-1.0.1		12/07/2016 10:02	282935	100	13 pts	50	5
+Item de Backlog	300915	(N) F03.04 Permitir aceitar termo de adesão para Empregador Segurado Especial	Não Designado	Pronto	eSocial-281573-1.0.1-CONS-01		27/04/2015 17:31	282935	990	5 pts	50	5
+Item de Backlog	300904	(N) F03.01 Recuperar dados básicos (identificação, endereço) do empregador (PF e PJ)	Não Designado	Pronto	eSocial-281573-1.0.1-CONS-01		27/04/2015 17:31	282935	985	3 pts	50	5
+Item de Backlog	300909	(N) F03.02 Incluir dados cadastrais do empregador (visão resumida e visão completa)	Não Designado	Pronto	eSocial-281573-1.0.1-CONS-01		27/04/2015 17:31	282935	980	8 pts	50	5
+Item de Backlog	300914	(N) F03.03 Editar dados cadastrais do empregador (visão resumida e visão completa)	Não Designado	Pronto	eSocial-281573-1.0.1-CONS-01		27/04/2015 17:31	282935	975	5 pts	50	5
+Item de Backlog	300916	(N) F03.07 Visualizar histórico de alterações do cadastro do empregador	Não Designado	Pronto	eSocial-281573-1.0.1-CONS-01		27/04/2015 17:31	282935	970	3 pts	50	5
+Item de Backlog	313213	(N) F03.08 Permitir adesão antecipada ao eSocial	Não Designado	Pronto	eSocial-281573-1.0.1-CONS-01		27/04/2015 17:31	282935	965	8 pts	50	5
+Item de Backlog	313214	(N) F04.01.1 Tabela Rubrica (Listar, CRUD, Listar Periodos)	Não Designado	Pronto	eSocial-281573-1.0.1-CONS-01		27/04/2015 17:31	282935	960	5 pts	50	5
+Item de Backlog	313215	(N) F04.01.2 Tabela Cargo (Listar, CRUD, Listar Periodos)	Não Designado	Pronto	eSocial-281573-1.0.1-CONS-01		27/04/2015 17:31	282935	955	5 pts	50	5
+Item de Backlog	313216	(N) F04.01.3 Tabela Função (Listar, CRUD, Listar Periodos)	Não Designado	Pronto	eSocial-281573-1.0.1-CONS-01		27/04/2015 17:31	282935	950	3 pts	50	5
+Item de Backlog	313217	(N) F04.01.4 Tabela Lotação/Departamento (Listar, CRUD, Listar Periodos)	Não Designado	Pronto	eSocial-281573-1.0.1-CONS-01		27/04/2015 17:31	282935	945	8 pts	50	5
+Item de Backlog	313218	(N) F04.01.5 Tabela Horário/Turno de Trabalho (Listar, CRUD, Listar Periodos)	Não Designado	Pronto	eSocial-281573-1.0.1-CONS-01		27/04/2015 17:31	282935	940	3 pts	60	5
+Item de Backlog	313219	(N) F04.01.6 Tabela Estabelecimentos e Obras (Listar, CRUD, Listar Periodos)	Não Designado	Pronto	eSocial-281573-1.0.1-CONS-01		27/04/2015 17:31	282935	935	8 pts	60	5
+Item de Backlog	313220	(N) F04.01.7 Tabela Processos Judiciais e Administrativos (Listar, CRUD, Listar Periodos)	Não Designado	Pronto	eSocial-281573-1.0.1-CONS-01		27/04/2015 17:31	282935	930	3 pts	60	5
+Item de Backlog	313221	(N) F04.08 Permitir visualizar dados da tabela padrão (Rubrica)	Não Designado	Pronto	eSocial-281573-1.0.1-CONS-01		27/04/2015 17:31	282935	925	8 pts	50	5
+Item de Backlog	519588	(N) F04.08 Permitir visualizar dados da tabela padrão (Cargos)	Não Designado	Pronto	eSocial-281573-1.0.1-CONS-01		27/04/2015 17:31	282935	924	8 pts	50	5
+Item de Backlog	519589	(N) F04.08 Permitir visualizar dados da tabela padrão (Horario/Turno Trabalho)	Não Designado	Pronto	eSocial-281573-1.0.1-CONS-01		27/04/2015 17:31	282935	923	8 pts	50	5
+Item de Backlog	313222	(N) F05.08 Listar/Pesquisar trabalhadores vinculados ao empregador	Não Designado	Pronto	eSocial-281573-1.0.1-CONS-01		27/04/2015 17:31	282935	920	5 pts	70	5
+Item de Backlog	313223	(N) Implementar Tela para selecionar Data de Adminssão, Grupo e Categoria	Não Designado	Pronto	eSocial-281573-1.0.1-CONS-01		27/04/2015 17:31	282935	915	8 pts	70	5
+Item de Backlog	559680	(I) Debito Tecnico - Defeitos	Não Designado	Pronto	eSocial-281573-1.0.1-CONS-02		26/06/2015 08:17	282935	914	5 pts	50	5
+Item de Backlog	559681	(I) Debito Tecnico - Testes	Não Designado	Pronto	eSocial-281573-1.0.1-CONS-02		26/06/2015 08:17	282935	913	5 pts	50	5
+Item de Backlog	559884	(I) Debito Tecnico - Implementação	Não Designado	Pronto	eSocial-281573-1.0.1-CONS-02		26/06/2015 08:17	282935	912	5 pts	50	5
+Item de Backlog	313225	(N) F05.02.2 Admitir/Cadastrar Trabalhador (visão resumida e visão completa) - Aba Identificação	Não Designado	Pronto	eSocial-281573-1.0.1-CONS-02		26/06/2015 08:17	282935	905	5 pts	60	5
+Item de Backlog	315501	(N) F05.02.3 Admitir/Cadastrar Trabalhador (visão resumida e visão completa) - Aba Dados Pessoais	Não Designado	Pronto	eSocial-281573-1.0.1-CONS-02		26/06/2015 08:17	282935	900	5 pts	60	5
+Item de Backlog	315502	(N) F05.02.4 Admitir/Cadastrar Trabalhador (visão resumida e visão completa) - Aba Endereço de Residência	Não Designado	Pronto	eSocial-281573-1.0.1-CONS-02		26/06/2015 08:17	282935	895	5 pts	70	5
+Item de Backlog	315503	(N) F05.02.5 Admitir/Cadastrar Trabalhador (visão resumida e visão completa) - Aba Dependentes	Não Designado	Pronto	eSocial-281573-1.0.1-CONS-02		26/06/2015 08:17	282935	890	5 pts	70	5
+Item de Backlog	315504	(N) F05.02.6 Admitir/Cadastrar Trabalhador (visão resumida e visão completa) - Aba Dados do Contrato	Não Designado	Pronto	eSocial-281573-1.0.1-CONS-02		26/06/2015 08:17	282935	885	13 pts	80	5
+Item de Backlog	315505	(N) F05.02.7 Admitir/Cadastrar Trabalhador (visão resumida e visão completa) - Aba Local de Trabalho	Não Designado	Pronto	eSocial-281573-1.0.1-CONS-02		26/06/2015 08:17	282935	880	13 pts	60	5
+Item de Backlog	532939	(N) F05.02.10 Admitir/Cadastrar Trabalhador (visão resumida e visão completa) - Implementar Controle de Navegação	Não Designado	Pronto	eSocial-281573-1.0.1-CONS-02		26/06/2015 08:17	282935	865	8 pts	80	5
+Item de Backlog	595184	(I) [IT03] Débito Técnico - Implementação	Não Designado	Pronto	eSocial-281573-1.0.1-CONS-03		12/07/2016 09:54	282935	990	0 pt	50	5
+Item de Backlog	595185	(I) [IT03] Débito Técnico - Testes	Não Designado	Pronto	eSocial-281573-1.0.1-CONS-03		12/07/2016 09:54	282935	989	0 pt	50	5
+Item de Backlog	595186	(I) [IT03] Débito Técnico - Defeitos	Não Designado	Pronto	eSocial-281573-1.0.1-CONS-03		25/07/2015 10:39	282935	988	1 pt	50	5
+Item de Backlog	315506	(N) F05.02.8 Admitir/Cadastrar Trabalhador (visão resumida e visão completa) - Aba Jornada de Trabalho	Não Designado	Pronto	eSocial-281573-1.0.1-CONS-03		25/07/2015 11:23	282935	875	8 pts	60	5
+Item de Backlog	315508	(N) F05.02.11 Admitir/Cadastrar Trabalhador (visão resumida e visão completa) – Enviar/Validar o evento	Não Designado	Pronto	eSocial-281573-1.0.1-CONS-03		12/07/2016 09:54	282935	860	3 pts	70	5
+Item de Backlog	313224	(N) F05.02.1 Admitir/Cadastrar Trabalhador – (Listar Rascunho, CRUD)	Não Designado	Pronto	eSocial-281573-1.0.1-CONS-03		12/07/2016 09:54	282935	855	5 pts	60	5
+Item de Backlog	315509	(N) F05.06.1 Visualizar dados do trabalhador (informações de dados cadastrais - visão resumida e visão completa)	Não Designado	Pronto	eSocial-281573-1.0.1-CONS-03		12/07/2016 09:54	282935	850	5 pts	50	5
+Item de Backlog	315510	(N) F05.06.2 Visualizar dados do trabalhador (informações de dados contratuais - visão resumida e visão completa)	Não Designado	Pronto	eSocial-281573-1.0.1-CONS-03		12/07/2016 09:54	282935	845	8 pts	50	5
+Item de Backlog	315514	(N) F05.07 Visualizar histórico das informações do trabalhador que foram alteradas ao longo do tempo (permite visualizar os eventos relacionados ao cadastro do trabalhador no histórico da vida laboral do trabalhador em conjunto com os demais eventos trabalhistas)	Não Designado	Pronto	eSocial-281573-1.0.1-CONS-03		12/07/2016 09:54	282935	840	5 pts	50	5
+Item de Backlog	315517	(N) F05.10.1 Retificar os dados de admissão do trabalhador (visão resumida e visão completa)	Não Designado	Pronto	eSocial-281573-1.0.1-CONS-03		12/07/2016 09:54	282935	835	3 pts	60	5
+Item de Backlog	315515	(N) F05.04 Alterar dados cadastrais do trabalhador  (visão resumida e visão completa)	Não Designado	Pronto	eSocial-281573-1.0.1-CONS-03		12/07/2016 09:54	282935	830	3 pts	60	5
+Item de Backlog	315516	(N) F05.05 Alterar/Retificar dados contratuais do trabalhador (visão resumida e visão completa)	Não Designado	Pronto	eSocial-281573-1.0.1-CONS-03		12/07/2016 09:54	282935	825	3 pts	60	5
+Item de Backlog	559682	(N) Cadastramento Inicial do Vínculo	Não Designado	Pronto	eSocial-281573-1.0.1-CONS-03		24/07/2015 17:04	282935	814	5 pts	70	5
+Item de Backlog	315550	(N) F06.01 Exibir lista de eventos e documentos disponíveis para o empregado	Não Designado	Pronto	eSocial-281573-1.0.1-CONS-03		12/07/2016 09:54	282935	745	8 pts	60	5
+Item de Backlog	315551	(N) F06.02.1 Evento Trabalhista: Afastamento Temporário (Registrar, Retificar, Visualizar detalhes)	Não Designado	Pronto	eSocial-281573-1.0.1-CONS-03		12/07/2016 09:54	282935	740	13 pts	50	5
+Item de Backlog	315552	(N) F06.02.2 Evento Trabalhista: Alteração de Motivo do Afastamento (Registrar, Retificar, Visualizar detalhes)	Não Designado	Pronto	eSocial-281573-1.0.1-CONS-03		12/07/2016 09:54	282935	735	5 pts	50	5
+Item de Backlog	315553	(N) F06.02.3 Evento Trabalhista: Retorno do Afastamento (Registrar, Retificar, Visualizar detalhes)	Não Designado	Pronto	eSocial-281573-1.0.1-CONS-03		12/07/2016 09:54	282935	730	3 pts	50	5
+Item de Backlog	595200	F07.01 Filtrar pagamentos do empregador nos meses de competência	Não Designado	Pronto	eSocial-281573-1.0.1-CONS-03		12/07/2016 09:54	282935	550	5 pts	50	5
+Item de Backlog	595201	F07.06 Listar Opções Disponíveis de Pagamentos e Recebimentos do Empregador na competência selecionada	Não Designado	Pronto	eSocial-281573-1.0.1-CONS-03		25/07/2015 11:23	282935	540	3 pts	70	5
+Item de Backlog	413042	(N) F02.01 Assinar Arquivo	Não Designado	Pronto	eSocial-281573-1.0.1-CONS-03		24/07/2015 16:46	282935	100	5 pts	80	5
+Item de Backlog	631140	(I) [IT04] Débito Técnico - Testes	Não Designado	Pronto	eSocial-281573-1.0.1-CONS-04		24/08/2015 08:27	282935	989	5 pts	50	5
+Item de Backlog	631164	(I) [IT04] Débito Técnico - Defeitos	Não Designado	Pronto	eSocial-281573-1.0.1-CONS-04		24/08/2015 08:27	282935	988	5 pts	50	5
+Item de Backlog	315521	(N) Finalizar Cadastramento Inicial	Não Designado	Pronto	eSocial-281573-1.0.1-CONS-04		25/07/2015 11:26	282935	700	13 pts	70	5
+Item de Backlog	315523	(N) Finalizar Assinadoc	Não Designado	Pronto	eSocial-281573-1.0.1-CONS-04		25/07/2015 11:26	282935	695	5 pts	80	5
+Item de Backlog	315524	(N) Migrar solução de calculo automatizado de rubricas do SE	Não Designado	Pronto	eSocial-281573-1.0.1-CONS-04		24/08/2015 08:27	282935	690	13 pts	90	5
+Item de Backlog	315548	(N) Recuperar informações cadastrais de um trabalhador de uma admissão anterior	Não Designado	Pronto	eSocial-281573-1.0.1-CONS-04		24/08/2015 08:27	282935	685	2 pts	70	5
+Item de Backlog	315557	(N) F06.02.7 Evento Trabalhista: Desligamento – Resumo de Recolhimentos e Pagamentos	Não Designado	Pronto	eSocial-281573-1.0.1-CONS-04		24/08/2015 08:27	282935	675	13 pts	90	5
+Item de Backlog	533506	(N) F06.02.7 Evento Trabalhista: Desligamento (Registrar, Retificar, Excluir, Visualizar detalhes)	Não Designado	Pronto	eSocial-281573-1.0.1-CONS-04		24/08/2015 08:27	282935	670	13 pts	90	5
+Item de Backlog	533507	(N) F14.02 Emitir Termo de Rescisão	Não Designado	Pronto	eSocial-281573-1.0.1-CONS-04		25/07/2015 11:26	282935	665	8 pts	80	5
+Item de Backlog	315554	(N) F06.02.4 Evento Trabalhista: Aviso de Férias (Registrar, Retificar, Excluir, Visualizar detalhes)	Não Designado	Pronto	eSocial-281573-1.0.1-CONS-04		24/08/2015 08:27	282935	655	5 pts	70	5
+Item de Backlog	533489	(N) F14.03 Emitir Aviso de Férias	Não Designado	Pronto	eSocial-281573-1.0.1-CONS-04		25/07/2015 11:26	282935	650	5 pts	70	5
+Item de Backlog	533490	(N) F14.04 Emitir Recibo de Férias	Não Designado	Pronto	eSocial-281573-1.0.1-CONS-04		24/08/2015 08:27	282935	645	8 pts	70	5
+Item de Backlog	315518	(N) Tratamento da tabela padrão: Lotação	Não Designado	Pronto	eSocial-281573-1.0.1-CONS-04		25/07/2015 11:26	282935	635	3 pts	60	5
+Item de Backlog	532977	(N) F08.01 Visualizar Folha de Pagamento de uma competência selecionada	Não Designado	Pronto	eSocial-281573-1.0.1-CONS-04		25/07/2015 11:26	282935	630	8 pts	90	5
+Item de Backlog	315555	(N) F08.02 Registrar mensalmente a remuneração de cada trabalhador	Não Designado	Pronto	eSocial-281573-1.0.1-CONS-04		24/08/2015 08:24	282935	625	8 pts	95	5
+Item de Backlog	659973	Deligamento - Pagamento	Não Designado	Pronto	eSocial-281573-1.0.1-CONS-05		04/05/2016 14:42	282935	620	3 pts	95	5
+Item de Backlog	659972	Desligamento - Integracao DCTF	Não Designado	Pronto	eSocial-281573-1.0.1-CONS-05		04/05/2016 14:42	282935	615	5 pts	95	5
+Item de Backlog	659892	(N2) Ferias (Cadastro, Aviso, Recibo)	Não Designado	Pronto	eSocial-281573-1.0.1-CONS-05		04/05/2016 14:42	282935	610	5 pts	70	5
+Item de Backlog	659966	(N2) Folha e Registrar Remuneracao	Não Designado	Pronto	eSocial-281573-1.0.1-CONS-05		04/05/2016 14:42	282935	605	13 pts	95	5
+Item de Backlog	659957	[Mantis] Correção dos defeitos do Mantis (Validação Cliente)	Não Designado	Pronto	eSocial-281573-1.0.1-CONS-05		04/05/2016 14:42	282935	600	3 pts	60	5
+Item de Backlog	659896	Débito Tecnico - Implementacao / Testes	Não Designado	Pronto	eSocial-281573-1.0.1-CONS-05		04/05/2016 14:42	282935	590	13 pts	50	5
+Item de Backlog	315522	(N) F17.01 Cadastrar o total de faltas, atrasos, horas extras e adicional noturno	Não Designado	Pronto	eSocial-281573-1.0.1-CONS-05		04/05/2016 14:42	282935	580	5 pts	70	5
+Item de Backlog	361296	(N) F17.02 Alterar o total de faltas, atrasos, horas extras e adicional noturno	Não Designado	Pronto	eSocial-281573-1.0.1-CONS-05		04/05/2016 14:42	282935	575	1 pt	70	5
+Item de Backlog	532973	(N) Exclusao de Eventos	Não Designado	Pronto	eSocial-281573-1.0.1-CONS-05		04/05/2016 14:42	282935	570	3 pts	80	5
+Item de Backlog	532978	F08.10 Retificar (alterar) Remuneração de Trabalhador	Não Designado	Pronto	eSocial-281573-1.0.1-CONS-05		04/05/2016 14:42	282935	565	5 pts	90	5
+Item de Backlog	532974	(N) F08.03 Calcular automaticamente rubricas de pagamento na folha do empregado	Não Designado	Pronto	eSocial-281573-1.0.1-CONS-05		04/05/2016 14:42	282935	560	20 pts	95	5
+Item de Backlog	532975	F08.06 Emitir relatório consolidado das remunerações registradas por mês de competência - Trabalhador	Não Designado	Pronto	eSocial-281573-1.0.1-CONS-05		04/05/2016 14:42	282935	550	5 pts	95	5
+Item de Backlog	532976	F08.07 Emissão de recibo de pagamento do trabalhador	Não Designado	Pronto	eSocial-281573-1.0.1-CONS-05		04/05/2016 14:42	282935	545	5 pts	95	5
+Item de Backlog	409454	(N) F01.01 Identificar Usuário - Integrar com Componente de Login - CPF	Não Designado	Pronto	eSocial-281573-1.0.1-CONS-05		04/05/2016 14:42	282935	520	5 pts	70	5
+Item de Backlog	692365	Débito Tecnico / Tratar Defeitos	Não Designado	Pronto	eSocial-281573-1.0.1-CONS-06		04/05/2016 15:15	282935	515	5 pts	50	5
+Item de Backlog	692127	Finalizar Tratamento da Folha	Não Designado	Pronto	eSocial-281573-1.0.1-CONS-06		04/05/2016 15:15	282935	510	3 pts	90	5
+Item de Backlog	692428	Tratar Alteração do Apurador de Horas	Não Designado	Pronto	eSocial-281573-1.0.1-CONS-06		04/05/2016 15:15	282935	508	1 pt	80	5
+Item de Backlog	692062	Automatizar Rubricas	Não Designado	Pronto	eSocial-281573-1.0.1-CONS-06		04/05/2016 15:15	282935	505	5 pts	95	5
+Item de Backlog	691929	F08.06 Emitir relatório consolidado das remunerações registradas por mês de competência – Empregador	Não Designado	Pronto	eSocial-281573-1.0.1-CONS-06		04/05/2016 15:15	282935	500	3 pts	90	5
+Item de Backlog	692304	Tratar Encerramento da Folha	Não Designado	Pronto	eSocial-281573-1.0.1-CONS-06		04/05/2016 15:15	282935	492	2 pts	95	5
+Item de Backlog	691963	(N) Integração com DCTF para geração do DAE Mensal	Não Designado	Pronto	eSocial-281573-1.0.1-CONS-06		04/05/2016 15:15	282935	490	2 pts	90	5
+Item de Backlog	691947	Cálculos automáticos das bases de cálculo do desligamento para incidência de tributos	Não Designado	Pronto	eSocial-281573-1.0.1-CONS-06		04/05/2016 15:15	282935	485	2 pts	95	5
+Item de Backlog	533491	F08.XX Realizar Tratamento na Folha de Pagamento para Trabalhadores com Registro de Desligamento	Não Designado	Pronto	eSocial-281573-1.0.1-CONS-06		04/05/2016 15:15	282935	483	2 pts	90	5
+Item de Backlog	694777	Débito técnico testes	Não Designado	Pronto	eSocial-281573-1.0.1-CONS-06		04/05/2016 15:15	282935	480	3 pts	50	5
+Item de Backlog	692343	Tratamento de Ferias na Folha de Pagamento	Não Designado	Pronto	eSocial-281573-1.0.1-CONS-06		04/05/2016 15:15	282935	480	1 pt	90	5
+Item de Backlog	692251	Tratamento da Data de Pagamento para Emissão da Guia Recisória	Não Designado	Pronto	eSocial-281573-1.0.1-CONS-06		04/05/2016 15:15	282935	478	1 pt	80	5
+Item de Backlog	533508	(N) F16.01 Integrar com a CAIXA para emissão da guia de pagamento do FGTS rescisório em caso de desligamento do trabalhador - WsCalcularValoresRescisóriosFGTS	Não Designado	Pronto	eSocial-281573-1.0.1-CONS-06		04/05/2016 15:15	282935	475	2 pts	80	5
+Item de Backlog	692250	Integração com DCTF para recuperar informações de multas e Juros para FGTS recisório	Não Designado	Pronto	eSocial-281573-1.0.1-CONS-06		04/05/2016 15:15	282935	472	1 pt	80	5
+Item de Backlog	691962	(N) F16.02 Integração com a CAIXA – Envio da guia gerada (DAE) – WsSincronizarArquivos (Método SincronizarArquivoGuiaUnica)	Não Designado	Pronto	eSocial-281573-1.0.1-CONS-06		04/05/2016 15:15	282935	470	2 pts	80	5
+Item de Backlog	692102	Implementar Modal para chamada ao Recibo de Ferias	Não Designado	Pronto	eSocial-281573-1.0.1-CONS-06		04/05/2016 15:15	282935	435	1 pt	70	5
+Item de Backlog	692275	Tratamento de rotina para retorno de data de vencimento SIDAT - Dia não util	Não Designado	Pronto	eSocial-281573-1.0.1-CONS-06		04/05/2016 15:15	282935	430	1 pt	70	5
+Item de Backlog	791571	Folha de Décimo Terceiro	Não Designado	Pronto	eSocial-281573-1.0.2-CONS-01		04/05/2016 15:54	282935	500	3 pts	90	5
+Item de Backlog	771133	Folha de Novembro	Não Designado	Validado	eSocial-281573-1.0.2-CONS-01		04/05/2016 15:40	282935	500	5 pts	90	5
+Item de Backlog	771134	Desligamento	Não Designado	Pronto	eSocial-281573-1.0.2-CONS-01		04/05/2016 15:53	282935	500	5 pts	90	5
+Item de Backlog	771135	Emissao do DAE pelo eSocial	Não Designado	Pronto	eSocial-281573-1.0.2-CONS-01		04/05/2016 15:53	282935	500	5 pts	85	5
+Item de Backlog	792502	Folha de Dezembro	Não Designado	Validado	eSocial-281573-1.0.2-CONS-01		12/07/2016 09:58	282935	100	13 pts	90	5
+Item de Backlog	791560	Folha de Décimo Terceiro	Não Designado	Cancelado	eSocial-281573-1.0.2-CONS-01		12/07/2016 10:00	282935	100	13 pts	90	5
+Item de Backlog	792484	Folha de Dezembro	Não Designado	Cancelado	eSocial-281573-1.0.2-CONS-01		12/07/2016 10:00	282935	100	13 pts	90	5
+Item de Backlog	775196	Folha de Décimo Terceiro	Não Designado	Cancelado	eSocial-281573-1.0.2-CONS-01		12/07/2016 10:00	282935	100	13 pts	90	5
+Item de Backlog	774785	Folha de Pagamento - Defeitos/Sugestões	Não Designado	Cancelado	eSocial-281573-1.0.2-CONS-01		12/07/2016 10:00	282935	100	13 pts	90	5
+Item de Backlog	791561	Folha de Dezembro	Não Designado	Cancelado	eSocial-281573-1.0.2-CONS-01		12/07/2016 09:50	282935	0	0 pt	90	5
+Item de Backlog	803951	[N] Simplificação da Folha Original - Adiantamento de 13º salário	Não Designado	Pronto	eSocial-281573-1.0.3-CONS		04/05/2016 15:58	282935	500	5 pts	90	5
+Item de Backlog	883350	[N] Solicitações de Ajustes no Termo de Rescisão (0195625, 0196004, 0196005)	Não Designado	Pronto	eSocial-281573-1.0.3-CONS		04/05/2016 15:58	282935	500	5 pts	80	5
+Item de Backlog	858639	[N] Retrabalho - Mantis 0195868	Não Designado	Pronto	eSocial-281573-1.0.3-CONS		04/05/2016 15:58	282935	500	5 pts	70	5
+Item de Backlog	803919	[N] Simplificação da Folha Original - Exclusão de Rubricas	Não Designado	Pronto	eSocial-281573-1.0.3-CONS		04/05/2016 15:58	282935	500	5 pts	90	5
+Item de Backlog	878938	[N] Mantis 0196770 - Alterações da Folha Original - Atendimento em Março/2016	Não Designado	Pronto	eSocial-281573-1.0.3-CONS		04/05/2016 15:58	282935	500	5 pts	90	5
+Item de Backlog	803911	[N] Simplificação da Folha Original - Ordem de Apresentação das Rubricas	Não Designado	Pronto	eSocial-281573-1.0.3-CONS		04/05/2016 15:58	282935	500	5 pts	70	5
+Item de Backlog	846351	[N] Corrigir Mantis 195391	Não Designado	Pronto	eSocial-281573-1.0.3-CONS		04/05/2016 15:58	282935	500	5 pts	70	5
+Item de Backlog	803953	[N] Simplificação da Folha Original - Controle da Situação da Remuneração	Não Designado	Pronto	eSocial-281573-1.0.3-CONS		04/05/2016 15:58	282935	500	5 pts	90	5
+Item de Backlog	803892	[N] Simplificação da Folha Original - Remover Opções	Não Designado	Pronto	eSocial-281573-1.0.3-CONS		04/05/2016 15:58	282935	500	5 pts	70	5
+Item de Backlog	829465	Folha intermediária	Não Designado	Pronto	eSocial-281573-1.0.3-CONS		04/05/2016 15:58	282935	500	5 pts	90	5
+Item de Backlog	846336	[N] Corrigir Mantis 192450	Não Designado	Pronto	eSocial-281573-1.0.3-CONS		04/05/2016 15:58	282935	500	5 pts	90	5
+Item de Backlog	804282	[N] Mantis 194135	Não Designado	Pronto	eSocial-281573-1.0.3-CONS		04/05/2016 15:58	282935	500	5 pts	90	5
+Item de Backlog	805011	(N) Mantis 194104	Não Designado	Pronto	eSocial-281573-1.0.3-CONS		04/05/2016 15:58	282935	500	5 pts	90	5
+Item de Backlog	832222	[N] Mantis Variados (0194125, 0193994, 0195525, 0195432, 0195555, 0195429, 0195420, 0196742, 0196495, 0196496)	Não Designado	Pronto	eSocial-281573-1.0.3-CONS		04/05/2016 15:58	282935	500	5 pts	90	5
+Item de Backlog	846804	[N] Corrigir Mantis 192446	Não Designado	Pronto	eSocial-281573-1.0.3-CONS		04/05/2016 15:58	282935	500	5 pts	90	5
+Item de Backlog	853798	[N] Mantis 196002 - Correção do TRCT impresso para atender a portaria MTE 1057/2012	Não Designado	Pronto	eSocial-281573-1.0.3-CONS		04/05/2016 15:58	282935	500	5 pts	80	5
+Item de Backlog	804029	[N] Mantis 194107	Não Designado	Pronto	eSocial-281573-1.0.3-CONS		04/05/2016 15:58	282935	500	5 pts	80	5
+Item de Backlog	803956	[N] Simplificação da Folha Original - Navegabilidade	Não Designado	Pronto	eSocial-281573-1.0.3-CONS		04/05/2016 15:58	282935	500	5 pts	80	5
+Item de Backlog	804881	(N) Mantis 193968 	Não Designado	Pronto	eSocial-281573-1.0.3-CONS		04/05/2016 15:58	282935	500	5 pts	80	5
+Item de Backlog	853670	[N] Mantis 0193054 - Relatório de Pagamento/Demonstrativo por Trabalhador	Não Designado	Pronto	eSocial-281573-1.0.3-CONS		04/05/2016 15:58	282935	500	5 pts	95	5
+Item de Backlog	803928	[N] Simplificação da Folha - Cálculo do Salário	Não Designado	Pronto	eSocial-281573-1.0.3-CONS		04/05/2016 15:58	282935	500	5 pts	90	5
+Item de Backlog	803912	[N] Simplificação da Folha Original - Cálculo do Salário Família	Não Designado	Pronto	eSocial-281573-1.0.3-CONS		04/05/2016 15:58	282935	500	5 pts	95	5
+Item de Backlog	804093	[N] Mantis 193996	Não Designado	Pronto	eSocial-281573-1.0.3-CONS		04/05/2016 15:58	282935	500	5 pts	80	5
+Item de Backlog	846349	[N] Corrigir Mantis 194940	Não Designado	Pronto	eSocial-281573-1.0.3-CONS		04/05/2016 15:58	282935	500	5 pts	80	5
+Item de Backlog	803963	[N] Simplificação da Folha Original - Descrição Rubrica e Hint	Não Designado	Pronto	eSocial-281573-1.0.3-CONS		04/05/2016 15:58	282935	500	5 pts	50	5
+Item de Backlog	846315	[N] Corrigir Mantis 193455	Não Designado	Pronto	eSocial-281573-1.0.3-CONS		04/05/2016 15:58	282935	500	5 pts	80	5
+Item de Backlog	803946	[N] Simplificação da Folha Original - Remuneração Zerada	Não Designado	Pronto	eSocial-281573-1.0.3-CONS		04/05/2016 15:58	282935	500	5 pts	80	5
+Item de Backlog	853822	[N] Mantis 196006 - Correção do TRCT impresso para adequar os motivos de desligamento eSocial x Portaria 1057	Não Designado	Pronto	eSocial-281573-1.0.3-CONS		04/05/2016 15:58	282935	500	5 pts	80	5
+Item de Backlog	831825	Desligamento Retroativo Zerado	Não Designado	Pronto	eSocial-281573-1.0.3-CONS		04/05/2016 15:58	282935	500	5 pts	85	5
+Item de Backlog	803977	[N] Mantis 193288	Não Designado	Pronto	eSocial-281573-1.0.3-CONS		04/05/2016 15:58	282935	500	5 pts	85	5
+Item de Backlog	803906	[N] Simplificação da Folha - Regras de Apresentação das Rubricas	Não Designado	Pronto	eSocial-281573-1.0.3-CONS		04/05/2016 15:58	282935	500	5 pts	75	5
+Item de Backlog	803965	[N] Simplificação da Folha Original - Converter folha resumida para a folha nova	Não Designado	Pronto	eSocial-281573-1.0.3-CONS		04/05/2016 15:58	282935	500	5 pts	90	5
+Item de Backlog	804937	(N) Mantis 193203	Não Designado	Pronto	eSocial-281573-1.0.3-CONS		04/05/2016 15:58	282935	500	5 pts	90	5
+Item de Backlog	803916	[N] Simplificação da Folha Original - Ordem de Apresentação Salário Família	Não Designado	Pronto	eSocial-281573-1.0.3-CONS		04/05/2016 15:58	282935	500	5 pts	80	5
+Item de Backlog	831831	[N] Desligamento Retroativo - Mantis 0193357	Não Designado	Pronto	eSocial-281573-1.0.3-CONS		04/05/2016 15:58	282935	500	5 pts	85	5
+Item de Backlog	853758	[N] Alterações Solicitadas na Folha Original durante Homologação	Não Designado	Pronto	eSocial-281573-1.0.3-CONS		04/05/2016 15:58	282935	500	5 pts	80	5
+Item de Backlog	883333	[N] Solicitações do Cliente na Iteração (Mantis 0196742, 0196742)	Não Designado	Cancelado	eSocial-281573-1.0.3-CONS		23/03/2016 09:03	282935	0	0 pt	85	5
+Item de Backlog	810660	Débito técnico testes	Não Designado	Validado	eSocial-281573-1.0.5-CONS		12/07/2016 09:58	282935	100	13 pts	50	5
+Item de Backlog	937010	Férias - Atividades Arquitetura	Não Designado	Pronto	eSocial-281573-1.0.6-CONS		12/07/2016 09:51	282935	510	3 pts	80	5
+Item de Backlog	937021	Ferias - Listagem de trabalhadores	Não Designado	Pronto	eSocial-281573-1.0.6-CONS		12/07/2016 09:51	282935	500	3 pts	70	5
+Item de Backlog	927292	Ferias – Consulta de Períodos Aquisitivos	Não Designado	Pronto	eSocial-281573-1.0.6-CONS		12/07/2016 09:51	282935	490	13 pts	90	5
+Item de Backlog	927297	Ferias – Tela de Programação	Não Designado	Pronto	eSocial-281573-1.0.6-CONS		12/07/2016 09:51	282935	480	13 pts	70	5
+Item de Backlog	927305	Ferias – Alterar Dias antes do eSocial	Não Designado	Pronto	eSocial-281573-1.0.6-CONS		12/07/2016 09:51	282935	470	3 pts	70	5
+Item de Backlog	927324	Ferias – Alterar Total de Dias de Ferias	Não Designado	Pronto	eSocial-281573-1.0.6-CONS		12/07/2016 09:51	282935	460	3 pts	70	5
+Item de Backlog	927325	Ferias – Alterar Data do Inicio do Periodo Aquisitivo	Não Designado	Pronto	eSocial-281573-1.0.6-CONS		12/07/2016 09:51	282935	450	13 pts	80	5
+Item de Backlog	927327	Ferias – Migração dos Dados	Não Designado	Pronto	eSocial-281573-1.0.6-CONS		12/07/2016 09:51	282935	430	20 pts	90	5
+Item de Backlog	927328	Automatizar Folha a partir da repercussão de Férias	Não Designado	Pronto	eSocial-281573-1.0.6-CONS		12/07/2016 09:51	282935	420	8 pts	95	5
+Item de Backlog	927330	(I) Performance de queries	Não Designado	Pronto	eSocial-281573-1.0.6-CONS		12/07/2016 09:51	282935	415	5 pts	80	5
+Item de Backlog	946746	Mantis 0197836 - PRODUÇÃO - URGENTE - REAPROVEITAMENTO DE MATRICULA	Não Designado	Pronto	eSocial-281573-1.0.6-CONS		12/07/2016 09:51	282935	410	3 pts	70	5
+Item de Backlog	927329	Mantis 197280 (CANCELADO)	Não Designado	Cancelado	eSocial-281573-1.0.6-CONS		25/05/2016 10:41	282935	410	2 pts	60	5
+Item de Backlog	1020150	Tratamento do FGTS Compensatório na Rescisão	Não Designado	Pronto	eSocial-921077-1.7.0-CONS		23/08/2016 14:23	994361	100	5 pts	80	5
+Item de Backlog	999692	Adaptar desligamento para processamento da folha	Não Designado	Pronto	eSocial-921077-1.7.0-CONS		23/08/2016 14:23	994361	100	5 pts	90	5
+Item de Backlog	956231	Mantis 0197893 - Alteração de Nomes nas Telas de Afastamento	Não Designado	Pronto	eSocial-921077-1.7.0-CONS		23/08/2016 14:23	994361	100	5 pts	60	5
+Item de Backlog	999729	Implementar cenários de testes (testes unitários)	Não Designado	Pronto	eSocial-921077-1.7.0-CONS		23/08/2016 14:23	994361	100	5 pts	50	5
+Item de Backlog	994682	Mantis 198130: [FÉRIAS] Orientações para Programar Férias	Não Designado	Pronto	eSocial-921077-1.7.0-CONS		23/08/2016 14:23	994361	100	5 pts	50	5
+Item de Backlog	962377	[N] Mantis 197647: EVENTOS TRABALHISTAS - Alteração no texto de exibição de eventos registrados na tela Movimentações Trabalhistas	Não Designado	Pronto	eSocial-921077-1.7.0-CONS		23/08/2016 14:23	994361	100	5 pts	40	5
+Item de Backlog	994685	Tratamento de Mantis Diversos	Não Designado	Pronto	eSocial-921077-1.7.0-CONS		23/08/2016 14:23	994361	100	5 pts	80	5
+Item de Backlog	999699	Implementar cálculos das rubricas	Não Designado	Pronto	eSocial-921077-1.7.0-CONS		23/08/2016 14:23	994361	100	5 pts	95	5
+Item de Backlog	953257	Mantis 0197087 - Antecipação do Desligamento	Não Designado	Pronto	eSocial-921077-1.7.0-CONS		23/08/2016 14:23	994361	100	5 pts	80	5
+Item de Backlog	962516	[N] Mantis 197693: DESLIGAMENTO - Inclusão do link Excluir na tela de desligamento	Não Designado	Pronto	eSocial-921077-1.7.0-CONS		23/08/2016 14:23	994361	100	5 pts	70	5
+Item de Backlog	999756	Implementar alterações de interface	Não Designado	Pronto	eSocial-921077-1.7.0-CONS		23/08/2016 14:23	994361	100	5 pts	70	5
+Item de Backlog	994423	Evoluir funcionalidade de remuneração para automatizar as rubricas a partir da repercussão do Férias	Não Designado	Pronto	eSocial-921077-1.7.0-CONS		23/08/2016 14:23	994361	100	5 pts	95	5
+Item de Backlog	955514	Mantis 0197841 - Dispensa de Retenção de IR	Não Designado	Pronto	eSocial-921077-1.7.0-CONS		23/08/2016 14:23	994361	100	5 pts	80	5
+Item de Backlog	994677	Mantis 198092:  [FÉRIAS] RETORNO AUTOMÁTICO PARA TELA PROGRAMAR FÉRIAS - EXECUÇÃO AUTORIZADA	Não Designado	Pronto	eSocial-921077-1.7.0-CONS		23/08/2016 14:23	994361	100	5 pts	60	5
+Item de Backlog	927326	Ferias – Recibo de Ferias	Não Designado	Pronto	eSocial-1005228-1.0.8-CONS		25/08/2016 14:21	1031720	440	3 pts	90	5
+Item de Backlog	1031738	Ajustes nas telas (mensal, décimo terceiro, desligamento, afastamento)	Não Designado	Preparado	eSocial-1005228-1.0.8-CONS		24/08/2016 09:41	1031720	100	5 pts	90	5
+Item de Backlog	1031739	Ajustes nas rubricas já existentes	Não Designado	Preparado	eSocial-1005228-1.0.8-CONS		24/08/2016 09:41	1031720	100	5 pts	80	5
+Item de Backlog	1031740	Novas rubricas (mensal e décimo terceiro)	Não Designado	Preparado	eSocial-1005228-1.0.8-CONS		24/08/2016 09:41	1031720	100	5 pts	80	5
+Item de Backlog	1032626	Mês anterior e mês da rescisão na mesma guia rescisória (incluindo alteração do leiaute de guia)	Não Designado	Preparado	eSocial-1005228-1.0.8-CONS		24/08/2016 09:41	1031720	100	5 pts	85	5
+Item de Backlog	1032628	Geração de relatório (PDF) para movimentações trabalhistas (Mantis 198081)	Não Designado	Preparado	eSocial-1005228-1.0.8-CONS		24/08/2016 09:41	1031720	100	5 pts	70	5
+Item de Backlog	1032633	Tratamento da 2ª parcela do FGTS sobre 13º salário no desligamento	Não Designado	Preparado	eSocial-1005228-1.0.8-CONS		24/08/2016 09:41	1031720	100	5 pts	80	5
+Item de Backlog	635651	Implementar componente para geração de guia folha/rescisório para o eSocial sem interface (fibra provisório, calculo único, caixa, contingência, senda)	Não Designado	Pronto	DCTF-Web-752629-CONS-01		06/01/2016 17:22	811352	960	13 pts	80	5
+Item de Backlog	635643	Atualizar Serviço de Apuração de Débitos (Folha) - Atualizar para receber FGTS	Não Designado	Pronto	DCTF-Web-752629-CONS-01		06/01/2016 17:22	811352	990	8 pts	85	5
+Item de Backlog	635646	(I) Atualizar Base de Dados (modelo e banco)	Não Designado	Pronto	DCTF-Web-752629-CONS-01		06/01/2016 17:22	811352	980	5 pts	70	5
+Item de Backlog	635647	Implementar interface para apresentação de vinculações customizadas - Doméstica	Não Designado	Pronto	DCTF-Web-752629-CONS-01		06/01/2016 17:22	811352	950	5 pts	80	5
+Item de Backlog	635648	Interface perfil DAU	Não Designado	Pronto	DCTF-Web-752629-CONS-01		06/01/2016 17:22	811352	940	8 pts	75	5
+Item de Backlog	635649	Interface final DAU com encargos	Não Designado	Pronto	DCTF-Web-752629-CONS-01		06/01/2016 17:22	811352	930	3 pts	75	5
+Item de Backlog	635650	Refatorar regras para emissão do DAU (catástrofe verificar, <10 reais liberar, data acolhimento, todos os fluxos alternativos, contingencia para calculo de multas de juros por empregado/CT)	Não Designado	Pronto	DCTF-Web-752629-CONS-01		06/01/2016 17:22	811352	970	13 pts	80	5
+Item de Backlog	635652	Gravação de documento gerado	Não Designado	Pronto	DCTF-Web-752629-CONS-01		06/01/2016 17:22	811352	920	5 pts	70	5
+Item de Backlog	374419	Importação de créditos (DAE/DARF) - Integração do RDOC (todos e por número)	Não Designado	Pronto	DCTF-Web-752629-CONS-02		06/01/2016 17:27	811352	9000	8 pts	90	5
+Item de Backlog	610926	Interface seleção de documentos pagos anteriormente	Não Designado	Pronto	DCTF-Web-752629-CONS-02		06/01/2016 17:27	811352	99999	5 pts	70	5
+Item de Backlog	661591	Realizar integração com CAIXA - Serviço Calculo Multas e Juros	Não Designado	Pronto	DCTF-Web-752629-CONS-02		06/01/2016 17:27	811352	470	1 pt	80	5
+Item de Backlog	661651	(N2) Implementar componente para geração de guia folha/rescisório para o eSocial sem interface (fibra provisório, calculo único, caixa, contingência, senda)	Não Designado	Pronto	DCTF-Web-752629-CONS-02		06/01/2016 17:27	811352	480	1 pt	85	5
+Item de Backlog	661674	Debito Tecnico	Não Designado	Pronto	DCTF-Web-752629-CONS-02		06/01/2016 17:27	811352	490	1 pt	50	5
+Item de Backlog	661713	(I) Monitoração do Sistema (Tratamento de log, tratamento de exceção não tratada, Outros)	Não Designado	Pronto	DCTF-Web-752629-CONS-02		06/01/2016 17:27	811352	500	1 pt	60	5
+Item de Backlog	686203	Testes RNF (Concorrencia, carga e navegadores)	Não Designado	Pronto	DCTF-Web-752629-CONS-03		07/01/2016 19:22	811352	385	1 pt	90	5
+Item de Backlog	374436	Transmitir arquivo/assinatura digital	Não Designado	Pronto	DCTF-Web-752629-CONS-03		07/01/2016 19:22	811352	395	8 pts	70	5
+Item de Backlog	525411	Efetuar integração para troca de autenticação com o Portal do eSocial (receber informações da sessão, hmac)	Não Designado	Pronto	DCTF-Web-752629-CONS-03		07/01/2016 19:22	811352	485	20 pts	75	5
+Item de Backlog	525895	(I) Preparar ambiente de homologação e produção	Não Designado	Pronto	DCTF-Web-752629-CONS-03		07/01/2016 19:22	811352	405	5 pts	60	5
+Item de Backlog	686060	Testar Importação de créditos (DAE) - Integração do RDOC (todos e por número)	Não Designado	Pronto	DCTF-Web-752629-CONS-03		07/01/2016 19:22	811352	488	1 pt	75	5
+Item de Backlog	686064	Integração com a CAIXA - Serviço de calculo de multas e juros	Não Designado	Pronto	DCTF-Web-752629-CONS-03		07/01/2016 19:22	811352	500	1 pt	80	5
+Item de Backlog	686083	Testar Geração da Guia Rescisoria do eSocial	Não Designado	Pronto	DCTF-Web-752629-CONS-03		07/01/2016 19:22	811352	480	1 pt	70	5
+Item de Backlog	686108	Debito Tecnico	Não Designado	Pronto	DCTF-Web-752629-CONS-03		07/01/2016 19:22	811352	490	1 pt	50	5
+Item de Backlog	686117	Finalizar Aplicacao de Monitoracao	Não Designado	Pronto	DCTF-Web-752629-CONS-03		07/01/2016 19:22	811352	390	1 pt	70	5
+Item de Backlog	686200	Integração com a folha do esocial - receber apuração	Não Designado	Pronto	DCTF-Web-752629-CONS-03		07/01/2016 19:22	811352	486	1 pt	75	5
+Item de Backlog	686201	Integrar com Serviço do eSocial para envio de documento gerado	Não Designado	Pronto	DCTF-Web-752629-CONS-03		07/01/2016 19:22	811352	470	1 pt	80	5
+Item de Backlog	686202	(N) Integrar Serviço  CAIXA - Multa e Juros / Arquivo TR	Não Designado	Pronto	DCTF-Web-752629-CONS-03		07/01/2016 19:22	811352	410	1 pt	80	5
+Item de Backlog	709563	Atualizar ambientes para homologação - Testes e Validação	Não Designado	Pronto	DCTF-Web-752629-CONS-04		07/01/2016 19:29	811352	500	1 pt	70	5
+Item de Backlog	709564	Configuração do ambiente de homologação	Não Designado	Pronto	DCTF-Web-752629-CONS-04		07/01/2016 19:29	811352	495	1 pt	70	5
+Item de Backlog	709565	Implementar a contingência para internalizar arquivo de TR da CAIXA	Não Designado	Pronto	DCTF-Web-752629-CONS-04		07/01/2016 19:29	811352	440	1 pt	75	5
+Item de Backlog	709566	Gravar apuração de débitos no banco de dados	Não Designado	Pronto	DCTF-Web-752629-CONS-04		07/01/2016 19:29	811352	485	1 pt	70	5
+Item de Backlog	709567	Tratar a apuração assinada recebida do eSocial	Não Designado	Pronto	DCTF-Web-752629-CONS-04		07/01/2016 19:29	811352	475	1 pt	80	5
+Item de Backlog	709568	Testar Fluxo completo de integração com eSocial (geração da GUIA recisória, recebimento da apuração, geração da GUIA Folha)	Não Designado	Pronto	DCTF-Web-752629-CONS-04		07/01/2016 19:29	811352	480	1 pt	70	5
+Item de Backlog	709569	Integração com a CAIXA	Não Designado	Pronto	DCTF-Web-752629-CONS-04		07/01/2016 19:29	811352	470	1 pt	80	5
+Item de Backlog	709570	Implementar validações relacionadas a autenticação para geração da GUIA	Não Designado	Pronto	DCTF-Web-752629-CONS-04		07/01/2016 19:29	811352	450	1 pt	85	5
+Item de Backlog	709571	Definir solução para controle de transação para garantir o recebimento da apuração/fechamento da folha	Não Designado	Pronto	DCTF-Web-752629-CONS-04		07/01/2016 19:29	811352	445	1 pt	85	5
+Item de Backlog	709572	Tratamento da transmissão imediata para erro na geração do arquivo de saida	Não Designado	Cancelado	DCTF-Web-752629-CONS-04		07/01/2016 19:29	811352	483	1 pt	80	5
+Item de Backlog	709585	Alteração na apuração para envio da GUIA para CAIXA	Não Designado	Pronto	DCTF-Web-752629-CONS-04		07/01/2016 19:29	811352	490	1 pt	75	5
+Item de Backlog	525700	(I) Melhorias de performance e segurança	Não Designado	Pronto	DCTF-Web-752629-TRANS		07/01/2016 19:34	811352	400	8 pts	85	5
+Item de Backlog	771149	Implementação de Melhorias e Correções	Não Designado	Pronto	DCTF-Web-752629-TRANS		07/01/2016 19:34	811352	999	13 pts	70	5
+Item de Backlog	771150	Adaptação do WS para emissão do DAE pelo eSocial	Não Designado	Pronto	DCTF-Web-752629-TRANS		07/01/2016 19:34	811352	1	1 pt	80	5
+Item de Backlog	812479	Alterar nome padrão dos serviços (http://www.tempuri.com)	Não Designado	Pronto	 DCTF-Web-370057-COD-1160-1.0.2-CONS-01		13/04/2016 14:21	374017	100	1 pt	60	5
+Item de Backlog	812466	Internalizar o arquivo de indices para JAN/2016	Não Designado	Pronto	 DCTF-Web-370057-COD-1160-1.0.2-CONS-01		13/04/2016 14:21	374017	100	1 pt	60	5
+Item de Backlog	812467	Investigar o erro da Produção: "The type initializer for 'codStatusProcLocalType' threw an exception."	Não Designado	Pronto	 DCTF-Web-370057-COD-1160-1.0.2-CONS-01		01/02/2016 10:11	374017	1	1 pt	70	5
+Item de Backlog	812468	Envio da Guia de Decimo Terceiro para Caixa	Não Designado	Pronto	 DCTF-Web-370057-COD-1160-1.0.2-CONS-01		01/02/2016 10:12	374017	1	1 pt	70	5
+Item de Backlog	812469	Melhorias de performance do serviço de processamento de Envio da Guia	Não Designado	Pronto	 DCTF-Web-370057-COD-1160-1.0.2-CONS-01		13/04/2016 14:21	374017	100	1 pt	85	5
+Item de Backlog	812470	Ajustes de validação do serviço de processamento de Recebimento do Arquivo	Não Designado	Pronto	 DCTF-Web-370057-COD-1160-1.0.2-CONS-01		18/03/2016 17:00	374017	5	1 pt	80	5
+Item de Backlog	812471	Ajustes no serviço de processamento VerificarEncerramentoFolha	Não Designado	Pronto	 DCTF-Web-370057-COD-1160-1.0.2-CONS-01		13/04/2016 14:21	374017	100	1 pt	70	5
+Item de Backlog	812472	Analisar no relatório Rodrigo Muniz sobre banco	Não Designado	Pronto	 DCTF-Web-370057-COD-1160-1.0.2-CONS-01		13/04/2016 14:21	374017	100	1 pt	80	5
+Item de Backlog	812473	Gravar o log no banco via SQL puro	Não Designado	Pronto	 DCTF-Web-370057-COD-1160-1.0.2-CONS-01		13/04/2016 14:21	374017	100	1 pt	60	5
+Item de Backlog	812474	Criar campo na tabela DCTFDeclaracao	Não Designado	Pronto	 DCTF-Web-370057-COD-1160-1.0.2-CONS-01		13/04/2016 14:21	374017	100	1 pt	60	5
+Item de Backlog	844306	Testar Funcionalidade Abater Pagamentos	Não Designado	Pronto	 DCTF-Web-370057-COD-1160-1.0.3-CONS-01		18/03/2016 17:20	374017	999	5 pts	70	5
+Item de Backlog	844176	[Completa] Avaliar Cadastros (Compensações, Parcelamento, Suspensão com e sem depósito, Exclusões, Depósitos)	Não Designado	Pronto	 DCTF-Web-370057-COD-1160-1.0.3-CONS-01		18/03/2016 14:53	374017	995	20 pts	70	5
+Item de Backlog	844226	[Completa] Avaliar Emissão de DARF para várias DCTFs	Não Designado	Pronto	 DCTF-Web-370057-COD-1160-1.0.3-CONS-01		18/03/2016 14:53	374017	989	13 pts	85	5
+Item de Backlog	844272	[Completa] Avaliar Recibo de Transmissão (incluir alteração do nome do PDF)	Não Designado	Pronto	 DCTF-Web-370057-COD-1160-1.0.3-CONS-01		18/03/2016 14:54	374017	980	2 pts	75	5
+Item de Backlog	844273	[Completa] Avaliar Interface de pesquisa DCTF (seleção de múltiplas para emissão DARF)	Não Designado	Pronto	 DCTF-Web-370057-COD-1160-1.0.3-CONS-01		18/03/2016 17:03	374017	990	5 pts	60	5
+Item de Backlog	844291	[Completa] Avaliar Tela de Vinculações	Não Designado	Pronto	 DCTF-Web-370057-COD-1160-1.0.3-CONS-01		18/03/2016 15:23	374017	998	5 pts	80	5
+Item de Backlog	903364	RETRABALHO MÚLTIPLAS APURAÇÕES - 280927:CDU - Selecionar DCTF e emissão de guia em lote	Não Designado	Novo	 DCTF-Web-370057-COD-1160-1.0.3-CONS-04		18/05/2016 10:24	374017	9999	2 pts	90	5
+Item de Backlog	931775	(N2)INTEGRAÇÃO RDOC - Importação de créditos (Deposito) - Finalizar	Não Designado	Novo	 DCTF-Web-370057-COD-1160-1.0.3-CONS-04		18/05/2016 10:20	374017	9700	0 pt	85	5
+Item de Backlog	931776	(N2)RETRABALHO MÚLTIPLAS APURAÇÕES - 280537:CDU - Receber Apuração de Débitos	Não Designado	Novo	 DCTF-Web-370057-COD-1160-1.0.3-CONS-04		18/05/2016 10:29	374017	9600	0 pt	90	5
+Item de Backlog	374402	Abatimento DARF e DAE - Testar	Não Designado	Novo	 DCTF-Web-370057-COD-1160-1.0.3-CONS-04		19/05/2016 11:52	374017	9999	8 pts	70	5
+Item de Backlog	374407	Exibir Relatórios (Vários)	Não Designado	Validado	 DCTF-Web-370057-COD-1160-1.0.3-CONS-04		08/07/2016 14:36	374017	3000	8 pts	70	5
+Item de Backlog	374444	(I) INTEGRAÇÃO CNPJ (histórico) aguardar a liberação da nova rotina Demanda Cocad 0051/2015	Não Designado	Novo	 DCTF-Web-370057-COD-1160-1.0.3-CONS-04		18/05/2016 10:09	374017	9800	13 pts	70	5
+Item de Backlog	690703	(I) INTEGRAÇÃO CÁLCULO ÚNICO - OTIMIZAÇÃO - PARTICIONAMENTO CHAMADA	Marcos Paulo dos Santos Silva de Souza	Novo	 DCTF-Web-370057-COD-1160-1.0.3-CONS-04		18/05/2016 10:05	374017	9990	0 pt	80	5
+Item de Backlog	374393	(i) Particionamento do Banco de dados (Definir forma se por categoria, período de apuração, UF)Modulo Integrador do sistema	Não Designado	Novo	 DCTF-Web-370057-COD-1160-1.0.3-CONS-04		09/05/2016 15:00	374017	9900	8 pts	85	5
+Item de Backlog	903248	(I) INTEGRAÇÃO SENDA - OTIMIZAÇÃO - Avaliar necessidade de particionamento na chamada Senda quando o volume de linhas na segunda camada da guia for muito grande.	Não Designado	Novo	 DCTF-Web-370057-COD-1160-1.0.3-CONS-04		18/05/2016 10:14	374017	9800	0 pt	90	5
+Item de Backlog	374411	Visualizar pendências- Testar	Não Designado	Validado	 DCTF-Web-370057-COD-1160-1.0.3-CONS-05		08/07/2016 14:37	374017	7000	5 pts	70	5
+Item de Backlog	958633	Finalizar os relatorios (débitos, créditos por documento, créditos)	Não Designado	Validado	 DCTF-Web-370057-COD-1160-1.0.3-CONS-05		08/07/2016 14:37	374017	100	8 pts	70	5
+Item de Backlog	881403	Efetuar testes da iteração e regressão	Não Designado	Pronto	DCTF-Web-370057-COD-1160-1.0.3-CONS-02		13/04/2016 14:39	374017	972	8 pts	70	5
+Item de Backlog	844243	Alterar componente de geração de PDF (Remover ABCpdf)	Não Designado	Pronto	DCTF-Web-370057-COD-1160-1.0.3-CONS-02		13/04/2016 14:39	374017	985	5 pts	70	5
+Item de Backlog	844271	[Completa] Débito Tecnico	Não Designado	Pronto	DCTF-Web-370057-COD-1160-1.0.3-CONS-02		13/04/2016 14:39	374017	979	8 pts	50	5
+Item de Backlog	844282	[Completa] Importar DARF, DJE	Não Designado	Pronto	DCTF-Web-370057-COD-1160-1.0.3-CONS-02		13/04/2016 14:39	374017	975	8 pts	80	5
+Item de Backlog	878617	Preparar o serviço para recebimento de múltiplas apurações para uma mesma categoria de declaração	Não Designado	Pronto	DCTF-Web-370057-COD-1160-1.0.3-CONS-02		13/04/2016 14:39	374017	974	8 pts	80	5
+Item de Backlog	881303	Criar camada para separar os tributos da guia conforme o código da primeira camada do DARF/contribuinte e acumular em um mesmo PDF	Não Designado	Pronto	DCTF-Web-370057-COD-1160-1.0.3-CONS-02		13/04/2016 14:39	374017	973	13 pts	80	5
+Item de Backlog	903361	RETRABALHO MÚLTIPLAS APURAÇÕES - 280537:CDU - Receber Apuração de Débitos	Não Designado	Pronto	DCTF-Web-370057-COD-1160-1.0.3-CONS-03		09/05/2016 15:20	374017	9999	13 pts	70	5
+Item de Backlog	905502	[I] Debito Tecnico	Não Designado	Pronto	DCTF-Web-370057-COD-1160-1.0.3-CONS-03		09/05/2016 15:26	374017	950	5 pts	50	5
+Item de Backlog	903366	RETRABALHO MÚLTIPLAS APURAÇÕES - 280999:CDU - Visualizar Conteúdo DCTF	Não Designado	Pronto	DCTF-Web-370057-COD-1160-1.0.3-CONS-03		09/05/2016 15:11	374017	9999	5 pts	60	5
+Item de Backlog	903367	RETRABALHO MÚLTIPLAS APURAÇÕES - 280952:CDU - Transmitir Arquivo	Não Designado	Pronto	DCTF-Web-370057-COD-1160-1.0.3-CONS-03		09/05/2016 15:12	374017	9999	8 pts	70	5
+Item de Backlog	374417	INTEGRAÇÃO RDOC - Importação de créditos (Deposito) - Finalizar	Não Designado	Pronto	DCTF-Web-370057-COD-1160-1.0.3-CONS-03		09/05/2016 15:26	374017	9999	5 pts	80	5
+Item de Backlog	992936	Confirmar Encerramento Folha	Não Designado	Novo	DCTF-Web-370057-COD-1160-1.0.4-CONS		08/07/2016 15:25	374017	50	3 pts	70	5
+Item de Backlog	992927	[REQ] Retirar integração com o CNO	Não Designado	Novo	DCTF-Web-370057-COD-1160-1.0.4-CONS		08/07/2016 15:22	374017	100	1 pt	60	5
+Item de Backlog	992928	Integração com o eCac	Não Designado	Novo	DCTF-Web-370057-COD-1160-1.0.4-CONS		08/07/2016 15:22	374017	90	8 pts	80	5
+Item de Backlog	992929	Disponibilizar DCTF transmitida - Contingência Lacunas	Não Designado	Pronto	DCTF-Web-370057-COD-1160-1.0.4-CONS		20/07/2016 10:58	374017	80	3 pts	75	5
+Item de Backlog	992933	Processar Contingência no Envio da Declaração	Não Designado	Novo	DCTF-Web-370057-COD-1160-1.0.4-CONS		08/07/2016 15:23	374017	70	3 pts	70	5
+Item de Backlog	992935	Integração com o COMPROT (se o processo existe e quem o declarante)	Não Designado	Novo	DCTF-Web-370057-COD-1160-1.0.4-CONS		08/07/2016 15:23	374017	60	3 pts	75	5
