@@ -158,6 +158,29 @@ namespace GEP_DE607.Persistencia
             return executarSelectApropriacaoTarefa(query);
         }
 
+        public Dictionary<DateTime, decimal> recuperarApropriacaoPorResponsavelPorDia(string responsavel, DateTime dtInicio, DateTime dtFinal)
+        {
+            string query = "SELECT aprop.data, SUM(aprop.hora) FROM Apropriacao aprop "
+                + " WHERE nome = '" + responsavel + "' and data >= '" + Convert.ToDateTime(dtInicio) + "' and data <= '" + Convert.ToDateTime(dtFinal) + "' "
+                + " GROUP BY aprop.data ORDER BY aprop.data;";
+
+            Dictionary<DateTime, decimal> resultado = new Dictionary<DateTime, decimal>();
+
+            SqlConnection conn = null;
+            SqlDataReader reader = select(conn, query);
+            if (reader != null)
+            {
+                while (reader.Read())
+                {
+                    DateTime data = reader.GetDateTime(0);
+                    decimal hora = reader.GetDecimal(1);
+                    resultado.Add(data, hora);
+                }
+            }
+            desconectar(conn);
+            return resultado;
+        }
+
         private List<SqlParameter> criarListaParametros(Apropriacao f)
         {
             List<SqlParameter> parametros = new List<SqlParameter>();

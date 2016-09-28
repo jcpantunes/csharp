@@ -238,6 +238,43 @@ namespace GEP_DE607
             }
         }
 
+        public void preencherComboAno(ComboBox cmb)
+        {
+            cmb.Items.Clear();
+
+            int[] listaAno = { 2015, 2016, 2017, 2018 };
+
+            int i = 0;
+            foreach (int ano in listaAno)
+            {
+                cmb.Items.Add(preencherComboItem(ano, Convert.ToString(ano)));
+                if (ano == DateTime.Now.Year)
+                {
+                    cmb.SelectedIndex = i;
+                }
+                i++;
+            }
+            
+        }
+
+        public void preencherComboMes(ComboBox cmb)
+        {
+            cmb.Items.Clear();
+
+            int[] listaMes = { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12 };
+
+            int i = 0;
+            foreach (int mes in listaMes)
+            {
+                cmb.Items.Add(preencherComboItem(mes, Convert.ToString(mes)));
+                if (mes == DateTime.Now.Month)
+                {
+                    cmb.SelectedIndex = i;
+                }
+                i++;
+            }
+        }
+
         public Projeto recuperarProjetoInCache(List<Projeto> listaProjeto, int idProjeto, int codProjeto, string nomeProjeto)
         {
             foreach (Projeto p in listaProjeto)
@@ -295,5 +332,6 @@ namespace GEP_DE607
                 grid.DataContext = tabela;
             }
         }
+
     }
 }

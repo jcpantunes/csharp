@@ -67,5 +67,10 @@ namespace GEP_DE607.Negocio
         {
             return apropDAO.recuperarApropriacaoPorResponsavel(responsavel, dtInicio, dtFinal);
         }
+
+        public Dictionary<DateTime, decimal> recuperarApropriacaoPorResponsavelPorDia(string responsavel, DateTime dtInicio, DateTime dtFinal)
+        {
+            return apropDAO.recuperarApropriacaoPorResponsavelPorDia(responsavel, dtInicio, dtFinal);
+        }
     }
 }

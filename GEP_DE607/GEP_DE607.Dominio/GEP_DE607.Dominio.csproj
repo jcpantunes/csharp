@@ -46,6 +46,7 @@
     <Compile Include="ItemBacklog.cs" />
     <Compile Include="ItemTrabalho.cs" />
     <Compile Include="Modelo\ApropriacaoTarefa.cs" />
+    <Compile Include="Modelo\CodigoPonto.cs" />
     <Compile Include="Projeto.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Siscop.cs" />

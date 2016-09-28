@@ -1,12 +1,20 @@
 ﻿USE [DBD_GEP]
 
--- TRUNCATE TABLE [dbo].[Projeto];
--- TRUNCATE TABLE [dbo].[Sprint];
--- TRUNCATE TABLE [dbo].[Tarefa];
--- TRUNCATE TABLE [dbo].[Defeito];
--- TRUNCATE TABLE [dbo].[Relato];
--- DELETE FROM [dbo].[Funcionario];
--- TRUNCATE TABLE ItemBacklog;
+ TRUNCATE TABLE [dbo].[Apropriacao];
+ TRUNCATE TABLE [dbo].[Defeito];
+ TRUNCATE TABLE ItemBacklog;
+ TRUNCATE TABLE [dbo].[Projeto];
+ TRUNCATE TABLE [dbo].[Relato];
+ TRUNCATE TABLE [dbo].[Siscop];
+ TRUNCATE TABLE [dbo].[Solicitacao];
+ TRUNCATE TABLE [dbo].[Sprint];
+ TRUNCATE TABLE [dbo].[Tarefa];
+ DELETE FROM [dbo].[Funcionario];
+
+ SET DATEFORMAT ymd;
+ 
+-- update Siscop set batida = '11:4721|11:47|13:03|17:0117| | | | |' where codigo = 1002;
+-- SELECT * FROM [dbo].[Siscop];
 
 -- SELECT * FROM [dbo].[Projeto];
 -- SELECT * FROM [dbo].[Sprint];
