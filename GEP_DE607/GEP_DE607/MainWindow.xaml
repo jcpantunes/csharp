@@ -1,22 +1,26 @@
 ﻿<Window x:Class="GEP_DE607.MainWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        Title="MainWindow" Height="350" Width="525">
+        Title="MainWindow" Height="300" Width="844">
     <Grid>
         <DockPanel HorizontalAlignment="Left" Height="Auto" Width="Auto" LastChildFill="False" 
                    Margin="0,10,0,0" VerticalAlignment="Top" />
 
-        <Menu x:Name="mnu" Margin="10,10,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" Height="60" Width="500">
+        <Menu x:Name="mnu" Margin="10,10,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" Height="60" Width="755">
 
-            <Button x:Name="btnCarga" Margin="10,5,0,0" Content="Carga" HorizontalAlignment="Left" Click="btnCarga_Click" Width="60" Height="40" />
+            <Button x:Name="btnCarga" Margin="10,5,0,0" Content="Carga" HorizontalAlignment="Left" Click="btnCarga_Click" Width="80" Height="40" />
             
-            <Button x:Name="btnProjeto" Margin="10,5,0,0" Content="Projeto" HorizontalAlignment="Left" Click="btnProjeto_Click" Width="60" Height="40" />
+            <Button x:Name="btnProjeto" Margin="10,5,0,0" Content="Projeto" HorizontalAlignment="Left" Click="btnProjeto_Click" Width="80" Height="40" />
 
-            <Button x:Name="btnSolicitacao" Margin="10,5,0,0" Content="Solicitacao" HorizontalAlignment="Left" Click="btnSolicitacao_Click" Width="60" Height="40" />
+            <Button x:Name="btnSolicitacao" Margin="10,5,0,0" Content="Solicitacao" HorizontalAlignment="Left" Click="btnSolicitacao_Click" Width="80" Height="40" />
 
-            <Button x:Name="btnIndicadores" Margin="10,5,0,0" Content="Indicadores" HorizontalAlignment="Left" Click="btnIndicadores_Click" Width="60" Height="40" />
+            <Button x:Name="btnIndicadores" Margin="10,5,0,0" Content="Indicadores" HorizontalAlignment="Left" Click="btnIndicadores_Click" Width="80" Height="40" />
 
-            <Button x:Name="btnDados" Margin="10,5,0,0" Content="Dados" HorizontalAlignment="Left" Click="btnDados_Click" Width="60" Height="40" />
+            <Button x:Name="btnDados" Margin="10,5,0,0" Content="Dados" HorizontalAlignment="Left" Click="btnDados_Click" Width="80" Height="40" />
+
+            <Button x:Name="btnApropriacao" Margin="10,5,0,0" Content="Apropriação" HorizontalAlignment="Left" Click="btnApropriacao_Click" Width="80" Height="40" />
+            
+            <Button x:Name="btnSiscop" Content="Siscop" HorizontalAlignment="Left" Click="btnSiscop_Click" Width="80" Height="40" />
 
         </Menu>
 

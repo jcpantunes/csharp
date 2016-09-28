@@ -21,12 +21,12 @@ GO
 -- (int codigo, string nome, DateTime data, decimal hora, int tarefa, string macroatividade, string mnemonico, int projeto)
 CREATE TABLE [dbo].[Apropriacao](
 	[codigo] [int] IDENTITY(1,1) NOT NULL,
-	[nome] [varchar](40) NOT NULL,
+	[nome] [varchar](60) NOT NULL,
 	[data] [datetime] NOT NULL,
 	[hora] [decimal](10, 1) NOT NULL,
 	[tarefa] [int] NOT NULL,
-	[macroatividade] [varchar](40) NULL,
-	[mnemonico] [varchar](40) NULL,
+	[macroatividade] [varchar](60) NULL,
+	[mnemonico] [varchar](60) NULL,
 	[projeto] [int] NULL,
 	
 PRIMARY KEY CLUSTERED 

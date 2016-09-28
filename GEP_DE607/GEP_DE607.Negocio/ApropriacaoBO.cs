@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using GEP_DE607.Dominio;
+using GEP_DE607.Dominio.Modelo;
 using GEP_DE607.Persistencia;
 
 namespace GEP_DE607.Negocio
@@ -60,6 +61,11 @@ namespace GEP_DE607.Negocio
 
                 apropDAO.atualizar(listaApropriacaoAtualizacao);
             }
+        }
+
+        public List<ApropriacaoTarefa> recuperarApropriacaoPorResponsavel(string responsavel, DateTime dtInicio, DateTime dtFinal)
+        {
+            return apropDAO.recuperarApropriacaoPorResponsavel(responsavel, dtInicio, dtFinal);
         }
     }
 }

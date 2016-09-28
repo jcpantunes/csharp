@@ -132,6 +132,12 @@ namespace GEP_DE607
                     ProjetoBO itemBO = new ProjetoBO();
                     itemBO.incluirLista(listaProjeto);
                 }
+                else if (item.Content.Equals(Constantes.SISCOP))
+                {
+                    List<Siscop> listaSiscop = recuperarListaSiscop(linhas);
+                    SiscopBO itemBO = new SiscopBO();
+                    itemBO.incluirLista(listaSiscop);
+                }
             }
             else
             {
@@ -176,6 +182,11 @@ namespace GEP_DE607
             else if (tipoCarga.Equals(Constantes.PROJETO))
             {
                 string[] campos = { "Tipo", "SS", "Id", "Mnemonico", "Sistema", "Linguagem", "Processo", "Tipo Projeto", "Situacao", "Conclusividade", "PF Prev", "PF Real", "Apropriacao", "DT inicio", "DT Entrega", "DT termino" };
+                return Util.Util.validarArquivo(linha, campos);
+            }
+            else if (tipoCarga.Equals(Constantes.SISCOP))
+            {
+                string[] campos = { "Nome", "Dia", "Entrada 1", "Saida 1", "Entrada 2", "Saida 2", "Extra 1", "Extra 2", "Extra 3", "Extra 4" };
                 return Util.Util.validarArquivo(linha, campos);
             }
             return false;
@@ -365,6 +376,28 @@ namespace GEP_DE607
                 listaProjeto.Add(projeto);
             }
             return listaProjeto;
+        }
+
+        private List<Siscop> recuperarListaSiscop(string[] linhas)
+        {
+            FuncionarioDAO fDAO = new FuncionarioDAO();
+            List<Funcionario> listaCacheFuncionario = fDAO.recuperar();
+
+            List<Siscop> listaTarefa = new List<Siscop>();
+            for (int i = 1; i < linhas.Length; i++)
+            {
+                string[] linha = linhas[i].Replace("\"", "").Split('\t');
+
+                Siscop siscop = new Siscop();
+                siscop.Responsavel = identificarFuncionario(linha[0], listaCacheFuncionario);
+                siscop.Data = Convert.ToDateTime(linha[1]);
+                for (int j = 2; j <= 9; j++)
+                {
+                    siscop.Batida += linha[j] + "|";
+                }
+                listaTarefa.Add(siscop);
+            }
+            return listaTarefa;
         }
 
     }

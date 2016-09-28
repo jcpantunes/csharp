@@ -45,12 +45,15 @@
     <Compile Include="Funcionario.cs" />
     <Compile Include="ItemBacklog.cs" />
     <Compile Include="ItemTrabalho.cs" />
+    <Compile Include="Modelo\ApropriacaoTarefa.cs" />
     <Compile Include="Projeto.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Siscop.cs" />
     <Compile Include="Solicitacao.cs" />
     <Compile Include="Sprint.cs" />
     <Compile Include="Tarefa.cs" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

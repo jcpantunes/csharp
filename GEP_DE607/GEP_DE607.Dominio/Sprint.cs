@@ -9,9 +9,9 @@ namespace GEP_DE607.Dominio
     public class Sprint : BaseBean
     {
         public const string NOME = "nome";
+        public const string PROJETO = "projeto";
         public const string DTINICIO = "dtInicio";
         public const string DTFINAL = "dtFinal";
-        public const string PROJETO = "projeto";
 
         public Sprint()
         {
@@ -28,11 +28,11 @@ namespace GEP_DE607.Dominio
 
         public string Nome;
 
-        public DateTime DtInicio;
-
-        public DateTime DtFinal;
-
         public int Projeto;
+
+        public DateTime DtInicio { get; set; }
+
+        public DateTime DtFinal { get; set; }
 
         public List<Sprint> encapsularLista()
         {

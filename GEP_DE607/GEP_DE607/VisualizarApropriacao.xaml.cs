@@ -21,14 +21,13 @@ using GEP_DE607.Persistencia;
 namespace GEP_DE607
 {
     /// <summary>
-    /// Interaction logic for VisualizarDados.xaml
+    /// Interaction logic for VisualizarApropriacao.xaml
     /// </summary>
-    public partial class VisualizarDados : Window
+    public partial class VisualizarApropriacao : Window
     {
-
         BaseWindow baseWindow = null;
 
-        public VisualizarDados()
+        public VisualizarApropriacao()
         {
             InitializeComponent();
 
@@ -42,8 +41,6 @@ namespace GEP_DE607
             baseWindow.preencherComboSistema(cmbSistema);
 
             baseWindow.preencherListBoxProjeto(lstProjeto, "");
-
-            baseWindow.preencherListBoxSprint(lstSprint, 0);
 
             baseWindow.preencherComboLotacao(cmbLotacao, lstFuncionario, 6);
         }
@@ -65,7 +62,6 @@ namespace GEP_DE607
                     int idProjeto = Convert.ToInt32(item.Tag);
                     listaProjeto.Add(idProjeto);
                 }
-                baseWindow.preencherListBoxSprint(lstSprint, listaProjeto);
             }
         }
 
@@ -79,13 +75,6 @@ namespace GEP_DE607
 
         private void btnAtualizar_Click(object sender, RoutedEventArgs e)
         {
-            //expNumTarefasPorSprint.IsExpanded = false;
-            //expNumItensPorSprint.IsExpanded = false;
-            //expComplexidadeItensPorSprint.IsExpanded = false;
-            //expNumDefeitosPorItemBacklog.IsExpanded = false;
-            //expNumDefeitosCorrigidosPorSprint.IsExpanded = false;
-            //expNumTarefasEstimativaMaiorTempoGasto.IsExpanded = false;
-            //expNumRelatosPorSprint.IsExpanded = false;
         }
 
         private void lstFuncionario_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -102,7 +91,7 @@ namespace GEP_DE607
 
         private bool validarExibicaoTabela()
         {
-            if (lstProjeto.SelectedIndex >= 0 && lstSprint.SelectedItems.Count > 0 && cmbLotacao.SelectedIndex >= 0 &&
+            if (cmbLotacao.SelectedIndex >= 0 &&
                 lstFuncionario.Items.Count > 0 && (chkTodosFuncionario.IsChecked == true || lstFuncionario.SelectedItems.Count > 0))
             {
                 return true;
@@ -139,76 +128,33 @@ namespace GEP_DE607
                         listaFuncionario.Add(fDAO.recuperar(codigo));
                     }
                 }
-                List<string> listaSprint = new List<string>();
-                foreach (ListBoxItem item in lstSprint.SelectedItems)
-                {
-                    listaSprint.Add(Convert.ToString(item.Content));
-                }
+                
                 DataTable tabela = new DataTable();
-
-                if (opcao == OpcaoIndicadorDados.ITEM_BACKLOG_TRABALHADO)
+                if (opcao == OpcaoIndicadorApropriacao.APROPRIACAO)
                 {
-                    List<ItemBacklog> listaItemBacklog = new List<ItemBacklog>();
+                    List<ApropriacaoTarefa> listaApropriacao = new List<ApropriacaoTarefa>();
                     foreach (Funcionario func in listaFuncionario)
                     {
-                        ItemBacklogDAO ibDAO = new ItemBacklogDAO();
-                        listaItemBacklog.AddRange(ibDAO.recuperarItensBacklogPorSprintPorResponsavel(listaSprint, func.Codigo));
+                        ApropriacaoBO tDAO = new ApropriacaoBO();
+                        listaApropriacao.AddRange(tDAO.recuperarApropriacaoPorResponsavel(func.Nome, dtInicio, dtFim));
                     }
 
-                    object[] listaColunas = { "Tipo", "ID", "Título", "Status", "Planejado Para", "Pai", "Data de Modificação", "ID do Projeto", "Valor definido para o Negócio", "Tamanho Estimado", "Complexidade", "PF" };
+                    object[] listaColunas = { "Nome", "Data", "Horas", "Tarefa", "Titulo", "Macroatividade", "Mnemonico" };
                     foreach (string str in listaColunas)
                     {
                         tabela.Columns.Add(Convert.ToString(str));
                     }
 
-                    foreach (ItemBacklog item in listaItemBacklog)
+                    foreach (ApropriacaoTarefa item in listaApropriacao)
                     {
                         object[] linha = new object[listaColunas.Count()];
-                        linha[0] = item.Tipo;
-                        linha[1] = item.Id;
-                        linha[2] = item.Titulo;
-                        linha[3] = item.Status;
-                        linha[4] = item.PlanejadoPara;
-                        linha[5] = item.Pai;
-                        linha[6] = item.DataModificacao;
-                        linha[7] = item.Projeto;
-                        linha[8] = item.ValorNegocio;
-                        linha[9] = item.Tamanho;
-                        linha[10] = item.Complexidade;
-                        linha[11] = item.Pf;
-                        tabela.Rows.Add(linha);
-                    }
-                }
-                else if (opcao == OpcaoIndicadorDados.TAREFA_TRABALHADO)
-                {
-                    List<Tarefa> listaTarefa = new List<Tarefa>();
-                    foreach (Funcionario func in listaFuncionario)
-                    {
-                        TarefaBO tDAO = new TarefaBO();
-                        listaTarefa.AddRange(tDAO.recuperarTarefasPorSprintPorResponsavel(listaSprint, func.Codigo));
-                    }
-
-                    object[] listaColunas = { "ID", "Título", "Responsavel", "Status", "Planejado Para", "Pai", "Data", "Projeto", "Classificação", "Estimativa", "Tempo Gasto" };
-                    foreach (string str in listaColunas)
-                    {
-                        tabela.Columns.Add(Convert.ToString(str));
-                    }
-
-                    foreach (Tarefa item in listaTarefa)
-                    {
-                        object[] linha = new object[listaColunas.Count()];
-                        // linha[0] = item.Tipo;
-                        linha[0] = item.Id;
-                        linha[1] = item.Titulo;
-                        linha[2] = item.Responsavel.Nome;
-                        linha[3] = item.Status;
-                        linha[4] = item.PlanejadoPara;
-                        linha[5] = item.Pai;
-                        linha[6] = item.DataModificacao;
-                        linha[7] = item.Projeto;
-                        linha[8] = item.Classificacao;
-                        linha[9] = item.Estimativa;
-                        linha[10] = item.TempoGasto;
+                        linha[0] = item.Nome;
+                        linha[1] = item.Data;
+                        linha[2] = item.Hora;
+                        linha[3] = item.Tarefa;
+                        linha[4] = item.Titulo;
+                        linha[5] = item.Macroatividade;
+                        linha[6] = item.Mnemonico;
                         tabela.Rows.Add(linha);
                     }
                 }
@@ -216,22 +162,17 @@ namespace GEP_DE607
             }
         }
 
-        private void itensBacklogTrabalhado_Expanded(object sender, RoutedEventArgs e)
+        private void apropriacaoRealizado_Expanded(object sender, RoutedEventArgs e)
         {
-            executarAcao(tbltemBacklogTrabalhado, OpcaoIndicadorDados.ITEM_BACKLOG_TRABALHADO, true);
+            executarAcao(tblApropriacaoRealizada, OpcaoIndicadorApropriacao.APROPRIACAO, true);
         }
-
-        private void tarefasTrabalhado_Expanded(object sender, RoutedEventArgs e)
-        {
-            executarAcao(tblTarefaTrabalhado, OpcaoIndicadorDados.TAREFA_TRABALHADO, true);
-        }
-
     }
 
-    class OpcaoIndicadorDados
+    class OpcaoIndicadorApropriacao
     {
-        public const int ITEM_BACKLOG_TRABALHADO = 0;
 
-        public const int TAREFA_TRABALHADO = 1;
+        public const int APROPRIACAO = 2;
+
     }
+
 }

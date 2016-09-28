@@ -11,6 +11,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using System.Data;
 using GEP_DE607.Dominio;
 using GEP_DE607.Negocio;
 using GEP_DE607.Persistencia;
@@ -275,6 +276,24 @@ namespace GEP_DE607
             }
             listaFuncionario.Add(f);
             return f;
+        }
+
+        public void preencherGrid(DataGrid grid, DataTable tabela, int width)
+        {
+            if (tabela != null)
+            {
+                grid.Columns.Clear();
+                foreach (DataColumn col in tabela.Columns)
+                {
+                    grid.Columns.Add(new DataGridTextColumn
+                    {
+                        Header = col.ColumnName,
+                        Width = width,
+                        Binding = new Binding(string.Format("[{0:0.##}]", col.ColumnName))
+                    });
+                }
+                grid.DataContext = tabela;
+            }
         }
     }
 }

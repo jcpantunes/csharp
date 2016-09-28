@@ -27,3 +27,8 @@
 
 
 SELECT * FROM Projeto WHERE sistema = 'eSocial';
+
+SELECT aprop.codigo, aprop.nome, aprop.data, aprop.hora, aprop.tarefa, tar.titulo, aprop.macroatividade, aprop.mnemonico, aprop.projeto
+	FROM Apropriacao aprop inner join Tarefa tar on aprop.tarefa = tar.id
+	where aprop.nome = 'Filipe Montenegro Campos de Albuquerque' 
+	and convert(date, aprop.data) >= convert(date, '2016-08-01');

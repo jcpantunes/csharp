@@ -49,28 +49,28 @@ namespace GEP_DE607.Util
             return lista;
         }
 
-        public static bool validarArquivoTarefa(string linha)
-        {
-            linha = linha.Replace("\"", "");
-            string[] colunas = linha.Split('\t');
-            if (colunas[0].Equals("Tipo") &&
-                    colunas[1].Equals("ID") &&
-                    colunas[2].Equals("Título") &&
-                    colunas[3].Equals("Responsável") &&
-                    colunas[4].Equals("Status") &&
-                    colunas[5].Equals("Planejado Para") &&
-                    colunas[6].Equals("Estimativa") &&
-                    colunas[7].Equals("Estimativa Corrigida") &&
-                    colunas[8].Equals("Tempo Gasto") &&
-                    colunas[9].Equals("Pai"))
-            {
-                return true;
-            }
-            else
-            {
-                return false;
-            }
-        }
+        //public static bool validarArquivoTarefa(string linha)
+        //{
+        //    linha = linha.Replace("\"", "");
+        //    string[] colunas = linha.Split('\t');
+        //    if (colunas[0].Equals("Tipo") &&
+        //            colunas[1].Equals("ID") &&
+        //            colunas[2].Equals("Título") &&
+        //            colunas[3].Equals("Responsável") &&
+        //            colunas[4].Equals("Status") &&
+        //            colunas[5].Equals("Planejado Para") &&
+        //            colunas[6].Equals("Estimativa") &&
+        //            colunas[7].Equals("Estimativa Corrigida") &&
+        //            colunas[8].Equals("Tempo Gasto") &&
+        //            colunas[9].Equals("Pai"))
+        //    {
+        //        return true;
+        //    }
+        //    else
+        //    {
+        //        return false;
+        //    }
+        //}
 
         public static bool validarArquivo(string linha, string[] campos)
         {
@@ -87,51 +87,51 @@ namespace GEP_DE607.Util
             return true;
         }
 
-        public static bool validarArquivoItemBacklog(string linha)
-        {
-            linha = linha.Replace("\"", "");
-            string[] colunas = linha.Split('\t');
-            if (colunas[0].Equals("Tipo") &&
-                    colunas[1].Equals("ID") &&
-                    colunas[2].Equals("Título") &&
-                    colunas[3].Equals("Status") &&
-                    colunas[4].Equals("Planejado Para") &&
-                    colunas[5].Equals("Valor definido para o Negócio") &&
-                    colunas[6].Equals("Tamanho Estimado"))
-            {
-                return true;
-            }
-            else
-            {
-                return false;
-            }
-        }
+        //public static bool validarArquivoItemBacklog(string linha)
+        //{
+        //    linha = linha.Replace("\"", "");
+        //    string[] colunas = linha.Split('\t');
+        //    if (colunas[0].Equals("Tipo") &&
+        //            colunas[1].Equals("ID") &&
+        //            colunas[2].Equals("Título") &&
+        //            colunas[3].Equals("Status") &&
+        //            colunas[4].Equals("Planejado Para") &&
+        //            colunas[5].Equals("Valor definido para o Negócio") &&
+        //            colunas[6].Equals("Tamanho Estimado"))
+        //    {
+        //        return true;
+        //    }
+        //    else
+        //    {
+        //        return false;
+        //    }
+        //}
 
-        public static bool validarArquivoDefeito(string linha)
-        {
-            // Tipo	ID	Título	Responsável	Status	
-            // Planejado Para	Encontrado no Projeto	
-            // Tipo do Relato	Resolução	Pai	ID do Projeto
+        //public static bool validarArquivoDefeito(string linha)
+        //{
+        //    // Tipo	ID	Título	Responsável	Status	
+        //    // Planejado Para	Encontrado no Projeto	
+        //    // Tipo do Relato	Resolução	Pai	ID do Projeto
 
 
-            linha = linha.Replace("\"", "");
-            string[] colunas = linha.Split('\t');
-            if (colunas[0].Equals("Tipo") &&
-                    colunas[1].Equals("ID") &&
-                    colunas[2].Equals("Título") &&
-                    colunas[3].Equals("Responsável") &&
-                    colunas[4].Equals("Status") &&
-                    colunas[5].Equals("Planejado Para") &&
-                    colunas[6].Equals("Encontrado no Projeto") &&
-                    colunas[7].Equals("Tipo do Relato") &&
-                    colunas[8].Equals("Resolução"))
-            {
-                return true;
-            }
-            else
-            {
-                return false;
-            }
-        }
+        //    linha = linha.Replace("\"", "");
+        //    string[] colunas = linha.Split('\t');
+        //    if (colunas[0].Equals("Tipo") &&
+        //            colunas[1].Equals("ID") &&
+        //            colunas[2].Equals("Título") &&
+        //            colunas[3].Equals("Responsável") &&
+        //            colunas[4].Equals("Status") &&
+        //            colunas[5].Equals("Planejado Para") &&
+        //            colunas[6].Equals("Encontrado no Projeto") &&
+        //            colunas[7].Equals("Tipo do Relato") &&
+        //            colunas[8].Equals("Resolução"))
+        //    {
+        //        return true;
+        //    }
+        //    else
+        //    {
+        //        return false;
+        //    }
+        //}
     }
 }

@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using System.Data;
 using System.Data.SqlClient;
 using GEP_DE607.Dominio;
+using GEP_DE607.Dominio.Modelo;
 
 namespace GEP_DE607.Persistencia
 {
@@ -60,6 +61,14 @@ namespace GEP_DE607.Persistencia
                     {
                         query += Apropriacao.MNEMONICO + " = '" + parametros[key] + "' and ";
                     }
+                    else if (key.Equals(Apropriacao.FILTRO_DTINICIO))
+                    {
+                        query += Apropriacao.DATA + " >= '" + Convert.ToDateTime(parametros[key]) + "' and ";
+                    }
+                    else if (key.Equals(Apropriacao.FILTRO_DTINICIO))
+                    {
+                        query += Apropriacao.DATA + " <= '" + Convert.ToDateTime(parametros[key]) + "' and ";
+                    }
                 }
                 query = query.Substring(0, (query.Length - 4));
             }
@@ -77,6 +86,24 @@ namespace GEP_DE607.Persistencia
                 {
                     Apropriacao f = new Apropriacao(reader.GetInt32(0), reader.GetString(1), reader.GetDateTime(2), 
                         reader.GetDecimal(3), reader.GetInt32(4), reader.GetString(5), reader.GetString(6), reader.GetInt32(7));
+                    lista.Add(f);
+                }
+            }
+            desconectar(conn);
+            return lista;
+        }
+
+        private List<ApropriacaoTarefa> executarSelectApropriacaoTarefa(string query)
+        {
+            List<ApropriacaoTarefa> lista = new List<ApropriacaoTarefa>();
+            SqlConnection conn = null;
+            SqlDataReader reader = select(conn, query);
+            if (reader != null)
+            {
+                while (reader.Read())
+                {
+                    ApropriacaoTarefa f = new ApropriacaoTarefa(reader.GetInt32(0), reader.GetString(1), reader.GetDateTime(2),
+                        reader.GetDecimal(3), reader.GetInt32(4), reader.GetString(5), reader.GetString(6), reader.GetInt32(7), reader.GetString(8));
                     lista.Add(f);
                 }
             }
@@ -120,6 +147,15 @@ namespace GEP_DE607.Persistencia
                 save(conn, query, criarListaParametros(f));
             }
             desconectar(conn);
+        }
+
+        public List<ApropriacaoTarefa> recuperarApropriacaoPorResponsavel(string responsavel, DateTime dtInicio, DateTime dtFinal)
+        {
+            string query = "SELECT aprop.codigo, aprop.nome, aprop.data, aprop.hora, aprop.tarefa, aprop.macroatividade, aprop.mnemonico, aprop.projeto, tar.titulo"
+                + " FROM " + Tabela + " aprop inner join Tarefa tar on aprop.tarefa = tar.id "
+                + " WHERE nome = '" + responsavel + "' and data >= '" + Convert.ToDateTime(dtInicio) + "'"
+                + " and data <= '" + Convert.ToDateTime(dtFinal) + "' order by aprop.data;";
+            return executarSelectApropriacaoTarefa(query);
         }
 
         private List<SqlParameter> criarListaParametros(Apropriacao f)

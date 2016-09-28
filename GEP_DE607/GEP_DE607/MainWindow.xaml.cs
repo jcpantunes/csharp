@@ -54,5 +54,17 @@ namespace GEP_DE607
             VisualizarDados tela = new VisualizarDados();
             tela.Show();
         }
+
+        private void btnApropriacao_Click(object sender, RoutedEventArgs e)
+        {
+            VisualizarApropriacao tela = new VisualizarApropriacao();
+            tela.Show();
+        }
+
+        private void btnSiscop_Click(object sender, RoutedEventArgs e)
+        {
+            VisualizarSiscop tela = new VisualizarSiscop();
+            tela.Show();
+        }
     }
 }

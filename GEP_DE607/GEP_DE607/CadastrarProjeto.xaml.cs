@@ -48,7 +48,7 @@ namespace GEP_DE607
             this.txtPFPrev.Text = "";
             this.txtPFReal.Text = "";
             this.txtApropriacao.Text = "";
-            this.txtDtInicio. Text = DateTime.Now.ToShortDateString();
+            this.txtDtInicio.Text = DateTime.Now.ToShortDateString();
             this.txtDtEntrega.Text = DateTime.Now.ToShortDateString();
             this.txtDtFinal.Text = DateTime.Now.ToShortDateString();
         }

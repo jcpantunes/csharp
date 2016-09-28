@@ -171,6 +171,19 @@ namespace GEP_DE607.Persistencia
             return parametros;
         }
 
+        public List<Tarefa> recuperarTarefasPorSprintPorResponsavel(List<string> listaPlanejadoPara, int responsavel)
+        {
+            string planejadoPara = "";
+            foreach (string str in listaPlanejadoPara)
+            {
+                planejadoPara = planejadoPara + ", '" + str + "'";
+            }
+            planejadoPara = planejadoPara.Length > 0 ? planejadoPara.Substring(1, planejadoPara.Length - 1) : planejadoPara;
+            string query = "SELECT * FROM " + Tabela
+                + " WHERE responsavel = " + responsavel + " and planejadoPara in (" + planejadoPara + ")";
+            return executarSelect(query);
+        }
+
         public int recuperarQtdeTarefasPorSprintTempoGastoMaiorEstimativa(string planejadoPara, int responsavel)
         {
             string query = "SELECT Count(id) FROM " + Tabela

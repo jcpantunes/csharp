@@ -16,6 +16,7 @@ namespace GEP_DE607.Util
         public const string ITEM_BACKLOG = "Item Backlog";
         public const string SPRINT = "Sprint";
         public const string PROJETO = "Projeto";
+        public const string SISCOP = "Siscop";
 
         public static List<string> recuperarDominioTipoCarga()
         { 
@@ -28,6 +29,7 @@ namespace GEP_DE607.Util
             listaTipoCarga.Add(ITEM_BACKLOG);
             listaTipoCarga.Add(SPRINT);
             listaTipoCarga.Add(PROJETO);
+            listaTipoCarga.Add(SISCOP);
             return listaTipoCarga;
         }
 

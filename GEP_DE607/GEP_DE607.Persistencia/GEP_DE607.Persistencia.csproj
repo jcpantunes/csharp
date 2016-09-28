@@ -46,6 +46,7 @@
     <Compile Include="ItemBacklogDAO.cs" />
     <Compile Include="ProjetoDAO.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SiscopDAO.cs" />
     <Compile Include="SolicitacaoDAO.cs" />
     <Compile Include="SprintDAO.cs" />
     <Compile Include="TarefaDAO.cs" />
@@ -62,6 +63,7 @@
     <Content Include="sql\ItemBacklog.sql" />
     <Content Include="sql\projeto.sql" />
     <Content Include="sql\query.sql" />
+    <Content Include="sql\siscop.sql" />
     <Content Include="sql\sprint.sql" />
     <Content Include="sql\solicitacao.sql" />
     <Content Include="sql\bug.sql" />

@@ -86,11 +86,17 @@
     <Compile Include="Util\Constantes.cs" />
     <Compile Include="Util\DataHoraUtil.cs" />
     <Compile Include="Util\Util.cs" />
+    <Compile Include="VisualizarApropriacao.xaml.cs">
+      <DependentUpon>VisualizarApropriacao.xaml</DependentUpon>
+    </Compile>
     <Compile Include="VisualizarDados.xaml.cs">
       <DependentUpon>VisualizarDados.xaml</DependentUpon>
     </Compile>
     <Compile Include="VisualizarIndicador.xaml.cs">
       <DependentUpon>VisualizarIndicador.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="VisualizarSiscop.xaml.cs">
+      <DependentUpon>VisualizarSiscop.xaml</DependentUpon>
     </Compile>
     <Page Include="CadastrarProjeto.xaml">
       <SubType>Designer</SubType>
@@ -120,11 +126,19 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="VisualizarApropriacao.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="VisualizarDados.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="VisualizarIndicador.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="VisualizarSiscop.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -152,6 +166,8 @@
     <None Include="Csv\defeito.csv" />
     <None Include="Csv\itembacklog.csv" />
     <None Include="Csv\projeto.csv" />
+    <None Include="Csv\siscop.csv" />
+    <None Include="Csv\siscopPadrao.csv" />
     <None Include="Csv\sprint.csv" />
     <None Include="Csv\tarefa.csv" />
     <None Include="Properties\Settings.settings">
