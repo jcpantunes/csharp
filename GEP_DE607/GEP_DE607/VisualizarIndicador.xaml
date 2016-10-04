@@ -68,20 +68,44 @@
                             <RowDefinition Height="Auto" />
                             <RowDefinition Height="Auto" />
                             <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
                         </Grid.RowDefinitions>
 
-                        <Expander x:Name="expNumItensPorSprint" Header="Numero de Itens Backlog Por Sprint" HorizontalAlignment="Left" VerticalAlignment="Top"
-                                ExpandDirection="Down" Expanded="numItensPorSprint_Expanded" Grid.Row="0" BorderBrush="Black" BorderThickness="1" Width="870" >
+                        <Expander x:Name="expSprintsComTarefa" Header="Sprints com Tarefa" HorizontalAlignment="Left" VerticalAlignment="Top"
+                                ExpandDirection="Down" Expanded="sprintsComTarefa_Expanded" Grid.Row="1" BorderBrush="Black" BorderThickness="1" Width="870" >
                             <Grid>
-                                <Label x:Name="lblMediaNumItens0" Content="Media: " />
-                                <Label x:Name="lblMediaNumItens" Content="0" Margin="50,0,0,0" />
-                                <DataGrid x:Name="tblNumItemTrabalhado" Margin="0,30,0,0" ItemsSource="{Binding}"
+                                <DataGrid x:Name="tblSprintsComTarefa" Margin="0,30,0,0" ItemsSource="{Binding}"
     					        AutoGenerateColumns="False" IsReadOnly="True" CanUserSortColumns="False" CanUserReorderColumns="False" />
                             </Grid>
                         </Expander>
 
+                        <Expander x:Name="expNumItensPorSprint" Header="Numero de Itens Backlog Por Sprint" HorizontalAlignment="Left" VerticalAlignment="Top"
+                                ExpandDirection="Down" Expanded="numItensPorSprint_Expanded" Grid.Row="3" BorderBrush="Black" BorderThickness="1" Width="870" >
+                            <Grid>
+                                <Label x:Name="lblMediaNumItens0" Content="Media: " />
+                                <Label x:Name="lblMediaNumItens" Content="0" Margin="50,0,0,0" />
+                                <DataGrid x:Name="tblNumItemTrabalhado" Margin="0,30,0,0" ItemsSource="{Binding}"
+    					        AutoGenerateColumns="False" IsReadOnly="True" CanUserSortColumns="False" CanUserReorderColumns="False" SelectionChanged="tblNumItemTrabalhado_SelectionChanged" />
+                            </Grid>
+                        </Expander>
+
                         <Expander x:Name="expComplexidadeItensPorSprint" Header="Complexidade dos Itens Por Sprint" HorizontalAlignment="Left" VerticalAlignment="Top"
-                                ExpandDirection="Down" Expanded="complexidadeItensPorSprint_Expanded" Grid.Row="1" BorderBrush="Black" BorderThickness="1" Width="870" >
+                                ExpandDirection="Down" Expanded="complexidadeItensPorSprint_Expanded" Grid.Row="5" BorderBrush="Black" BorderThickness="1" Width="870" >
                             <Grid>
                                 <Label x:Name="lblMediaComplexidade0" Content="Media: " />
                                 <Label x:Name="lblMediaComplexidade" Content="0" Margin="50,0,0,0" />
@@ -91,7 +115,7 @@
                         </Expander>
 
                         <Expander x:Name="expNumTarefasPorSprint" Header="Numero de Tarefas Por Sprint" HorizontalAlignment="Left" VerticalAlignment="Top"
-                                  ExpandDirection="Down" Expanded="numTarefasPorSprint_Expanded" Grid.Row="2" BorderBrush="Black" BorderThickness="1" Width="870"  >
+                                  ExpandDirection="Down" Expanded="numTarefasPorSprint_Expanded" Grid.Row="7" BorderBrush="Black" BorderThickness="1" Width="870"  >
                             <Grid>
                                 <Label x:Name="lblMediaNumTarefas0" Content="Media: " />
                                 <Label x:Name="lblMediaNumTarefas" Content="0" Margin="50,0,0,0" />
@@ -101,7 +125,7 @@
                         </Expander>
 
                         <Expander x:Name="expNumDefeitosCorrigidosPorSprint" Header="Numero de Defeitos Corrigidos Por Sprint" HorizontalAlignment="Left" VerticalAlignment="Top"
-                                ExpandDirection="Down" Expanded="numDefeitosCorrigidosPorSprint_Expanded" Grid.Row="3" BorderBrush="Black" BorderThickness="1" Width="870" >
+                                ExpandDirection="Down" Expanded="numDefeitosCorrigidosPorSprint_Expanded" Grid.Row="9" BorderBrush="Black" BorderThickness="1" Width="870" >
                             <Grid>
                                 <Label x:Name="lblMediaNumDefeitosCorrigidos0" Content="Media: " />
                                 <Label x:Name="lblMediaNumDefeitosCorrigidos" Content="0" Margin="50,0,0,0" />
@@ -111,7 +135,7 @@
                         </Expander>
 
                         <Expander x:Name="expNumRelatosPorSprint" Header="Numero de Relatos por Sprint" HorizontalAlignment="Left" VerticalAlignment="Top"
-                                  ExpandDirection="Down" Expanded="numRelatosPorSprint_Expanded" Grid.Row="4" BorderBrush="Black" BorderThickness="1" Width="870" >
+                                  ExpandDirection="Down" Expanded="numRelatosPorSprint_Expanded" Grid.Row="11" BorderBrush="Black" BorderThickness="1" Width="870" >
                             <Grid>
                                 <Label x:Name="lblMediaNumRelatosPorSprint0" Content="Media: " />
                                 <Label x:Name="lblMediaNumRelatosPorSprint" Content="0" Margin="50,0,0,0" />
@@ -121,7 +145,7 @@
                         </Expander>
 
                         <Expander x:Name="expNumDefeitosPorItemBacklog" Header="Número de Defeitos nos Itens de Backlog Relacionados" HorizontalAlignment="Left" VerticalAlignment="Top"
-                                ExpandDirection="Down" Expanded="numDefeitosPorItemBacklog_Expanded" Grid.Row="5" BorderBrush="Black" BorderThickness="1" Width="870" >
+                                ExpandDirection="Down" Expanded="numDefeitosPorItemBacklog_Expanded" Grid.Row="13" BorderBrush="Black" BorderThickness="1" Width="870" >
                             <Grid>
                                 <Label x:Name="lblMediaNumDefeitos0" Content="Media: " />
                                 <Label x:Name="lblMediaNumDefeitos" Content="0" Margin="50,0,0,0" />
@@ -131,7 +155,7 @@
                         </Expander>
 
                         <Expander x:Name="expNumTarefasEstimativaMaiorTempoGasto" Header="Numero de Tarefas - Estimativa Maior que Tempo Gasto" HorizontalAlignment="Left" VerticalAlignment="Top"
-                                ExpandDirection="Down" Expanded="numTarefasEstimativaMaiorTempoGasto_Expanded" Grid.Row="6" BorderBrush="Black" BorderThickness="1" Width="870" >
+                                ExpandDirection="Down" Expanded="numTarefasEstimativaMaiorTempoGasto_Expanded" Grid.Row="15" BorderBrush="Black" BorderThickness="1" Width="870" >
                             <Grid>
                                 <Label x:Name="lblMediaNumTarefasEstimativaMaiorTempoGasto0" Content="Media: " />
                                 <Label x:Name="lblMediaNumTarefasEstimativaMaiorTempoGasto" Content="0" Margin="50,0,0,0" />
@@ -141,7 +165,7 @@
                         </Expander>
 
                         <Expander x:Name="expNumTarefasTempoGastoMaior24" Header="Numero de Tarefas com Tempor Gasto Maior 24" HorizontalAlignment="Left" VerticalAlignment="Top"
-                                  ExpandDirection="Down" Expanded="numTarefasTempoGastoMaior24_Expanded" Grid.Row="7" BorderBrush="Black" BorderThickness="1" Width="730" >
+                                  ExpandDirection="Down" Expanded="numTarefasTempoGastoMaior24_Expanded" Grid.Row="17" BorderBrush="Black" BorderThickness="1" Width="730" >
                             <Grid>
                                 <Label x:Name="lblMediaNumTarefasTempoGastoMaior240" Content="Media: " />
                                 <Label x:Name="lblMediaNumTarefasTempoGastoMaior24" Content="0" Margin="50,0,0,0" />

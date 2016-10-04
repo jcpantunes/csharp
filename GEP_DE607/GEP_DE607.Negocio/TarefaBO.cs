@@ -48,5 +48,10 @@ namespace GEP_DE607.Negocio
         {
             return tarefaDAO.recuperarTarefasPorSprintPorResponsavel(listaPlanejadoPara, responsavel);
         }
+
+        public Dictionary<string, int> recuperarQtdeTarefasPorSprints(List<string> listaPlanejadoPara)
+        {
+            return tarefaDAO.recuperarQtdeTarefasPorSprints(listaPlanejadoPara);
+        }
     }
 }

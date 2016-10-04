@@ -184,6 +184,34 @@ namespace GEP_DE607.Persistencia
             return executarSelect(query);
         }
 
+        public Dictionary<string, int> recuperarQtdeTarefasPorSprints(List<string> listaPlanejadoPara)
+        {
+            string planejadoPara = "";
+            foreach (string str in listaPlanejadoPara)
+            {
+                planejadoPara = planejadoPara + ", '" + str + "'";
+            }
+            planejadoPara = planejadoPara.Length > 0 ? planejadoPara.Substring(1, planejadoPara.Length - 1) : planejadoPara;
+            string query = "SELECT tar.planejadoPara, count(codigo) FROM " + Tabela + " tar "
+                + " WHERE planejadoPara in (" + planejadoPara + ") "
+                + " group by tar.planejadoPara order by tar.planejadoPara;";
+
+            Dictionary<string, int> resultado = new Dictionary<string, int>();
+            SqlConnection conn = null;
+            SqlDataReader reader = select(conn, query);
+            if (reader != null)
+            {
+                while (reader.Read())
+                {
+                    string sprint = reader.GetString(0);
+                    int cont = reader.GetInt32(1);
+                    resultado.Add(sprint, cont);
+                }
+            }
+            desconectar(conn);
+            return resultado;
+        }
+
         public int recuperarQtdeTarefasPorSprintTempoGastoMaiorEstimativa(string planejadoPara, int responsavel)
         {
             string query = "SELECT Count(id) FROM " + Tabela

@@ -14,6 +14,7 @@ using System.Windows.Shapes;
 using System.Data;
 using GEP_DE607.Componente;
 using GEP_DE607.Dominio;
+using GEP_DE607.Negocio;
 using GEP_DE607.Persistencia;
 
 namespace GEP_DE607
@@ -305,6 +306,38 @@ namespace GEP_DE607
             executarAcao(tblNumTarefasTempoGastoMaior24, lblMediaNumTarefasTempoGastoMaior24, OpcaoIndicador.NUM_TAREFA_TEMPO_GASTO_MAIOR_24, true);
         }
 
+        private void sprintsComTarefa_Expanded(object sender, RoutedEventArgs e)
+        {
+            DataTable tabela = new DataTable();
+
+            List<string> listaSprint = new List<string>();
+            foreach (ListBoxItem item in lstSprint.SelectedItems)
+            {
+                listaSprint.Add(Convert.ToString(item.Content));
+            }
+
+            TarefaBO tarefaBO = new TarefaBO();
+            Dictionary<string, int> resultado = tarefaBO.recuperarQtdeTarefasPorSprints(listaSprint);
+            object[] listaColunas = { "Planejado Para", "Quantidade" };
+            foreach (string str in listaColunas)
+            {
+                tabela.Columns.Add(Convert.ToString(str));
+            }
+
+            foreach (string key in resultado.Keys)
+            {
+                object[] linha = new object[listaColunas.Count()];
+                linha[0] = key;
+                linha[1] = resultado[key];
+                tabela.Rows.Add(linha);
+            }
+            baseWindow.preencherGrid(tblSprintsComTarefa, tabela, 80);
+        }
+
+        private void tblNumItemTrabalhado_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            string teste = "";
+        }
         // Numero de horas apropriadas por sprint
     }
 
@@ -325,5 +358,7 @@ namespace GEP_DE607
         public const int NUM_DEFEITO_CORRIGIDO_POR_SPRINT = 6;
 
         public const int NUM_TAREFA_TEMPO_GASTO_MAIOR_24 = 7;
+
+        public const int NUM_SPRINTS_COM_TAREFA = 8;
     }
 }
