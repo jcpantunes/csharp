@@ -80,6 +80,9 @@
       <DependentUpon>Alerta.xaml</DependentUpon>
     </Compile>
     <Compile Include="Componente\MyFilePopup.cs" />
+    <Compile Include="ConsultarDados.xaml.cs">
+      <DependentUpon>ConsultarDados.xaml</DependentUpon>
+    </Compile>
     <Compile Include="RealizarCarga.xaml.cs">
       <DependentUpon>RealizarCarga.xaml</DependentUpon>
     </Compile>
@@ -107,6 +110,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Componente\Alerta.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="ConsultarDados.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

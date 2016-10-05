@@ -129,7 +129,7 @@ namespace GEP_DE607.Persistencia
             }
             else if (key.Equals(ItemTrabalho.RESPONSAVEL))
             {
-                query += ItemTrabalho.RESPONSAVEL + " = " + parametros[key] + " and ";
+                query += ItemTrabalho.RESPONSAVEL + " = '" + parametros[key] + "' and ";
             }
             else if (key.Equals(ItemTrabalho.STATUS))
             {

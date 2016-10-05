@@ -100,7 +100,7 @@
                                 <Label x:Name="lblMediaNumItens0" Content="Media: " />
                                 <Label x:Name="lblMediaNumItens" Content="0" Margin="50,0,0,0" />
                                 <DataGrid x:Name="tblNumItemTrabalhado" Margin="0,30,0,0" ItemsSource="{Binding}"
-    					        AutoGenerateColumns="False" IsReadOnly="True" CanUserSortColumns="False" CanUserReorderColumns="False" SelectionChanged="tblNumItemTrabalhado_SelectionChanged" />
+    					        AutoGenerateColumns="False" IsReadOnly="True" CanUserSortColumns="False" CanUserReorderColumns="False" SelectionChanged="tblNumItensPorSprint_SelectionChanged" />
                             </Grid>
                         </Expander>
 

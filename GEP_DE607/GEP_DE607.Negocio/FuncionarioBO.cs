@@ -46,5 +46,10 @@ namespace GEP_DE607.Negocio
             return listaNomes;
         }
 
+        public Funcionario recuperar(string nome)
+        {
+            return funcDAO.recuperar(nome);
+        }
+
     }
 }

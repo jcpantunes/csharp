@@ -116,6 +116,15 @@ namespace GEP_DE607.Persistencia
             return executarSelect(query);
         }
 
+        public List<ItemBacklog> recuperarItensBacklogPorSprintPorResponsavel(string planejadoPara, int responsavel)
+        {
+            string query = "SELECT * FROM " + Tabela
+                + " WHERE planejadoPara = '" + planejadoPara + "' and id in "
+                    + " (SELECT distinct pai FROM Tarefa "
+                    + " WHERE planejadoPara = '" + planejadoPara + "' and responsavel = " + responsavel + ")";
+            return executarSelect(query);
+        }
+
         public int recuperarQtdeItensBacklogPorSprintPorResponsavel(string planejadoPara, int responsavel)
         {
             string query = "SELECT Count(id) FROM " + Tabela

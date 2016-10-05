@@ -334,11 +334,49 @@ namespace GEP_DE607
             baseWindow.preencherGrid(tblSprintsComTarefa, tabela, 80);
         }
 
-        private void tblNumItemTrabalhado_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        private void tblNumItensPorSprint_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            string teste = "";
+            DataGrid grid = sender as DataGrid;
+            if (grid.SelectedCells.Count > 0)
+            {
+                DataRow linhaSelecionada = (grid.SelectedItem as DataRowView).Row;
+                string nome = linhaSelecionada[0] as string;
+
+                int index = grid.CurrentCell.Column.DisplayIndex;
+                DataColumn coluna = linhaSelecionada.Table.Columns[index];
+                string sprint = coluna.ColumnName;
+
+                FuncionarioBO funcBO = new FuncionarioBO();
+                int codigo = funcBO.recuperar(nome).Codigo;
+                
+                //Dictionary<string, string> parametros = new Dictionary<string, string>();
+                //parametros.Add(ItemBacklog.RESPONSAVEL, codigo.ToString());
+                //parametros.Add(ItemBacklog.PLANEJADO_PARA, sprint);
+                
+                ItemBacklogBO itemBO = new ItemBacklogBO();
+                List<ItemBacklog> listaBacklog = itemBO.recuperarItensBacklogPorSprintPorResponsavel(sprint, codigo);
+
+                DataTable tabela = new DataTable();
+                object[] listaColunas = { ItemBacklog.PROJETO, ItemBacklog.TITULO, ItemBacklog.STATUS, ItemBacklog.COMPLEXIDADE };
+                foreach (string str in listaColunas)
+                {
+                    tabela.Columns.Add(Convert.ToString(str));
+                }
+                foreach (ItemBacklog item in listaBacklog)
+                {
+                    object[] linha = new object[listaColunas.Count()];
+                    linha[0] = item.Projeto;
+                    linha[1] = item.Titulo;
+                    linha[2] = item.Status;
+                    linha[3] = item.Complexidade;
+                    tabela.Rows.Add(linha);
+                }
+                
+                ConsultarDados tela = new ConsultarDados();
+                tela.preencherTabela(tabela, listaColunas);
+                tela.Show();
+            }
         }
-        // Numero de horas apropriadas por sprint
     }
 
     class OpcaoIndicador

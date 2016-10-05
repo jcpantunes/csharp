@@ -44,5 +44,15 @@ namespace GEP_DE607.Negocio
             }
         }
 
+        public List<ItemBacklog> recuperar(Dictionary<string, string> parametros)
+        {
+            return itemBacklogDAO.recuperar(parametros);
+        }
+
+        public List<ItemBacklog> recuperarItensBacklogPorSprintPorResponsavel(string planejadoPara, int responsavel)
+        {
+            return itemBacklogDAO.recuperarItensBacklogPorSprintPorResponsavel(planejadoPara, responsavel);
+        }
+
     }
 }
