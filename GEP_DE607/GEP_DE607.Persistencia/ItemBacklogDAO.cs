@@ -111,7 +111,8 @@ namespace GEP_DE607.Persistencia
             }
             planejadoPara = planejadoPara.Length > 0 ? planejadoPara.Substring(1, planejadoPara.Length - 1) : planejadoPara;
             string query = "SELECT * FROM " + Tabela
-                + " WHERE id in (SELECT distinct pai FROM Tarefa WHERE responsavel = " + responsavel + " and "
+                + " WHERE planejadoPara in (" + planejadoPara + ") and "
+                + " id in (SELECT distinct pai FROM Tarefa WHERE responsavel = " + responsavel + " and "
                     + " planejadoPara in (" + planejadoPara + "))";
             return executarSelect(query);
         }
@@ -137,7 +138,8 @@ namespace GEP_DE607.Persistencia
         public int recuperarComplexidadeItensPorSprintPorResponsavel(string planejadoPara, int responsavel)
         {
             string query = "SELECT avg(complexidade) FROM " + Tabela
-                + " WHERE id in (SELECT distinct pai FROM Tarefa "
+                + " WHERE planejadoPara = '" + planejadoPara + "' and "
+                + " id in (SELECT distinct pai FROM Tarefa "
                     + " WHERE planejadoPara = '" + planejadoPara + "' and responsavel = " + responsavel + ")";
             return retornarSelectValorInt(query);
         }

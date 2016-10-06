@@ -32,13 +32,19 @@ namespace GEP_DE607
             InitializeComponent();
         }
 
-        public void preencherTabela(DataTable tabela, object[] listaColunas)
+        public void preencherTabela(string titulo, DataTable tabela, int[] listaTamColunas, object[] listaColunas, List<object[]> listaLinhas)
         {
-            //foreach (string str in listaColunas)
-            //{
-            //    tabela.Columns.Add(Convert.ToString(str));
-            //}
-            baseWindow.preencherGrid(tblDados, tabela, 80);
+            this.lblTitulo.Content = titulo;
+
+            foreach (string str in listaColunas)
+            {
+                tabela.Columns.Add(Convert.ToString(str));
+            }
+            foreach (object[] linha in listaLinhas)
+            {
+                tabela.Rows.Add(linha);
+            }
+            baseWindow.preencherGrid(tblDados, tabela, listaTamColunas);
         }
     }
 }

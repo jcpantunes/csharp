@@ -10,12 +10,18 @@ namespace GEP_DE607.Negocio
 {
     public class BugBO
     {
+        BugDAO bugDAO = null;
+
+        public BugBO(string tipo)
+        {
+            bugDAO = new BugDAO(tipo);
+        }
 
         public void incluirLista(List<Bug> lista)
         {
             if (lista.Count > 0)
             {
-                BugDAO bugDAO = new BugDAO(lista[0].Tipo);
+                //BugDAO bugDAO = new BugDAO(lista[0].Tipo);
 
                 List<Bug> listaBanco = bugDAO.recuperar();
 
@@ -43,6 +49,20 @@ namespace GEP_DE607.Negocio
 
             }
         }
+
+        public List<Bug> recuperar(Dictionary<string, string> parametros)
+        {
+            return bugDAO.recuperar(parametros);
+        }
+
+        public List<Bug> recuperarBugsPorSprintPorResponsavel(string planejadoPara, int responsavel)
+        {
+            Dictionary<string, string> parametros = new Dictionary<string, string>();
+            parametros.Add(Bug.RESPONSAVEL, responsavel.ToString());
+            parametros.Add(Bug.PLANEJADO_PARA, planejadoPara);
+            return bugDAO.recuperar(parametros);
+        }
+        
 
     }
 }

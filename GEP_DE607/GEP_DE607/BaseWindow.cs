@@ -333,5 +333,25 @@ namespace GEP_DE607
             }
         }
 
+        public void preencherGrid(DataGrid grid, DataTable tabela, int[] width)
+        {
+            if (tabela != null)
+            {
+                grid.Columns.Clear();
+                int i = 0;
+                foreach (DataColumn col in tabela.Columns)
+                {
+                    grid.Columns.Add(new DataGridTextColumn
+                    {
+                        Header = col.ColumnName,
+                        Width = width[i],
+                        Binding = new Binding(string.Format("[{0:0.##}]", col.ColumnName))
+                    });
+                    i++;
+                }
+                grid.DataContext = tabela;
+            }
+        }
+
     }
 }

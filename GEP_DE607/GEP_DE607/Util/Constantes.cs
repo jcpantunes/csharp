@@ -8,6 +8,7 @@ namespace GEP_DE607.Util
 {
     class Constantes
     {
+
         public const string TAREFA = "Tarefa";
         public const string DEFEITO = "Defeito";
         public const string RELATO = "Relato";

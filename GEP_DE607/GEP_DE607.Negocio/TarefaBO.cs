@@ -44,6 +44,13 @@ namespace GEP_DE607.Negocio
             }
         }
 
+        public List<Tarefa> recuperarTarefasPorSprintPorResponsavel(string planejadoPara, int responsavel)
+        {
+            List<string> listaPlanejadoPara = new List<string>();
+            listaPlanejadoPara.Add(planejadoPara);
+            return tarefaDAO.recuperarTarefasPorSprintPorResponsavel(listaPlanejadoPara, responsavel);
+        }
+
         public List<Tarefa> recuperarTarefasPorSprintPorResponsavel(List<string> listaPlanejadoPara, int responsavel)
         {
             return tarefaDAO.recuperarTarefasPorSprintPorResponsavel(listaPlanejadoPara, responsavel);

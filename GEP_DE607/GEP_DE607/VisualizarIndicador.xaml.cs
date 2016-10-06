@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using System.Data;
+using GEP_DE607.Util;
 using GEP_DE607.Componente;
 using GEP_DE607.Dominio;
 using GEP_DE607.Negocio;
@@ -217,7 +218,7 @@ namespace GEP_DE607
                         }
                         else if (opcao == OpcaoIndicador.NUM_RELATO_POR_SPRINT)
                         {
-                            BugDAO rDAO = new BugDAO(BugDAO.TIPO_RELATO);
+                            BugDAO rDAO = new BugDAO(Constantes.RELATO);
                             linha[i + 1] = rDAO.recuperarQtdeItensPorSprintPorResponsavel(listaColunas[i], func.Codigo);
                         }
                         else if (opcao == OpcaoIndicador.NUM_ITEM_POR_SPRINT)
@@ -240,7 +241,7 @@ namespace GEP_DE607
                             // =SOMARPRODUTO(($Backlog.$E$2:$E$200=B$2)*($Backlog.$R$2:$R$200>0)*($Backlog.$M$2:$M$200))/SOMARPRODUTO(($Backlog.$E$2:$E$200=B$2)*($Backlog.$R$2:$R$200>0))
                             // M = Quantidade de defeitos do Item
 
-                            BugDAO dDAO = new BugDAO(BugDAO.TIPO_DEFEITO);
+                            BugDAO dDAO = new BugDAO(Constantes.DEFEITO);
                             linha[i + 1] = dDAO.recuperarMediaDefeitosPorSprintPorResponsavel(listaColunas[i], func.Codigo);
                         }
                         else if (opcao == OpcaoIndicador.NUM_DEFEITO_CORRIGIDO_POR_SPRINT)
@@ -248,7 +249,7 @@ namespace GEP_DE607
                             // =SOMARPRODUTO(($Backlog.$E$2:$E$200=B$2)*($Backlog.$R$2:$R$200>0)*($Backlog.$M$2:$M$200))/SOMARPRODUTO(($Backlog.$E$2:$E$200=B$2)*($Backlog.$R$2:$R$200>0))
                             // M = Quantidade de defeitos do Item
 
-                            BugDAO dDAO = new BugDAO(BugDAO.TIPO_DEFEITO);
+                            BugDAO dDAO = new BugDAO(Constantes.DEFEITO);
                             linha[i + 1] = dDAO.recuperarQtdeItensPorSprintPorResponsavel(listaColunas[i], func.Codigo);
                         }
                         else
@@ -334,48 +335,129 @@ namespace GEP_DE607
             baseWindow.preencherGrid(tblSprintsComTarefa, tabela, 80);
         }
 
+        private bool validarConsultaDados(DataGrid grid, ref string linhaSelecionada, ref string colunaSelecionada)
+        {
+            bool isValid = false;
+            if (grid.SelectedCells.Count > 0)
+            {
+                int indexColuna = grid.CurrentCell.Column.DisplayIndex;
+                if (indexColuna > 0 && indexColuna < (grid.SelectedCells.Count - 1))
+                {
+                    DataRow linha = (grid.SelectedItem as DataRowView).Row;
+                    linhaSelecionada = linha[0] as string;
+
+                    DataColumn coluna = linha.Table.Columns[indexColuna];
+                    colunaSelecionada = coluna.ColumnName;
+
+                    //Dictionary<string, string> parametros = new Dictionary<string, string>();
+                    //parametros.Add(ItemBacklog.RESPONSAVEL, codigo.ToString());
+                    //parametros.Add(ItemBacklog.PLANEJADO_PARA, sprint);
+
+                    isValid = true;
+                }
+            }
+            return isValid;
+        }
+
         private void tblNumItensPorSprint_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             DataGrid grid = sender as DataGrid;
-            if (grid.SelectedCells.Count > 0)
+            string linhaSelecionada = "";
+            string colunaSelecionada = "";
+            if (validarConsultaDados(grid, ref linhaSelecionada, ref colunaSelecionada))
             {
-                DataRow linhaSelecionada = (grid.SelectedItem as DataRowView).Row;
-                string nome = linhaSelecionada[0] as string;
-
-                int index = grid.CurrentCell.Column.DisplayIndex;
-                DataColumn coluna = linhaSelecionada.Table.Columns[index];
-                string sprint = coluna.ColumnName;
-
                 FuncionarioBO funcBO = new FuncionarioBO();
-                int codigo = funcBO.recuperar(nome).Codigo;
-                
-                //Dictionary<string, string> parametros = new Dictionary<string, string>();
-                //parametros.Add(ItemBacklog.RESPONSAVEL, codigo.ToString());
-                //parametros.Add(ItemBacklog.PLANEJADO_PARA, sprint);
-                
+                int codigo = funcBO.recuperar(linhaSelecionada).Codigo;
+
                 ItemBacklogBO itemBO = new ItemBacklogBO();
-                List<ItemBacklog> listaBacklog = itemBO.recuperarItensBacklogPorSprintPorResponsavel(sprint, codigo);
+                List<ItemBacklog> listaBacklog = itemBO.recuperarItensBacklogPorSprintPorResponsavel(colunaSelecionada, codigo);
 
                 DataTable tabela = new DataTable();
+                int[] listaTamColunas = { 80, 300, 80, 80 };
                 object[] listaColunas = { ItemBacklog.PROJETO, ItemBacklog.TITULO, ItemBacklog.STATUS, ItemBacklog.COMPLEXIDADE };
-                foreach (string str in listaColunas)
-                {
-                    tabela.Columns.Add(Convert.ToString(str));
-                }
+
+                List<object[]> listaLinhas = new List<object[]>();
                 foreach (ItemBacklog item in listaBacklog)
                 {
-                    object[] linha = new object[listaColunas.Count()];
-                    linha[0] = item.Projeto;
-                    linha[1] = item.Titulo;
-                    linha[2] = item.Status;
-                    linha[3] = item.Complexidade;
-                    tabela.Rows.Add(linha);
+                    object[] linha = { item.Projeto, item.Titulo, item.Status, item.Complexidade };
+                    listaLinhas.Add(linha);
                 }
-                
                 ConsultarDados tela = new ConsultarDados();
-                tela.preencherTabela(tabela, listaColunas);
+                string titulo = String.Format("Consulta Itens Backlog trabalhados no sprint {0} por {1}", colunaSelecionada, linhaSelecionada);
+                tela.preencherTabela(titulo, tabela, listaTamColunas, listaColunas, listaLinhas);
                 tela.Show();
             }
+        }
+
+        private void tblNumTarefaTrabalhado_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            DataGrid grid = sender as DataGrid;
+            string linhaSelecionada = "";
+            string colunaSelecionada = "";
+            if (validarConsultaDados(grid, ref linhaSelecionada, ref colunaSelecionada))
+            {
+                FuncionarioBO funcBO = new FuncionarioBO();
+                int codigo = funcBO.recuperar(linhaSelecionada).Codigo;
+
+                TarefaBO itemBO = new TarefaBO();
+                List<Tarefa> listaTarefa = itemBO.recuperarTarefasPorSprintPorResponsavel(colunaSelecionada, codigo);
+
+                DataTable tabela = new DataTable();
+                int[] listaTamColunas = { 80, 80, 300, 80, 80 };
+                object[] listaColunas = { Tarefa.ID, Tarefa.PROJETO, Tarefa.TITULO, Tarefa.STATUS, Tarefa.TEMPO_GASTO };
+
+                List<object[]> listaLinhas = new List<object[]>();
+                foreach (Tarefa item in listaTarefa)
+                {
+                    object[] linha = { item.Id, item.Projeto, item.Titulo, item.Status, item.TempoGasto };
+                    listaLinhas.Add(linha);
+                }
+                ConsultarDados tela = new ConsultarDados();
+                string titulo = String.Format("Consulta Tarefas trabalhadas no sprint {0} por {1}", colunaSelecionada, linhaSelecionada);
+                tela.preencherTabela(titulo, tabela, listaTamColunas, listaColunas, listaLinhas);
+                tela.Show();
+            }
+        }
+
+        private void recuperarDefeitoOuRelato(DataGrid grid, string tipo)
+        {
+            string linhaSelecionada = "";
+            string colunaSelecionada = "";
+            if (validarConsultaDados(grid, ref linhaSelecionada, ref colunaSelecionada))
+            {
+                FuncionarioBO funcBO = new FuncionarioBO();
+                int codigo = funcBO.recuperar(linhaSelecionada).Codigo;
+
+                BugBO itemBO = new BugBO(tipo);
+                List<Bug> listaBug = itemBO.recuperarBugsPorSprintPorResponsavel(colunaSelecionada, codigo);
+
+                DataTable tabela = new DataTable();
+                int[] listaTamColunas = { 80, 80, 300, 80, 80 };
+                object[] listaColunas = { Bug.ID, Bug.PROJETO, Bug.TITULO, Bug.STATUS, Bug.RESOLUCAO };
+
+                List<object[]> listaLinhas = new List<object[]>();
+                foreach (Bug item in listaBug)
+                {
+                    object[] linha = { item.Id, item.Projeto, item.Titulo, item.Status, item.Resolucao };
+                    listaLinhas.Add(linha);
+                }
+                ConsultarDados tela = new ConsultarDados();
+                string titulo = String.Format("Consulta " + tipo + "s trabalhadas no sprint {0} por {1}", colunaSelecionada, linhaSelecionada);
+                tela.preencherTabela(titulo, tabela, listaTamColunas, listaColunas, listaLinhas);
+                tela.Show();
+            }
+        }
+
+        private void tblNumDefeitosCorrigidos_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            DataGrid grid = sender as DataGrid;
+            recuperarDefeitoOuRelato(grid, Constantes.DEFEITO);
+        }
+
+        private void tblNumNumRelatosPorSprint_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            DataGrid grid = sender as DataGrid;
+            recuperarDefeitoOuRelato(grid, Constantes.RELATO);
         }
     }
 

@@ -92,7 +92,7 @@ namespace GEP_DE607
                 else if (item.Content.Equals(Constantes.DEFEITO) || item.Content.Equals(Constantes.RELATO))
                 {
                     List<Bug> listaBug = recuperarListaBug(linhas);
-                    BugBO bugBO = new BugBO();
+                    BugBO bugBO = new BugBO(Constantes.DEFEITO);
                     bugBO.incluirLista(listaBug);
                 }
                 else if (item.Content.Equals(Constantes.APROPRIACAO))

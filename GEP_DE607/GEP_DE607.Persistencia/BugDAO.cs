@@ -12,9 +12,6 @@ namespace GEP_DE607.Persistencia
     public class BugDAO : BaseDAO
     {
 
-        public static string TIPO_DEFEITO = "Defeito";
-        public static string TIPO_RELATO = "Relato";
-
         public BugDAO(string tipo)
         {
             this.Tabela = tipo;
