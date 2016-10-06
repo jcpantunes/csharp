@@ -82,10 +82,13 @@ namespace GEP_DE607
             expNumTarefasPorSprint.IsExpanded = false;
             expNumItensPorSprint.IsExpanded = false;
             expComplexidadeItensPorSprint.IsExpanded = false;
-            expNumDefeitosPorItemBacklog.IsExpanded = false;
             expNumDefeitosCorrigidosPorSprint.IsExpanded = false;
-            expNumTarefasEstimativaMaiorTempoGasto.IsExpanded = false;
-            expNumRelatosPorSprint.IsExpanded = false;
+            expNumRelatosCorrigidosPorSprint.IsExpanded = false;
+
+            //expNumDefeitosPorItemBacklog.IsExpanded = false;
+            //expNumTarefasEstimativaMaiorTempoGasto.IsExpanded = false;
+            //expNumTarefasTempoGastoMaior24.IsExpanded = false;
+
         }
 
         private void lstFuncionario_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -206,17 +209,7 @@ namespace GEP_DE607
                             TarefaDAO tDAO = new TarefaDAO();
                             linha[i + 1] = tDAO.recuperarQtdeItensPorSprintPorResponsavel(listaColunas[i], func.Codigo);
                         }
-                        else if (opcao == OpcaoIndicador.NUM_TAREFA_ESTIMATIVA_MAIOR_TEMPO_GASTO)
-                        {
-                            TarefaDAO tDAO = new TarefaDAO();
-                            linha[i + 1] = tDAO.recuperarQtdeTarefasPorSprintTempoGastoMaiorEstimativa(listaColunas[i], func.Codigo);
-                        }
-                        else if (opcao == OpcaoIndicador.NUM_TAREFA_TEMPO_GASTO_MAIOR_24)
-                        {
-                            TarefaDAO tDAO = new TarefaDAO();
-                            linha[i + 1] = tDAO.recuperarQtdeTarefasTempoGastoMaior24(listaColunas[i], func.Codigo);
-                        }
-                        else if (opcao == OpcaoIndicador.NUM_RELATO_POR_SPRINT)
+                        else if (opcao == OpcaoIndicador.NUM_RELATO_CORRIGIDO_POR_SPRINT)
                         {
                             BugDAO rDAO = new BugDAO(Constantes.RELATO);
                             linha[i + 1] = rDAO.recuperarQtdeItensPorSprintPorResponsavel(listaColunas[i], func.Codigo);
@@ -236,14 +229,6 @@ namespace GEP_DE607
                             ItemBacklogDAO ibDAO = new ItemBacklogDAO();
                             linha[i + 1] = ibDAO.recuperarComplexidadeItensPorSprintPorResponsavel(listaColunas[i], func.Codigo);
                         }
-                        else if (opcao == OpcaoIndicador.NUM_DEFEITO_POR_ITEM_BACKLOG)
-                        {
-                            // =SOMARPRODUTO(($Backlog.$E$2:$E$200=B$2)*($Backlog.$R$2:$R$200>0)*($Backlog.$M$2:$M$200))/SOMARPRODUTO(($Backlog.$E$2:$E$200=B$2)*($Backlog.$R$2:$R$200>0))
-                            // M = Quantidade de defeitos do Item
-
-                            BugDAO dDAO = new BugDAO(Constantes.DEFEITO);
-                            linha[i + 1] = dDAO.recuperarMediaDefeitosPorSprintPorResponsavel(listaColunas[i], func.Codigo);
-                        }
                         else if (opcao == OpcaoIndicador.NUM_DEFEITO_CORRIGIDO_POR_SPRINT)
                         {
                             // =SOMARPRODUTO(($Backlog.$E$2:$E$200=B$2)*($Backlog.$R$2:$R$200>0)*($Backlog.$M$2:$M$200))/SOMARPRODUTO(($Backlog.$E$2:$E$200=B$2)*($Backlog.$R$2:$R$200>0))
@@ -252,6 +237,29 @@ namespace GEP_DE607
                             BugDAO dDAO = new BugDAO(Constantes.DEFEITO);
                             linha[i + 1] = dDAO.recuperarQtdeItensPorSprintPorResponsavel(listaColunas[i], func.Codigo);
                         }
+                        else if (opcao == OpcaoIndicador.NUM_DEFEITO_CRIADO_POR_SPRINT)
+                        {
+                            BugBO dBO = new BugBO(Constantes.DEFEITO);
+                            linha[i + 1] = dBO.recuperarQtdeItensPorSprintPorCriador(listaColunas[i], func.Nome);
+                        }
+                        //else if (opcao == OpcaoIndicador.NUM_DEFEITO_POR_ITEM_BACKLOG)
+                        //{
+                        //    // =SOMARPRODUTO(($Backlog.$E$2:$E$200=B$2)*($Backlog.$R$2:$R$200>0)*($Backlog.$M$2:$M$200))/SOMARPRODUTO(($Backlog.$E$2:$E$200=B$2)*($Backlog.$R$2:$R$200>0))
+                        //    // M = Quantidade de defeitos do Item
+
+                        //    BugDAO dDAO = new BugDAO(Constantes.DEFEITO);
+                        //    linha[i + 1] = dDAO.recuperarMediaDefeitosPorSprintPorResponsavel(listaColunas[i], func.Codigo);
+                        //}
+                        //else if (opcao == OpcaoIndicador.NUM_TAREFA_ESTIMATIVA_MAIOR_TEMPO_GASTO)
+                        //{
+                        //    TarefaDAO tDAO = new TarefaDAO();
+                        //    linha[i + 1] = tDAO.recuperarQtdeTarefasPorSprintTempoGastoMaiorEstimativa(listaColunas[i], func.Codigo);
+                        //}
+                        //else if (opcao == OpcaoIndicador.NUM_TAREFA_TEMPO_GASTO_MAIOR_24)
+                        //{
+                        //    TarefaDAO tDAO = new TarefaDAO();
+                        //    linha[i + 1] = tDAO.recuperarQtdeTarefasTempoGastoMaior24(listaColunas[i], func.Codigo);
+                        //}
                         else
                         {
                             linha[i + 1] = i;
@@ -282,30 +290,35 @@ namespace GEP_DE607
             executarAcao(tblComplexidadeItemTrabalhado, lblMediaComplexidade, OpcaoIndicador.COMPLEXIDADE_ITEM_POR_SPRINT, false);
         }
 
-        private void numDefeitosPorItemBacklog_Expanded(object sender, RoutedEventArgs e)
-        {
-            executarAcao(tblNumDefeitosPorItemBacklog, lblMediaNumDefeitos, OpcaoIndicador.NUM_DEFEITO_POR_ITEM_BACKLOG, false);
-        }
-
         private void numDefeitosCorrigidosPorSprint_Expanded(object sender, RoutedEventArgs e)
         {
             executarAcao(tblNumDefeitosCorrigidos, lblMediaNumDefeitosCorrigidos, OpcaoIndicador.NUM_DEFEITO_CORRIGIDO_POR_SPRINT, true);
         }
 
-        private void numTarefasEstimativaMaiorTempoGasto_Expanded(object sender, RoutedEventArgs e)
+        private void numRelatosCorrigidosPorSprint_Expanded(object sender, RoutedEventArgs e)
         {
-            executarAcao(tblNumTarefasEstimativaMaiorTempoGasto, lblMediaNumTarefasEstimativaMaiorTempoGasto, OpcaoIndicador.NUM_TAREFA_ESTIMATIVA_MAIOR_TEMPO_GASTO, true);
+            executarAcao(tblNumRelatosCorrigidosPorSprint, lblMediaNumRelatosCorrigidosPorSprint, OpcaoIndicador.NUM_RELATO_CORRIGIDO_POR_SPRINT, true);
         }
 
-        private void numRelatosPorSprint_Expanded(object sender, RoutedEventArgs e)
+        private void numNumDefeitosCriadosPorSprint_Expanded(object sender, RoutedEventArgs e)
         {
-            executarAcao(tblNumNumRelatosPorSprint, lblMediaNumRelatosPorSprint, OpcaoIndicador.NUM_RELATO_POR_SPRINT, true);
+            executarAcao(tblNumDefeitosCriadosPorSprint, lblMediaNumDefeitosCriadosPorSprint, OpcaoIndicador.NUM_DEFEITO_CRIADO_POR_SPRINT, true);
         }
 
-        private void numTarefasTempoGastoMaior24_Expanded(object sender, RoutedEventArgs e)
-        {
-            executarAcao(tblNumTarefasTempoGastoMaior24, lblMediaNumTarefasTempoGastoMaior24, OpcaoIndicador.NUM_TAREFA_TEMPO_GASTO_MAIOR_24, true);
-        }
+        //private void numDefeitosPorItemBacklog_Expanded(object sender, RoutedEventArgs e)
+        //{
+        //    executarAcao(tblNumDefeitosPorItemBacklog, lblMediaNumDefeitos, OpcaoIndicador.NUM_DEFEITO_POR_ITEM_BACKLOG, false);
+        //}
+
+        //private void numTarefasEstimativaMaiorTempoGasto_Expanded(object sender, RoutedEventArgs e)
+        //{
+        //    executarAcao(tblNumTarefasEstimativaMaiorTempoGasto, lblMediaNumTarefasEstimativaMaiorTempoGasto, OpcaoIndicador.NUM_TAREFA_ESTIMATIVA_MAIOR_TEMPO_GASTO, true);
+        //}
+
+        //private void numTarefasTempoGastoMaior24_Expanded(object sender, RoutedEventArgs e)
+        //{
+        //    executarAcao(tblNumTarefasTempoGastoMaior24, lblMediaNumTarefasTempoGastoMaior24, OpcaoIndicador.NUM_TAREFA_TEMPO_GASTO_MAIOR_24, true);
+        //}
 
         private void sprintsComTarefa_Expanded(object sender, RoutedEventArgs e)
         {
@@ -348,10 +361,6 @@ namespace GEP_DE607
 
                     DataColumn coluna = linha.Table.Columns[indexColuna];
                     colunaSelecionada = coluna.ColumnName;
-
-                    //Dictionary<string, string> parametros = new Dictionary<string, string>();
-                    //parametros.Add(ItemBacklog.RESPONSAVEL, codigo.ToString());
-                    //parametros.Add(ItemBacklog.PLANEJADO_PARA, sprint);
 
                     isValid = true;
                 }
@@ -454,31 +463,61 @@ namespace GEP_DE607
             recuperarDefeitoOuRelato(grid, Constantes.DEFEITO);
         }
 
-        private void tblNumNumRelatosPorSprint_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        private void tblNumRelatosCorrigidosPorSprint_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             DataGrid grid = sender as DataGrid;
             recuperarDefeitoOuRelato(grid, Constantes.RELATO);
+        }
+
+        private void tblNumDefeitosCriadosPorSprint_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            DataGrid grid = sender as DataGrid;
+            string linhaSelecionada = "";
+            string colunaSelecionada = "";
+            if (validarConsultaDados(grid, ref linhaSelecionada, ref colunaSelecionada))
+            {
+                BugBO itemBO = new BugBO(Constantes.DEFEITO);
+                List<Bug> listaBug = itemBO.recuperarItensPorSprintPorCriador(colunaSelecionada, linhaSelecionada);
+
+                DataTable tabela = new DataTable();
+                int[] listaTamColunas = { 80, 80, 300, 80, 80 };
+                object[] listaColunas = { Bug.ID, Bug.PROJETO, Bug.TITULO, Bug.STATUS, Bug.RESOLUCAO };
+
+                List<object[]> listaLinhas = new List<object[]>();
+                foreach (Bug item in listaBug)
+                {
+                    object[] linha = { item.Id, item.Projeto, item.Titulo, item.Status, item.Resolucao };
+                    listaLinhas.Add(linha);
+                }
+                ConsultarDados tela = new ConsultarDados();
+                string titulo = String.Format("Consulta " + Constantes.DEFEITO + "s criados no sprint {0} por {1}", colunaSelecionada, linhaSelecionada);
+                tela.preencherTabela(titulo, tabela, listaTamColunas, listaColunas, listaLinhas);
+                tela.Show();
+            }
         }
     }
 
     class OpcaoIndicador
     {
-        public const int NUM_TAREFA_POR_SPRINT = 0;
-
-        public const int NUM_TAREFA_ESTIMATIVA_MAIOR_TEMPO_GASTO = 1;
-
-        public const int NUM_RELATO_POR_SPRINT = 2;
+        public const int NUM_SPRINTS_COM_TAREFA = 1;
 
         public const int NUM_ITEM_POR_SPRINT = 3;
 
-        public const int COMPLEXIDADE_ITEM_POR_SPRINT = 4;
+        public const int COMPLEXIDADE_ITEM_POR_SPRINT = 5;
 
-        public const int NUM_DEFEITO_POR_ITEM_BACKLOG = 5;
+        public const int NUM_TAREFA_POR_SPRINT = 6;
 
-        public const int NUM_DEFEITO_CORRIGIDO_POR_SPRINT = 6;
+        public const int NUM_DEFEITO_CORRIGIDO_POR_SPRINT = 7;
 
-        public const int NUM_TAREFA_TEMPO_GASTO_MAIOR_24 = 7;
+        public const int NUM_RELATO_CORRIGIDO_POR_SPRINT = 9;
 
-        public const int NUM_SPRINTS_COM_TAREFA = 8;
+        public const int NUM_DEFEITO_CRIADO_POR_SPRINT = 10;
+
+        public const int NUM_DEFEITO_POR_ITEM_BACKLOG = 11;
+
+        public const int NUM_TAREFA_ESTIMATIVA_MAIOR_TEMPO_GASTO = 13;
+
+        public const int NUM_TAREFA_TEMPO_GASTO_MAIOR_24 = 15;
+
     }
 }

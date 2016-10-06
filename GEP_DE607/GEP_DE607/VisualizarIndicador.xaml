@@ -134,16 +134,27 @@
                             </Grid>
                         </Expander>
 
-                        <Expander x:Name="expNumRelatosPorSprint" Header="Numero de Relatos por Sprint" HorizontalAlignment="Left" VerticalAlignment="Top"
-                                  ExpandDirection="Down" Expanded="numRelatosPorSprint_Expanded" Grid.Row="11" BorderBrush="Black" BorderThickness="1" Width="870" >
+                        <Expander x:Name="expNumRelatosCorrigidosPorSprint" Header="Numero de Relatos Corrigidos por Sprint" HorizontalAlignment="Left" VerticalAlignment="Top"
+                                  ExpandDirection="Down" Expanded="numRelatosCorrigidosPorSprint_Expanded" Grid.Row="11" BorderBrush="Black" BorderThickness="1" Width="870" >
                             <Grid>
-                                <Label x:Name="lblMediaNumRelatosPorSprint0" Content="Media: " />
-                                <Label x:Name="lblMediaNumRelatosPorSprint" Content="0" Margin="50,0,0,0" />
-                                <DataGrid x:Name="tblNumNumRelatosPorSprint" Margin="0,30,0,0" ItemsSource="{Binding}"
-					            AutoGenerateColumns="False" IsReadOnly="True" CanUserSortColumns="False" CanUserReorderColumns="False" SelectionChanged="tblNumNumRelatosPorSprint_SelectionChanged" />
+                                <Label x:Name="lblMediaNumRelatosCorrigidosPorSprint0" Content="Media: " />
+                                <Label x:Name="lblMediaNumRelatosCorrigidosPorSprint" Content="0" Margin="50,0,0,0" />
+                                <DataGrid x:Name="tblNumRelatosCorrigidosPorSprint" Margin="0,30,0,0" ItemsSource="{Binding}"
+					            AutoGenerateColumns="False" IsReadOnly="True" CanUserSortColumns="False" CanUserReorderColumns="False" SelectionChanged="tblNumRelatosCorrigidosPorSprint_SelectionChanged" />
                             </Grid>
                         </Expander>
 
+                        <Expander x:Name="expNumDefeitosCriadosPorSprint" Header="Numero de Defeitos Criados por Sprint" HorizontalAlignment="Left" VerticalAlignment="Top"
+                                  ExpandDirection="Down" Expanded="numNumDefeitosCriadosPorSprint_Expanded" Grid.Row="13" BorderBrush="Black" BorderThickness="1" Width="870" >
+                            <Grid>
+                                <Label x:Name="lblMediaNumDefeitosCriadosPorSprint0" Content="Media: " />
+                                <Label x:Name="lblMediaNumDefeitosCriadosPorSprint" Content="0" Margin="50,0,0,0" />
+                                <DataGrid x:Name="tblNumDefeitosCriadosPorSprint" Margin="0,30,0,0" ItemsSource="{Binding}"
+					            AutoGenerateColumns="False" IsReadOnly="True" CanUserSortColumns="False" CanUserReorderColumns="False" SelectionChanged="tblNumDefeitosCriadosPorSprint_SelectionChanged" />
+                            </Grid>
+                        </Expander>
+
+                        <!--
                         <Expander x:Name="expNumDefeitosPorItemBacklog" Header="Número de Defeitos nos Itens de Backlog Relacionados" HorizontalAlignment="Left" VerticalAlignment="Top"
                                 ExpandDirection="Down" Expanded="numDefeitosPorItemBacklog_Expanded" Grid.Row="13" BorderBrush="Black" BorderThickness="1" Width="870" >
                             <Grid>
@@ -173,7 +184,7 @@
 					            AutoGenerateColumns="False" IsReadOnly="True" CanUserSortColumns="False" CanUserReorderColumns="False" />
                             </Grid>
                         </Expander>
-                        
+                        -->
                     </Grid>
                 </Grid>
             </ScrollViewer>

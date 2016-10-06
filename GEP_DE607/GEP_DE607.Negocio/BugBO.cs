@@ -62,7 +62,18 @@ namespace GEP_DE607.Negocio
             parametros.Add(Bug.PLANEJADO_PARA, planejadoPara);
             return bugDAO.recuperar(parametros);
         }
-        
 
+        public int recuperarQtdeItensPorSprintPorCriador(string planejadoPara, string criador)
+        {
+            return bugDAO.recuperarQtdeItensPorSprintPorCriador(planejadoPara, criador);
+        }
+
+        public List<Bug> recuperarItensPorSprintPorCriador(string planejadoPara, string criador)
+        {
+            Dictionary<string, string> parametros = new Dictionary<string, string>();
+            parametros.Add(Bug.CRIADO_POR, criador);
+            parametros.Add(Bug.PLANEJADO_PARA, planejadoPara);
+            return bugDAO.recuperar(parametros);
+        }
     }
 }

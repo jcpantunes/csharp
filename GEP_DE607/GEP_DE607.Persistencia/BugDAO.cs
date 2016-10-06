@@ -181,5 +181,12 @@ namespace GEP_DE607.Persistencia
             return retornarSelectValorDecimal(query);
         }
 
+        public int recuperarQtdeItensPorSprintPorCriador(string planejadoPara, string criador)
+        {
+            string query = "SELECT Count(id) FROM " + Tabela
+                + " WHERE planejadoPara = '" + planejadoPara + "' and criadoPor = '" + criador + "'";
+            return retornarSelectValorInt(query);
+        }
+
     }
 }
