@@ -63,7 +63,7 @@ namespace GEP_DE607.Persistencia
             if (reader != null)
             {
                 FuncionarioDAO funcDAO = new FuncionarioDAO();
-                List<Funcionario> listaFuncionario = funcDAO.recuperar();
+                List<Funcionario> listaFuncionario = funcDAO.Recuperar();
 
                 while (reader.Read())
                 {

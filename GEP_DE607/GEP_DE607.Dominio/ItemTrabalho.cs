@@ -8,33 +8,33 @@ namespace GEP_DE607.Dominio
 {
     public class ItemTrabalho : BaseBean
     {
-        public const string TIPO = "tipo";
-        public const string ID = "id";
-        public const string TITULO = "titulo";
-        public const string RESPONSAVEL = "responsavel";
-        public const string STATUS = "status";
-        public const string PLANEJADO_PARA = "planejadoPara";
-        public const string PAI = "pai";
-        public const string DTMODIFICACAO = "dataModificacao";
-        public const string PROJETO = "projeto";
+        public const string TIPO = "Tipo";
+        public const string ID = "Id";
+        public const string TITULO = "Titulo";
+        public const string RESPONSAVEL = "Responsavel";
+        public const string STATUS = "Status";
+        public const string PLANEJADO_PARA = "PlanejadoPara";
+        public const string PAI = "Pai";
+        public const string DTMODIFICACAO = "DataModificacao";
+        public const string PROJETO = "Projeto";
 
-        public string Tipo { get; set; }
+        public virtual string Tipo { get; set; }
 
-        public int Id { get; set; }
+        public virtual int Id { get; set; }
 
-        public string Titulo { get; set; }
+        public virtual string Titulo { get; set; }
 
-        public Funcionario Responsavel { get; set; }
+        public virtual Funcionario Responsavel { get; set; }
 
-        public string Status { get; set; }
+        public virtual string Status { get; set; }
 
-        public string PlanejadoPara { get; set; }
+        public virtual string PlanejadoPara { get; set; }
 
-        public string Pai { get; set; }
+        public virtual string Pai { get; set; }
 
-        public DateTime DataModificacao { get; set; }
+        public virtual DateTime DataModificacao { get; set; }
 
-        public int Projeto { get; set; }
+        public virtual int Projeto { get; set; }
 
         public ItemTrabalho()
         {

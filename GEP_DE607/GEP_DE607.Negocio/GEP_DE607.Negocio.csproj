@@ -40,8 +40,10 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ApropriacaoBO.cs" />
+    <Compile Include="BaseBO.cs" />
     <Compile Include="BugBO.cs" />
     <Compile Include="FuncionarioBO.cs" />
+    <Compile Include="IBaseBO.cs" />
     <Compile Include="ItemBacklogBO.cs" />
     <Compile Include="ProjetoBO.cs" />
     <Compile Include="SiscopBO.cs" />

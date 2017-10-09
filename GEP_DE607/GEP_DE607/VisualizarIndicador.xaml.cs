@@ -142,7 +142,7 @@ namespace GEP_DE607
 
                 Dictionary<string, string> param = new Dictionary<string, string>();
                 param.Add(Funcionario.LOTACAO, lotacao);
-                listaFuncionario.AddRange(fDAO.recuperar(param));
+                listaFuncionario.AddRange(fDAO.Recuperar(param));
             }
             else
             {
@@ -150,7 +150,7 @@ namespace GEP_DE607
                 foreach (ListBoxItem item in lstFuncionario.SelectedItems)
                 {
                     int codigo = Convert.ToInt32(item.Tag);
-                    listaFuncionario.Add(fDAO.recuperar(codigo));
+                    listaFuncionario.Add(fDAO.Recuperar(codigo));
                 }
             }
         }
@@ -331,7 +331,7 @@ namespace GEP_DE607
             }
 
             TarefaBO tarefaBO = new TarefaBO();
-            Dictionary<string, int> resultado = tarefaBO.recuperarQtdeTarefasPorSprints(listaSprint);
+            Dictionary<string, int> resultado = tarefaBO.RecuperarQtdeTarefasPorSprints(listaSprint);
             object[] listaColunas = { "Planejado Para", "Quantidade" };
             foreach (string str in listaColunas)
             {
@@ -376,7 +376,7 @@ namespace GEP_DE607
             if (validarConsultaDados(grid, ref linhaSelecionada, ref colunaSelecionada))
             {
                 FuncionarioBO funcBO = new FuncionarioBO();
-                int codigo = funcBO.recuperar(linhaSelecionada).Codigo;
+                int codigo = funcBO.Recuperar(Funcionario.GerarParametros(Funcionario.NOME, linhaSelecionada)).FirstOrDefault().Codigo;
 
                 ItemBacklogBO itemBO = new ItemBacklogBO();
                 List<ItemBacklog> listaBacklog = itemBO.recuperarItensBacklogPorSprintPorResponsavel(colunaSelecionada, codigo);
@@ -406,10 +406,10 @@ namespace GEP_DE607
             if (validarConsultaDados(grid, ref linhaSelecionada, ref colunaSelecionada))
             {
                 FuncionarioBO funcBO = new FuncionarioBO();
-                int codigo = funcBO.recuperar(linhaSelecionada).Codigo;
+                int codigo = funcBO.Recuperar(Funcionario.GerarParametros(Funcionario.NOME, linhaSelecionada)).FirstOrDefault().Codigo;
 
                 TarefaBO itemBO = new TarefaBO();
-                List<Tarefa> listaTarefa = itemBO.recuperarTarefasPorSprintPorResponsavel(colunaSelecionada, codigo);
+                List<Tarefa> listaTarefa = itemBO.RecuperarTarefasPorSprintPorResponsavel(colunaSelecionada, codigo);
 
                 DataTable tabela = new DataTable();
                 int[] listaTamColunas = { 80, 80, 300, 80, 80 };
@@ -435,7 +435,7 @@ namespace GEP_DE607
             if (validarConsultaDados(grid, ref linhaSelecionada, ref colunaSelecionada))
             {
                 FuncionarioBO funcBO = new FuncionarioBO();
-                int codigo = funcBO.recuperar(linhaSelecionada).Codigo;
+                int codigo = funcBO.Recuperar(Funcionario.GerarParametros(Funcionario.NOME, linhaSelecionada)).FirstOrDefault().Codigo;
 
                 BugBO itemBO = new BugBO(tipo);
                 List<Bug> listaBug = itemBO.recuperarBugsPorSprintPorResponsavel(colunaSelecionada, codigo);

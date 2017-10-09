@@ -129,14 +129,14 @@ namespace GEP_DE607
                     String lotacao = Convert.ToString(((ComboBoxItem)cmbLotacao.SelectedItem).Content);
                     Dictionary<string, string> param = new Dictionary<string, string>();
                     param.Add(Funcionario.LOTACAO, lotacao);
-                    listaFuncionario.AddRange(fDAO.recuperar(param));
+                    listaFuncionario.AddRange(fDAO.Recuperar(param));
                 }
                 else
                 {
                     foreach (ListBoxItem item in lstFuncionario.SelectedItems)
                     {
                         int codigo = Convert.ToInt32(item.Tag);
-                        listaFuncionario.Add(fDAO.recuperar(codigo));
+                        listaFuncionario.Add(fDAO.Recuperar(codigo));
                     }
                 }
                 List<string> listaSprint = new List<string>();
@@ -185,7 +185,7 @@ namespace GEP_DE607
                     foreach (Funcionario func in listaFuncionario)
                     {
                         TarefaBO tDAO = new TarefaBO();
-                        listaTarefa.AddRange(tDAO.recuperarTarefasPorSprintPorResponsavel(listaSprint, func.Codigo));
+                        listaTarefa.AddRange(tDAO.RecuperarTarefasPorSprintPorResponsavel(listaSprint, func.Codigo));
                     }
 
                     object[] listaColunas = { "ID", "Título", "Responsavel", "Status", "Planejado Para", "Pai", "Data", "Projeto", "Classificação", "Estimativa", "Tempo Gasto" };

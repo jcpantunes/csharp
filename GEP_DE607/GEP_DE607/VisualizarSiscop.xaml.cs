@@ -93,7 +93,7 @@ namespace GEP_DE607
                 foreach (ListBoxItem item in lstFuncionario.SelectedItems)
                 {
                     int codigo = Convert.ToInt32(item.Tag);
-                    listaFuncionario.Add(fDAO.recuperar(codigo));
+                    listaFuncionario.Add(fDAO.Recuperar(codigo));
                 }
 
                 SiscopBO tDAO = new SiscopBO();

@@ -8,57 +8,35 @@ using GEP_DE607.Persistencia;
 
 namespace GEP_DE607.Negocio
 {
-    public class TarefaBO
+    public class TarefaBO : BaseBO<Tarefa>
     {
 
-        TarefaDAO tarefaDAO = new TarefaDAO();
-
-        public void incluirLista(List<Tarefa> lista)
+        public TarefaBO()
         {
-            if (lista.Count > 0)
+
+        }
+
+        public List<Tarefa> RecuperarTarefasPorSprintPorResponsavel(string planejadoPara, int responsavel)
+        {
+            Dictionary<string, object> parametros = new Dictionary<string, object>();
+            parametros.Add(Tarefa.PLANEJADO_PARA, planejadoPara);
+            parametros.Add(Tarefa.RESPONSAVEL, responsavel.ToString());
+            return this.Recuperar(parametros);
+        }
+
+        public List<Tarefa> RecuperarTarefasPorSprintPorResponsavel(List<string> listaPlanejadoPara, int responsavel)
+        {
+            List<Tarefa> listaTarefas = new List<Tarefa>();
+            foreach(string planejadoPara in listaPlanejadoPara)
             {
-                List<Tarefa> listaBanco = tarefaDAO.recuperar();
-
-                List<Tarefa> listaTarefaInclusao = new List<Tarefa>();
-
-                List<Tarefa> listaTarefaAtualizacao = new List<Tarefa>();
-
-                foreach (Tarefa tarefa in lista)
-                {
-                    var tarefasExistente = listaBanco.Where(t => t.Id.Equals(tarefa.Id));
-                    if (tarefasExistente.Count() == 0)
-                    {
-                        listaTarefaInclusao.Add(tarefa);
-                    }
-                    else
-                    {
-                        tarefa.Codigo = ((Tarefa)tarefasExistente.First()).Codigo;
-                        listaTarefaAtualizacao.Add(tarefa);
-                    }
-                }
-
-                tarefaDAO.incluir(listaTarefaInclusao);
-                
-                tarefaDAO.atualizar(listaTarefaAtualizacao);
-
+                listaTarefas.AddRange(RecuperarTarefasPorSprintPorResponsavel(planejadoPara, responsavel));
             }
+            return listaTarefas;
         }
 
-        public List<Tarefa> recuperarTarefasPorSprintPorResponsavel(string planejadoPara, int responsavel)
+        public Dictionary<string, int> RecuperarQtdeTarefasPorSprints(List<string> listaPlanejadoPara)
         {
-            List<string> listaPlanejadoPara = new List<string>();
-            listaPlanejadoPara.Add(planejadoPara);
-            return tarefaDAO.recuperarTarefasPorSprintPorResponsavel(listaPlanejadoPara, responsavel);
-        }
-
-        public List<Tarefa> recuperarTarefasPorSprintPorResponsavel(List<string> listaPlanejadoPara, int responsavel)
-        {
-            return tarefaDAO.recuperarTarefasPorSprintPorResponsavel(listaPlanejadoPara, responsavel);
-        }
-
-        public Dictionary<string, int> recuperarQtdeTarefasPorSprints(List<string> listaPlanejadoPara)
-        {
-            return tarefaDAO.recuperarQtdeTarefasPorSprints(listaPlanejadoPara);
+            return new Dictionary<string, int>();
         }
     }
 }

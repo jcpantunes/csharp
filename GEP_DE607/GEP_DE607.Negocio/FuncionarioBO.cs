@@ -8,48 +8,29 @@ using GEP_DE607.Persistencia;
 
 namespace GEP_DE607.Negocio
 {
-    public class FuncionarioBO
+    public class FuncionarioBO : BaseBO<Funcionario>
     {
-        
-        FuncionarioDAO funcDAO = new FuncionarioDAO();
 
-        public void incluirLista(List<Funcionario> lista)
+        public FuncionarioBO()
         {
-            if (lista.Count > 0)
+
+        }
+
+        public List<string> RecuperarNomes()
+        {
+            List<string> retorno = new List<string>();
+            List<Funcionario> listaFuncionarios = this.Recuperar();
+            foreach (Funcionario f in listaFuncionarios)
             {
-                List<Funcionario> listaBanco = funcDAO.recuperar();
-
-                List<Funcionario> listaFuncionario = new List<Funcionario>();
-                foreach (Funcionario funcionario in lista)
-                {
-                    var funcionarioExistente = listaBanco.Where(f => f.Nome.ToLower().Equals(funcionario.Nome.ToLower()));
-                    if (funcionarioExistente.Count() == 0)
-                    {
-                        listaFuncionario.Add(funcionario);
-                    }
-                }
-
-                funcDAO.incluir(listaFuncionario);
-
+                retorno.Add(f.Nome);
             }
+            return retorno;
         }
 
-        public List<string> recuperarNomes()
+        public Funcionario RecuperarPorNome(string nome)
         {
-            List<Funcionario> listaFuncionario = funcDAO.recuperar();
-            
-            List<string> listaNomes = new List<string>();
-            foreach (Funcionario funcionario in listaFuncionario)
-            {
-                listaNomes.Add(funcionario.Nome);
-            }
-            return listaNomes;
+            FuncionarioDAO dao = new FuncionarioDAO();
+            return dao.RecuperarPorNome(nome);
         }
-
-        public Funcionario recuperar(string nome)
-        {
-            return funcDAO.recuperar(nome);
-        }
-
     }
 }

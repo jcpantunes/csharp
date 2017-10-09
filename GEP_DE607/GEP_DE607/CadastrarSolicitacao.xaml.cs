@@ -40,7 +40,7 @@ namespace GEP_DE607
             preencherCombo(cmbSistema, Constantes.recuperarDominioSistema(), "");
             preencherCombo(cmbTipoDemanda, Constantes.recuperarDominioSolicitacaoTipoDemanda(), "");
             FuncionarioBO funcBO = new FuncionarioBO();
-            preencherCombo(cmbDestinatario, funcBO.recuperarNomes(), "");
+            preencherCombo(cmbDestinatario, funcBO.RecuperarNomes(), "");
             preencherCombo(cmbStatus, Constantes.recuperarDominioSolicitacaoStatus(), "");
             this.txtDtInicio.Text = DateTime.Now.ToShortDateString();
             this.txtDtEntrega.Text = DateTime.Now.ToShortDateString();
@@ -129,7 +129,7 @@ namespace GEP_DE607
             
             preencherCombo(cmbTipoDemanda, Constantes.recuperarDominioSolicitacaoTipoDemanda(), solicitacao.TipoDemanda);
             FuncionarioBO funcBO = new FuncionarioBO();
-            preencherCombo(cmbDestinatario, funcBO.recuperarNomes(), solicitacao.Destinatario);
+            preencherCombo(cmbDestinatario, funcBO.RecuperarNomes(), solicitacao.Destinatario);
             preencherCombo(cmbStatus, Constantes.recuperarDominioSolicitacaoStatus(), solicitacao.Status);
 
             this.txtDtInicio.Text = Convert.ToDateTime(solicitacao.DtInicio).ToShortDateString();

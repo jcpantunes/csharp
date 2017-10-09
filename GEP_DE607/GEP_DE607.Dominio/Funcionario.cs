@@ -8,8 +8,8 @@ namespace GEP_DE607.Dominio
 {
     public class Funcionario : BaseBean
     {
-        public const string LOTACAO = "lotacao";
-        public const string NOME = "nome";
+        public const string LOTACAO = "Lotacao";
+        public const string NOME = "Nome";
 
         public Funcionario()
         {
@@ -22,11 +22,11 @@ namespace GEP_DE607.Dominio
             this.Nome = nome;
         }
 
-        public string Lotacao { get; set; }
+        public virtual string Lotacao { get; set; }
 
-        public string Nome { get; set; }
+        public virtual string Nome { get; set; }
 
-        public List<Funcionario> encapsularLista()
+        public virtual List<Funcionario> encapsularLista()
         {
             List<Funcionario> lista = new List<Funcionario>();
             lista.Add(this);

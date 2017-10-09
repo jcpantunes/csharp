@@ -81,13 +81,13 @@ namespace GEP_DE607
                 {
                     List<Funcionario> listaFuncionario = recuperarListaFuncionario(linhas);
                     FuncionarioBO funcBO = new FuncionarioBO();
-                    funcBO.incluirLista(listaFuncionario);
+                    funcBO.Incluir(listaFuncionario);
                 }
                 else if (item.Content.Equals(Constantes.TAREFA))
                 {
                     List<Tarefa> listaTarefa = recuperarListaTarefa(linhas);
                     TarefaBO tarefaBO = new TarefaBO();
-                    tarefaBO.incluirLista(listaTarefa);
+                    tarefaBO.Incluir(listaTarefa);
                 }
                 else if (item.Content.Equals(Constantes.DEFEITO) || item.Content.Equals(Constantes.RELATO))
                 {
@@ -209,7 +209,7 @@ namespace GEP_DE607
         private List<Tarefa> recuperarListaTarefa(string[] linhas)
         {
             FuncionarioDAO fDAO = new FuncionarioDAO();
-            List<Funcionario> listaCacheFuncionario = fDAO.recuperar();
+            List<Funcionario> listaCacheFuncionario = fDAO.Recuperar();
 
             List<Tarefa> listaTarefa = new List<Tarefa>();
             for (int i = 1; i < linhas.Length; i++)
@@ -245,8 +245,8 @@ namespace GEP_DE607
             if (funcExistente.Count() == 0)
             {
                 Funcionario funcionario = new Funcionario(0, "SUPDE/DEBHE/DE607", nomeResponsavel);
-                fDAO.incluir(funcionario.encapsularLista());
-                funcionario = fDAO.recuperar(nomeResponsavel);
+                fDAO.Incluir(funcionario.encapsularLista());
+                funcionario = fDAO.Recuperar(Funcionario.GerarParametros(Funcionario.NOME, nomeResponsavel)).FirstOrDefault();
                 listaCacheFuncionario.Add(funcionario);
                 return funcionario;
             }
@@ -259,7 +259,7 @@ namespace GEP_DE607
         private List<Bug> recuperarListaBug(string[] linhas)
         {
             FuncionarioDAO fDAO = new FuncionarioDAO();
-            List<Funcionario> listaCacheFuncionario = fDAO.recuperar();
+            List<Funcionario> listaCacheFuncionario = fDAO.Recuperar();
 
             List<Bug> listaBug = new List<Bug>();
             for (int i = 1; i < linhas.Length; i++)
@@ -307,7 +307,7 @@ namespace GEP_DE607
         private List<ItemBacklog> recuperarListaItemBacklog(string[] linhas)
         {
             FuncionarioDAO fDAO = new FuncionarioDAO();
-            List<Funcionario> listaCacheFuncionario = fDAO.recuperar();
+            List<Funcionario> listaCacheFuncionario = fDAO.Recuperar();
 
             List<ItemBacklog> listaItemBacklog = new List<ItemBacklog>();
             for (int i = 1; i < linhas.Length; i++)
@@ -381,7 +381,7 @@ namespace GEP_DE607
         private List<Siscop> recuperarListaSiscop(string[] linhas)
         {
             FuncionarioDAO fDAO = new FuncionarioDAO();
-            List<Funcionario> listaCacheFuncionario = fDAO.recuperar();
+            List<Funcionario> listaCacheFuncionario = fDAO.Recuperar();
 
             List<Siscop> listaTarefa = new List<Siscop>();
             for (int i = 1; i < linhas.Length; i++)

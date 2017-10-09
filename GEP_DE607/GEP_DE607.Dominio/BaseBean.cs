@@ -8,15 +8,23 @@ namespace GEP_DE607.Dominio
 {
     public class BaseBean
     {
-        public const string CODIGO = "codigo";
-        public const string FILTRO_DTINICIO = "filtroDtInicio";
-        public const string FILTRO_DTFINAL = "filtroDtFinal";
+        public const string CODIGO = "Codigo";
+        public const string FILTRO_DTINICIO = "FiltroDtInicio";
+        public const string FILTRO_DTFINAL = "FiltroDtFinal";
 
-        public int Codigo { get; set; }
+        public virtual int Codigo { get; set; }
 
-        public DateTime FiltroDtInicio { get; set; }
+        public virtual DateTime FiltroDtInicio { get; set; }
 
-        public DateTime FiltroDtFinal { get; set; }
+        public virtual DateTime FiltroDtFinal { get; set; }
+
+        public static Dictionary<string, string> GerarParametros(string key, string value)
+        {
+            Dictionary<string, string> parametros = new Dictionary<string, string>();
+            parametros.Add(key, value);
+            return parametros;
+        }
 
     }
+
 }

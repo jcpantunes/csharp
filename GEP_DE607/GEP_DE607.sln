@@ -1,6 +1,8 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 2012
+# Visual Studio 15
+VisualStudioVersion = 15.0.26430.13
+MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GEP_DE607", "GEP_DE607\GEP_DE607.csproj", "{62F9CB5B-25DE-4CF7-A74F-91224EC3C1FF}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GEP_DE607.Persistencia", "GEP_DE607.Persistencia\GEP_DE607.Persistencia.csproj", "{FBC1B383-3E83-46C3-A38E-7994A2CEFCC4}"
@@ -8,6 +10,8 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GEP_DE607.Dominio", "GEP_DE607.Dominio\GEP_DE607.Dominio.csproj", "{19D37B2E-A407-4236-97CC-1873381DA073}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GEP_DE607.Negocio", "GEP_DE607.Negocio\GEP_DE607.Negocio.csproj", "{365B699A-7A2C-4E07-A982-B259B5EB5094}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GEP_DE607.Test", "GEP_DE607.Test\GEP_DE607.Test.csproj", "{B8F4C1DE-F683-4DC5-895E-E09EF7B6759D}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -31,6 +35,10 @@ Global
 		{365B699A-7A2C-4E07-A982-B259B5EB5094}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{365B699A-7A2C-4E07-A982-B259B5EB5094}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{365B699A-7A2C-4E07-A982-B259B5EB5094}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B8F4C1DE-F683-4DC5-895E-E09EF7B6759D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B8F4C1DE-F683-4DC5-895E-E09EF7B6759D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B8F4C1DE-F683-4DC5-895E-E09EF7B6759D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B8F4C1DE-F683-4DC5-895E-E09EF7B6759D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

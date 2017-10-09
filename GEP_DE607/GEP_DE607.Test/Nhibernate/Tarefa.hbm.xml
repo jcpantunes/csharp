@@ -1,0 +1,39 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+
+<hibernate-mapping xmlns="urn:nhibernate-mapping-2.2" auto-import="true" assembly="GEP_DE607.Dominio" namespace="GEP_DE607.Dominio">
+
+  <class name="Tarefa" table="Tarefa" dynamic-update="true" >
+
+    <cache usage="read-write"/>
+
+    <id name="Codigo" column="codigo" type="int">
+      <generator class="native" />
+    </id>
+
+    <property name="Tipo" />
+    
+    <property name="Id" />
+    
+    <property name="Titulo" />
+    
+    <many-to-one name="Responsavel" class="GEP_DE607.Dominio.Funcionario, SampleAssembly" outer-join="true" />
+    <!--<property name="Responsavel" />-->
+    
+    <property name="Status" />
+    
+    <property name="PlanejadoPara" />
+    
+    <property name="Pai" />
+    
+    <property name="DataModificacao" />
+    
+    <property name="Projeto" />
+    
+    <property name="Classificacao" />
+    
+    <property name="Estimativa" />
+    
+    <property name="TempoGasto" />
+
+  </class>
+</hibernate-mapping>

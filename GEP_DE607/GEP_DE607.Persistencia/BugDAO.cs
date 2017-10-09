@@ -73,7 +73,7 @@ namespace GEP_DE607.Persistencia
             SqlConnection conn = null;
 
             FuncionarioDAO funcDAO = new FuncionarioDAO();
-            List<Funcionario> listaFuncionario = funcDAO.recuperar();
+            List<Funcionario> listaFuncionario = funcDAO.Recuperar();
 
             SqlDataReader reader = select(conn, query);
             if (reader != null)

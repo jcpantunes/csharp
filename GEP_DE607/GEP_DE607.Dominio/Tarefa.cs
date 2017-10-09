@@ -9,9 +9,9 @@ namespace GEP_DE607.Dominio
     public class Tarefa : ItemTrabalho
     {
 
-        public const string CLASSIFICACAO = "classificacao";
-        public const string ESTIMATIVA = "estimativa";
-        public const string TEMPO_GASTO = "tempogasto";
+        public const string CLASSIFICACAO = "Classificacao";
+        public const string ESTIMATIVA = "Estimativa";
+        public const string TEMPO_GASTO = "Tempogasto";
 
         public Tarefa()
         {
@@ -28,13 +28,13 @@ namespace GEP_DE607.Dominio
             this.TempoGasto = tempoGasto;
         }
 
-        public string Classificacao { get; set; }
+        public virtual string Classificacao { get; set; }
 
-        public decimal Estimativa { get; set; }
+        public virtual decimal Estimativa { get; set; }
 
-        public decimal TempoGasto { get; set; }
+        public virtual decimal TempoGasto { get; set; }
 
-        public List<Tarefa> encapsularLista()
+        public virtual List<Tarefa> encapsularLista()
         {
             List<Tarefa> lista = new List<Tarefa>();
             lista.Add(this);

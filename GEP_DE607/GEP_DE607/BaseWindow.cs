@@ -201,7 +201,7 @@ namespace GEP_DE607
             param.Add(Funcionario.LOTACAO, lotacao);
 
             FuncionarioDAO fDAO = new FuncionarioDAO();
-            List<Funcionario> lista = fDAO.recuperar(param);
+            List<Funcionario> lista = fDAO.Recuperar(param);
 
             if (lista.Count > 0)
             {
@@ -221,7 +221,7 @@ namespace GEP_DE607
             param.Add(Funcionario.LOTACAO, lotacao);
 
             FuncionarioDAO fDAO = new FuncionarioDAO();
-            List<Funcionario> lista = fDAO.recuperar(param);
+            List<Funcionario> lista = fDAO.Recuperar(param);
 
             if (lista.Count > 0)
             {
@@ -304,12 +304,12 @@ namespace GEP_DE607
                 }
             }
             FuncionarioDAO fDAO = new FuncionarioDAO();
-            Funcionario f = fDAO.recuperar(responsavel);
+            Funcionario f = fDAO.Recuperar(Funcionario.GerarParametros(Funcionario.NOME, responsavel)).FirstOrDefault();
             if (f == null)
             {
                 f = new Funcionario(0, "DEBHE/DE607", responsavel);
-                fDAO.incluir(f.encapsularLista());
-                f = fDAO.recuperar(responsavel);
+                fDAO.Incluir(f.encapsularLista());
+                f = fDAO.Recuperar(Funcionario.GerarParametros(Funcionario.NOME, responsavel)).FirstOrDefault();
             }
             listaFuncionario.Add(f);
             return f;

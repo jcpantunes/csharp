@@ -118,14 +118,14 @@ namespace GEP_DE607
                     String lotacao = Convert.ToString(((ComboBoxItem)cmbLotacao.SelectedItem).Content);
                     Dictionary<string, string> param = new Dictionary<string, string>();
                     param.Add(Funcionario.LOTACAO, lotacao);
-                    listaFuncionario.AddRange(fDAO.recuperar(param));
+                    listaFuncionario.AddRange(fDAO.Recuperar(param));
                 }
                 else
                 {
                     foreach (ListBoxItem item in lstFuncionario.SelectedItems)
                     {
                         int codigo = Convert.ToInt32(item.Tag);
-                        listaFuncionario.Add(fDAO.recuperar(codigo));
+                        listaFuncionario.Add(fDAO.Recuperar(codigo));
                     }
                 }
                 
