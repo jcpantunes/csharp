@@ -91,7 +91,7 @@ namespace GEP_DE607.Persistencia
                     bug.Pai = reader.GetString(7);
                     bug.DataModificacao = reader.GetDateTime(8);
                     bug.Projeto = reader.GetInt32(9);
-                    bug.CriadoPor = reader.GetString(10);
+                    bug.CriadoPor = listaFuncionario.Where(f => f.Codigo.Equals(reader.GetInt32(10))).First();
                     bug.EncontradoProjeto = reader.GetString(11);
                     bug.TipoRelato = reader.GetString(12);
                     bug.Resolucao = reader.GetString(13);

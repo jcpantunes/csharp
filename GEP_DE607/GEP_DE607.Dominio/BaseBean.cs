@@ -18,11 +18,11 @@ namespace GEP_DE607.Dominio
 
         public virtual DateTime FiltroDtFinal { get; set; }
 
-        public static Dictionary<string, string> GerarParametros(string key, string value)
+        public static Dictionary<string, object> GerarParametros(string key, string value)
         {
-            Dictionary<string, string> parametros = new Dictionary<string, string>();
-            parametros.Add(key, value);
-            return parametros;
+            Dictionary<string, object> param = new Dictionary<string, object>();
+            param.Add(key, value);
+            return param;
         }
 
     }

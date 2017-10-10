@@ -140,7 +140,7 @@ namespace GEP_DE607
                 FuncionarioDAO fDAO = new FuncionarioDAO();
                 String lotacao = Convert.ToString(((ComboBoxItem)cmbLotacao.SelectedItem).Content);
 
-                Dictionary<string, string> param = new Dictionary<string, string>();
+                Dictionary<string, object> param = new Dictionary<string, object>();
                 param.Add(Funcionario.LOTACAO, lotacao);
                 listaFuncionario.AddRange(fDAO.Recuperar(param));
             }
@@ -206,8 +206,8 @@ namespace GEP_DE607
                     {
                         if (opcao == OpcaoIndicador.NUM_TAREFA_POR_SPRINT)
                         {
-                            TarefaDAO tDAO = new TarefaDAO();
-                            linha[i + 1] = tDAO.recuperarQtdeItensPorSprintPorResponsavel(listaColunas[i], func.Codigo);
+                            TarefaBO tBO = new TarefaBO();
+                            linha[i + 1] = tBO.RecuperarQtdeItensPorSprintPorResponsavel(listaColunas[i], func.Codigo);
                         }
                         else if (opcao == OpcaoIndicador.NUM_RELATO_CORRIGIDO_POR_SPRINT)
                         {

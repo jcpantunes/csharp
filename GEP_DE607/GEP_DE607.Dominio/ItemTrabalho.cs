@@ -11,10 +11,12 @@ namespace GEP_DE607.Dominio
         public const string TIPO = "Tipo";
         public const string ID = "Id";
         public const string TITULO = "Titulo";
+        public const string CRIADOPOR = "CriadoPor";
         public const string RESPONSAVEL = "Responsavel";
         public const string STATUS = "Status";
         public const string PLANEJADO_PARA = "PlanejadoPara";
         public const string PAI = "Pai";
+        public const string DTCRIACAO = "DataCriacao";
         public const string DTMODIFICACAO = "DataModificacao";
         public const string PROJETO = "Projeto";
 
@@ -24,6 +26,8 @@ namespace GEP_DE607.Dominio
 
         public virtual string Titulo { get; set; }
 
+        public virtual Funcionario CriadoPor { get; set; }
+
         public virtual Funcionario Responsavel { get; set; }
 
         public virtual string Status { get; set; }
@@ -31,6 +35,8 @@ namespace GEP_DE607.Dominio
         public virtual string PlanejadoPara { get; set; }
 
         public virtual string Pai { get; set; }
+
+        public virtual DateTime DataCriacao { get; set; }
 
         public virtual DateTime DataModificacao { get; set; }
 

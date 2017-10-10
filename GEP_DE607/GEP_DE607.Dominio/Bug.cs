@@ -24,13 +24,10 @@ namespace GEP_DE607.Dominio
                 base (codigo, tipo, id, titulo, responsavel, status,
                         planejadoPara, pai, dataModificacao, projeto)
         {
-            this.CriadoPor = criadoPor;
             this.EncontradoProjeto = encontradoProjeto;
             this.TipoRelato = tipoRelato;
             this.Resolucao = resolucao;
         }
-
-        public string CriadoPor { get; set; }
 
         public string EncontradoProjeto { get; set; }
 

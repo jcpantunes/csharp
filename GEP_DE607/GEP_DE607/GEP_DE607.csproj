@@ -101,6 +101,9 @@
     <Compile Include="VisualizarSiscop.xaml.cs">
       <DependentUpon>VisualizarSiscop.xaml</DependentUpon>
     </Compile>
+    <Compile Include="VisualizarTarefas.xaml.cs">
+      <DependentUpon>VisualizarTarefas.xaml</DependentUpon>
+    </Compile>
     <Page Include="CadastrarProjeto.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -146,6 +149,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="VisualizarSiscop.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="VisualizarTarefas.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -225,6 +232,13 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Csv\relato.csv" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Nhibernate\Funcionario.hbm.xml" />
+    <Resource Include="Nhibernate\hibernate.cfg.xml">
+      <SubType>Designer</SubType>
+    </Resource>
+    <Resource Include="Nhibernate\Tarefa.hbm.xml" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

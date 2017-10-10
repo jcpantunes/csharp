@@ -156,7 +156,7 @@ namespace GEP_DE607
             }
             else if (tipoCarga.Equals(Constantes.TAREFA))
             {
-                string[] campos = { "Tipo", "ID", "Título", "Responsável", "Status", "Planejado Para", "Pai", "Data de Modificação", "ID do Projeto", "Classificação", "Estimativa", "Tempo Gasto" };
+                string[] campos = { "Tipo", "ID", "Título", "Criado Por", "Responsável", "Status", "Planejado Para", "Pai", "Data de Criação", "Data de Modificação", "ID do Projeto", "Classificação", "Estimativa", "Tempo Gasto" };
                 return Util.Util.validarArquivo(linha, campos);
             }
             else if (tipoCarga.Equals(Constantes.DEFEITO) || tipoCarga.Equals(Constantes.RELATO))
@@ -220,15 +220,17 @@ namespace GEP_DE607
                 tarefa.Tipo = linha[0];
                 tarefa.Id = Convert.ToInt32(linha[1]);
                 tarefa.Titulo = linha[2];
-                tarefa.Responsavel = identificarFuncionario(linha[3], listaCacheFuncionario);
-                tarefa.Status = linha[4];
-                tarefa.PlanejadoPara = linha[5];
-                tarefa.Pai = linha[6].Replace("#", "");
-                tarefa.DataModificacao = Convert.ToDateTime(linha[7]);
-                tarefa.Projeto = Convert.ToInt32(linha[8]);
-                tarefa.Classificacao = linha[9];
-                tarefa.Estimativa = DataHoraUtil.formatarHora(linha[10]);
-                tarefa.TempoGasto = DataHoraUtil.formatarHora(linha[11]);
+                tarefa.CriadoPor = identificarFuncionario(linha[3], listaCacheFuncionario);
+                tarefa.Responsavel = identificarFuncionario(linha[4], listaCacheFuncionario);
+                tarefa.Status = linha[5];
+                tarefa.PlanejadoPara = linha[6];
+                tarefa.Pai = linha[7].Replace("#", "");
+                tarefa.DataCriacao = Convert.ToDateTime(linha[8]);
+                tarefa.DataModificacao = Convert.ToDateTime(linha[9]);
+                tarefa.Projeto = Convert.ToInt32(linha[10]);
+                tarefa.Classificacao = linha[11];
+                tarefa.Estimativa = DataHoraUtil.formatarHora(linha[12]);
+                tarefa.TempoGasto = DataHoraUtil.formatarHora(linha[13]);
                 listaTarefa.Add(tarefa);
             }
             return listaTarefa;
@@ -276,7 +278,7 @@ namespace GEP_DE607
                 bug.Pai = linha[6].Replace("#", "");
                 bug.DataModificacao = Convert.ToDateTime(linha[7]);
                 bug.Projeto = Convert.ToInt32(linha[8]);
-                bug.CriadoPor = linha[9];
+                bug.CriadoPor = identificarFuncionario(linha[9], listaCacheFuncionario);
                 bug.EncontradoProjeto = linha[10];
                 bug.TipoRelato = linha[11];
                 bug.Resolucao = linha[12];

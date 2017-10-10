@@ -127,7 +127,7 @@ namespace GEP_DE607
                 if (chkTodosFuncionario.IsChecked == true)
                 {
                     String lotacao = Convert.ToString(((ComboBoxItem)cmbLotacao.SelectedItem).Content);
-                    Dictionary<string, string> param = new Dictionary<string, string>();
+                    Dictionary<string, object> param = new Dictionary<string, object>();
                     param.Add(Funcionario.LOTACAO, lotacao);
                     listaFuncionario.AddRange(fDAO.Recuperar(param));
                 }

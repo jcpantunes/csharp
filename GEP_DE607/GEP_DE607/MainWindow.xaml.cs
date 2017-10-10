@@ -66,5 +66,11 @@ namespace GEP_DE607
             VisualizarSiscop tela = new VisualizarSiscop();
             tela.Show();
         }
+
+        private void btnTarefa_Click(object sender, RoutedEventArgs e)
+        {
+            VisualizarTarefas tela = new VisualizarTarefas();
+            tela.Show();
+        }
     }
 }

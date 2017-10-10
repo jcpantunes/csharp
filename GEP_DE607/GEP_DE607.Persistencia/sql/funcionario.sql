@@ -31,4 +31,22 @@ GO
 SET ANSI_PADDING OFF
 GO
 
+insert into funcionario values ('DEBHE/DE607', 'Julio Cesar Pereira Antunes');
+insert into funcionario values ('DEBHE/DE607', 'Andre Pereira Viveiros');
+insert into funcionario values ('DEBHE/DE607', 'Brian Luppi Pimentel');
+insert into funcionario values ('DEBHE/DE607', 'Claudia Helena Souza e Silva Santos Behring');
+insert into funcionario values ('DEBHE/DE607', 'Eduardo Resende Gomes');
+insert into funcionario values ('DEBHE/DE607', 'Filipe Montenegro Campos de Albuquerque');
+insert into funcionario values ('DEBHE/DE607', 'Francisco Dimas Santos Coimbra');
+insert into funcionario values ('DEBHE/DE607', 'Gisely Cristina Maciel');
+insert into funcionario values ('DEBHE/DE607', 'Guilherme Schmidt Bacelar');
+insert into funcionario values ('DEBHE/DE607', 'Herbert Sidney Resende');
+insert into funcionario values ('DEBHE/DE607', 'Jose Maurilio Gonçalves Dias');
+insert into funcionario values ('DEBHE/DE607', 'Lisiene Bruna de Lima Pio Santos');
+insert into funcionario values ('DEBHE/DE607', 'Mauricio Pereira Reis');
+insert into funcionario values ('DEBHE/DE607', 'Raphael Schumman');
+insert into funcionario values ('DEBHE/DE607', 'Sergio Marcio Magalhaes Teixeira');
+insert into funcionario values ('DEBHE/DE607', 'Solange Leal Costa');
+
+GO
 

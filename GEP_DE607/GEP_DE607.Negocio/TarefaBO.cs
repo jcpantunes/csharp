@@ -16,6 +16,12 @@ namespace GEP_DE607.Negocio
 
         }
 
+        public List<Tarefa> Recuperar(Funcionario responsavel, DateTime dtInicio, DateTime dtFinal)
+        {
+            TarefaDAO dao = new TarefaDAO();
+            return dao.Recuperar(responsavel, dtInicio, dtFinal);
+        }
+
         public List<Tarefa> RecuperarTarefasPorSprintPorResponsavel(string planejadoPara, int responsavel)
         {
             Dictionary<string, object> parametros = new Dictionary<string, object>();
@@ -37,6 +43,11 @@ namespace GEP_DE607.Negocio
         public Dictionary<string, int> RecuperarQtdeTarefasPorSprints(List<string> listaPlanejadoPara)
         {
             return new Dictionary<string, int>();
+        }
+
+        public int RecuperarQtdeItensPorSprintPorResponsavel(string planejadoPara, int responsavel)
+        {
+            return 1;
         }
     }
 }

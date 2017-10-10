@@ -197,7 +197,7 @@ namespace GEP_DE607
         public void preencherListBoxFuncionario(ListBox lst, string lotacao)
         {
             lst.Items.Clear();
-            Dictionary<string, string> param = new Dictionary<string, string>();
+            Dictionary<string, object> param = new Dictionary<string, object>();
             param.Add(Funcionario.LOTACAO, lotacao);
 
             FuncionarioDAO fDAO = new FuncionarioDAO();
@@ -217,7 +217,7 @@ namespace GEP_DE607
         {
             cmb.Items.Clear();
 
-            Dictionary<string, string> param = new Dictionary<string, string>();
+            Dictionary<string, object> param = new Dictionary<string, object>();
             param.Add(Funcionario.LOTACAO, lotacao);
 
             FuncionarioDAO fDAO = new FuncionarioDAO();
