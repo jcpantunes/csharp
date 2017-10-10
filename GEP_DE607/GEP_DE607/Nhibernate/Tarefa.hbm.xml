@@ -11,32 +11,32 @@
     </id>
 
     <property name="Tipo" />
-    
+
     <property name="Id" />
-    
+
     <property name="Titulo" />
-    
+
     <many-to-one name="CriadoPor" class="GEP_DE607.Dominio.Funcionario, SampleAssembly" outer-join="true" />
 
     <many-to-one name="Responsavel" class="GEP_DE607.Dominio.Funcionario, SampleAssembly" outer-join="true" />
     <!--<property name="Responsavel" />-->
-    
+
     <property name="Status" />
-    
+
     <property name="PlanejadoPara" />
-    
+
     <property name="Pai" />
-    
+
     <property name="DataCriacao" />
 
     <property name="DataModificacao" />
-    
+
     <property name="Projeto" />
-    
+
     <property name="Classificacao" />
-    
+
     <property name="Estimativa" />
-    
+
     <property name="TempoGasto" />
 
   </class>

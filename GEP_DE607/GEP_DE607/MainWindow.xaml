@@ -10,7 +10,7 @@
 
             <Button x:Name="btnCarga" Margin="10,5,0,0" Content="Carga" HorizontalAlignment="Left" Click="btnCarga_Click" Width="80" Height="40" />
             
-            <Button x:Name="btnProjeto" Margin="10,5,0,0" Content="Projeto" HorizontalAlignment="Left" Click="btnProjeto_Click" Width="80" Height="40" />
+            <!--<Button x:Name="btnProjeto" Margin="10,5,0,0" Content="Projeto" HorizontalAlignment="Left" Click="btnProjeto_Click" Width="80" Height="40" />
 
             <Button x:Name="btnSolicitacao" Margin="10,5,0,0" Content="Solicitacao" HorizontalAlignment="Left" Click="btnSolicitacao_Click" Width="80" Height="40" />
 
@@ -20,7 +20,7 @@
 
             <Button x:Name="btnApropriacao" Margin="10,5,0,0" Content="Apropriação" HorizontalAlignment="Left" Click="btnApropriacao_Click" Width="80" Height="40" />
             
-            <Button x:Name="btnSiscop" Content="Siscop" HorizontalAlignment="Left" Click="btnSiscop_Click" Width="80" Height="40" />
+            <Button x:Name="btnSiscop" Content="Siscop" HorizontalAlignment="Left" Click="btnSiscop_Click" Width="80" Height="40" />-->
 
             <Button x:Name="btnTarefas" Content="Tarefas" HorizontalAlignment="Left" Click="btnTarefa_Click" Width="80" Height="40" />
 

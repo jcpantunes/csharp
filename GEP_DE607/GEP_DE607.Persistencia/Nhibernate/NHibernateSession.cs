@@ -16,7 +16,8 @@ namespace GEP_DE607.Persistencia.Nhibernate
             // var configurationPath = HostingEnvironment.MapPath("hibernate.cfg.xml");
 
             // var configurationPath = Directory.GetCurrentDirectory() + @"\..\..\Nhibernate\hibernate.cfg.xml";
-            var configurationPath = @"D:\julio\workspace-vs\csharp\GEP_DE607\GEP_DE607.Test\Nhibernate\";
+            // var configurationPath = @"D:\julio\workspace-vs\csharp\GEP_DE607\GEP_DE607.Test\Nhibernate\";
+            var configurationPath = @"D:\workspace-vs\DE607\csharp\GEP_DE607\GEP_DE607.Test\Nhibernate\";
 
             configuration.Configure(configurationPath + @"hibernate.cfg.xml");
 

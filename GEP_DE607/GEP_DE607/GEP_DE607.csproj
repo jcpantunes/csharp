@@ -234,11 +234,11 @@
     <None Include="Csv\relato.csv" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Nhibernate\Funcionario.hbm.xml" />
-    <Resource Include="Nhibernate\hibernate.cfg.xml">
+    <Content Include="Nhibernate\Funcionario.hbm.xml" />
+    <Content Include="Nhibernate\hibernate.cfg.xml">
       <SubType>Designer</SubType>
-    </Resource>
-    <Resource Include="Nhibernate\Tarefa.hbm.xml" />
+    </Content>
+    <Content Include="Nhibernate\Tarefa.hbm.xml" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
